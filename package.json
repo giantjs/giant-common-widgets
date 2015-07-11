@@ -22,7 +22,7 @@
         "giant-data"      : "0.0.3",
         "giant-entity"    : "0.0.3",
         "giant-event"     : "0.0.3",
-        "giant-namespace": "0.0.3",
+        "giant-namespace" : "0.0.3",
         "giant-oop"       : "0.0.3",
         "giant-templating": "0.0.3",
         "giant-transport" : "0.0.3",
