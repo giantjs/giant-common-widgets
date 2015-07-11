@@ -1,4 +1,4 @@
-/*global giant, giant, giant, giant, giant, giant, jQuery */
+/*global giant, jQuery */
 giant.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
     "use strict";
 

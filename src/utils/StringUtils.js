@@ -1,4 +1,4 @@
-/*global giant, giant, giant, app */
+/*global giant, app */
 giant.postpone(giant, 'StringUtils', function () {
     "use strict";
 

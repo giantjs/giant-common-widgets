@@ -1,4 +1,4 @@
-/*global giant, giant, giant, giant, jQuery, UIEvent, giant, giant */
+/*global giant, jQuery, UIEvent */
 giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
     "use strict";
 

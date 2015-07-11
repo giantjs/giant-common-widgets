@@ -1,4 +1,4 @@
-/*global Event, giant, giant, giant, giant, giant, jQuery, giant */
+/*global Event, jQuery */
 giant.postpone(giant, 'HotKeyWatcher', function () {
     "use strict";
 
