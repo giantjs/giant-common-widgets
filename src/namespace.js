@@ -10,7 +10,7 @@ var giant = giant || require('giant-namespace');
  */
 giant.pollInputValues = false;
 
-if (module.exports) {
+if (typeof require === 'function') {
     require('giant-assertion');
     require('giant-oop');
     require('giant-data');
