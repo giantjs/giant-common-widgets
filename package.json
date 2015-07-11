@@ -1,7 +1,7 @@
 {
     "name"           : "giant-common-widgets",
     "version"        : "0.0.3",
-    "description"    : "Common widgets",
+    "description"    : "Common widgets module for Giant",
     "keywords"       : [
         "widgets",
         "button",
