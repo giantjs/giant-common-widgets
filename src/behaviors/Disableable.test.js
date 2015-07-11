@@ -1,36 +1,36 @@
-/*global dessert, troop, sntls, shoeshine, candystore */
+/*global giant, giant, giant, giant, giant */
 /*global module, test, expect, ok, equal, strictEqual, notStrictEqual, deepEqual, notDeepEqual, raises */
 (function () {
     "use strict";
 
     module("Disableable");
 
-    var base = shoeshine.Widget,
+    var base = giant.Widget,
         Disableable = base.extend('Disableable')
-            .addTraitAndExtend(candystore.BinaryStateful)
-            .addTraitAndExtend(candystore.Disableable)
+            .addTraitAndExtend(giant.BinaryStateful)
+            .addTraitAndExtend(giant.Disableable)
             .addMethods({
                 init: function () {
                     base.init.call(this);
-                    candystore.BinaryStateful.init.call(this);
-                    candystore.Disableable.init.call(this);
+                    giant.BinaryStateful.init.call(this);
+                    giant.Disableable.init.call(this);
                 },
 
                 afterAdd: function () {
                     base.afterAdd.call(this);
-                    candystore.BinaryStateful.afterAdd.call(this);
+                    giant.BinaryStateful.afterAdd.call(this);
                 },
 
                 afterRemove: function () {
                     base.afterRemove.call(this);
-                    candystore.BinaryStateful.afterRemove.call(this);
+                    giant.BinaryStateful.afterRemove.call(this);
                 }
             });
 
     test("Instantiation", function () {
         Disableable.addMocks({
             addBinaryState: function (stateName) {
-                equal(stateName, candystore.Disableable.STATE_NAME_DISABLEBABLE,
+                equal(stateName, giant.Disableable.STATE_NAME_DISABLEBABLE,
                     "should add disableable state to instance");
             }
         });
@@ -53,7 +53,7 @@
 
         disableable.afterStateOn('foo');
 
-        disableable.afterStateOn(candystore.Disableable.STATE_NAME_DISABLEBABLE);
+        disableable.afterStateOn(giant.Disableable.STATE_NAME_DISABLEBABLE);
     });
 
     test("State off handler", function () {
@@ -69,7 +69,7 @@
 
         disableable.afterStateOff('foo');
 
-        disableable.afterStateOff(candystore.Disableable.STATE_NAME_DISABLEBABLE);
+        disableable.afterStateOff(giant.Disableable.STATE_NAME_DISABLEBABLE);
     });
 
     test("Disabling", function () {
@@ -79,7 +79,7 @@
 
         disableable.addMocks({
             addBinaryStateSource: function (stateName, sourceId) {
-                equal(stateName, candystore.Disableable.STATE_NAME_DISABLEBABLE,
+                equal(stateName, giant.Disableable.STATE_NAME_DISABLEBABLE,
                     "should add to state by specified name");
                 equal(sourceId, 'foo', "should pass specified source ID to state");
             }
@@ -95,7 +95,7 @@
 
         disableable.addMocks({
             removeBinaryStateSource: function (stateName, sourceId) {
-                equal(stateName, candystore.Disableable.STATE_NAME_DISABLEBABLE,
+                equal(stateName, giant.Disableable.STATE_NAME_DISABLEBABLE,
                     "should remove from state by specified name");
                 equal(sourceId, 'foo', "should pass specified source ID to state");
             }
@@ -111,7 +111,7 @@
 
         disableable.addMocks({
             removeBinaryStateSource: function (stateName, sourceId) {
-                equal(stateName, candystore.Disableable.STATE_NAME_DISABLEBABLE,
+                equal(stateName, giant.Disableable.STATE_NAME_DISABLEBABLE,
                     "should remove from state by specified name");
                 equal(typeof sourceId, 'undefined', "should pass undefined as source ID");
             }
@@ -128,7 +128,7 @@
 
         disableable.addMocks({
             isStateOn: function (stateName) {
-                equal(stateName, candystore.Disableable.STATE_NAME_DISABLEBABLE,
+                equal(stateName, giant.Disableable.STATE_NAME_DISABLEBABLE,
                     "should remove from state by specified name");
                 return result;
             }

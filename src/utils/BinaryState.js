@@ -1,16 +1,16 @@
-/*global dessert, troop, sntls, candystore */
-troop.postpone(candystore, 'BinaryState', function () {
+/*global giant, giant, giant, giant */
+giant.postpone(giant, 'BinaryState', function () {
     "use strict";
 
-    var base = troop.Base,
+    var base = giant.Base,
         self = base.extend();
 
     /**
      * Creates a BinaryState instance.
-     * @name candystore.BinaryState.create
+     * @name giant.BinaryState.create
      * @function
      * @param {string} stateName Identifies the binary state.
-     * @returns {candystore.BinaryState}
+     * @returns {giant.BinaryState}
      * @see String#toBinaryState
      */
 
@@ -20,16 +20,16 @@ troop.postpone(candystore, 'BinaryState', function () {
      * The value is false when no source contributes the state, true otherwise.
      * TODO: Remove .addStateAsSource.
      * @class
-     * @extends troop.Base
+     * @extends giant.Base
      */
-    candystore.BinaryState = self
-        .addMethods(/** @lends candystore.BinaryState# */{
+    giant.BinaryState = self
+        .addMethods(/** @lends giant.BinaryState# */{
             /**
              * @param {string} stateName
              * @ignore
              */
             init: function (stateName) {
-                dessert.isString(stateName, "Invalid state name");
+                giant.isString(stateName, "Invalid state name");
 
                 /**
                  * Name of the state. Eg. "expandable".
@@ -39,9 +39,9 @@ troop.postpone(candystore, 'BinaryState', function () {
 
                 /**
                  * Lookup of source identifiers contributing the state.
-                 * @type {sntls.Collection}
+                 * @type {giant.Collection}
                  */
-                this.stateSources = sntls.Collection.create();
+                this.stateSources = giant.Collection.create();
 
                 /**
                  * Whether state can cascade, ie. be influenced by other states.
@@ -52,7 +52,7 @@ troop.postpone(candystore, 'BinaryState', function () {
 
             /**
              * @param {boolean} isCascading
-             * @returns {candystore.BinaryState}
+             * @returns {giant.BinaryState}
              */
             setIsCascading: function (isCascading) {
                 this.isCascading = isCascading;
@@ -62,7 +62,7 @@ troop.postpone(candystore, 'BinaryState', function () {
             /**
              * Adds the specified source to the state.
              * @param {string} sourceId Identifies the contributing source.
-             * @returns {candystore.BinaryState}
+             * @returns {giant.BinaryState}
              */
             addSource: function (sourceId) {
                 this.stateSources.setItem(sourceId, true);
@@ -72,7 +72,7 @@ troop.postpone(candystore, 'BinaryState', function () {
             /**
              * Removes the specified source.
              * @param {string} [sourceId] Identifies the contributing source.
-             * @returns {candystore.BinaryState}
+             * @returns {giant.BinaryState}
              */
             removeSource: function (sourceId) {
                 if (typeof sourceId === 'string') {
@@ -121,12 +121,12 @@ troop.postpone(candystore, 'BinaryState', function () {
              * Adds another state as contributing source.
              * Takes effect only if state is cascading.
              * TODO: Remove, and place logic in classes that use BinaryState.
-             * @param {candystore.BinaryState} binaryState
+             * @param {giant.BinaryState} binaryState
              * @param {string} sourceId
-             * @returns {candystore.BinaryState}
+             * @returns {giant.BinaryState}
              */
             addStateAsSource: function (binaryState, sourceId) {
-                dessert.isBinaryState(binaryState, "Invalid binary state");
+                giant.isBinaryState(binaryState, "Invalid binary state");
                 if (this.isCascading && binaryState.isStateOn()) {
                     this.addSource(sourceId);
                 }
@@ -138,27 +138,27 @@ troop.postpone(candystore, 'BinaryState', function () {
 (function () {
     "use strict";
 
-    dessert.addTypes(/** @lends dessert */{
-        /** @param {candystore.BinaryState} expr */
+    giant.addTypes(/** @lends giant */{
+        /** @param {giant.BinaryState} expr */
         isBinaryState: function (expr) {
-            return candystore.BinaryState.isBaseOf(expr);
+            return giant.BinaryState.isBaseOf(expr);
         },
 
-        /** @param {candystore.BinaryState} [expr] */
+        /** @param {giant.BinaryState} [expr] */
         isBinaryStateOptional: function (expr) {
             return typeof expr === 'undefined' ||
-                   candystore.BinaryState.isBaseOf(expr);
+                   giant.BinaryState.isBaseOf(expr);
         }
     });
 
-    troop.Properties.addProperties.call(
+    giant.Properties.addProperties.call(
         String.prototype,
         /** @lends String# */{
             /**
-             * @returns {candystore.BinaryState}
+             * @returns {giant.BinaryState}
              */
             toBinaryState: function () {
-                return candystore.BinaryState.create(this.valueOf());
+                return giant.BinaryState.create(this.valueOf());
             }
         },
         false, false, false

@@ -73,12 +73,7 @@ module.exports = function (grunt) {
                 'src/behaviors/jsTestDriver.conf'
             ],
 
-            globals: {
-                dessert: true,
-                troop  : true,
-                sntls  : true,
-                evan   : true
-            }
+            globals: {}
         },
 
         outPath              : 'out',

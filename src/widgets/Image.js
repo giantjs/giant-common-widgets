@@ -1,42 +1,42 @@
-/*global dessert, troop, sntls, evan, shoeshine, candystore */
-troop.postpone(candystore, 'Image', function (ns, className) {
+/*global giant, giant, giant, giant, giant, giant */
+giant.postpone(giant, 'Image', function (ns, className) {
     "use strict";
 
-    var base = shoeshine.Widget,
+    var base = giant.Widget,
         self = base.extend(className);
 
     /**
      * Creates an Image instance.
-     * @name candystore.Image.create
+     * @name giant.Image.create
      * @function
-     * @returns {candystore.Image}
+     * @returns {giant.Image}
      */
 
     /**
      * The Image displays an <em>img</em> tag.
      * @class
-     * @extends shoeshine.Widget
+     * @extends giant.Widget
      */
-    candystore.Image = self
-        .addMethods(/** @lends candystore.Image# */{
+    giant.Image = self
+        .addMethods(/** @lends giant.Image# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
                 this.setTagName('img');
 
-                /** @type {poodle.ImageUrl} */
+                /** @type {giant.ImageUrl} */
                 this.imageUrl = undefined;
             },
 
             /**
              * Sets absolute image URL.
-             * @param {poodle.ImageUrl} imageUrl ImageUrl instance.
+             * @param {giant.ImageUrl} imageUrl ImageUrl instance.
              * @example
              * image.setImageUrl('http://httpcats.herokuapp.com/418'.toImageUrl())
-             * @returns {candystore.Image}
+             * @returns {giant.Image}
              */
             setImageUrl: function (imageUrl) {
-                dessert.isLocation(imageUrl, "Invalid image URL");
+                giant.isLocation(imageUrl, "Invalid image URL");
                 this.addAttribute('src', imageUrl.toString());
                 this.imageUrl = imageUrl;
                 return this;

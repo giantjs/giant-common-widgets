@@ -1,15 +1,15 @@
-/*global dessert, troop, sntls, evan, shoeshine, candystore */
-troop.postpone(candystore, 'DropdownButton', function (ns, className) {
+/*global giant, giant, giant, giant, giant, giant */
+giant.postpone(giant, 'DropdownButton', function (ns, className) {
     "use strict";
 
-    var base = candystore.TextButton,
+    var base = giant.TextButton,
         self = base.extend(className);
 
     /**
      * Creates a DropdownButton instance.
-     * @name candystore.DropdownButton.create
+     * @name giant.DropdownButton.create
      * @function
-     * @returns {candystore.DropdownButton}
+     * @returns {giant.DropdownButton}
      */
 
     /**
@@ -17,10 +17,10 @@ troop.postpone(candystore, 'DropdownButton', function (ns, className) {
      * and the selected option will be set as the dropdown button's current caption.
      * The DropdownButton changes its state as the dropdown opens and closes.
      * @class
-     * @extends candystore.TextButton
+     * @extends giant.TextButton
      */
-    candystore.DropdownButton = self
-        .addPrivateMethods(/** @lends candystore.DropdownButton# */{
+    giant.DropdownButton = self
+        .addPrivateMethods(/** @lends giant.DropdownButton# */{
             /** @private */
             _updateOpenStyle: function () {
                 var dropdown = this.dropdown;
@@ -35,7 +35,7 @@ troop.postpone(candystore, 'DropdownButton', function (ns, className) {
                 }
             }
         })
-        .addMethods(/** @lends candystore.DropdownButton# */{
+        .addMethods(/** @lends giant.DropdownButton# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -48,7 +48,7 @@ troop.postpone(candystore, 'DropdownButton', function (ns, className) {
                  * Dropdown widget for showing the options.
                  * Must have instance-level reference to it since this widget will be removed and re-added
                  * to the widget hierarchy.
-                 * @type {candystore.Dropdown}
+                 * @type {giant.Dropdown}
                  */
                 this.dropdown = this.spawnDropdownWidget()
                     .setChildName('dropdown-popup');
@@ -61,29 +61,29 @@ troop.postpone(candystore, 'DropdownButton', function (ns, className) {
                 this._updateOpenStyle();
 
                 this
-                    .subscribeTo(candystore.Popup.EVENT_POPUP_OPEN, this.onDropdownOpen)
-                    .subscribeTo(candystore.Popup.EVENT_POPUP_CLOSE, this.onDropdownClose);
+                    .subscribeTo(giant.Popup.EVENT_POPUP_OPEN, this.onDropdownOpen)
+                    .subscribeTo(giant.Popup.EVENT_POPUP_CLOSE, this.onDropdownClose);
             },
 
             /**
              * Creates dropdown widget.
              * Override to specify custom dropdown.
-             * @returns {candystore.Dropdown}
+             * @returns {giant.Dropdown}
              */
             spawnDropdownWidget: function () {
-                return candystore.Dropdown.create();
+                return giant.Dropdown.create();
             },
 
             /**
              * Retrieves Dropdown instance associated with DropdownButton.
-             * @returns {candystore.Dropdown}
+             * @returns {giant.Dropdown}
              */
             getDropdownWidget: function () {
                 return this.getChild('dropdown-popup');
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onDropdownOpen: function (event) {
@@ -93,7 +93,7 @@ troop.postpone(candystore, 'DropdownButton', function (ns, className) {
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onDropdownClose: function (event) {
@@ -110,7 +110,7 @@ troop.postpone(candystore, 'DropdownButton', function (ns, className) {
                 base.onClick.call(this);
 
                 var dropdown = this.dropdown,
-                    link = evan.pushOriginalEvent(event);
+                    link = giant.pushOriginalEvent(event);
 
                 if (dropdown.isOpen) {
                     dropdown

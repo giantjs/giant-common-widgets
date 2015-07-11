@@ -1,8 +1,8 @@
-/*global dessert, troop, sntls, evan, shoeshine, candystore */
-troop.postpone(candystore, 'OptionList', function () {
+/*global giant, giant, giant, giant, giant, giant */
+giant.postpone(giant, 'OptionList', function () {
     "use strict";
 
-    var base = troop.Base,
+    var base = giant.Base,
         self = base.extend();
 
     /**
@@ -11,18 +11,18 @@ troop.postpone(candystore, 'OptionList', function () {
      * Whatever uses the OptionList should take care of initializing the focused and selected states in afterAdd.
      * The OptionList returns to its neutral state after being removed from the hierarchy.
      * @class
-     * @extends troop.Base
-     * @extends candystore.List
+     * @extends giant.Base
+     * @extends giant.List
      */
-    candystore.OptionList = self
-        .addConstants(/** @lends candystore.OptionList */{
+    giant.OptionList = self
+        .addConstants(/** @lends giant.OptionList */{
             /** @constant */
             EVENT_OPTION_SELECT: 'option-select',
 
             /** @constant */
             EVENT_OPTIONS_ESCAPE: 'options-escape'
         })
-        .addPrivateMethods(/** @lends candystore.OptionList# */{
+        .addPrivateMethods(/** @lends giant.OptionList# */{
             /**
              * @param {string} optionName
              * @param {*} optionValue
@@ -108,7 +108,7 @@ troop.postpone(candystore, 'OptionList', function () {
                 }
             }
         })
-        .addMethods(/** @lends candystore.OptionList# */{
+        .addMethods(/** @lends giant.OptionList# */{
             /** Call from host's init. */
             init: function () {
                 this
@@ -136,11 +136,11 @@ troop.postpone(candystore, 'OptionList', function () {
             /** Call from host's afterAdd. */
             afterAdd: function () {
                 this
-                    .subscribeTo(candystore.List.EVENT_LIST_ITEMS_CHANGE, this.onItemsChange)
-                    .subscribeTo(candystore.HotKeyWatcher.EVENT_HOT_KEY_DOWN, this.onHotKeyPress)
-                    .subscribeTo(candystore.Option.EVENT_OPTION_FOCUS, this.onOptionFocus)
-                    .subscribeTo(candystore.Option.EVENT_OPTION_ACTIVE, this.onOptionActive)
-                    .subscribeTo(candystore.OptionList.EVENT_OPTION_SELECT, this.onOptionSelect);
+                    .subscribeTo(giant.List.EVENT_LIST_ITEMS_CHANGE, this.onItemsChange)
+                    .subscribeTo(giant.HotKeyWatcher.EVENT_HOT_KEY_DOWN, this.onHotKeyPress)
+                    .subscribeTo(giant.Option.EVENT_OPTION_FOCUS, this.onOptionFocus)
+                    .subscribeTo(giant.Option.EVENT_OPTION_ACTIVE, this.onOptionActive)
+                    .subscribeTo(giant.OptionList.EVENT_OPTION_SELECT, this.onOptionSelect);
 
                 this._focusOnOption();
                 this._updateFocusedOptionName();
@@ -168,7 +168,7 @@ troop.postpone(candystore, 'OptionList', function () {
              * Fetches option widget based on its option value.
              * TODO: maintain an lookup of option values -> option widgets.
              * @param {*} optionValue
-             * @returns {candystore.Option}
+             * @returns {giant.Option}
              */
             getOptionByValue: function (optionValue) {
                 return this.children
@@ -180,7 +180,7 @@ troop.postpone(candystore, 'OptionList', function () {
 
             /**
              * Fetches currently focused option, or an arbitrary option if none focused.
-             * @returns {candystore.Option}
+             * @returns {giant.Option}
              */
             getFocusedOption: function () {
                 return this.children.filterBySelector(
@@ -192,7 +192,7 @@ troop.postpone(candystore, 'OptionList', function () {
 
             /**
              * Fetches option that is currently selected, or undefined.
-             * @returns {candystore.Option}
+             * @returns {giant.Option}
              */
             getSelectedOption: function () {
                 return this.children.filterBySelector(
@@ -205,22 +205,22 @@ troop.postpone(candystore, 'OptionList', function () {
             /**
              * Selects an option on the list.
              * @param {string} optionName
-             * @returns {candystore.OptionList}
+             * @returns {giant.OptionList}
              */
             selectOption: function (optionName) {
                 var option = this.getChild(optionName);
-                dessert.assert(!!option, "Invalid option name");
+                giant.assert(!!option, "Invalid option name");
                 option.markAsActive();
 
                 return this;
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onItemsChange: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this._focusOnOption();
                 this._updateFocusedOptionName();
                 link.unLink();
@@ -228,7 +228,7 @@ troop.postpone(candystore, 'OptionList', function () {
 
             /**
              * TODO: break up into smaller methods
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onHotKeyPress: function (event) {
@@ -236,7 +236,7 @@ troop.postpone(candystore, 'OptionList', function () {
                     children = this.children,
                     sortedChildNames = children.getKeys().sort(),
                     currentChildIndex = sortedChildNames.indexOf(this.focusedOptionName),
-                    link = evan.pushOriginalEvent(event),
+                    link = giant.pushOriginalEvent(event),
                     newFocusedOptionName;
 
                 switch (charCode) {
@@ -268,12 +268,12 @@ troop.postpone(candystore, 'OptionList', function () {
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onOptionFocus: function (event) {
                 var newFocusedOptionName = event.senderWidget.childName,
-                    link = evan.pushOriginalEvent(event);
+                    link = giant.pushOriginalEvent(event);
 
                 this._setFocusedOptionName(newFocusedOptionName);
 
@@ -281,23 +281,23 @@ troop.postpone(candystore, 'OptionList', function () {
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onOptionActive: function (event) {
                 var optionWidget = event.senderWidget,
-                    link = evan.pushOriginalEvent(event);
+                    link = giant.pushOriginalEvent(event);
 
                 this._triggerSelectEvent(optionWidget.childName, optionWidget.optionValue);
                 link.unLink();
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onOptionSelect: function (event) {
-                var link = evan.pushOriginalEvent(event),
+                var link = giant.pushOriginalEvent(event),
                     optionName = event.payload.optionName;
 
                 this._setActiveOptionName(optionName);

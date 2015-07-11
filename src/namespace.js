@@ -1,65 +1,30 @@
-/**
- * Top-Level Library Namespace
- */
-/*global require */
+/*jshint node:true */
+
 /** @namespace */
-var candystore = {
-        /**
-         * Whether to poll input values at a regular interval.
-         * Set to true when change/input events do not get fired on form autofill, etc.
-         * @type {boolean}
-         */
-        pollInputValues: false
-    },
-    c$ = candystore;
+var giant = giant || require('giant-namespace');
 
 /**
- * @class
- * @see https://github.com/production-minds/dessert
+ * Whether to poll input values at a regular interval.
+ * Set to true when change/input events do not get fired on form autofill, etc.
+ * @type {boolean}
  */
-var dessert = dessert || require('dessert');
+giant.pollInputValues = false;
 
-/**
- * @namespace
- * @see https://github.com/production-minds/troop
- */
-var troop = troop || require('troop');
-
-/**
- * @namespace
- * @see https://github.com/danstocker/sntls
- */
-var sntls = sntls || require('sntls');
-
-/**
- * @namespace
- * @see https://github.com/danstocker/evan
- */
-var evan = evan || require('evan');
-
-/**
- * @namespace
- * @see https://github.com/danstocker/rubberband
- */
-var rubberband = rubberband || require('rubberband');
+if (module.exports) {
+    require('giant-assertion');
+    require('giant-oop');
+    require('giant-data');
+    require('giant-event');
+    require('giant-templating');
+    require('giant-entity');
+    require('giant-widget');
+}
 
 /**
  * @function
  * @see http://api.jquery.com
  */
 var jQuery = jQuery || require('jquery');
-
-/**
- * @namespace
- * @see https://github.com/danstocker/bookworm
- */
-var bookworm = bookworm || require('bookworm');
-
-/**
- * @namespace
- * @see https://github.com/danstocker/shoeshine
- */
-var shoeshine = shoeshine || require('shoeshine');
 
 if (typeof window === 'undefined') {
     /**
@@ -96,6 +61,6 @@ if (typeof document === 'undefined') {
  */
 
 /**
- * @name sntls.Hash
+ * @name giant.Hash
  * @class
  */

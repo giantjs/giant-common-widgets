@@ -1,27 +1,27 @@
-/*global dessert, troop, sntls, shoeshine, candystore */
+/*global giant, giant, giant, giant, giant */
 /*global module, test, expect, ok, equal, strictEqual, notStrictEqual, deepEqual, notDeepEqual, raises */
 (function () {
     "use strict";
 
     module("BinaryStateful");
 
-    var base = shoeshine.Widget,
+    var base = giant.Widget,
         BinaryStateful = base.extend('BinaryStateful')
-            .addTraitAndExtend(candystore.BinaryStateful)
+            .addTraitAndExtend(giant.BinaryStateful)
             .addMethods({
                 init: function () {
                     base.init.call(this);
-                    candystore.BinaryStateful.init.call(this);
+                    giant.BinaryStateful.init.call(this);
                 },
 
                 afterAdd: function () {
                     base.afterAdd.call(this);
-                    candystore.BinaryStateful.afterAdd.call(this);
+                    giant.BinaryStateful.afterAdd.call(this);
                 },
 
                 afterRemove: function () {
                     base.afterRemove.call(this);
-                    candystore.BinaryStateful.afterRemove.call(this);
+                    giant.BinaryStateful.afterRemove.call(this);
                 },
 
                 afterStateOn: function () {
@@ -36,7 +36,7 @@
     test("Instantiation", function () {
         var binaryStateful = BinaryStateful.create();
 
-        ok(binaryStateful.binaryStates.isA(sntls.Collection), "should add binaryStates property");
+        ok(binaryStateful.binaryStates.isA(giant.Collection), "should add binaryStates property");
         equal(binaryStateful.binaryStates.getKeyCount(), 0,
             "should initialize states collection as empty");
     });
@@ -100,7 +100,7 @@
 
         var state = binaryStateful.binaryStates.getItem('foo');
 
-        ok(state.isA(candystore.BinaryState),
+        ok(state.isA(giant.BinaryState),
             "should add BinaryState instance to binaryStates by specified name");
 
         binaryStateful.addBinaryState('foo');
@@ -151,7 +151,7 @@
         });
 
         var i = 0;
-        candystore.BinaryState.addMocks({
+        giant.BinaryState.addMocks({
             addSource: function (sourceId) {
                 equal(this.stateName, 'foo', "should add source to selected state");
                 equal(sourceId, 'hello', "should add specified source to state");
@@ -172,7 +172,7 @@
         strictEqual(parent.addBinaryStateSource('foo', 'hello'), parent,
             "should be chainable");
 
-        candystore.BinaryState.removeMocks();
+        giant.BinaryState.removeMocks();
         BinaryStateful.removeMocks();
     });
 
@@ -189,7 +189,7 @@
         });
 
         var i = 0;
-        candystore.BinaryState.addMocks({
+        giant.BinaryState.addMocks({
             addSource: function (sourceId) {
                 equal(this.stateName, 'foo', "should add source to selected state");
                 equal(sourceId, 'imposed', "should add imposed source to state");
@@ -203,7 +203,7 @@
         strictEqual(child.addImposedStateSource('foo'), child,
             "should be chainable");
 
-        candystore.BinaryState.removeMocks();
+        giant.BinaryState.removeMocks();
     });
 
     test("Applying imposed source", function () {
@@ -244,7 +244,7 @@
         parent.addBinaryStateSource('foo', 'hello');
 
         var i = 1;
-        candystore.BinaryState.addMocks({
+        giant.BinaryState.addMocks({
             removeSource: function (sourceId) {
                 equal(this.stateName, 'foo', "should remove source to selected state");
                 equal(sourceId, 'world', "should remove specified source to state");
@@ -265,7 +265,7 @@
         strictEqual(parent.removeBinaryStateSource('foo', 'world'), parent,
             "should be chainable");
 
-        candystore.BinaryState.removeMocks();
+        giant.BinaryState.removeMocks();
         BinaryStateful.removeMocks();
     });
 
@@ -282,7 +282,7 @@
         });
 
         var i = 1;
-        candystore.BinaryState.addMocks({
+        giant.BinaryState.addMocks({
             removeSource: function (sourceId) {
                 equal(this.stateName, 'foo', "should remove source from selected state");
                 equal(sourceId, 'imposed', "should remove imposed source from state");
@@ -296,7 +296,7 @@
         strictEqual(child.removeImposedStateSource('foo'), child,
             "should be chainable");
 
-        candystore.BinaryState.removeMocks();
+        giant.BinaryState.removeMocks();
     });
 
     test("Cascading flag setter", function () {

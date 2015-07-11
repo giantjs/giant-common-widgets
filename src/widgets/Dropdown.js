@@ -1,16 +1,16 @@
-/*global dessert, troop, sntls, evan, shoeshine, jQuery, candystore */
-troop.postpone(candystore, 'Dropdown', function (ns, className, /**jQuery*/$) {
+/*global giant, giant, giant, giant, giant, jQuery, giant */
+giant.postpone(giant, 'Dropdown', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = shoeshine.Widget,
+    var base = giant.Widget,
         self = base.extend(className)
-            .addTraitAndExtend(candystore.AlignedPopup, 'Popup');
+            .addTraitAndExtend(giant.AlignedPopup, 'Popup');
 
     /**
      * Creates a Dropdown instance.
-     * @name candystore.Dropdown.create
+     * @name giant.Dropdown.create
      * @function
-     * @returns {candystore.Dropdown}
+     * @returns {giant.Dropdown}
      */
 
     /**
@@ -21,15 +21,15 @@ troop.postpone(candystore, 'Dropdown', function (ns, className, /**jQuery*/$) {
      * By default, it will align its top left corner to the parent's bottom left corner.
      * The Dropdown controls scrolling of the internal list.
      * @class
-     * @extends shoeshine.Widget
-     * @extends candystore.AlignedPopup
+     * @extends giant.Widget
+     * @extends giant.AlignedPopup
      */
-    candystore.Dropdown = self
-        .addMethods(/** @lends candystore.Dropdown# */{
+    giant.Dropdown = self
+        .addMethods(/** @lends giant.Dropdown# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
-                candystore.AlignedPopup.init.call(this);
+                giant.AlignedPopup.init.call(this);
 
                 this
                     .elevateMethod('onOptionFocus')
@@ -44,46 +44,46 @@ troop.postpone(candystore, 'Dropdown', function (ns, className, /**jQuery*/$) {
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                candystore.AlignedPopup.afterAdd.call(this);
+                giant.AlignedPopup.afterAdd.call(this);
 
                 this
-                    .subscribeTo(candystore.Option.EVENT_OPTION_FOCUS, this.onOptionFocus)
-                    .subscribeTo(candystore.OptionList.EVENT_OPTION_SELECT, this.onOptionSelect)
-                    .subscribeTo(candystore.OptionList.EVENT_OPTIONS_ESCAPE, this.onOptionsEscape);
+                    .subscribeTo(giant.Option.EVENT_OPTION_FOCUS, this.onOptionFocus)
+                    .subscribeTo(giant.OptionList.EVENT_OPTION_SELECT, this.onOptionSelect)
+                    .subscribeTo(giant.OptionList.EVENT_OPTIONS_ESCAPE, this.onOptionsEscape);
             },
 
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                candystore.AlignedPopup.afterRemove.call(this);
+                giant.AlignedPopup.afterRemove.call(this);
             },
 
             /** @ignore */
             afterRender: function () {
                 base.afterRender.call(this);
-                candystore.AlignedPopup.afterRender.call(this);
+                giant.AlignedPopup.afterRender.call(this);
             },
 
             /**
              * Creates the internal list widget.
              * Override this method to specify other List-based widgets to use.
              * Ones that have the OptionList trait, and its items have the Option trait, are the best.
-             * @returns {candystore.List}
+             * @returns {giant.List}
              */
             spawnListWidget: function () {
-                return candystore.List.create();
+                return giant.List.create();
             },
 
             /**
              * Retrieves the internal List instance.
-             * @returns {candystore.List}
+             * @returns {giant.List}
              */
             getListWidget: function () {
                 return this.getChild('options-list');
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onOptionFocus: function (event) {
@@ -117,8 +117,8 @@ troop.postpone(candystore, 'Dropdown', function (ns, className, /**jQuery*/$) {
             },
 
             /**
-             * TODO: Use evan events as soon as .getOriginalEventByName is available in evan.
-             * @param {shoeshine.WidgetEvent} event
+             * TODO: Use giant events as soon as .getOriginalEventByName is available in giant-event.
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onOptionSelect: function (event) {
@@ -130,18 +130,18 @@ troop.postpone(candystore, 'Dropdown', function (ns, className, /**jQuery*/$) {
                     originalEvent.type === 'keydown' && originalEvent.which === 13
                     )) {
                     // only when select was initiated by user interaction (click on Option)
-                    link = evan.pushOriginalEvent(event);
+                    link = giant.pushOriginalEvent(event);
                     this.closePopup();
                     link.unLink();
                 }
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onOptionsEscape: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this.closePopup();
                 link.unLink();
             }

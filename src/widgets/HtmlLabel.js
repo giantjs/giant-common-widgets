@@ -1,26 +1,26 @@
-/*global dessert, troop, sntls, shoeshine, jQuery, candystore */
-troop.postpone(candystore, 'HtmlLabel', function (ns, className, /**jQuery*/$) {
+/*global giant, giant, giant, giant, jQuery, giant */
+giant.postpone(giant, 'HtmlLabel', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = candystore.Label,
+    var base = giant.Label,
         self = base.extend(className);
 
     /**
      * Creates an HtmlLabel instance.
-     * @name candystore.HtmlLabel.create
+     * @name giant.HtmlLabel.create
      * @function
-     * @returns {candystore.HtmlLabel}
+     * @returns {giant.HtmlLabel}
      */
 
     /**
      * Label that is able to display HTML markup.
      * @class
-     * @extends candystore.Label
+     * @extends giant.Label
      * @deprecated
-     * Use candystore.Label with htmlEscaped set to false.
+     * Use giant.Label with htmlEscaped set to false.
      */
-    candystore.HtmlLabel = self
-        .addMethods(/** @lends candystore.HtmlLabel# */{
+    giant.HtmlLabel = self
+        .addMethods(/** @lends giant.HtmlLabel# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);

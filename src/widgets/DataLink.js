@@ -1,20 +1,20 @@
-/*global dessert, troop, sntls, bookworm, shoeshine, candystore */
-troop.postpone(candystore, 'DataLink', function (ns, className) {
+/*global giant, giant, giant, giant, giant, giant */
+giant.postpone(giant, 'DataLink', function (ns, className) {
     "use strict";
 
-    var base = candystore.Link,
+    var base = giant.Link,
         self = base.extend(className)
-            .addTrait(bookworm.EntityBound)
-            .addTrait(candystore.EntityWidget)
-            .addTraitAndExtend(candystore.FieldBound);
+            .addTrait(giant.EntityBound)
+            .addTrait(giant.EntityWidget)
+            .addTraitAndExtend(giant.FieldBound);
 
     /**
      * Creates a DataLink instance.
-     * @name candystore.DataLink.create
+     * @name giant.DataLink.create
      * @function
-     * @param {bookworm.FieldKey} urlKey Points to the link's URL.
-     * @param {bookworm.FieldKey} textKey Points to the link's text.
-     * @returns {candystore.DataLink}
+     * @param {giant.FieldKey} urlKey Points to the link's URL.
+     * @param {giant.FieldKey} textKey Points to the link's text.
+     * @returns {giant.DataLink}
      */
 
     /**
@@ -24,58 +24,58 @@ troop.postpone(candystore, 'DataLink', function (ns, className) {
      * For data links where the two fields are connected (eg. by being in the same document)
      * it might be a better idea to subclass Link directly than using DataLink.
      * @class
-     * @extends candystore.Link
-     * @extends bookworm.EntityBound
-     * @extends candystore.EntityWidget
-     * @extends candystore.FieldBound
+     * @extends giant.Link
+     * @extends giant.EntityBound
+     * @extends giant.EntityWidget
+     * @extends giant.FieldBound
      */
-    candystore.DataLink = self
-        .addMethods(/** @lends candystore.DataLink# */{
+    giant.DataLink = self
+        .addMethods(/** @lends giant.DataLink# */{
             /**
-             * @param {bookworm.FieldKey} urlKey
-             * @param {bookworm.FieldKey} textKey
+             * @param {giant.FieldKey} urlKey
+             * @param {giant.FieldKey} textKey
              * @ignore
              */
             init: function (urlKey, textKey) {
-                dessert
+                giant
                     .isFieldKey(urlKey, "Invalid URL field key")
                     .isFieldKey(textKey, "Invalid text field key");
 
                 /**
                  * Field key that identifies the text
-                 * @type {bookworm.FieldKey}
+                 * @type {giant.FieldKey}
                  */
                 this.textKey = textKey;
 
                 base.init.call(this);
-                bookworm.EntityBound.init.call(this);
-                candystore.EntityWidget.init.call(this, urlKey);
+                giant.EntityBound.init.call(this);
+                giant.EntityWidget.init.call(this, urlKey);
             },
 
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                candystore.FieldBound.afterAdd.call(this);
+                giant.FieldBound.afterAdd.call(this);
             },
 
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                candystore.FieldBound.afterRemove.call(this);
+                giant.FieldBound.afterRemove.call(this);
             },
 
             /**
              * Creates default data bound Label widget based on the textKey provided at instantiation.
              * Override to specify custom widget.
-             * @returns {candystore.DataLabel}
+             * @returns {giant.DataLabel}
              */
             spawnLabelWidget: function () {
-                return candystore.DataLabel.create(this.textKey);
+                return giant.DataLabel.create(this.textKey);
             },
 
             /**
              * @param {string} fieldValue
-             * @returns {candystore.DataLink}
+             * @returns {giant.DataLink}
              * @ignore
              */
             setFieldValue: function (fieldValue) {

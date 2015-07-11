@@ -1,27 +1,27 @@
-/*global dessert, troop, sntls, evan, shoeshine, candystore */
-troop.postpone(candystore, 'DocumentBody', function () {
+/*global giant, giant, giant, giant, giant, giant */
+giant.postpone(giant, 'DocumentBody', function () {
     "use strict";
 
-    var base = troop.Base,
+    var base = giant.Base,
         self = base.extend()
-            .addTraitAndExtend(shoeshine.Renderable);
+            .addTraitAndExtend(giant.Renderable);
 
     /**
-     * @name candystore.DocumentBody.create
+     * @name giant.DocumentBody.create
      * @function
-     * @returns {candystore.DocumentBody}
+     * @returns {giant.DocumentBody}
      */
 
     /**
      * @class
-     * @extends troop.Base
-     * @extends shoeshine.Renderable
+     * @extends giant.Base
+     * @extends giant.Renderable
      */
-    candystore.DocumentBody = self
+    giant.DocumentBody = self
         .setInstanceMapper(function () {
             return 'singleton';
         })
-        .addPrivateMethods(/** @lends candystore.DocumentBody# */{
+        .addPrivateMethods(/** @lends giant.DocumentBody# */{
             /**
              * @returns {HTMLElement}
              * @private
@@ -30,10 +30,10 @@ troop.postpone(candystore, 'DocumentBody', function () {
                 return document && document.body;
             }
         })
-        .addMethods(/** @lends candystore.DocumentBody# */{
+        .addMethods(/** @lends giant.DocumentBody# */{
             /** @ignore */
             init: function () {
-                shoeshine.Renderable.init.call(this);
+                giant.Renderable.init.call(this);
                 this.setTagName('body');
 
                 /**
@@ -45,7 +45,7 @@ troop.postpone(candystore, 'DocumentBody', function () {
 
             /**
              * @param {string} contentMarkup
-             * @returns {candystore.DocumentBody}
+             * @returns {giant.DocumentBody}
              */
             setContentMarkup: function (contentMarkup) {
                 this._contentMarkup = contentMarkup;

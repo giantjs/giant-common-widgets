@@ -1,17 +1,17 @@
-/*global dessert, troop, sntls, evan, shoeshine, jQuery, candystore */
-troop.postpone(candystore, 'Form', function (ns, className, /**jQuery*/$) {
+/*global giant, giant, giant, giant, giant, jQuery, giant */
+giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = shoeshine.Widget,
+    var base = giant.Widget,
         self = base.extend(className)
-            .addTraitAndExtend(candystore.BinaryStateful)
-            .addTrait(candystore.Disableable);
+            .addTraitAndExtend(giant.BinaryStateful)
+            .addTrait(giant.Disableable);
 
     /**
      * Creates a Form instance.
-     * @name candystore.Form.create
+     * @name giant.Form.create
      * @function
-     * @returns {candystore.Form}
+     * @returns {giant.Form}
      */
 
     /**
@@ -19,12 +19,12 @@ troop.postpone(candystore, 'Form', function (ns, className, /**jQuery*/$) {
      * and supports submitting the form.
      * TODO: Implement disabling for form elements like inputs, etc.
      * @class
-     * @extends shoeshine.Widget
-     * @extends candystore.BinaryStateful
-     * @extends candystore.Disableable
+     * @extends giant.Widget
+     * @extends giant.BinaryStateful
+     * @extends giant.Disableable
      */
-    candystore.Form = self
-        .addConstants(/** @lends candystore.Form */{
+    giant.Form = self
+        .addConstants(/** @lends giant.Form */{
             /** @constant */
             EVENT_FORM_VALID: 'form-valid',
 
@@ -37,16 +37,16 @@ troop.postpone(candystore, 'Form', function (ns, className, /**jQuery*/$) {
             /** @constant */
             EVENT_FORM_RESET: 'form-reset'
         })
-        .addPublic(/** @lends candystore.Form */{
+        .addPublic(/** @lends giant.Form */{
             /**
-             * @type {shoeshine.MarkupTemplate}
+             * @type {giant.MarkupTemplate}
              */
             contentTemplate: [
                 '<ul class="inputs-container">',
                 '</ul>'
             ].join('').toMarkupTemplate()
         })
-        .addPrivateMethods(/** @lends candystore.Form# */{
+        .addPrivateMethods(/** @lends giant.Form# */{
             /** @private */
             _updateCounters: function () {
                 var formFields = this.getFormFields(),
@@ -86,12 +86,12 @@ troop.postpone(candystore, 'Form', function (ns, className, /**jQuery*/$) {
                 }
             }
         })
-        .addMethods(/** @lends candystore.Form# */{
+        .addMethods(/** @lends giant.Form# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
-                candystore.BinaryStateful.init.call(this);
-                candystore.Disableable.init.call(this);
+                giant.BinaryStateful.init.call(this);
+                giant.Disableable.init.call(this);
 
                 this.setTagName('form');
 
@@ -121,9 +121,9 @@ troop.postpone(candystore, 'Form', function (ns, className, /**jQuery*/$) {
                 this._updateCounters();
 
                 this
-                    .subscribeTo(candystore.Input.EVENT_INPUT_SUBMIT, this.onInputSubmit)
-                    .subscribeTo(candystore.Input.EVENT_INPUT_VALID, this.onInputValid)
-                    .subscribeTo(candystore.Input.EVENT_INPUT_INVALID, this.onInputInvalid);
+                    .subscribeTo(giant.Input.EVENT_INPUT_SUBMIT, this.onInputSubmit)
+                    .subscribeTo(giant.Input.EVENT_INPUT_VALID, this.onInputValid)
+                    .subscribeTo(giant.Input.EVENT_INPUT_INVALID, this.onInputInvalid);
             },
 
             /** @ignore */
@@ -148,11 +148,11 @@ troop.postpone(candystore, 'Form', function (ns, className, /**jQuery*/$) {
 
             /**
              * Adds a field to the form.
-             * @param {candystore.FormField} formField
-             * @returns {candystore.Form}
+             * @param {giant.FormField} formField
+             * @returns {giant.Form}
              */
             addFormField: function (formField) {
-                dessert
+                giant
                     .isFormField(formField, "Invalid form field")
                     .assert(!this.getChild(formField.childName), "Specified field already exists");
 
@@ -174,7 +174,7 @@ troop.postpone(candystore, 'Form', function (ns, className, /**jQuery*/$) {
              * Fetches the field with the specified name from the form.
              * TODO: make sure returned value is either FormField instance or undefined
              * @param {string} fieldName
-             * @returns {candystore.FormField}
+             * @returns {giant.FormField}
              */
             getFormField: function (fieldName) {
                 return this.getChild(fieldName);
@@ -182,15 +182,15 @@ troop.postpone(candystore, 'Form', function (ns, className, /**jQuery*/$) {
 
             /**
              * Fetches all form field widgets as a WidgetCollection.
-             * @returns {shoeshine.WidgetCollection}
+             * @returns {giant.WidgetCollection}
              */
             getFormFields: function () {
-                return this.children.filterByType(candystore.FormField);
+                return this.children.filterByType(giant.FormField);
             },
 
             /**
              * Fetches input widgets from all form fields.
-             * @returns {sntls.Collection}
+             * @returns {giant.Collection}
              */
             getInputWidgets: function () {
                 return this.getFormFields()
@@ -199,7 +199,7 @@ troop.postpone(candystore, 'Form', function (ns, className, /**jQuery*/$) {
 
             /**
              * Fetches input values from all form fields indexed by form field names.
-             * @returns {sntls.Collection}
+             * @returns {giant.Collection}
              */
             getInputValues: function () {
                 return this.getFormFields()
@@ -209,7 +209,7 @@ troop.postpone(candystore, 'Form', function (ns, className, /**jQuery*/$) {
             /**
              * Clears input value in all fields.
              * @param {boolean} [updateDom]
-             * @returns {candystore.Form}
+             * @returns {giant.Form}
              */
             resetForm: function (updateDom) {
                 // clearing input values
@@ -226,7 +226,7 @@ troop.postpone(candystore, 'Form', function (ns, className, /**jQuery*/$) {
              * Attempts to submit form. It is up to the parent widget to handle the submit event
              * and actually submit the form. (It may not be necessary to submit anything to a server,
              * but rather take some other action.)
-             * @returns {candystore.Form}
+             * @returns {giant.Form}
              */
             trySubmittingForm: function () {
                 this._triggerSubmissionEvent();
@@ -235,11 +235,11 @@ troop.postpone(candystore, 'Form', function (ns, className, /**jQuery*/$) {
 
             /**
              * Puts focus on first field of the form.
-             * @returns {candystore.Form}
+             * @returns {giant.Form}
              */
             focusOnFirstField: function () {
                 var firstField = this.children
-                    .filterByType(candystore.FormField)
+                    .filterByType(giant.FormField)
                     .getSortedValues()[0];
 
                 if (firstField) {
@@ -250,22 +250,22 @@ troop.postpone(candystore, 'Form', function (ns, className, /**jQuery*/$) {
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onInputSubmit: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this.trySubmittingForm();
                 link.unLink();
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onInputValid: function (event) {
                 var wasValid = this.isValid(),
-                    link = evan.pushOriginalEvent(event);
+                    link = giant.pushOriginalEvent(event);
 
                 this.validFieldCount++;
                 this._triggerValidityEvent(wasValid);
@@ -274,12 +274,12 @@ troop.postpone(candystore, 'Form', function (ns, className, /**jQuery*/$) {
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onInputInvalid: function (event) {
                 var wasValid = this.isValid(),
-                    link = evan.pushOriginalEvent(event);
+                    link = giant.pushOriginalEvent(event);
 
                 this.validFieldCount--;
                 this._triggerValidityEvent(wasValid);
@@ -301,16 +301,16 @@ troop.postpone(candystore, 'Form', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    dessert.addTypes(/** @lends dessert */{
-        /** @param {candystore.Form} expr */
+    giant.addTypes(/** @lends giant */{
+        /** @param {giant.Form} expr */
         isForm: function (expr) {
-            return candystore.Form.isBaseOf(expr);
+            return giant.Form.isBaseOf(expr);
         },
 
-        /** @param {candystore.Form} [expr] */
+        /** @param {giant.Form} [expr] */
         isFormOptional: function (expr) {
             return expr === undefined ||
-                candystore.Form.isBaseOf(expr);
+                giant.Form.isBaseOf(expr);
         }
     });
 }());

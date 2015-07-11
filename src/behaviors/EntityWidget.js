@@ -1,32 +1,32 @@
-/*global dessert, troop, sntls, shoeshine, candystore */
-troop.postpone(candystore, 'EntityWidget', function () {
+/*global giant, giant, giant, giant, giant */
+giant.postpone(giant, 'EntityWidget', function () {
     "use strict";
 
-    var base = troop.Base,
+    var base = giant.Base,
         self = base.extend();
 
     /**
      * Expects to be added to widget classes.
      * @class
-     * @extends troop.Base
-     * @extends shoeshine.Widget
+     * @extends giant.Base
+     * @extends giant.Widget
      */
-    candystore.EntityWidget = self
-        .addConstants(/** @lends candystore.EntityWidget */{
+    giant.EntityWidget = self
+        .addConstants(/** @lends giant.EntityWidget */{
             /** @constant */
             ATTRIBUTE_NAME_ENTITY_KEY: 'data-entity-key'
         })
-        .addMethods(/** @lends candystore.EntityWidget# */{
+        .addMethods(/** @lends giant.EntityWidget# */{
             /**
-             * @param {bookworm.EntityKey} entityKey
+             * @param {giant.EntityKey} entityKey
              */
             init: function (entityKey) {
-                /** @type {bookworm.EntityKey} */
+                /** @type {giant.EntityKey} */
                 this.entityKey = entityKey;
             },
 
             /**
-             * @returns {candystore.EntityWidget}
+             * @returns {giant.EntityWidget}
              */
             revealKey: function () {
                 this.addAttribute(this.ATTRIBUTE_NAME_ENTITY_KEY, this.entityKey.toString());
@@ -34,7 +34,7 @@ troop.postpone(candystore, 'EntityWidget', function () {
             },
 
             /**
-             * @returns {candystore.EntityWidget}
+             * @returns {giant.EntityWidget}
              */
             hideKey: function () {
                 this.removeAttribute(this.ATTRIBUTE_NAME_ENTITY_KEY);
@@ -43,7 +43,7 @@ troop.postpone(candystore, 'EntityWidget', function () {
         });
 });
 
-troop.postpone(candystore, 'revealKeys', function () {
+giant.postpone(giant, 'revealKeys', function () {
     "use strict";
 
     /**
@@ -51,21 +51,21 @@ troop.postpone(candystore, 'revealKeys', function () {
      * Entity key strings will be added to widget elements as 'data-entity-key' attribute.
      * @type {function}
      */
-    candystore.revealKeys = function () {
-        shoeshine.Widget.rootWidget.getAllDescendants()
+    giant.revealKeys = function () {
+        giant.Widget.rootWidget.getAllDescendants()
             .callOnEachItem('revealKey');
     };
 });
 
-troop.postpone(candystore, 'hideKeys', function () {
+giant.postpone(giant, 'hideKeys', function () {
     "use strict";
 
     /**
      * Removes 'data-entity-key' attribute from the DOM of all widgets that have the EntityWidget trait.
      * @type {function}
      */
-    candystore.hideKeys = function () {
-        shoeshine.Widget.rootWidget.getAllDescendants()
+    giant.hideKeys = function () {
+        giant.Widget.rootWidget.getAllDescendants()
             .callOnEachItem('hideKey');
     };
 });

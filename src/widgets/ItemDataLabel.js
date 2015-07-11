@@ -1,24 +1,24 @@
-/*global dessert, troop, sntls, bookworm, shoeshine, candystore */
-troop.postpone(candystore, 'ItemDataLabel', function (ns, className) {
+/*global giant, giant, giant, giant, giant, giant */
+giant.postpone(giant, 'ItemDataLabel', function (ns, className) {
     "use strict";
 
-    var base = candystore.DataLabel;
+    var base = giant.DataLabel;
 
     /**
      * Creates a ItemDataLabel instance.
-     * @name candystore.ItemDataLabel.create
+     * @name giant.ItemDataLabel.create
      * @function
-     * @param {bookworm.FieldKey} textFieldKey Identifies field to be displayed.
-     * @param {bookworm.ItemKey} itemKey Identifies item the widget is associated with.
-     * @returns {candystore.ItemDataLabel}
+     * @param {giant.FieldKey} textFieldKey Identifies field to be displayed.
+     * @param {giant.ItemKey} itemKey Identifies item the widget is associated with.
+     * @returns {giant.ItemDataLabel}
      */
 
     /**
      * General DataLabel to be used as a list item.
      * @class
-     * @extends candystore.DataLabel
-     * @extends candystore.DataListItem
+     * @extends giant.DataLabel
+     * @extends giant.DataListItem
      */
-    candystore.ItemDataLabel = base.extend(className)
-        .addTrait(candystore.DataListItem);
+    giant.ItemDataLabel = base.extend(className)
+        .addTrait(giant.DataListItem);
 });

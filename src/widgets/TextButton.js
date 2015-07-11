@@ -1,24 +1,24 @@
-/*global dessert, troop, sntls, evan, shoeshine, jQuery, candystore */
-troop.postpone(candystore, 'TextButton', function (ns, className) {
+/*global giant, giant, giant, giant, giant, jQuery, giant */
+giant.postpone(giant, 'TextButton', function (ns, className) {
     "use strict";
 
-    var base = candystore.Button,
+    var base = giant.Button,
         self = base.extend(className);
 
     /**
      * Creates a TextButton instance.
-     * @name candystore.TextButton.create
+     * @name giant.TextButton.create
      * @function
-     * @returns {candystore.TextButton}
+     * @returns {giant.TextButton}
      */
 
     /**
      * The TextButton extends the Button with a Label that stores text, so the button might have text on it.
      * @class
-     * @extends candystore.Button
+     * @extends giant.Button
      */
-    candystore.TextButton = self
-        .addMethods(/** @lends candystore.TextButton# */{
+    giant.TextButton = self
+        .addMethods(/** @lends giant.TextButton# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -31,15 +31,15 @@ troop.postpone(candystore, 'TextButton', function (ns, className) {
             /**
              * Creates Label widget to be used inside the button.
              * Override to specify custom widget.
-             * @returns {candystore.Label}
+             * @returns {giant.Label}
              */
             spawnLabelWidget: function () {
-                return candystore.Label.create();
+                return giant.Label.create();
             },
 
             /**
              * Retrieves the label widget contained within the button.
-             * @returns {candystore.Label}
+             * @returns {giant.Label}
              */
             getLabelWidget: function () {
                 return this.getChild('button-label');
@@ -50,7 +50,7 @@ troop.postpone(candystore, 'TextButton', function (ns, className) {
              * Expects the caption widget to be a Label.
              * Override when caption widget is something other than Label.
              * @param {string} caption
-             * @returns {candystore.TextButton}
+             * @returns {giant.TextButton}
              */
             setCaption: function (caption) {
                 this.getChild('button-label')

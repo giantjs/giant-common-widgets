@@ -1,8 +1,8 @@
-/*global dessert, troop, sntls, evan, shoeshine, jQuery, candystore */
-troop.postpone(candystore, 'Option', function (ns, className, /**jQuery*/$) {
+/*global giant, giant, giant, giant, giant, jQuery, giant */
+giant.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = troop.Base,
+    var base = giant.Base,
         self = base.extend();
 
     /**
@@ -10,13 +10,13 @@ troop.postpone(candystore, 'Option', function (ns, className, /**jQuery*/$) {
      * Add this trait to classes aimed to be used as options in a dropdown.
      * Expects host to have the Highlightable trait.
      * @class
-     * @extends troop.Base
-     * @extends shoeshine.Widget
-     * @extends candystore.BinaryStateful
-     * @extends candystore.Highlightable
+     * @extends giant.Base
+     * @extends giant.Widget
+     * @extends giant.BinaryStateful
+     * @extends giant.Highlightable
      */
-    candystore.Option = self
-        .addConstants(/** @lends candystore.Option */{
+    giant.Option = self
+        .addConstants(/** @lends giant.Option */{
             /** @constant */
             EVENT_OPTION_FOCUS: 'option-focus',
 
@@ -35,7 +35,7 @@ troop.postpone(candystore, 'Option', function (ns, className, /**jQuery*/$) {
             /** @constant */
             HIGHLIGHTED_ACTIVE: 'highlighted-active'
         })
-        .addMethods(/** @lends candystore.Option# */{
+        .addMethods(/** @lends giant.Option# */{
             /**
              * Call from host's init.
              * @param {*} [optionValue]
@@ -67,7 +67,7 @@ troop.postpone(candystore, 'Option', function (ns, className, /**jQuery*/$) {
             /**
              * Sets option value.
              * @param {*} optionValue
-             * @returns {candystore.Option}
+             * @returns {giant.Option}
              */
             setOptionValue: function (optionValue) {
                 this.optionValue = optionValue;
@@ -76,7 +76,7 @@ troop.postpone(candystore, 'Option', function (ns, className, /**jQuery*/$) {
 
             /**
              * Marks current option as focused.
-             * @returns {candystore.Option}
+             * @returns {giant.Option}
              */
             markAsFocused: function () {
                 if (!this.isFocused()) {
@@ -93,7 +93,7 @@ troop.postpone(candystore, 'Option', function (ns, className, /**jQuery*/$) {
 
             /**
              * Marks current option as no longer focused.
-             * @returns {candystore.Option}
+             * @returns {giant.Option}
              */
             markAsBlurred: function () {
                 if (this.isFocused()) {
@@ -118,7 +118,7 @@ troop.postpone(candystore, 'Option', function (ns, className, /**jQuery*/$) {
 
             /**
              * Marks current option as active.
-             * @returns {candystore.Option}
+             * @returns {giant.Option}
              */
             markAsActive: function () {
                 if (!this.isActive()) {
@@ -135,7 +135,7 @@ troop.postpone(candystore, 'Option', function (ns, className, /**jQuery*/$) {
 
             /**
              * Marks current option as inactive.
-             * @returns {candystore.Option}
+             * @returns {giant.Option}
              */
             markAsInactive: function () {
                 if (this.isActive()) {
@@ -163,7 +163,7 @@ troop.postpone(candystore, 'Option', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onOptionClick: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this.markAsActive();
                 link.unLink();
             },
@@ -173,7 +173,7 @@ troop.postpone(candystore, 'Option', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onOptionHover: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this.markAsFocused();
                 link.unLink();
             }

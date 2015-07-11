@@ -1,15 +1,15 @@
-/*global dessert, troop, sntls, evan, shoeshine, poodle, jQuery, candystore */
-troop.postpone(candystore, 'DynamicImage', function (ns, className, /**jQuery*/$) {
+/*global giant, giant, giant, giant, giant, giant, jQuery, giant */
+giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = candystore.Image,
+    var base = giant.Image,
         self = base.extend(className);
 
     /**
      * Creates a DynamicImage instance.
-     * @name candystore.DynamicImage.create
+     * @name giant.DynamicImage.create
      * @function
-     * @returns {candystore.DynamicImage}
+     * @returns {giant.DynamicImage}
      */
 
     /**
@@ -18,10 +18,10 @@ troop.postpone(candystore, 'DynamicImage', function (ns, className, /**jQuery*/$
      * an image tag that may or may not be present, depending on loading success. The image will not load sooner than
      * the widget is rendered.
      * @class
-     * @extends candystore.Image
+     * @extends giant.Image
      */
-    candystore.DynamicImage = self
-        .addConstants(/** @lends candystore.DynamicImage */{
+    giant.DynamicImage = self
+        .addConstants(/** @lends giant.DynamicImage */{
             /** @constant */
             EVENT_IMAGE_LOAD_START: 'image-load-start',
 
@@ -31,7 +31,7 @@ troop.postpone(candystore, 'DynamicImage', function (ns, className, /**jQuery*/$
             /** @constant */
             EVENT_IMAGE_LOAD_FAILURE: 'image-load-failure'
         })
-        .addPrivateMethods(/** @lends candystore.DynamicImage# */{
+        .addPrivateMethods(/** @lends giant.DynamicImage# */{
             /** @private */
             _updateImageElement: function () {
                 var element = this.getElement(),
@@ -59,7 +59,7 @@ troop.postpone(candystore, 'DynamicImage', function (ns, className, /**jQuery*/$
                 this._updateImageElement();
             }
         })
-        .addMethods(/** @lends candystore.DynamicImage# */{
+        .addMethods(/** @lends giant.DynamicImage# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -78,7 +78,7 @@ troop.postpone(candystore, 'DynamicImage', function (ns, className, /**jQuery*/$
 
                 /**
                  * Transport-level Image instance associated with Image widget.
-                 * @type {poodle.Image}
+                 * @type {giant.Image}
                  */
                 this.image = undefined;
             },
@@ -92,13 +92,13 @@ troop.postpone(candystore, 'DynamicImage', function (ns, className, /**jQuery*/$
             /**
              * Sets image URL. Initiates loading of image when necessary, and subscribes widget
              * to image loading events on the specified URL.
-             * @param {poodle.ImageUrl} imageUrl ImageUrl instance.
-             * @returns {candystore.DynamicImage}
+             * @param {giant.ImageUrl} imageUrl ImageUrl instance.
+             * @returns {giant.DynamicImage}
              */
             setImageUrl: function (imageUrl) {
-                dessert.isLocation(imageUrl, "Invalid image URL");
+                giant.isLocation(imageUrl, "Invalid image URL");
 
-                var Image = poodle.Image,
+                var Image = giant.Image,
                     oldImageUrl = this.imageUrl;
 
                 if (!imageUrl.equals(oldImageUrl)) {
@@ -124,32 +124,32 @@ troop.postpone(candystore, 'DynamicImage', function (ns, className, /**jQuery*/$
             },
 
             /**
-             * @param {poodle.ImageEvent} event
+             * @param {giant.ImageEvent} event
              * @ignore
              */
             onImageLoadStart: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this.triggerSync(this.EVENT_IMAGE_LOAD_START);
                 link.unLink();
             },
 
             /**
-             * @param {poodle.ImageEvent} event
+             * @param {giant.ImageEvent} event
              * @ignore
              */
             onImageLoadSuccess: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this._setImageElement(event.imageElement);
                 this.triggerSync(this.EVENT_IMAGE_LOAD_SUCCESS);
                 link.unLink();
             },
 
             /**
-             * @param {poodle.ImageEvent} event
+             * @param {giant.ImageEvent} event
              * @ignore
              */
             onImageLoadFailure: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this.triggerSync(this.EVENT_IMAGE_LOAD_FAILURE);
                 link.unLink();
             }

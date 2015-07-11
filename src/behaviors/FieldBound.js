@@ -1,17 +1,17 @@
-/*global dessert, troop, sntls, evan, shoeshine, candystore */
-troop.postpone(candystore, 'FieldBound', function () {
+/*global giant, giant, giant, giant, giant, giant */
+giant.postpone(giant, 'FieldBound', function () {
     "use strict";
 
-    var base = troop.Base,
+    var base = giant.Base,
         self = base.extend();
 
     /**
      * Effectuates field value change on widget.
      * Implement in host class.
-     * @name candystore.FieldBound#setFieldValue
+     * @name giant.FieldBound#setFieldValue
      * @function
      * @param {*} fieldValue
-     * @returns {candystore.FieldBound}
+     * @returns {giant.FieldBound}
      */
 
     /**
@@ -19,20 +19,20 @@ troop.postpone(candystore, 'FieldBound', function () {
      * the field key associated with the host class changes.
      * Expects to be added to widgets that also have the EntityBound and EntityWidget traits.
      * @class
-     * @extends troop.Base
-     * @extends bookworm.EntityBound
-     * @extends shoeshine.EntityWidget
-     * @extends shoeshine.Widget
+     * @extends giant.Base
+     * @extends giant.EntityBound
+     * @extends giant.EntityWidget
+     * @extends giant.Widget
      */
-    candystore.FieldBound = self
-        .addPrivateMethods(/** @lends candystore.FieldBound# */{
+    giant.FieldBound = self
+        .addPrivateMethods(/** @lends giant.FieldBound# */{
             /** @private */
             _updateFieldValue: function () {
                 var fieldValue = this.entityKey.toField().getValue();
                 this.setFieldValue(fieldValue);
             }
         })
-        .addMethods(/** @lends candystore.FieldBound# */{
+        .addMethods(/** @lends giant.FieldBound# */{
             /** Call from host's afterAdd. */
             afterAdd: function () {
                 this._updateFieldValue();
@@ -50,21 +50,21 @@ troop.postpone(candystore, 'FieldBound', function () {
             },
 
             /**
-             * @param {bookworm.EntityChangeEvent} event
+             * @param {giant.EntityChangeEvent} event
              * @ignore
              */
             onDocumentReplace: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this._updateFieldValue();
                 link.unLink();
             },
 
             /**
-             * @param {bookworm.EntityChangeEvent} event
+             * @param {giant.EntityChangeEvent} event
              * @ignore
              */
             onFieldChange: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this._updateFieldValue();
                 link.unLink();
             }

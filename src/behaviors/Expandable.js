@@ -1,18 +1,18 @@
-/*global dessert, troop, sntls, candystore */
-troop.postpone(candystore, 'Expandable', function () {
+/*global giant, giant, giant, giant */
+giant.postpone(giant, 'Expandable', function () {
     "use strict";
 
-    var base = troop.Base,
+    var base = giant.Base,
         self = base.extend();
 
     /**
      * @class
-     * @extends troop.Base
-     * @extends shoeshine.BinaryStateful
-     * @extends shoeshine.Widget
+     * @extends giant.Base
+     * @extends giant.BinaryStateful
+     * @extends giant.Widget
      */
-    candystore.Expandable = self
-        .addConstants(/** @lends candystore.Expandable */{
+    giant.Expandable = self
+        .addConstants(/** @lends giant.Expandable */{
             /** @constant */
             STATE_NAME_EXPANDABLE: 'state-expandable',
 
@@ -22,7 +22,7 @@ troop.postpone(candystore, 'Expandable', function () {
             /** @constants */
             EVENT_RETRACT: 'retract'
         })
-        .addPrivateMethods(/** @lends candystore.Expandable# */{
+        .addPrivateMethods(/** @lends giant.Expandable# */{
             /** @private */
             _updateExpandedState: function () {
                 if (this.isStateOn(this.STATE_NAME_EXPANDABLE)) {
@@ -36,7 +36,7 @@ troop.postpone(candystore, 'Expandable', function () {
                 }
             }
         })
-        .addMethods(/** @lends candystore.Expandable# */{
+        .addMethods(/** @lends giant.Expandable# */{
             /** Call from host's init. */
             init: function () {
                 // expansion is not cascading (by default)
@@ -59,13 +59,13 @@ troop.postpone(candystore, 'Expandable', function () {
                 }
             },
 
-            /** @returns {candystore.Expandable} */
+            /** @returns {giant.Expandable} */
             expandWidget: function () {
                 this.addBinaryStateSource(this.STATE_NAME_EXPANDABLE, 'default');
                 return this;
             },
 
-            /** @returns {candystore.Expandable} */
+            /** @returns {giant.Expandable} */
             contractWidget: function () {
                 this.removeBinaryStateSource(this.STATE_NAME_EXPANDABLE, 'default');
                 return this;

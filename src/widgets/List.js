@@ -1,15 +1,15 @@
-/*global dessert, troop, sntls, shoeshine, candystore */
-troop.postpone(candystore, 'List', function (ns, className) {
+/*global giant, giant, giant, giant, giant */
+giant.postpone(giant, 'List', function (ns, className) {
     "use strict";
 
-    var base = shoeshine.Widget,
+    var base = giant.Widget,
         self = base.extend(className);
 
     /**
      * Creates a List instance.
-     * @name candystore.List.create
+     * @name giant.List.create
      * @function
-     * @returns {candystore.List}
+     * @returns {giant.List}
      */
 
     /**
@@ -17,14 +17,14 @@ troop.postpone(candystore, 'List', function (ns, className) {
      * By default, it maps to the <em>ul</em> and <em>li</em> HTML elements, but that can be changed by subclassing.
      * Item order follows the normal ordering child widgets, ie. in the order of their names.
      * @class
-     * @extends shoeshine.Widget
+     * @extends giant.Widget
      */
-    candystore.List = self
-        .addConstants(/** @lends candystore.List */{
+    giant.List = self
+        .addConstants(/** @lends giant.List */{
             /** @constant */
             EVENT_LIST_ITEMS_CHANGE: 'list-items-change'
         })
-        .addMethods(/** @lends candystore.List# */{
+        .addMethods(/** @lends giant.List# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -35,7 +35,7 @@ troop.postpone(candystore, 'List', function (ns, className) {
              * Adds a widget to the list as its item.
              * Changes the specified widget's tag name to 'li'.
              * @param itemWidget
-             * @returns {candystore.List}
+             * @returns {giant.List}
              */
             addItemWidget: function (itemWidget) {
                 itemWidget

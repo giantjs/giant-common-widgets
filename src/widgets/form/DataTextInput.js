@@ -1,57 +1,57 @@
-/*global dessert, troop, sntls, evan, bookworm, shoeshine, candystore */
-troop.postpone(candystore, 'DataTextInput', function (ns, className) {
+/*global giant, giant, giant, giant, giant, giant, giant */
+giant.postpone(giant, 'DataTextInput', function (ns, className) {
     "use strict";
 
-    var base = candystore.TextInput,
+    var base = giant.TextInput,
         self = base.extend(className)
-            .addTrait(bookworm.EntityBound)
-            .addTrait(candystore.EntityWidget)
-            .addTraitAndExtend(candystore.FieldBound);
+            .addTrait(giant.EntityBound)
+            .addTrait(giant.EntityWidget)
+            .addTraitAndExtend(giant.FieldBound);
 
     /**
      * Creates a DataTextInput instance.
-     * @name candystore.DataTextInput.create
+     * @name giant.DataTextInput.create
      * @function
-     * @param {bookworm.FieldKey} inputFieldKey
-     * @returns {candystore.DataTextInput}
+     * @param {giant.FieldKey} inputFieldKey
+     * @returns {giant.DataTextInput}
      */
 
     /**
      * The DataTextInput adds data binding to TextInput, reflecting the value of a field in the cache.
      * Keeps the value of the input field in sync with the changes of the cache field.
      * @class
-     * @extends candystore.TextInput
-     * @extends bookworm.EntityBound
-     * @extends candystore.EntityWidget
-     * @extends candystore.FieldBound
+     * @extends giant.TextInput
+     * @extends giant.EntityBound
+     * @extends giant.EntityWidget
+     * @extends giant.FieldBound
      */
-    candystore.DataTextInput = self
-        .addMethods(/** @lends candystore.DataTextInput# */{
+    giant.DataTextInput = self
+        .addMethods(/** @lends giant.DataTextInput# */{
             /**
-             * @param {bookworm.FieldKey} inputFieldKey
+             * @param {giant.FieldKey} inputFieldKey
              * @ignore
              */
             init: function (inputFieldKey) {
                 base.init.call(this);
-                bookworm.EntityBound.init.call(this);
-                candystore.EntityWidget.init.call(this, inputFieldKey);
+                giant.EntityBound.init.call(this);
+                giant.EntityWidget.init.call(this, inputFieldKey);
             },
 
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                candystore.FieldBound.afterAdd.call(this);
+                giant.FieldBound.afterAdd.call(this);
             },
 
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                candystore.FieldBound.afterRemove.call(this);
+                giant.FieldBound.afterRemove.call(this);
             },
 
             /**
              * @param {*} fieldValue
-             * @returns {candystore.DataTextInput}
+             * @returns {giant.DataTextInput}
              * @ignore
              */
             setFieldValue: function (fieldValue) {

@@ -1,8 +1,8 @@
-/*global dessert, troop, sntls, candystore */
-troop.postpone(candystore, 'Editable', function () {
+/*global giant, giant, giant, giant */
+giant.postpone(giant, 'Editable', function () {
     "use strict";
 
-    var base = troop.Base,
+    var base = giant.Base,
         self = base.extend();
 
     /**
@@ -10,11 +10,11 @@ troop.postpone(candystore, 'Editable', function () {
      * in two modes: display mode, and edit mode, each mode implementing a different markup.
      * TODO: Refactor .editMarkup() and .displayMarkup() into .editTemplate and .displayTemplate.
      * @class
-     * @extends troop.Base
-     * @extends candystore.BinaryStateful
+     * @extends giant.Base
+     * @extends giant.BinaryStateful
      */
-    candystore.Editable = self
-        .addConstants(/** @lends candystore.Editable */{
+    giant.Editable = self
+        .addConstants(/** @lends giant.Editable */{
             /** @constant */
             STATE_NAME_EDITABLE: 'state-editable',
 
@@ -30,7 +30,7 @@ troop.postpone(candystore, 'Editable', function () {
              */
             EVENT_DISPLAY_MODE: 'display-mode'
         })
-        .addPrivateMethods(/** @lends candystore.Editable# */{
+        .addPrivateMethods(/** @lends giant.Editable# */{
             /** @private */
             _updateEditableState: function () {
                 var eventName;
@@ -60,7 +60,7 @@ troop.postpone(candystore, 'Editable', function () {
                     .triggerSync();
             }
         })
-        .addMethods(/** @lends candystore.Editable# */{
+        .addMethods(/** @lends giant.Editable# */{
             /** Call from host's .init */
             init: function () {
                 // expansion is not cascading (by default)
@@ -105,7 +105,7 @@ troop.postpone(candystore, 'Editable', function () {
 
             /**
              * Sets the host to edit mode.
-             * @returns {candystore.Editable}
+             * @returns {giant.Editable}
              */
             toEditMode: function () {
                 this.addBinaryStateSource(this.STATE_NAME_EDITABLE, 'default');
@@ -114,7 +114,7 @@ troop.postpone(candystore, 'Editable', function () {
 
             /**
              * Sets the host to display mode.
-             * @returns {candystore.Editable}
+             * @returns {giant.Editable}
              */
             toDisplayMode: function () {
                 this.removeBinaryStateSource(this.STATE_NAME_EDITABLE, 'default');
@@ -139,13 +139,13 @@ troop.postpone(candystore, 'Editable', function () {
         });
 
     /**
-     * @name candystore.Editable#editMarkup
+     * @name giant.Editable#editMarkup
      * @function
      * @returns {string}
      */
 
     /**
-     * @name candystore.Editable#displayMarkup
+     * @name giant.Editable#displayMarkup
      * @function
      * @returns {string}
      */

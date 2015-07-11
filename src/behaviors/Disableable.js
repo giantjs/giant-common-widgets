@@ -1,8 +1,8 @@
-/*global dessert, troop, sntls, evan, shoeshine, candystore */
-troop.postpone(candystore, 'Disableable', function () {
+/*global giant, giant, giant, giant, giant, giant */
+giant.postpone(giant, 'Disableable', function () {
     "use strict";
 
-    var base = troop.Base,
+    var base = giant.Base,
         self = base.extend();
 
     /**
@@ -12,16 +12,16 @@ troop.postpone(candystore, 'Disableable', function () {
      * Expects to be added to Widget instances.
      * Expects the host to have the BinaryStateful trait applied.
      * @class
-     * @extends troop.Base
-     * @extends candystore.BinaryStateful
-     * @extends shoeshine.Widget
+     * @extends giant.Base
+     * @extends giant.BinaryStateful
+     * @extends giant.Widget
      */
-    candystore.Disableable = self
-        .addConstants(/** @lends candystore.Disableable */{
+    giant.Disableable = self
+        .addConstants(/** @lends giant.Disableable */{
             /** @constant */
             STATE_NAME_DISABLEBABLE: 'state-disableable'
         })
-        .addPrivateMethods(/** @lends candystore.Disableable# */{
+        .addPrivateMethods(/** @lends giant.Disableable# */{
             /** @private */
             _updateEnabledStyle: function () {
                 if (this.isDisabled()) {
@@ -33,7 +33,7 @@ troop.postpone(candystore, 'Disableable', function () {
                 }
             }
         })
-        .addMethods(/** @lends candystore.Disableable# */{
+        .addMethods(/** @lends giant.Disableable# */{
             /** Call from host's .init. */
             init: function () {
                 // disableable state is cascading
@@ -57,7 +57,7 @@ troop.postpone(candystore, 'Disableable', function () {
             /**
              * Disables the instance by the specified source.
              * @param {string} disablingSource
-             * @returns {candystore.Disableable}
+             * @returns {giant.Disableable}
              */
             disableBy: function (disablingSource) {
                 this.addBinaryStateSource(this.STATE_NAME_DISABLEBABLE, disablingSource);
@@ -67,7 +67,7 @@ troop.postpone(candystore, 'Disableable', function () {
             /**
              * Enables the instance by the specified source.
              * @param {string} disablingSource
-             * @returns {candystore.Disableable}
+             * @returns {giant.Disableable}
              */
             enableBy: function (disablingSource) {
                 this.removeBinaryStateSource(this.STATE_NAME_DISABLEBABLE, disablingSource);
@@ -76,7 +76,7 @@ troop.postpone(candystore, 'Disableable', function () {
 
             /**
              * Releases all disabling sources at once.
-             * @returns {candystore.Disableable}
+             * @returns {giant.Disableable}
              */
             forceEnable: function () {
                 this.removeBinaryStateSource(this.STATE_NAME_DISABLEBABLE);

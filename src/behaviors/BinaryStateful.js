@@ -1,35 +1,35 @@
-/*global dessert, troop, sntls, shoeshine, candystore */
-troop.postpone(candystore, 'BinaryStateful', function () {
+/*global giant, giant, giant, giant, giant */
+giant.postpone(giant, 'BinaryStateful', function () {
     "use strict";
 
-    var base = troop.Base,
+    var base = giant.Base,
         self = base.extend();
 
     /**
      * The BinaryStateful trait manages multiple binary states with multiple contributing sources.
      * @class
-     * @extends troop.Base
-     * @extends shoeshine.Widget
-     * @see candystore.BinaryState
+     * @extends giant.Base
+     * @extends giant.Widget
+     * @see giant.BinaryState
      */
-    candystore.BinaryStateful = self
-        .addConstants(/** @lends candystore.BinaryStateful */{
+    giant.BinaryStateful = self
+        .addConstants(/** @lends giant.BinaryStateful */{
             /**
              * Identifier for imposed source.
              * @constant
              */
             SOURCE_ID_IMPOSED: 'imposed'
         })
-        .addMethods(/** @lends candystore.BinaryStateful# */{
+        .addMethods(/** @lends giant.BinaryStateful# */{
             /**
              * Call from host's init.
              */
             init: function () {
                 /**
                  * Holds a collection of BinaryState instances for each binary state.
-                 * @type {sntls.Collection}
+                 * @type {giant.Collection}
                  */
-                this.binaryStates = sntls.Collection.create();
+                this.binaryStates = giant.Collection.create();
             },
 
             /**
@@ -77,7 +77,7 @@ troop.postpone(candystore, 'BinaryStateful', function () {
              * TODO: Add test for isCascading argument.
              * @param {string} stateName Identifies the state.
              * @param {boolean} [isCascading=false] Whether new state is cascading.
-             * @returns {candystore.BinaryStateful}
+             * @returns {giant.BinaryStateful}
              */
             addBinaryState: function (stateName, isCascading) {
                 var binaryStateLayers = this.binaryStates;
@@ -92,7 +92,7 @@ troop.postpone(candystore, 'BinaryStateful', function () {
 
             /**
              * @param {string} stateName
-             * @returns {candystore.BinaryState}
+             * @returns {giant.BinaryState}
              */
             getBinaryState: function (stateName) {
                 return this.binaryStates.getItem(stateName);
@@ -111,7 +111,7 @@ troop.postpone(candystore, 'BinaryStateful', function () {
              * Adds the specified contributing source to the specified state.
              * @param {string} stateName Identifies state.
              * @param {string} sourceId Identifies source.
-             * @returns {candystore.BinaryStateful}
+             * @returns {giant.BinaryStateful}
              */
             addBinaryStateSource: function (stateName, sourceId) {
                 var state = this.getBinaryState(stateName),
@@ -127,7 +127,7 @@ troop.postpone(candystore, 'BinaryStateful', function () {
 
                     // adding source to suitable descendants
                     this.getAllDescendants()
-                        .filterBySelector(function (/**candystore.BinaryStateful*/descendant) {
+                        .filterBySelector(function (/**giant.BinaryStateful*/descendant) {
                             var state = descendant.binaryStates && descendant.getBinaryState(stateName);
                             return state && state.isCascading;
                         })
@@ -142,7 +142,7 @@ troop.postpone(candystore, 'BinaryStateful', function () {
             /**
              * Imposes a source on the specified state provided that that state allows cascading.
              * @param {string} stateName
-             * @returns {candystore.BinaryStateful}
+             * @returns {giant.BinaryStateful}
              */
             addImposedStateSource: function (stateName) {
                 var state = this.getBinaryState(stateName),
@@ -163,7 +163,7 @@ troop.postpone(candystore, 'BinaryStateful', function () {
             /**
              * Applies sources imposed by parents on the current instance.
              * @param {string} stateName Identifies state to add imposed sources to.
-             * @returns {candystore.BinaryStateful}
+             * @returns {giant.BinaryStateful}
              */
             applyImposedStateSource: function (stateName) {
                 // querying nearest parent for matching state
@@ -184,7 +184,7 @@ troop.postpone(candystore, 'BinaryStateful', function () {
              * @param {string} stateName Identifies state.
              * @param {string} [sourceId] Identifies source. When omitted, all sources will be
              * removed.
-             * @returns {candystore.BinaryStateful}
+             * @returns {giant.BinaryStateful}
              */
             removeBinaryStateSource: function (stateName, sourceId) {
                 var state = this.getBinaryState(stateName),
@@ -200,7 +200,7 @@ troop.postpone(candystore, 'BinaryStateful', function () {
 
                     // adding source to suitable descendants
                     this.getAllDescendants()
-                        .filterBySelector(function (/**candystore.BinaryStateful*/descendant) {
+                        .filterBySelector(function (/**giant.BinaryStateful*/descendant) {
                             var state = descendant.binaryStates && descendant.getBinaryState(stateName);
                             return state && state.isCascading;
                         })
@@ -215,7 +215,7 @@ troop.postpone(candystore, 'BinaryStateful', function () {
             /**
              * Removes contributing source imposed by the specified instance from the specified state.
              * @param {string} stateName
-             * @returns {candystore.BinaryStateful}
+             * @returns {giant.BinaryStateful}
              */
             removeImposedStateSource: function (stateName) {
                 var state = this.getBinaryState(stateName),
@@ -237,7 +237,7 @@ troop.postpone(candystore, 'BinaryStateful', function () {
              * Sets cascading flag on the specified state and updates imposed state on the current instance.
              * @param {string} stateName
              * @param {boolean} isCascading
-             * @returns {candystore.BinaryStateful}
+             * @returns {giant.BinaryStateful}
              */
             setIsCascading: function (stateName, isCascading) {
                 var state = this.getBinaryState(stateName),
@@ -260,14 +260,14 @@ troop.postpone(candystore, 'BinaryStateful', function () {
 
     /**
      * Called after the state value changes from false to true.
-     * @name candystore.BinaryStateful#afterStateOn
+     * @name giant.BinaryStateful#afterStateOn
      * @function
      * @param {string} stateName
      */
 
     /**
      * Called after the state value changes from true to false.
-     * @name candystore.BinaryStateful#afterStateOff
+     * @name giant.BinaryStateful#afterStateOff
      * @function
      * @param {string} stateName
      */

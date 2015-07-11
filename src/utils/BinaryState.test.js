@@ -1,4 +1,4 @@
-/*global dessert, troop, sntls, candystore */
+/*global giant, giant, giant, giant */
 /*global module, test, expect, ok, equal, strictEqual, notStrictEqual, deepEqual, notDeepEqual, raises */
 (function () {
     "use strict";
@@ -7,13 +7,13 @@
 
     test("Instantiation", function () {
         raises(function () {
-            candystore.BinaryState.create();
+            giant.BinaryState.create();
         }, "should raise exception on missing arguments");
 
-        var binaryState = candystore.BinaryState.create('foo');
+        var binaryState = giant.BinaryState.create('foo');
 
         equal(binaryState.stateName, 'foo', "should set state name");
-        ok(binaryState.stateSources.isA(sntls.Collection), "should add source collection");
+        ok(binaryState.stateSources.isA(giant.Collection), "should add source collection");
         equal(binaryState.stateSources.getKeyCount(), 0, "should initialize source collection as empty");
         equal(binaryState.isCascading, false, "should set cascading flag to false");
     });
@@ -21,7 +21,7 @@
     test("Conversion from string", function () {
         var binaryState = 'foo'.toBinaryState();
 
-        ok(binaryState.isA(candystore.BinaryState), "should return BinaryState instance");
+        ok(binaryState.isA(giant.BinaryState), "should return BinaryState instance");
         equal(binaryState.stateName, 'foo', "should set state name");
     });
 

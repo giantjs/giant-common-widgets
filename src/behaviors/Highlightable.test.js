@@ -1,36 +1,36 @@
-/*global dessert, troop, sntls, shoeshine, candystore */
+/*global giant, giant, giant, giant, giant */
 /*global module, test, expect, ok, equal, strictEqual, notStrictEqual, deepEqual, notDeepEqual, raises */
 (function () {
     "use strict";
 
     module("Highlightable");
 
-    var base = shoeshine.Widget,
+    var base = giant.Widget,
         Highlightable = base.extend('Highlightable')
-            .addTraitAndExtend(candystore.BinaryStateful)
-            .addTraitAndExtend(candystore.Highlightable)
+            .addTraitAndExtend(giant.BinaryStateful)
+            .addTraitAndExtend(giant.Highlightable)
             .addMethods({
                 init: function () {
                     base.init.call(this);
-                    candystore.BinaryStateful.init.call(this);
-                    candystore.Highlightable.init.call(this);
+                    giant.BinaryStateful.init.call(this);
+                    giant.Highlightable.init.call(this);
                 },
 
                 afterAdd: function () {
                     base.afterAdd.call(this);
-                    candystore.BinaryStateful.afterAdd.call(this);
+                    giant.BinaryStateful.afterAdd.call(this);
                 },
 
                 afterRemove: function () {
                     base.afterRemove.call(this);
-                    candystore.BinaryStateful.afterRemove.call(this);
+                    giant.BinaryStateful.afterRemove.call(this);
                 }
             });
 
     test("Instantiation", function () {
         Highlightable.addMocks({
             addBinaryState: function (stateName) {
-                equal(stateName, candystore.Highlightable.STATE_NAME_HIGHLIGHTABLE,
+                equal(stateName, giant.Highlightable.STATE_NAME_HIGHLIGHTABLE,
                     "should add highlightable state to instance");
             }
         });
@@ -39,7 +39,7 @@
 
         Highlightable.removeMocks();
 
-        ok(highlightable.highlightIds.isA(sntls.Collection), "should add highlightIds property");
+        ok(highlightable.highlightIds.isA(giant.Collection), "should add highlightIds property");
         equal(highlightable.highlightIds.getKeyCount(), 0,
             "should initialize highlightIds to empty collection");
     });
@@ -49,7 +49,7 @@
 
         var highlightable = Highlightable.create();
 
-        candystore.BinaryStateful.addMocks({
+        giant.BinaryStateful.addMocks({
             addBinaryStateSource: function (stateName, sourceId) {
                 equal(stateName, 'foo', "should pass state name to super");
                 equal(sourceId, 'bar', "should pass source ID to super");
@@ -65,9 +65,9 @@
         strictEqual(highlightable.addBinaryStateSource('foo', 'bar'), highlightable,
             "should be chainable");
 
-        candystore.BinaryStateful.removeMocks();
+        giant.BinaryStateful.removeMocks();
 
-        highlightable.addBinaryStateSource(candystore.Highlightable.STATE_NAME_HIGHLIGHTABLE, 'bar');
+        highlightable.addBinaryStateSource(giant.Highlightable.STATE_NAME_HIGHLIGHTABLE, 'bar');
     });
 
     test("Imposed state addition", function () {
@@ -75,7 +75,7 @@
 
         var highlightable = Highlightable.create();
 
-        candystore.BinaryStateful.addMocks({
+        giant.BinaryStateful.addMocks({
             addImposedStateSource: function (stateName) {
                 equal(stateName, 'foo', "should pass state name to super");
             }
@@ -90,9 +90,9 @@
         strictEqual(highlightable.addImposedStateSource('foo'), highlightable,
             "should be chainable");
 
-        candystore.BinaryStateful.removeMocks();
+        giant.BinaryStateful.removeMocks();
 
-        highlightable.addImposedStateSource(candystore.Highlightable.STATE_NAME_HIGHLIGHTABLE);
+        highlightable.addImposedStateSource(giant.Highlightable.STATE_NAME_HIGHLIGHTABLE);
     });
 
     test("Binary state removal", function () {
@@ -100,7 +100,7 @@
 
         var highlightable = Highlightable.create();
 
-        candystore.BinaryStateful.addMocks({
+        giant.BinaryStateful.addMocks({
             removeBinaryStateSource: function (stateName, sourceId) {
                 equal(stateName, 'foo', "should pass state name to super");
                 equal(sourceId, 'bar', "should pass source ID to super");
@@ -116,9 +116,9 @@
         strictEqual(highlightable.removeBinaryStateSource('foo', 'bar'), highlightable,
             "should be chainable");
 
-        candystore.BinaryStateful.removeMocks();
+        giant.BinaryStateful.removeMocks();
 
-        highlightable.removeBinaryStateSource(candystore.Highlightable.STATE_NAME_HIGHLIGHTABLE, 'bar');
+        highlightable.removeBinaryStateSource(giant.Highlightable.STATE_NAME_HIGHLIGHTABLE, 'bar');
     });
 
     test("Imposed state removal", function () {
@@ -126,7 +126,7 @@
 
         var highlightable = Highlightable.create();
 
-        candystore.BinaryStateful.addMocks({
+        giant.BinaryStateful.addMocks({
             removeImposedStateSource: function (stateName) {
                 equal(stateName, 'foo', "should pass state name to super");
             }
@@ -141,9 +141,9 @@
         strictEqual(highlightable.removeImposedStateSource('foo'), highlightable,
             "should be chainable");
 
-        candystore.BinaryStateful.removeMocks();
+        giant.BinaryStateful.removeMocks();
 
-        highlightable.removeImposedStateSource(candystore.Highlightable.STATE_NAME_HIGHLIGHTABLE);
+        highlightable.removeImposedStateSource(giant.Highlightable.STATE_NAME_HIGHLIGHTABLE);
     });
 
     test("Highlight on", function () {

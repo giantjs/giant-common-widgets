@@ -1,17 +1,17 @@
-/*global dessert, troop, sntls, shoeshine, jQuery, candystore */
-troop.postpone(candystore, 'Page', function (ns, className, /**jQuery*/$) {
+/*global giant, giant, giant, giant, jQuery, giant */
+giant.postpone(giant, 'Page', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = shoeshine.Widget,
+    var base = giant.Widget,
         self = base.extend(className)
-            .addTraitAndExtend(candystore.BinaryStateful)
-            .addTrait(candystore.Disableable);
+            .addTraitAndExtend(giant.BinaryStateful)
+            .addTrait(giant.Disableable);
 
     /**
      * Creates a Page instance.
-     * @name candystore.Page.create
+     * @name giant.Page.create
      * @function
-     * @returns {candystore.Page}
+     * @returns {giant.Page}
      */
 
     /**
@@ -21,14 +21,14 @@ troop.postpone(candystore, 'Page', function (ns, className, /**jQuery*/$) {
      * @example
      * MyPage.create().setRootWidget();
      * @class
-     * @extends shoeshine.Widget
-     * @extends candystore.BinaryStateful
-     * @extends candystore.Disableable
+     * @extends giant.Widget
+     * @extends giant.BinaryStateful
+     * @extends giant.Disableable
      */
-    candystore.Page = self
-        .addPrivateMethods(/** @lends candystore.Page# */{
+    giant.Page = self
+        .addPrivateMethods(/** @lends giant.Page# */{
             /**
-             * @returns {sntls.Collection}
+             * @returns {giant.Collection}
              * @private
              */
             _getPageCssClasses: function () {
@@ -38,20 +38,20 @@ troop.postpone(candystore, 'Page', function (ns, className, /**jQuery*/$) {
                     });
             }
         })
-        .addMethods(/** @lends candystore.Page# */{
+        .addMethods(/** @lends giant.Page# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
-                candystore.BinaryStateful.init.call(this);
-                candystore.Disableable.init.call(this);
+                giant.BinaryStateful.init.call(this);
+                giant.Disableable.init.call(this);
             },
 
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                candystore.BinaryStateful.afterAdd.call(this);
+                giant.BinaryStateful.afterAdd.call(this);
 
-                var documentBody = candystore.DocumentBody.create();
+                var documentBody = giant.DocumentBody.create();
 
                 this._getPageCssClasses()
                     .passEachItemTo(documentBody.addCssClass, documentBody);
@@ -60,9 +60,9 @@ troop.postpone(candystore, 'Page', function (ns, className, /**jQuery*/$) {
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                candystore.BinaryStateful.afterRemove.call(this);
+                giant.BinaryStateful.afterRemove.call(this);
 
-                var documentBody = candystore.DocumentBody.create();
+                var documentBody = giant.DocumentBody.create();
 
                 this._getPageCssClasses()
                     .passEachItemTo(documentBody.decreaseCssClassRefCount, documentBody);

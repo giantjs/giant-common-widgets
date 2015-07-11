@@ -1,16 +1,16 @@
-/*global dessert, troop, sntls, app */
-troop.postpone(candystore, 'StringUtils', function () {
+/*global giant, giant, giant, app */
+giant.postpone(giant, 'StringUtils', function () {
     "use strict";
 
-    var base = troop.Base,
+    var base = giant.Base,
         self = base.extend();
 
     /**
      * @class
-     * @extends troop.Base
+     * @extends giant.Base
      */
-    candystore.StringUtils = self
-        .addMethods(/** @lends candystore.StringUtils */{
+    giant.StringUtils = self
+        .addMethods(/** @lends giant.StringUtils */{
             /**
              * @param {number} value
              * @param {number} targetLength

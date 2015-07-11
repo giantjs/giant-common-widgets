@@ -1,8 +1,8 @@
-/*global dessert, troop, sntls, shoeshine, candystore */
-troop.postpone(candystore, 'Highlightable', function () {
+/*global giant, giant, giant, giant, giant */
+giant.postpone(giant, 'Highlightable', function () {
     "use strict";
 
-    var base = troop.Base,
+    var base = giant.Base,
         self = base.extend();
 
     /**
@@ -12,16 +12,16 @@ troop.postpone(candystore, 'Highlightable', function () {
      * Overrides BinaryStateful's methods, must be added *after* BinaryStateful, and on a different
      * prototype level (using addTraitAndExtend()).
      * @class
-     * @extends troop.Base
-     * @extends candystore.BinaryStateful
-     * @extends shoeshine.Widget
+     * @extends giant.Base
+     * @extends giant.BinaryStateful
+     * @extends giant.Widget
      */
-    candystore.Highlightable = self
-        .addConstants(/** @lends candystore.Highlightable */{
+    giant.Highlightable = self
+        .addConstants(/** @lends giant.Highlightable */{
             /** @constant */
             STATE_NAME_HIGHLIGHTABLE: 'state-highlightable'
         })
-        .addPrivateMethods(/** @lends candystore.Highlightable# */{
+        .addPrivateMethods(/** @lends giant.Highlightable# */{
             /**
              * TODO: Refactor to use Set.
              * @private
@@ -41,7 +41,7 @@ troop.postpone(candystore, 'Highlightable', function () {
                 this.highlightIds = highlightIds;
             }
         })
-        .addMethods(/** @lends candystore.Highlightable# */{
+        .addMethods(/** @lends giant.Highlightable# */{
             /** Call from host's init. */
             init: function () {
                 // highlightable state does not cascade
@@ -49,18 +49,18 @@ troop.postpone(candystore, 'Highlightable', function () {
 
                 /**
                  * Lookup of highlight identifiers currently assigned to the instance.
-                 * @type {sntls.Collection}
+                 * @type {giant.Collection}
                  */
-                this.highlightIds = sntls.Collection.create();
+                this.highlightIds = giant.Collection.create();
             },
 
             /**
              * @param {string} stateName
              * @param {string} sourceId
-             * @returns {candystore.Highlightable}
+             * @returns {giant.Highlightable}
              */
             addBinaryStateSource: function (stateName, sourceId) {
-                candystore.BinaryStateful.addBinaryStateSource.call(this, stateName, sourceId);
+                giant.BinaryStateful.addBinaryStateSource.call(this, stateName, sourceId);
                 if (stateName === this.STATE_NAME_HIGHLIGHTABLE) {
                     this._updateHighlightedState();
                 }
@@ -69,10 +69,10 @@ troop.postpone(candystore, 'Highlightable', function () {
 
             /**
              * @param {string} stateName
-             * @returns {candystore.Highlightable}
+             * @returns {giant.Highlightable}
              */
             addImposedStateSource: function (stateName) {
-                candystore.BinaryStateful.addImposedStateSource.call(this, stateName);
+                giant.BinaryStateful.addImposedStateSource.call(this, stateName);
                 if (stateName === this.STATE_NAME_HIGHLIGHTABLE) {
                     this._updateHighlightedState();
                 }
@@ -82,10 +82,10 @@ troop.postpone(candystore, 'Highlightable', function () {
             /**
              * @param {string} stateName
              * @param {string} sourceId
-             * @returns {candystore.Highlightable}
+             * @returns {giant.Highlightable}
              */
             removeBinaryStateSource: function (stateName, sourceId) {
-                candystore.BinaryStateful.removeBinaryStateSource.call(this, stateName, sourceId);
+                giant.BinaryStateful.removeBinaryStateSource.call(this, stateName, sourceId);
                 if (stateName === this.STATE_NAME_HIGHLIGHTABLE) {
                     this._updateHighlightedState();
                 }
@@ -94,10 +94,10 @@ troop.postpone(candystore, 'Highlightable', function () {
 
             /**
              * @param {string} stateName
-             * @returns {candystore.Highlightable}
+             * @returns {giant.Highlightable}
              */
             removeImposedStateSource: function (stateName) {
-                candystore.BinaryStateful.removeImposedStateSource.call(this, stateName);
+                giant.BinaryStateful.removeImposedStateSource.call(this, stateName);
                 if (stateName === this.STATE_NAME_HIGHLIGHTABLE) {
                     this._updateHighlightedState();
                 }
@@ -121,10 +121,10 @@ troop.postpone(candystore, 'Highlightable', function () {
             /**
              * Marks widget as highlighted.
              * @param {string} [highlightId]
-             * @returns {candystore.Highlightable}
+             * @returns {giant.Highlightable}
              */
             highlightOn: function (highlightId) {
-                dessert.isStringOptional(highlightId, "Invalid highlight ID");
+                giant.isStringOptional(highlightId, "Invalid highlight ID");
                 this.addBinaryStateSource(
                     this.STATE_NAME_HIGHLIGHTABLE,
                     highlightId || 'highlighted');
@@ -134,10 +134,10 @@ troop.postpone(candystore, 'Highlightable', function () {
             /**
              * Marks widget as non-highlighted.
              * @param {string} [highlightId]
-             * @returns {candystore.Highlightable}
+             * @returns {giant.Highlightable}
              */
             highlightOff: function (highlightId) {
-                dessert.isStringOptional(highlightId, "Invalid highlight ID");
+                giant.isStringOptional(highlightId, "Invalid highlight ID");
                 this.removeBinaryStateSource(
                     this.STATE_NAME_HIGHLIGHTABLE,
                     highlightId || 'highlighted');
@@ -150,7 +150,7 @@ troop.postpone(candystore, 'Highlightable', function () {
              * @returns {boolean}
              */
             isHighlighted: function (highlightId) {
-                dessert.isStringOptional(highlightId, "Invalid highlight ID");
+                giant.isStringOptional(highlightId, "Invalid highlight ID");
                 return highlightId ?
                        this.getBinaryState(this.STATE_NAME_HIGHLIGHTABLE)
                            .hasSource(highlightId) :

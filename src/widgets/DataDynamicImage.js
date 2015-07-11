@@ -1,19 +1,19 @@
-/*global dessert, troop, sntls, bookworm, shoeshine, candystore */
-troop.postpone(candystore, 'DataDynamicImage', function (ns, className) {
+/*global giant, giant, giant, giant, giant, giant */
+giant.postpone(giant, 'DataDynamicImage', function (ns, className) {
     "use strict";
 
-    var base = candystore.DynamicImage,
+    var base = giant.DynamicImage,
         self = base.extend(className)
-            .addTrait(bookworm.EntityBound)
-            .addTrait(candystore.EntityWidget)
-            .addTraitAndExtend(candystore.FieldBound);
+            .addTrait(giant.EntityBound)
+            .addTrait(giant.EntityWidget)
+            .addTraitAndExtend(giant.FieldBound);
 
     /**
      * Creates a DataDynamicImage instance.
-     * @name candystore.DataDynamicImage.create
+     * @name giant.DataDynamicImage.create
      * @function
-     * @param {bookworm.FieldKey} urlFieldKey Field holding image URL.
-     * @returns {candystore.DataDynamicImage}
+     * @param {giant.FieldKey} urlFieldKey Field holding image URL.
+     * @returns {giant.DataDynamicImage}
      */
 
     /**
@@ -21,37 +21,37 @@ troop.postpone(candystore, 'DataDynamicImage', function (ns, className) {
      * Displays an image image based on the URL stored in a field in the cache.
      * Keeps the image in sync with the changes of the corresponding field.
      * @class
-     * @extends candystore.DynamicImage
+     * @extends giant.DynamicImage
      */
-    candystore.DataDynamicImage = self
-        .addMethods(/** @lends candystore.DataDynamicImage# */{
+    giant.DataDynamicImage = self
+        .addMethods(/** @lends giant.DataDynamicImage# */{
             /**
-             * @param {bookworm.FieldKey} urlFieldKey
+             * @param {giant.FieldKey} urlFieldKey
              * @ignore
              */
             init: function (urlFieldKey) {
-                dessert.isFieldKey(urlFieldKey, "Invalid field key");
+                giant.isFieldKey(urlFieldKey, "Invalid field key");
 
                 base.init.call(this);
-                bookworm.EntityBound.init.call(this);
-                candystore.EntityWidget.init.call(this, urlFieldKey);
+                giant.EntityBound.init.call(this);
+                giant.EntityWidget.init.call(this, urlFieldKey);
             },
 
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                candystore.FieldBound.afterAdd.call(this);
+                giant.FieldBound.afterAdd.call(this);
             },
 
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                candystore.FieldBound.afterRemove.call(this);
+                giant.FieldBound.afterRemove.call(this);
             },
 
             /**
              * @param {string} fieldValue
-             * @returns {candystore.DataDynamicImage}
+             * @returns {giant.DataDynamicImage}
              * @ignore
              */
             setFieldValue: function (fieldValue) {

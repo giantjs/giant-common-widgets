@@ -1,7 +1,7 @@
-/out/
+/*.tgz
 /.idea/
-/node_modules/
-candystore.js
-candystore.css
-*.tgz
 /doc/
+/giant-common-widgets.css
+/giant-common-widgets.js
+/node_modules/
+/out/

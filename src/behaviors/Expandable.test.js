@@ -1,36 +1,36 @@
-/*global dessert, troop, sntls, shoeshine, candystore */
+/*global giant, giant, giant, giant, giant */
 /*global module, test, expect, ok, equal, strictEqual, notStrictEqual, deepEqual, notDeepEqual, raises */
 (function () {
     "use strict";
 
     module("Expandable");
 
-    var base = shoeshine.Widget,
+    var base = giant.Widget,
         Expandable = base.extend('Expandable')
-            .addTraitAndExtend(candystore.BinaryStateful)
-            .addTraitAndExtend(candystore.Expandable)
+            .addTraitAndExtend(giant.BinaryStateful)
+            .addTraitAndExtend(giant.Expandable)
             .addMethods({
                 init: function () {
                     base.init.call(this);
-                    candystore.BinaryStateful.init.call(this);
-                    candystore.Expandable.init.call(this);
+                    giant.BinaryStateful.init.call(this);
+                    giant.Expandable.init.call(this);
                 },
 
                 afterAdd: function () {
                     base.afterAdd.call(this);
-                    candystore.BinaryStateful.afterAdd.call(this);
+                    giant.BinaryStateful.afterAdd.call(this);
                 },
 
                 afterRemove: function () {
                     base.afterRemove.call(this);
-                    candystore.BinaryStateful.afterRemove.call(this);
+                    giant.BinaryStateful.afterRemove.call(this);
                 }
             });
 
     test("Instantiation", function () {
         Expandable.addMocks({
             addBinaryState: function (stateName) {
-                equal(stateName, candystore.Expandable.STATE_NAME_EXPANDABLE,
+                equal(stateName, giant.Expandable.STATE_NAME_EXPANDABLE,
                     "should add expandable state to instance");
             }
         });
@@ -53,7 +53,7 @@
 
         expandable.afterStateOn('foo');
 
-        expandable.afterStateOn(candystore.Expandable.STATE_NAME_EXPANDABLE);
+        expandable.afterStateOn(giant.Expandable.STATE_NAME_EXPANDABLE);
     });
 
     test("State off handler", function () {
@@ -69,7 +69,7 @@
 
         expandable.afterStateOff('foo');
 
-        expandable.afterStateOff(candystore.Expandable.STATE_NAME_EXPANDABLE);
+        expandable.afterStateOff(giant.Expandable.STATE_NAME_EXPANDABLE);
     });
 
     test("Expansion", function () {

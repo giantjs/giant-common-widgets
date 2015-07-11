@@ -1,19 +1,19 @@
-/*global dessert, troop, sntls, bookworm, shoeshine, candystore */
-troop.postpone(candystore, 'DataList', function (ns, className) {
+/*global giant, giant, giant, giant, giant, giant */
+giant.postpone(giant, 'DataList', function (ns, className) {
     "use strict";
 
-    var base = candystore.List,
+    var base = giant.List,
         self = base.extend(className)
-            .addTrait(bookworm.EntityBound)
-            .addTrait(candystore.EntityWidget)
-            .addTraitAndExtend(candystore.FieldBound);
+            .addTrait(giant.EntityBound)
+            .addTrait(giant.EntityWidget)
+            .addTraitAndExtend(giant.FieldBound);
 
     /**
      * Creates a DataList instance.
-     * @name candystore.DataList.create
+     * @name giant.DataList.create
      * @function
-     * @param {bookworm.FieldKey} fieldKey Key to an ordered reference collection.
-     * @returns {candystore.DataList}
+     * @param {giant.FieldKey} fieldKey Key to an ordered reference collection.
+     * @returns {giant.DataList}
      */
 
     /**
@@ -23,26 +23,26 @@ troop.postpone(candystore, 'DataList', function (ns, className) {
      * Expects to have items that are also EntityWidgets.
      * TODO: Add unit tests.
      * @class
-     * @extends candystore.List
-     * @extends bookworm.EntityBound
-     * @extends candystore.EntityWidget
-     * @extends candystore.FieldBound
+     * @extends giant.List
+     * @extends giant.EntityBound
+     * @extends giant.EntityWidget
+     * @extends giant.FieldBound
      */
-    candystore.DataList = self
-        .addPrivateMethods(/** @lends candystore.DataList# */{
+    giant.DataList = self
+        .addPrivateMethods(/** @lends giant.DataList# */{
             /**
              * @param {string} childName
-             * @param {bookworm.ItemKey} itemKey
+             * @param {giant.ItemKey} itemKey
              * @private
-             * @memberOf candystore.DataList
+             * @memberOf giant.DataList
              */
             _getSetKey: function (childName, itemKey) {
                 return childName + '|' + itemKey.toString();
             },
 
             /**
-             * @param {bookworm.ItemKey} itemKey
-             * @returns {shoeshine.Widget}
+             * @param {giant.ItemKey} itemKey
+             * @returns {giant.Widget}
              * @private
              */
             _spawnPreparedItemWidget: function (itemKey) {
@@ -52,7 +52,7 @@ troop.postpone(candystore, 'DataList', function (ns, className) {
             },
 
             /**
-             * @param {bookworm.ItemKey} itemKey
+             * @param {giant.ItemKey} itemKey
              * @private
              */
             _addItem: function (itemKey) {
@@ -69,7 +69,7 @@ troop.postpone(candystore, 'DataList', function (ns, className) {
             },
 
             /**
-             * @param {bookworm.ItemKey} itemKey
+             * @param {giant.ItemKey} itemKey
              * @private
              */
             _removeItem: function (itemKey) {
@@ -90,17 +90,17 @@ troop.postpone(candystore, 'DataList', function (ns, className) {
                     });
             }
         })
-        .addMethods(/** @lends candystore.DataList# */{
+        .addMethods(/** @lends giant.DataList# */{
             /**
-             * @param {bookworm.FieldKey} fieldKey
+             * @param {giant.FieldKey} fieldKey
              * @ignore
              */
             init: function (fieldKey) {
-                dessert.isFieldKey(fieldKey, "Invalid field key");
+                giant.isFieldKey(fieldKey, "Invalid field key");
 
                 base.init.call(this);
-                bookworm.EntityBound.init.call(this);
-                candystore.EntityWidget.init.call(this, fieldKey);
+                giant.EntityBound.init.call(this);
+                giant.EntityWidget.init.call(this, fieldKey);
 
                 this
                     .elevateMethod('onChildAdd')
@@ -108,15 +108,15 @@ troop.postpone(candystore, 'DataList', function (ns, className) {
 
                 /**
                  * Lookup associating item keys with widget (child) names.
-                 * @type {sntls.Collection}
+                 * @type {giant.Collection}
                  */
-                this.childNamesByItemKey = sntls.Collection.create();
+                this.childNamesByItemKey = giant.Collection.create();
             },
 
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                candystore.FieldBound.afterAdd.call(this);
+                giant.FieldBound.afterAdd.call(this);
 
                 this._initChildLookup();
 
@@ -129,25 +129,25 @@ troop.postpone(candystore, 'DataList', function (ns, className) {
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                candystore.FieldBound.afterRemove.call(this);
+                giant.FieldBound.afterRemove.call(this);
             },
 
             /**
              * Creates item widget for the specified item key.
              * To specify a custom widget class, either override this method in a subclass, or provide
              * a surrogate definition on DataLabel, in case the custom item widget is also DataLabel-based.
-             * @param {bookworm.ItemKey} itemKey
-             * @returns {shoeshine.Widget}
+             * @param {giant.ItemKey} itemKey
+             * @returns {giant.Widget}
              */
             spawnItemWidget: function (itemKey) {
-                return candystore.ItemDataLabel.create(itemKey, itemKey)
+                return giant.ItemDataLabel.create(itemKey, itemKey)
                     .setChildName(this.spawnItemName(itemKey));
             },
 
             /**
              * Retrieves the item childName associated with the specified itemKey. (Child name determines order.)
              * To specify custom child name for item widgets, override this method.
-             * @param {bookworm.ItemKey} itemKey
+             * @param {giant.ItemKey} itemKey
              * @returns {string}
              */
             spawnItemName: function (itemKey) {
@@ -156,8 +156,8 @@ troop.postpone(candystore, 'DataList', function (ns, className) {
 
             /**
              * Fetches item widget by item key.
-             * @param {bookworm.ItemKey} itemKey
-             * @returns {shoeshine.Widget}
+             * @param {giant.ItemKey} itemKey
+             * @returns {giant.Widget}
              */
             getItemWidgetByKey: function (itemKey) {
                 var childName = this.childNamesByItemKey.getItem(itemKey.toString());
@@ -166,7 +166,7 @@ troop.postpone(candystore, 'DataList', function (ns, className) {
 
             /**
              * @param {object} fieldValue
-             * @returns {candystore.DataList}
+             * @returns {giant.DataList}
              * @ignore
              */
             setFieldValue: function (fieldValue) {
@@ -177,7 +177,7 @@ troop.postpone(candystore, 'DataList', function (ns, className) {
                             return that._getSetKey(childName, itemWidget.itemKey);
                         })
                         .toSet(),
-                    itemsKeysAfter = sntls.Collection.create(fieldValue)
+                    itemsKeysAfter = giant.Collection.create(fieldValue)
                         .mapValues(function (itemValue, itemId) {
                             return fieldKey.getItemKey(itemId);
                         })
@@ -213,7 +213,7 @@ troop.postpone(candystore, 'DataList', function (ns, className) {
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onChildAdd: function (event) {
@@ -229,7 +229,7 @@ troop.postpone(candystore, 'DataList', function (ns, className) {
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onChildRemove: function (event) {
@@ -245,12 +245,12 @@ troop.postpone(candystore, 'DataList', function (ns, className) {
             },
 
             /**
-             * @param {bookworm.EntityChangeEvent} event
+             * @param {giant.EntityChangeEvent} event
              * @ignore
              */
             onItemChange: function (event) {
                 var itemKey = event.sender;
-                if (itemKey.isA(bookworm.ItemKey)) {
+                if (itemKey.isA(giant.ItemKey)) {
                     if (event.beforeNode !== undefined && event.afterNode === undefined) {
                         // item was removed
                         this._removeItem(itemKey);

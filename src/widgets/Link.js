@@ -1,24 +1,24 @@
-/*global dessert, troop, sntls, shoeshine, jQuery, candystore */
-troop.postpone(candystore, 'Link', function (ns, className, /**jQuery*/$) {
+/*global giant, giant, giant, giant, jQuery, giant */
+giant.postpone(giant, 'Link', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = shoeshine.Widget,
+    var base = giant.Widget,
         self = base.extend(className);
 
     /**
      * Creates a Link instance.
-     * @name candystore.Link.create
+     * @name giant.Link.create
      * @function
-     * @returns {candystore.Link}
+     * @returns {giant.Link}
      */
 
     /**
      * The Link implements a basic hyperlink.
      * @class
-     * @extends shoeshine.Widget
+     * @extends giant.Widget
      */
-    candystore.Link = self
-        .addMethods(/** @lends candystore.Link# */{
+    giant.Link = self
+        .addMethods(/** @lends giant.Link# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -32,15 +32,15 @@ troop.postpone(candystore, 'Link', function (ns, className, /**jQuery*/$) {
             /**
              * Creates Label widget to be used inside the link.
              * Override to specify custom widget.
-             * @returns {candystore.Label}
+             * @returns {giant.Label}
              */
             spawnLabelWidget: function () {
-                return candystore.Label.create();
+                return giant.Label.create();
             },
 
             /**
              * Retrieves the label widget contained within the link.
-             * @returns {candystore.Label}
+             * @returns {giant.Label}
              */
             getLabelWidget: function () {
                 return this.getChild('link-label');
@@ -49,10 +49,10 @@ troop.postpone(candystore, 'Link', function (ns, className, /**jQuery*/$) {
             /**
              * Sets URL for the link.
              * @param {string} targetUrl
-             * @returns {candystore.Link}
+             * @returns {giant.Link}
              */
             setTargetUrl: function (targetUrl) {
-                dessert.isString(targetUrl, "Invalid target URL");
+                giant.isString(targetUrl, "Invalid target URL");
 
                 var element = this.getElement();
                 if (element) {
@@ -69,7 +69,7 @@ troop.postpone(candystore, 'Link', function (ns, className, /**jQuery*/$) {
              * Expects the caption widget to be a Label.
              * Override when caption widget is something other than Label.
              * @param {string} caption
-             * @returns {candystore.Link}
+             * @returns {giant.Link}
              */
             setCaption: function (caption) {
                 this.getLabelWidget()

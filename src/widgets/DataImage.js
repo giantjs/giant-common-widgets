@@ -1,59 +1,59 @@
-/*global dessert, troop, sntls, bookworm, shoeshine, candystore */
-troop.postpone(candystore, 'DataImage', function (ns, className) {
+/*global giant, giant, giant, giant, giant, giant */
+giant.postpone(giant, 'DataImage', function (ns, className) {
     "use strict";
 
-    var base = candystore.Image,
+    var base = giant.Image,
         self = base.extend(className)
-            .addTrait(bookworm.EntityBound)
-            .addTrait(candystore.EntityWidget)
-            .addTraitAndExtend(candystore.FieldBound);
+            .addTrait(giant.EntityBound)
+            .addTrait(giant.EntityWidget)
+            .addTraitAndExtend(giant.FieldBound);
 
     /**
      * Creates a DataImage instance.
-     * @name candystore.DataImage.create
+     * @name giant.DataImage.create
      * @function
-     * @param {bookworm.FieldKey} urlFieldKey Field holding image URL.
-     * @returns {candystore.DataImage}
+     * @param {giant.FieldKey} urlFieldKey Field holding image URL.
+     * @returns {giant.DataImage}
      */
 
     /**
      * The DataImage displays an image based on the URL stored in a field in the cache.
      * Keeps the image in sync with the changes of the corresponding field.
      * @class
-     * @extends candystore.Image
-     * @extends bookworm.EntityBound
-     * @extends candystore.EntityWidget
-     * @extends candystore.FieldBound
+     * @extends giant.Image
+     * @extends giant.EntityBound
+     * @extends giant.EntityWidget
+     * @extends giant.FieldBound
      */
-    candystore.DataImage = self
-        .addMethods(/** @lends candystore.DataImage# */{
+    giant.DataImage = self
+        .addMethods(/** @lends giant.DataImage# */{
             /**
-             * @param {bookworm.FieldKey} urlFieldKey
+             * @param {giant.FieldKey} urlFieldKey
              * @ignore
              */
             init: function (urlFieldKey) {
-                dessert.isFieldKey(urlFieldKey, "Invalid field key");
+                giant.isFieldKey(urlFieldKey, "Invalid field key");
 
                 base.init.call(this);
-                bookworm.EntityBound.init.call(this);
-                candystore.EntityWidget.init.call(this, urlFieldKey);
+                giant.EntityBound.init.call(this);
+                giant.EntityWidget.init.call(this, urlFieldKey);
             },
 
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                candystore.FieldBound.afterAdd.call(this);
+                giant.FieldBound.afterAdd.call(this);
             },
 
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                candystore.FieldBound.afterRemove.call(this);
+                giant.FieldBound.afterRemove.call(this);
             },
 
             /**
              * @param {string} fieldValue
-             * @returns {candystore.DataImage}
+             * @returns {giant.DataImage}
              * @ignore
              */
             setFieldValue: function (fieldValue) {

@@ -1,30 +1,30 @@
-/*global dessert, troop, sntls, evan, shoeshine, jQuery, candystore */
-troop.postpone(candystore, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
+/*global giant, giant, giant, giant, giant, jQuery, giant */
+giant.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = troop.Base,
+    var base = giant.Base,
         self = base.extend(),
         $window = window && $(window);
 
     /**
      * Creates a ResizeWatcher instance, or pulls up an existing one from registry.
-     * @name candystore.ResizeWatcher.create
+     * @name giant.ResizeWatcher.create
      * @function
-     * @returns {candystore.ResizeWatcher}
+     * @returns {giant.ResizeWatcher}
      */
 
     /**
      * Singleton that watches window resize events and broadcasts debounced (100ms) widget events in response.
-     * Listen to candystore.ResizeWatcher.EVENT_WINDOW_RESIZE_DEBOUNCED in any widget to get
+     * Listen to giant.ResizeWatcher.EVENT_WINDOW_RESIZE_DEBOUNCED in any widget to get
      * notified of changes to window size.
      * @class
-     * @extends troop.Base
+     * @extends giant.Base
      */
-    candystore.ResizeWatcher = self
+    giant.ResizeWatcher = self
         .setInstanceMapper(function () {
             return 'singleton';
         })
-        .addConstants(/** @lends candystore.ResizeWatcher */{
+        .addConstants(/** @lends giant.ResizeWatcher */{
             /** @constant */
             EVENT_WINDOW_RESIZE_DEBOUNCED: 'window-resize-debounced',
 
@@ -35,7 +35,7 @@ troop.postpone(candystore, 'ResizeWatcher', function (ns, className, /**jQuery*/
              */
             RESIZE_DEBOUNCE_DELAY: 100
         })
-        .addMethods(/** @lends candystore.ResizeWatcher# */{
+        .addMethods(/** @lends giant.ResizeWatcher# */{
             /** @ignore */
             init: function () {
                 this.elevateMethod('onDebouncedWindowResize');
@@ -54,7 +54,7 @@ troop.postpone(candystore, 'ResizeWatcher', function (ns, className, /**jQuery*/
 
                 /**
                  * Debouncer instance for debouncing window resize events, which may come in rapid succession.
-                 * @type {sntls.Debouncer}
+                 * @type {giant.Debouncer}
                  */
                 this.windowResizeDebouncer = this.onDebouncedWindowResize.toDebouncer();
 
@@ -64,13 +64,13 @@ troop.postpone(candystore, 'ResizeWatcher', function (ns, className, /**jQuery*/
 
             /**
              * Updates window dimensions, and triggers widget event about resizing.
-             * @returns {candystore.ResizeWatcher}
+             * @returns {giant.ResizeWatcher}
              */
             updateDimensions: function () {
                 var currentWidth = $window.width(),
                     currentHeight = $window.height(),
                     wasWindowResized = false,
-                    rootWidget = shoeshine.Widget.rootWidget;
+                    rootWidget = giant.Widget.rootWidget;
 
                 if (currentWidth !== this.currentWidth || currentHeight !== this.currentHeight) {
                     wasWindowResized = true;
@@ -99,8 +99,8 @@ troop.postpone(candystore, 'ResizeWatcher', function (ns, className, /**jQuery*/
              * @ignore
              */
             onDebouncedWindowResize: function (event) {
-                var rootWidget = shoeshine.Widget.rootWidget,
-                    link = evan.pushOriginalEvent(event);
+                var rootWidget = giant.Widget.rootWidget,
+                    link = giant.pushOriginalEvent(event);
 
                 if (rootWidget) {
                     this.updateDimensions();
@@ -116,12 +116,12 @@ troop.postpone(candystore, 'ResizeWatcher', function (ns, className, /**jQuery*/
 
     if (window) {
         $(window).on('resize', function (event) {
-            candystore.ResizeWatcher.create()
+            giant.ResizeWatcher.create()
                 .onWindowResize(event);
         });
 
         $(function () {
-            candystore.ResizeWatcher.create()
+            giant.ResizeWatcher.create()
                 .updateDimensions();
         });
     }

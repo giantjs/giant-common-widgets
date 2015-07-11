@@ -1,18 +1,18 @@
-/*global dessert, troop, sntls, evan, shoeshine, jQuery, candystore */
-troop.postpone(candystore, 'TextInput', function (ns, className, /**jQuery*/$) {
+/*global giant, giant, giant, giant, giant, jQuery, giant */
+giant.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = candystore.Input,
+    var base = giant.Input,
         self = base.extend(className)
-            .addTrait(shoeshine.JqueryWidget);
+            .addTrait(giant.JqueryWidget);
 
     /**
      * Creates a TextInput instance.
-     * PasswordInput instance may also be created by instantiating `candystore.Input` with the type 'text'.
-     * @name candystore.TextInput.create
+     * PasswordInput instance may also be created by instantiating `giant.Input` with the type 'text'.
+     * @name giant.TextInput.create
      * @function
      * @param {string} [textInputType]
-     * @returns {candystore.TextInput}
+     * @returns {giant.TextInput}
      */
 
     /**
@@ -20,11 +20,11 @@ troop.postpone(candystore, 'TextInput', function (ns, className, /**jQuery*/$) {
      * Implements mostly UI event handlers, and channels them into widget events.
      * Also delegates surrogate to Input: instantiating an Input with 'type'='text' will yield a TextInput instance.
      * @class
-     * @extends candystore.Input
-     * @extends shoeshine.JqueryWidget
+     * @extends giant.Input
+     * @extends giant.JqueryWidget
      */
-    candystore.TextInput = self
-        .addConstants(/** @lends candystore.Input */{
+    giant.TextInput = self
+        .addConstants(/** @lends giant.Input */{
             /**
              * @type {object}
              * @constant
@@ -51,7 +51,7 @@ troop.postpone(candystore, 'TextInput', function (ns, className, /**jQuery*/$) {
                 url     : 'url'
             }
         })
-        .addPrivateMethods(/** @lends candystore.TextInput# */{
+        .addPrivateMethods(/** @lends giant.TextInput# */{
             /** @private */
             _startChangePolling: function () {
                 var that = this;
@@ -72,13 +72,13 @@ troop.postpone(candystore, 'TextInput', function (ns, className, /**jQuery*/$) {
                 }
             }
         })
-        .addMethods(/** @lends candystore.TextInput# */{
+        .addMethods(/** @lends giant.TextInput# */{
             /**
              * @param {string} textInputType
              * @ignore
              */
             init: function (textInputType) {
-                dessert.isTextInputTypeOptional(textInputType, "Invalid text input type");
+                giant.isTextInputTypeOptional(textInputType, "Invalid text input type");
 
                 base.init.call(this, textInputType || 'text');
 
@@ -101,7 +101,7 @@ troop.postpone(candystore, 'TextInput', function (ns, className, /**jQuery*/$) {
             afterRemove: function () {
                 base.afterRemove.call(this);
 
-                if (candystore.pollInputValues) {
+                if (giant.pollInputValues) {
                     this._stopChangePolling();
                 }
             },
@@ -119,7 +119,7 @@ troop.postpone(candystore, 'TextInput', function (ns, className, /**jQuery*/$) {
                         .on('focusout', this.onFocusOut);
                 }
 
-                if (candystore.pollInputValues) {
+                if (giant.pollInputValues) {
                     this._stopChangePolling();
                     this._startChangePolling();
                 }
@@ -130,7 +130,7 @@ troop.postpone(candystore, 'TextInput', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onKeyDown: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
 
                 switch (event.which) {
                 case 13:
@@ -161,28 +161,28 @@ troop.postpone(candystore, 'TextInput', function (ns, className, /**jQuery*/$) {
                 if (element) {
                     newInputValue = $(element).val();
 
-                    var link = evan.pushOriginalEvent(event);
+                    var link = giant.pushOriginalEvent(event);
                     this.setInputValue(newInputValue);
                     link.unLink();
                 }
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onFocusIn: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this.triggerSync(this.EVENT_INPUT_FOCUS);
                 link.unLink();
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onFocusOut: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this.triggerSync(this.EVENT_INPUT_BLUR);
                 link.unLink();
             }
@@ -193,12 +193,12 @@ troop.postpone(candystore, 'TextInput', function (ns, className, /**jQuery*/$) {
         .on('keyup input change', '', 'onChange');
 }, jQuery);
 
-troop.amendPostponed(candystore, 'Input', function () {
+giant.amendPostponed(giant, 'Input', function () {
     "use strict";
 
-    candystore.Input
-        .addSurrogate(candystore, 'TextInput', function (inputType) {
-            var TextInput = candystore.TextInput;
+    giant.Input
+        .addSurrogate(giant, 'TextInput', function (inputType) {
+            var TextInput = giant.TextInput;
             return TextInput.inputTagNames[inputType] === inputType ||
                    TextInput.inputTypes[inputType] === inputType;
         });
@@ -207,10 +207,10 @@ troop.amendPostponed(candystore, 'Input', function () {
 (function () {
     "use strict";
 
-    dessert.addTypes(/** @lends dessert */{
+    giant.addTypes(/** @lends giant */{
         /** @param {string} expr */
         isTextInputType: function (expr) {
-            var TextInput = candystore.TextInput;
+            var TextInput = giant.TextInput;
             return expr &&
                    (TextInput.inputTagNames[expr] === expr ||
                     TextInput.inputTypes[expr] === expr);
@@ -218,7 +218,7 @@ troop.amendPostponed(candystore, 'Input', function () {
 
         /** @param {string} expr */
         isTextInputTypeOptional: function (expr) {
-            var TextInput = candystore.TextInput;
+            var TextInput = giant.TextInput;
             return TextInput.inputTypes[expr] === expr ||
                    TextInput.inputTagNames[expr] === expr;
         }

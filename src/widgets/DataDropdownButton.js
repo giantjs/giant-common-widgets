@@ -1,28 +1,28 @@
-/*global dessert, troop, sntls, evan, bookworm, shoeshine, candystore */
-troop.postpone(candystore, 'DataDropdownButton', function (ns, className) {
+/*global giant, giant, giant, giant, giant, giant, giant */
+giant.postpone(giant, 'DataDropdownButton', function (ns, className) {
     "use strict";
 
-    var base = candystore.DropdownButton,
+    var base = giant.DropdownButton,
         self = base.extend(className)
-            .addTrait(bookworm.EntityBound)
-            .addTrait(candystore.EntityWidget);
+            .addTrait(giant.EntityBound)
+            .addTrait(giant.EntityWidget);
 
     /**
-     * @name candystore.DataDropdownButton.create
+     * @name giant.DataDropdownButton.create
      * @function
-     * @param {bookworm.FieldKey} labelKey
-     * @param {bookworm.FieldKey} optionsKey
-     * @returns {candystore.DataDropdownButton}
+     * @param {giant.FieldKey} labelKey
+     * @param {giant.FieldKey} optionsKey
+     * @returns {giant.DataDropdownButton}
      */
 
     /**
      * TODO: Add documentation
      * @class
-     * @extends candystore.DropdownButton
-     * @extends candystore.EntityWidget
+     * @extends giant.DropdownButton
+     * @extends giant.EntityWidget
      */
-    candystore.DataDropdownButton = self
-        .addPrivateMethods(/** @lends candystore.DataDropdownButton# */{
+    giant.DataDropdownButton = self
+        .addPrivateMethods(/** @lends giant.DataDropdownButton# */{
             /** @private */
             _updateSelectedOption: function () {
                 var optionValue = this.entityKey.toField().getValue(),
@@ -35,26 +35,26 @@ troop.postpone(candystore, 'DataDropdownButton', function (ns, className) {
                 }
             }
         })
-        .addMethods(/** @lends candystore.DataDropdownButton# */{
+        .addMethods(/** @lends giant.DataDropdownButton# */{
             /**
-             * @param {bookworm.FieldKey} selectedKey
-             * @param {bookworm.FieldKey} optionsKey
+             * @param {giant.FieldKey} selectedKey
+             * @param {giant.FieldKey} optionsKey
              * @ignore
              */
             init: function (selectedKey, optionsKey) {
-                dessert
+                giant
                     .isFieldKey(selectedKey, "Invalid 'selected' field key")
                     .isFieldKey(optionsKey, "Invalid options field key");
 
                 /**
                  * Field key that identifies the options
-                 * @type {bookworm.FieldKey}
+                 * @type {giant.FieldKey}
                  */
                 this.optionsKey = optionsKey;
 
-                candystore.EntityWidget.init.call(this, selectedKey);
+                giant.EntityWidget.init.call(this, selectedKey);
                 base.init.call(this);
-                bookworm.EntityBound.init.call(this);
+                giant.EntityBound.init.call(this);
 
                 this
                     .elevateMethod('onOptionSelect')
@@ -69,8 +69,8 @@ troop.postpone(candystore, 'DataDropdownButton', function (ns, className) {
 
                 this
                     .bindToEntityChange(this.entityKey, 'onSelectedChange')
-                    .subscribeTo(candystore.DataList.EVENT_LIST_ITEMS_CHANGE, this.onListItemsChange)
-                    .subscribeTo(candystore.OptionList.EVENT_OPTION_SELECT, this.onOptionSelect);
+                    .subscribeTo(giant.DataList.EVENT_LIST_ITEMS_CHANGE, this.onListItemsChange)
+                    .subscribeTo(giant.OptionList.EVENT_OPTION_SELECT, this.onOptionSelect);
             },
 
             /** @ignore */
@@ -79,44 +79,44 @@ troop.postpone(candystore, 'DataDropdownButton', function (ns, className) {
                 this.unbindAll();
             },
 
-            /** @returns {candystore.DataLabel} */
+            /** @returns {giant.DataLabel} */
             spawnLabelWidget: function () {
-                return candystore.DataLabel.create(this.entityKey);
+                return giant.DataLabel.create(this.entityKey);
             },
 
-            /** @returns {candystore.DataDropdown} */
+            /** @returns {giant.DataDropdown} */
             spawnDropdownWidget: function () {
-                return candystore.DataDropdown.create(this.optionsKey);
+                return giant.DataDropdown.create(this.optionsKey);
             },
 
             /**
-             * @param {bookworm.EntityChangeEvent} event
+             * @param {giant.EntityChangeEvent} event
              * @ignore
              */
             onSelectedChange: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this._updateSelectedOption();
                 link.unLink();
             },
 
             /**
-             * @param {bookworm.EntityChangeEvent} event
+             * @param {giant.EntityChangeEvent} event
              * @ignore
              */
             onListItemsChange: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this._updateSelectedOption();
                 link.unLink();
             },
 
             /**
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onOptionSelect: function (event) {
                 var optionValue = event.payload.optionValue;
 
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this.entityKey.toField()
                     .setValue(optionValue);
                 link.unLink();

@@ -1,26 +1,26 @@
-/*global dessert, troop, sntls, evan, shoeshine, jQuery, candystore */
-troop.postpone(candystore, 'Input', function (ns, className, /**jQuery*/$) {
+/*global giant, giant, giant, giant, giant, jQuery, giant */
+giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = shoeshine.Widget,
+    var base = giant.Widget,
         self = base.extend(className);
 
     /**
      * Creates an Input instance.
-     * @name candystore.Input.create
+     * @name giant.Input.create
      * @function
      * @param {string} inputType Corresponds to the input tag's type argument.
-     * @returns {candystore.Input}
+     * @returns {giant.Input}
      */
 
     /**
      * The Input is the base class for all input widgets: text, checkbox, radio button, etc.
      * Inputs can be validated by supplying a validator function.
      * @class
-     * @extends shoeshine.Widget
+     * @extends giant.Widget
      */
-    candystore.Input = self
-        .addConstants(/** @lends candystore.Input */{
+    giant.Input = self
+        .addConstants(/** @lends giant.Input */{
             /** @constant */
             EVENT_INPUT_GOT_VALUE: 'input-got-value',
 
@@ -94,7 +94,7 @@ troop.postpone(candystore, 'Input', function (ns, className, /**jQuery*/$) {
                 'week'          : 'week'
             }
         })
-        .addPrivateMethods(/** @lends candystore.Input# */{
+        .addPrivateMethods(/** @lends giant.Input# */{
             /**
              * @param {*} inputValue
              * @private
@@ -130,13 +130,13 @@ troop.postpone(candystore, 'Input', function (ns, className, /**jQuery*/$) {
                 }
             }
         })
-        .addMethods(/** @lends candystore.Input# */{
+        .addMethods(/** @lends giant.Input# */{
             /**
              * @param {string} inputType
              * @ignore
              */
             init: function (inputType) {
-                dessert.isInputType(inputType, "Invalid input type");
+                giant.isInputType(inputType, "Invalid input type");
 
                 base.init.call(this);
 
@@ -189,7 +189,7 @@ troop.postpone(candystore, 'Input', function (ns, className, /**jQuery*/$) {
             /**
              * Sets whether the input can signal to submit the form (if it is in a form).
              * @param {boolean} canSubmit
-             * @returns {candystore.Input}
+             * @returns {giant.Input}
              */
             setCanSubmit: function (canSubmit) {
                 this.canSubmit = canSubmit;
@@ -209,7 +209,7 @@ troop.postpone(candystore, 'Input', function (ns, className, /**jQuery*/$) {
              * Sets input value and triggers events.
              * @param {*} inputValue
              * @param {boolean} [updateDom]
-             * @returns {candystore.Input}
+             * @returns {giant.Input}
              */
             setInputValue: function (inputValue, updateDom) {
                 var oldInputValue = this.inputValue;
@@ -228,7 +228,7 @@ troop.postpone(candystore, 'Input', function (ns, className, /**jQuery*/$) {
             /**
              * Clears input value and triggers events.
              * @param {boolean} [updateDom]
-             * @returns {candystore.Input}
+             * @returns {giant.Input}
              */
             clearInputValue: function (updateDom) {
                 this.setInputValue(undefined, updateDom);
@@ -239,11 +239,11 @@ troop.postpone(candystore, 'Input', function (ns, className, /**jQuery*/$) {
              * Sets validator function. The validator function will be passed the current input value
              * and is expected to return a validation error (code or message) or undefined.
              * @param {function} validatorFunction
-             * @returns {candystore.Input}
-             * @see candystore.Input#validatorFunction
+             * @returns {giant.Input}
+             * @see giant.Input#validatorFunction
              */
             setValidatorFunction: function (validatorFunction) {
-                dessert.isFunction(validatorFunction, "Invalid validatorFunction function");
+                giant.isFunction(validatorFunction, "Invalid validatorFunction function");
                 this.validatorFunction = validatorFunction;
                 return this;
             },
@@ -252,7 +252,7 @@ troop.postpone(candystore, 'Input', function (ns, className, /**jQuery*/$) {
              * Updates the validity of the current input value, and triggers validity events accordingly.
              * TODO: Manage validity separately from validationError. Validity should start out as undefined
              * and could take values true or false.
-             * @returns {candystore.Input}
+             * @returns {giant.Input}
              */
             validateInputValue: function () {
                 // validating current value
@@ -289,7 +289,7 @@ troop.postpone(candystore, 'Input', function (ns, className, /**jQuery*/$) {
 
             /**
              * Focuses on the current input.
-             * @returns {candystore.Input}
+             * @returns {giant.Input}
              */
             focusOnInput: function () {
                 var element = this.getElement();
@@ -301,7 +301,7 @@ troop.postpone(candystore, 'Input', function (ns, className, /**jQuery*/$) {
 
             /**
              * Removes focus from the current input.
-             * @returns {candystore.Input}
+             * @returns {giant.Input}
              */
             blurInput: function () {
                 var element = this.getElement();
@@ -323,14 +323,14 @@ troop.postpone(candystore, 'Input', function (ns, className, /**jQuery*/$) {
             /**
              * Called when input value change is detected on the widget level.
              * Updates value attribute and validity, triggers further widget events.
-             * @param {shoeshine.WidgetEvent} event
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
             onValueChange: function (event) {
                 var payload = event.payload,
                     oldInputValue = payload.oldInputValue,
                     newInputValue = payload.newInputValue,
-                    link = evan.pushOriginalEvent(event);
+                    link = giant.pushOriginalEvent(event);
 
                 this._setInputValue(newInputValue);
 
@@ -350,18 +350,18 @@ troop.postpone(candystore, 'Input', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    dessert.addTypes(/** @lends dessert */{
+    giant.addTypes(/** @lends giant */{
         /** @param {string} expr */
         isInputType: function (expr) {
             return expr &&
-                   (candystore.Input.inputTagNames[expr] === expr ||
-                    candystore.Input.inputTypes[expr] === expr);
+                   (giant.Input.inputTagNames[expr] === expr ||
+                    giant.Input.inputTypes[expr] === expr);
         },
 
         /** @param {string} expr */
         isInputTypeOptional: function (expr) {
-            return candystore.Input.inputTagNames[expr] === expr ||
-                   candystore.Input.inputTypes[expr] === expr;
+            return giant.Input.inputTagNames[expr] === expr ||
+                   giant.Input.inputTypes[expr] === expr;
         }
     });
 }());

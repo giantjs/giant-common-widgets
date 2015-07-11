@@ -1,24 +1,24 @@
-/*global dessert, troop, sntls, shoeshine, candystore */
-troop.postpone(candystore, 'Flow', function (ns, className) {
+/*global giant, giant, giant, giant, giant */
+giant.postpone(giant, 'Flow', function (ns, className) {
     "use strict";
 
-    var base = candystore.List,
+    var base = giant.List,
         self = base.extend(className);
 
     /**
      * Creates a Flow instance.
-     * @name candystore.Flow.create
+     * @name giant.Flow.create
      * @function
-     * @returns {candystore.Flow}
+     * @returns {giant.Flow}
      */
 
     /**
      * The Flow allows to navigate between a set of stage widgets.
      * @class
-     * @extends candystore.List
+     * @extends giant.List
      */
-    candystore.Flow = self
-        .addMethods(/** @lends candystore.Flow# */{
+    giant.Flow = self
+        .addMethods(/** @lends giant.Flow# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -32,14 +32,14 @@ troop.postpone(candystore, 'Flow', function (ns, className) {
 
                 /**
                  * Collection of available stage widgets.
-                 * @type {shoeshine.WidgetCollection}
+                 * @type {giant.WidgetCollection}
                  */
-                this.stages = shoeshine.WidgetCollection.create();
+                this.stages = giant.WidgetCollection.create();
             },
 
             /**
              * Retrieves stage widget the flow is currently at.
-             * @returns {shoeshine.Widget}
+             * @returns {giant.Widget}
              */
             getCurrentStage: function () {
                 return this.stages.getItem(this.currentStageName);
@@ -49,8 +49,8 @@ troop.postpone(candystore, 'Flow', function (ns, className) {
              * Adds a stage to the flow.
              * Adds various CSS classes to the specified stage widget.
              * @param {string} stageName
-             * @param {shoeshine.Widget} stageWidget
-             * @returns {candystore.Flow}
+             * @param {giant.Widget} stageWidget
+             * @returns {giant.Flow}
              */
             addStage: function (stageName, stageWidget) {
                 this.stages.setItem(stageName, stageWidget
@@ -62,14 +62,14 @@ troop.postpone(candystore, 'Flow', function (ns, className) {
             /**
              * Goes to the specified stage.
              * @param {string} stageName
-             * @returns {candystore.Flow}
+             * @returns {giant.Flow}
              */
             goToStage: function (stageName) {
                 var stages = this.stages,
                     currentStage = stages.getItem(this.currentStageName),
                     stageWidget = stages.getItem(stageName);
 
-                dessert.assert(!!stageWidget, "Invalid stage name");
+                giant.assert(!!stageWidget, "Invalid stage name");
 
                 // applying new stage
                 if (currentStage) {

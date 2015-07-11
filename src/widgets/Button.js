@@ -1,38 +1,38 @@
-/*global dessert, troop, sntls, evan, shoeshine, candystore, jQuery */
-troop.postpone(candystore, 'Button', function (ns, className, /**jQuery*/$) {
+/*global giant, giant, giant, giant, giant, giant, jQuery */
+giant.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = shoeshine.Widget,
+    var base = giant.Widget,
         self = base.extend(className)
-            .addTraitAndExtend(candystore.BinaryStateful)
-            .addTrait(candystore.Disableable);
+            .addTraitAndExtend(giant.BinaryStateful)
+            .addTrait(giant.Disableable);
 
     /**
      * Creates a Button instance.
-     * @name candystore.Button.create
+     * @name giant.Button.create
      * @function
-     * @returns {candystore.Button}
+     * @returns {giant.Button}
      */
 
     /**
      * General purpose button widget.
      * Supports disabling and click events.
      * @class
-     * @extends shoeshine.Widget
-     * @extends candystore.BinaryStateful
-     * @extends candystore.Disableable
+     * @extends giant.Widget
+     * @extends giant.BinaryStateful
+     * @extends giant.Disableable
      */
-    candystore.Button = self
-        .addConstants(/** @lends candystore.Button */{
+    giant.Button = self
+        .addConstants(/** @lends giant.Button */{
             /** @constants */
             EVENT_BUTTON_CLICK: 'button-click'
         })
-        .addMethods(/** @lends candystore.Button# */{
+        .addMethods(/** @lends giant.Button# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
-                candystore.BinaryStateful.init.call(this);
-                candystore.Disableable.init.call(this);
+                giant.BinaryStateful.init.call(this);
+                giant.Disableable.init.call(this);
 
                 this.elevateMethod('onClick');
             },
@@ -40,7 +40,7 @@ troop.postpone(candystore, 'Button', function (ns, className, /**jQuery*/$) {
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                candystore.BinaryStateful.afterAdd.call(this);
+                giant.BinaryStateful.afterAdd.call(this);
             },
 
             /** @ignore */
@@ -53,12 +53,12 @@ troop.postpone(candystore, 'Button', function (ns, className, /**jQuery*/$) {
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                candystore.BinaryStateful.afterRemove.call(this);
+                giant.BinaryStateful.afterRemove.call(this);
             },
 
             /**
              * Clicks the button.
-             * @returns {candystore.Button}
+             * @returns {giant.Button}
              */
             clickButton: function () {
                 if (!this.isDisabled()) {
@@ -71,7 +71,7 @@ troop.postpone(candystore, 'Button', function (ns, className, /**jQuery*/$) {
              * @param {jQuery.Event} event
              * @ignore */
             onClick: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this.clickButton();
                 link.unLink();
             }

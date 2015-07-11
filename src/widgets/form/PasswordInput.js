@@ -1,16 +1,16 @@
-/*global dessert, troop, sntls, evan, shoeshine, candystore */
-troop.postpone(candystore, 'PasswordInput', function (ns, className) {
+/*global giant, giant, giant, giant, giant, giant */
+giant.postpone(giant, 'PasswordInput', function (ns, className) {
     "use strict";
 
-    var base = candystore.TextInput,
+    var base = giant.TextInput,
         self = base.extend(className);
 
     /**
      * Creates a PasswordInput instance.
-     * PasswordInput instance may also be created by instantiating `candystore.Input` with the type 'password'.
-     * @name candystore.PasswordInput.create
+     * PasswordInput instance may also be created by instantiating `giant.Input` with the type 'password'.
+     * @name giant.PasswordInput.create
      * @function
-     * @returns {candystore.PasswordInput}
+     * @returns {giant.PasswordInput}
      */
 
     /**
@@ -18,10 +18,10 @@ troop.postpone(candystore, 'PasswordInput', function (ns, className) {
      * Supports revealing and obscuring the entered password.
      * Also delegates surrogate to Input: instantiating an Input with 'type'='password' will yield a PasswordInput instance.
      * @class
-     * @extends candystore.TextInput
+     * @extends giant.TextInput
      */
-    candystore.PasswordInput = self
-        .addMethods(/** @lends candystore.PasswordInput# */{
+    giant.PasswordInput = self
+        .addMethods(/** @lends giant.PasswordInput# */{
             /** @ignore */
             init: function () {
                 base.init.call(this, 'password');
@@ -29,7 +29,7 @@ troop.postpone(candystore, 'PasswordInput', function (ns, className) {
 
             /**
              * Reveals password by changing the input type to 'text', and re-rendering the widget.
-             * @returns {candystore.PasswordInput}
+             * @returns {giant.PasswordInput}
              */
             revealPassword: function () {
                 if (this.htmlAttributes.getItem('type') === 'password') {
@@ -44,7 +44,7 @@ troop.postpone(candystore, 'PasswordInput', function (ns, className) {
 
             /**
              * Obscures password by changing the input type to 'password', and re-rendering the widget.
-             * @returns {candystore.PasswordInput}
+             * @returns {giant.PasswordInput}
              */
             obscurePassword: function () {
                 if (this.htmlAttributes.getItem('type') !== 'password') {
@@ -67,11 +67,11 @@ troop.postpone(candystore, 'PasswordInput', function (ns, className) {
         });
 });
 
-troop.amendPostponed(candystore, 'Input', function () {
+giant.amendPostponed(giant, 'Input', function () {
     "use strict";
 
-    candystore.Input
-        .addSurrogate(candystore, 'PasswordInput', function (inputType) {
+    giant.Input
+        .addSurrogate(giant, 'PasswordInput', function (inputType) {
             return inputType === 'password';
         });
 });

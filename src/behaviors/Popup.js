@@ -1,8 +1,8 @@
-/*global dessert, troop, sntls, evan, jQuery, UIEvent, shoeshine, candystore */
-troop.postpone(candystore, 'Popup', function (ns, className, /**jQuery*/$) {
+/*global giant, giant, giant, giant, jQuery, UIEvent, giant, giant */
+giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = troop.Base,
+    var base = giant.Base,
         self = base.extend(),
         $document = document && $(document);
 
@@ -14,11 +14,11 @@ troop.postpone(candystore, 'Popup', function (ns, className, /**jQuery*/$) {
      * Popups may be closed by clicking outside of the widget's DOM.
      * Expects to be added to Widget classes.
      * @class
-     * @extends troop.Base
-     * @extends shoeshine.Widget
+     * @extends giant.Base
+     * @extends giant.Widget
      */
-    candystore.Popup = self
-        .addConstants(/** @lends candystore.Popup */{
+    giant.Popup = self
+        .addConstants(/** @lends giant.Popup */{
             /** @constant */
             EVENT_POPUP_OUTSIDE_CLICK: 'popup-outside-click',
 
@@ -28,12 +28,12 @@ troop.postpone(candystore, 'Popup', function (ns, className, /**jQuery*/$) {
             /** @constant */
             EVENT_POPUP_CLOSE: 'popup-close'
         })
-        .addPrivateMethods(/** @lends candystore.Popup# */{
+        .addPrivateMethods(/** @lends giant.Popup# */{
             /**
              * @param {boolean} a
              * @param {boolean} b
              * @returns {boolean}
-             * @memberOf candystore.Popup
+             * @memberOf giant.Popup
              * @private
              */
             _or: function (a, b) {
@@ -44,7 +44,7 @@ troop.postpone(candystore, 'Popup', function (ns, className, /**jQuery*/$) {
              * @param {jQuery} $element
              * @param {string} selector
              * @returns {boolean}
-             * @memberOf candystore.Popup
+             * @memberOf giant.Popup
              * @private
              */
             _hasClosest: function ($element, selector) {
@@ -89,13 +89,13 @@ troop.postpone(candystore, 'Popup', function (ns, className, /**jQuery*/$) {
              * @private
              */
             _getLastUiEvent: function () {
-                var lastEvent = window && evan.originalEventStack.getLastEvent();
-                return lastEvent && evan.Event.isBaseOf(lastEvent) ?
+                var lastEvent = window && giant.originalEventStack.getLastEvent();
+                return lastEvent && giant.Event.isBaseOf(lastEvent) ?
                     lastEvent.getOriginalEventByType(UIEvent) :
                     undefined;
             }
         })
-        .addMethods(/** @lends candystore.Popup# */{
+        .addMethods(/** @lends giant.Popup# */{
             /**
              * Call from host's init.
              */
@@ -107,11 +107,11 @@ troop.postpone(candystore, 'Popup', function (ns, className, /**jQuery*/$) {
                 /** @type {boolean} */
                 this.isOpen = false;
 
-                /** @type {sntls.Collection} */
-                this.outsideSelectors = sntls.Collection.create();
+                /** @type {giant.Collection} */
+                this.outsideSelectors = giant.Collection.create();
 
-                /** @type {sntls.Collection} */
-                this.insideSelectors = sntls.Collection.create();
+                /** @type {giant.Collection} */
+                this.insideSelectors = giant.Collection.create();
 
                 /**
                  * DOM Event that led to opening the popup.
@@ -124,11 +124,11 @@ troop.postpone(candystore, 'Popup', function (ns, className, /**jQuery*/$) {
              * Overrides rendering, ensuring that popups get only rendered inside the document body.
              * This override is supposed to overshadow Widget's implementation.
              * @param {HTMLElement} element
-             * @returns {candystore.Popup}
+             * @returns {giant.Popup}
              */
             renderInto: function (element) {
                 if (element === document.body) {
-                    shoeshine.Widget.renderInto.call(this, element);
+                    giant.Widget.renderInto.call(this, element);
                 }
                 return this;
             },
@@ -167,10 +167,10 @@ troop.postpone(candystore, 'Popup', function (ns, className, /**jQuery*/$) {
 
             /**
              * Opens popup. Popup must be added to a parent before calling this method.
-             * @returns {candystore.Popup}
+             * @returns {giant.Popup}
              */
             openPopup: function () {
-                dessert.assert(this.parent, "Popup has no parent");
+                giant.assert(this.parent, "Popup has no parent");
 
                 if (!this.isOpen) {
                     this.openUiEvent = this._getLastUiEvent();
@@ -187,7 +187,7 @@ troop.postpone(candystore, 'Popup', function (ns, className, /**jQuery*/$) {
 
             /**
              * Closes popup, and removes it from the widget hierarchy.
-             * @returns {candystore.Popup}
+             * @returns {giant.Popup}
              */
             closePopup: function () {
                 var openUiEvent = this.openUiEvent,
@@ -214,7 +214,7 @@ troop.postpone(candystore, 'Popup', function (ns, className, /**jQuery*/$) {
              * Clicking on such elements would not trigger an 'outside-click' event even when they're outside of the
              * popup's DOM.
              * @param {string} globalSelector
-             * @returns {candystore.Popup}
+             * @returns {giant.Popup}
              */
             treatAsInside: function (globalSelector) {
                 if (this.outsideSelectors.getItem(globalSelector)) {
@@ -228,7 +228,7 @@ troop.postpone(candystore, 'Popup', function (ns, className, /**jQuery*/$) {
              * Treats DOM elements matching the specified global jQuery selector as outside of the popup.
              * Clicking on such elements would trigger an 'outside-click' event even when they're inside the popup's DOM.
              * @param {string} selector
-             * @returns {candystore.Popup}
+             * @returns {giant.Popup}
              */
             treatAsOutside: function (selector) {
                 if (this.insideSelectors.getItem(selector)) {
@@ -244,7 +244,7 @@ troop.postpone(candystore, 'Popup', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onOutsideClick: function (event) {
-                var link = evan.pushOriginalEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this.closePopup();
                 link.unLink();
             },
@@ -255,7 +255,7 @@ troop.postpone(candystore, 'Popup', function (ns, className, /**jQuery*/$) {
              */
             onBodyClick: function (event) {
                 if (this._isOutside($(event.target))) {
-                    var link = evan.pushOriginalEvent(event);
+                    var link = giant.pushOriginalEvent(event);
                     this.triggerSync(this.EVENT_POPUP_OUTSIDE_CLICK);
                     link.unLink();
                 }

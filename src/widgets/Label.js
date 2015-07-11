@@ -1,30 +1,30 @@
-/*global dessert, troop, sntls, evan, rubberband, shoeshine, jQuery, candystore */
-troop.postpone(candystore, 'Label', function (ns, className, /**jQuery*/$) {
+/*global giant, giant, giant, giant, giant, giant, jQuery, giant */
+giant.postpone(giant, 'Label', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = shoeshine.Widget,
+    var base = giant.Widget,
         self = base.extend(className);
 
     /**
      * Creates a Label instance.
-     * @name candystore.Label.create
+     * @name giant.Label.create
      * @function
-     * @returns {candystore.Label}
+     * @returns {giant.Label}
      */
 
     /**
      * Displays text, optionally HTML escaped, based on a string literal or stringifiable object.
      * @class
-     * @extends shoeshine.Widget
+     * @extends giant.Widget
      */
-    candystore.Label = self
-        .addPrivateMethods(/** @lends candystore.Label# */{
+    giant.Label = self
+        .addPrivateMethods(/** @lends giant.Label# */{
             /**
              * Updates Label's CSS classes based on its content.
              * @private
              */
             _updateLabelStyle: function () {
-                var labelText = rubberband.Stringifier.stringify(this.labelText);
+                var labelText = giant.Stringifier.stringify(this.labelText);
                 if (labelText) {
                     this
                         .removeCssClass('no-text')
@@ -42,14 +42,14 @@ troop.postpone(candystore, 'Label', function (ns, className, /**jQuery*/$) {
                     currentLabelText;
 
                 if (element) {
-                    currentLabelText = rubberband.Stringifier.stringify(this.labelText);
+                    currentLabelText = giant.Stringifier.stringify(this.labelText);
                     $(element).html(this.htmlEscaped ?
                         currentLabelText.toHtml() :
                         currentLabelText);
                 }
             }
         })
-        .addMethods(/** @lends candystore.Label# */{
+        .addMethods(/** @lends giant.Label# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -73,7 +73,7 @@ troop.postpone(candystore, 'Label', function (ns, className, /**jQuery*/$) {
 
             /** @ignore */
             contentMarkup: function () {
-                var currentLabelText = rubberband.Stringifier.stringify(this.labelText);
+                var currentLabelText = giant.Stringifier.stringify(this.labelText);
                 return this.htmlEscaped ?
                     currentLabelText.toHtml() :
                     currentLabelText;
@@ -83,7 +83,7 @@ troop.postpone(candystore, 'Label', function (ns, className, /**jQuery*/$) {
              * Sets flag that determines whether label will HTML escape text before rendering.
              * Use with care: script embedded in labelText might compromise security!
              * @param {boolean} htmlEscaped
-             * @returns {candystore.Label}
+             * @returns {giant.Label}
              */
             setHtmlEscaped: function (htmlEscaped) {
                 this.htmlEscaped = htmlEscaped;
@@ -95,7 +95,7 @@ troop.postpone(candystore, 'Label', function (ns, className, /**jQuery*/$) {
              * Sets text to display on label. Accepts strings or objects that implement .toString().
              * Displayed text will be HTML encoded.
              * @param {string|object} labelText
-             * @returns {candystore.Label}
+             * @returns {giant.Label}
              */
             setLabelText: function (labelText) {
                 this.labelText = labelText;

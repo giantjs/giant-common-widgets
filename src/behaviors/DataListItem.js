@@ -1,35 +1,35 @@
-/*global dessert, troop, sntls, shoeshine, jQuery, candystore */
-troop.postpone(candystore, 'DataListItem', function () {
+/*global giant, giant, giant, giant, jQuery, giant */
+giant.postpone(giant, 'DataListItem', function () {
     "use strict";
 
-    var base = troop.Base,
+    var base = giant.Base,
         self = base.extend();
 
     /**
      * The DataListItem trait associates widgets with an item key.
      * Any widget that to be used as an item in a DataList is expected to have tgis trait.
      * @class
-     * @extends troop.Base
-     * @extends shoeshine.Widget
+     * @extends giant.Base
+     * @extends giant.Widget
      */
-    candystore.DataListItem = self
-        .addMethods(/** @lends candystore.DataListItem# */{
+    giant.DataListItem = self
+        .addMethods(/** @lends giant.DataListItem# */{
             /**
              * Call from host's init.
-             * @param {bookworm.ItemKey} [itemKey]
+             * @param {giant.ItemKey} [itemKey]
              */
             init: function (itemKey) {
-                /** @type {bookworm.ItemKey} */
+                /** @type {giant.ItemKey} */
                 this.itemKey = itemKey;
             },
 
             /**
              * Associates item widget with an item key.
-             * @param {bookworm.ItemKey} itemKey
-             * @returns {candystore.DataListItem}
+             * @param {giant.ItemKey} itemKey
+             * @returns {giant.DataListItem}
              */
             setItemKey: function (itemKey) {
-                dessert.isItemKey(itemKey, "Invalid item key");
+                giant.isItemKey(itemKey, "Invalid item key");
                 this.itemKey = itemKey;
                 return this;
             }

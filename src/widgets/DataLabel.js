@@ -1,59 +1,59 @@
-/*global dessert, troop, sntls, bookworm, shoeshine, candystore */
-troop.postpone(candystore, 'DataLabel', function (ns, className) {
+/*global giant, giant, giant, giant, giant, giant */
+giant.postpone(giant, 'DataLabel', function (ns, className) {
     "use strict";
 
-    var base = candystore.Label,
+    var base = giant.Label,
         self = base.extend(className)
-            .addTrait(bookworm.EntityBound)
-            .addTrait(candystore.EntityWidget)
-            .addTraitAndExtend(candystore.FieldBound);
+            .addTrait(giant.EntityBound)
+            .addTrait(giant.EntityWidget)
+            .addTraitAndExtend(giant.FieldBound);
 
     /**
      * Creates a DataLabel instance.
-     * @name candystore.DataLabel.create
+     * @name giant.DataLabel.create
      * @function
-     * @param {bookworm.FieldKey} textFieldKey Key to a text field.
-     * @returns {candystore.DataLabel}
+     * @param {giant.FieldKey} textFieldKey Key to a text field.
+     * @returns {giant.DataLabel}
      */
 
     /**
      * The DataLabel displays text based on the value of a field in the cache.
      * Keeps the text in sync with the changes of the corresponding field.
      * @class
-     * @extends candystore.Label
-     * @extends bookworm.EntityBound
-     * @extends candystore.EntityWidget
-     * @extends candystore.FieldBound
+     * @extends giant.Label
+     * @extends giant.EntityBound
+     * @extends giant.EntityWidget
+     * @extends giant.FieldBound
      */
-    candystore.DataLabel = self
-        .addMethods(/** @lends candystore.DataLabel# */{
+    giant.DataLabel = self
+        .addMethods(/** @lends giant.DataLabel# */{
             /**
-             * @param {bookworm.FieldKey} fieldKey
+             * @param {giant.FieldKey} fieldKey
              * @ignore
              */
             init: function (fieldKey) {
-                dessert.isFieldKey(fieldKey, "Invalid field key");
+                giant.isFieldKey(fieldKey, "Invalid field key");
 
                 base.init.call(this);
-                bookworm.EntityBound.init.call(this);
-                candystore.EntityWidget.init.call(this, fieldKey);
+                giant.EntityBound.init.call(this);
+                giant.EntityWidget.init.call(this, fieldKey);
             },
 
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                candystore.FieldBound.afterAdd.call(this);
+                giant.FieldBound.afterAdd.call(this);
             },
 
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                candystore.FieldBound.afterRemove.call(this);
+                giant.FieldBound.afterRemove.call(this);
             },
 
             /**
              * @param {*} fieldValue
-             * @returns {candystore.DataLabel}
+             * @returns {giant.DataLabel}
              * @ignore
              */
             setFieldValue: function (fieldValue) {

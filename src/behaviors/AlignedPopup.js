@@ -1,19 +1,19 @@
-/*global dessert, troop, sntls, jQuery, candystore */
-troop.postpone(candystore, 'AlignedPopup', function (ns, className, /**jQuery*/$) {
+/*global giant, giant, giant, jQuery, giant */
+giant.postpone(giant, 'AlignedPopup', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = candystore.Popup,
+    var base = giant.Popup,
         self = base.extend();
 
     /**
      * The AlignedPopup trait extends the Popup trait with aligning the widget's DOM to the DOM of its parent.
      * Relies on jQuery UI's positioning.
      * @class
-     * @extends candystore.Popup
+     * @extends giant.Popup
      * @link http://api.jqueryui.com/position
      */
-    candystore.AlignedPopup = self
-        .addPrivateMethods(/** @lends candystore.AlignedPopup# */{
+    giant.AlignedPopup = self
+        .addPrivateMethods(/** @lends giant.AlignedPopup# */{
             /** @private */
             _alignPopup: function () {
                 var element = this.getElement();
@@ -31,7 +31,7 @@ troop.postpone(candystore, 'AlignedPopup', function (ns, className, /**jQuery*/$
                 return this;
             }
         })
-        .addMethods(/** @lends candystore.AlignedPopup# */{
+        .addMethods(/** @lends giant.AlignedPopup# */{
             /** Call from host class' init. */
             init: function () {
                 base.init.call(this);
@@ -40,9 +40,9 @@ troop.postpone(candystore, 'AlignedPopup', function (ns, className, /**jQuery*/$
 
                 /**
                  * Options for positioning the select list popup around its parent.
-                 * @type {sntls.Collection}
+                 * @type {giant.Collection}
                  */
-                this.positionOptions = sntls.Collection.create({
+                this.positionOptions = giant.Collection.create({
                     my: 'left top',
                     at: 'left bottom'
                 });
@@ -51,7 +51,7 @@ troop.postpone(candystore, 'AlignedPopup', function (ns, className, /**jQuery*/$
             /** Call from host class' afterAdd. */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                this.subscribeTo(candystore.ResizeWatcher.EVENT_WINDOW_RESIZE_DEBOUNCED, this.onResize);
+                this.subscribeTo(giant.ResizeWatcher.EVENT_WINDOW_RESIZE_DEBOUNCED, this.onResize);
             },
 
             /** Call from host class' afterRender. */
@@ -64,7 +64,7 @@ troop.postpone(candystore, 'AlignedPopup', function (ns, className, /**jQuery*/$
              * Sets jQuery UI position option. Accepts any options combination that jQuery UI's .position() does.
              * @param {string} optionName
              * @param {*} [optionValue]
-             * @returns {candystore.AlignedPopup}
+             * @returns {giant.AlignedPopup}
              * @link http://api.jqueryui.com/position/
              */
             setPositionOption: function (optionName, optionValue) {
