@@ -116,7 +116,7 @@ giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
 
                     this.imageUrl = imageUrl;
 
-                    this.image = imageUrl.toImage()
+                    this.image = imageUrl.toImageLoader()
                         .loadImage();
                 }
 
