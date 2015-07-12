@@ -26,6 +26,7 @@
         "giant-oop"       : "0.0.3",
         "giant-templating": "0.0.3",
         "giant-transport" : "0.0.3",
+        "giant-utils"     : "0.0.3",
         "giant-widget"    : "0.0.3",
         "jquery"          : "~2.1.0",
         "q"               : "^1.4.0"

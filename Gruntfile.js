@@ -8,7 +8,6 @@ module.exports = function (grunt) {
         params: {
             jsFiles: [
                 'src/namespace.js',
-                'src/utils/StringUtils.js',
                 'src/utils/BinaryState.js',
                 'src/utils/DocumentBody.js',
                 'src/behaviors/BinaryStateful.js',
