@@ -132,10 +132,6 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
 
                 $(this.getElement())
                     .on('submit', this.onSubmit);
-
-                if (!this.isDisabled()) {
-                    this.focusOnFirstField();
-                }
             },
 
             /**
