@@ -1,24 +1,24 @@
 /*global giant, jQuery */
-giant.postpone(giant, 'Link', function (ns, className, /**jQuery*/$) {
+giant.postpone(giant, 'Hyperlink', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = giant.Widget,
         self = base.extend(className);
 
     /**
-     * Creates a Link instance.
-     * @name giant.Link.create
+     * Creates a Hyperlink instance.
+     * @name giant.Hyperlink.create
      * @function
-     * @returns {giant.Link}
+     * @returns {giant.Hyperlink}
      */
 
     /**
-     * The Link implements a basic hyperlink.
+     * Implements a basic hyperlink.
      * @class
      * @extends giant.Widget
      */
-    giant.Link = self
-        .addMethods(/** @lends giant.Link# */{
+    giant.Hyperlink = self
+        .addMethods(/** @lends giant.Hyperlink# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -49,7 +49,7 @@ giant.postpone(giant, 'Link', function (ns, className, /**jQuery*/$) {
             /**
              * Sets URL for the link.
              * @param {string} targetUrl
-             * @returns {giant.Link}
+             * @returns {giant.Hyperlink}
              */
             setTargetUrl: function (targetUrl) {
                 giant.isString(targetUrl, "Invalid target URL");
@@ -69,7 +69,7 @@ giant.postpone(giant, 'Link', function (ns, className, /**jQuery*/$) {
              * Expects the caption widget to be a Label.
              * Override when caption widget is something other than Label.
              * @param {string} caption
-             * @returns {giant.Link}
+             * @returns {giant.Hyperlink}
              */
             setCaption: function (caption) {
                 this.getLabelWidget()
