@@ -95,18 +95,13 @@ giant.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
             },
 
             /**
-             * @param {jQuery.Event} event
              * @ignore
              */
-            onDebouncedWindowResize: function (event) {
-                var rootWidget = giant.Widget.rootWidget,
-                    link = giant.pushOriginalEvent(event);
-
+            onDebouncedWindowResize: function () {
+                var rootWidget = giant.Widget.rootWidget;
                 if (rootWidget) {
                     this.updateDimensions();
                 }
-
-                link.unlink();
             }
         });
 }, jQuery);

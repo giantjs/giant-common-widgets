@@ -329,8 +329,7 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
             onValueChange: function (event) {
                 var payload = event.payload,
                     oldInputValue = payload.oldInputValue,
-                    newInputValue = payload.newInputValue,
-                    link = giant.pushOriginalEvent(event);
+                    newInputValue = payload.newInputValue;
 
                 this._setInputValue(newInputValue);
 
@@ -341,8 +340,6 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
                 } else if (!newInputValue && oldInputValue) {
                     this.triggerSync(this.EVENT_INPUT_LOST_VALUE);
                 }
-
-                link.unlink();
             }
         });
 }, jQuery);

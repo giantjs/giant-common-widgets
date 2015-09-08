@@ -1,4 +1,4 @@
-/*global Event, jQuery */
+/*global giant, Event, jQuery */
 giant.postpone(giant, 'HotKeyWatcher', function () {
     "use strict";
 
@@ -31,8 +31,6 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
                                    keyboardEvent.toWidget() ||
                                    rootWidget;
 
-                var link = giant.pushOriginalEvent(event);
-
                 rootWidget
                     .spawnEvent(this.EVENT_HOT_KEY_DOWN)
                     .setPayloadItems({
@@ -40,8 +38,6 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
                         originWidget: originWidget
                     })
                     .broadcastSync();
-
-                link.unlink();
             }
         });
 });

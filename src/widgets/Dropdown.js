@@ -122,28 +122,22 @@ giant.postpone(giant, 'Dropdown', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onOptionSelect: function (event) {
-                var originalEvent = event.getOriginalEventByType(jQuery.Event),
-                    link;
+                var originalEvent = event.getOriginalEventByType(jQuery.Event);
 
                 if (originalEvent && (
                     originalEvent.type === 'click' ||
                     originalEvent.type === 'keydown' && originalEvent.which === 13
                     )) {
                     // only when select was initiated by user interaction (click on Option)
-                    link = giant.pushOriginalEvent(event);
                     this.closePopup();
-                    link.unlink();
                 }
             },
 
             /**
-             * @param {giant.WidgetEvent} event
              * @ignore
              */
-            onOptionsEscape: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onOptionsEscape: function () {
                 this.closePopup();
-                link.unlink();
             }
         });
 }, jQuery);

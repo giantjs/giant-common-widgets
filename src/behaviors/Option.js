@@ -159,23 +159,17 @@ giant.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
             },
 
             /**
-             * @param {jQuery.Event} event
              * @ignore
              */
-            onOptionClick: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onOptionClick: function () {
                 this.markAsActive();
-                link.unlink();
             },
 
             /**
-             * @param {jQuery.Event} event
              * @ignore
              */
-            onOptionHover: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onOptionHover: function () {
                 this.markAsFocused();
-                link.unlink();
             }
         });
 }, jQuery);

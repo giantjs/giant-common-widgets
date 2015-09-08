@@ -103,14 +103,12 @@ giant.postpone(giant, 'DropdownButton', function (ns, className) {
             },
 
             /**
-             * @param {jQuery.Event} event
              * @ignore
              */
-            onClick: function (event) {
+            onClick: function () {
                 base.onClick.call(this);
 
-                var dropdown = this.dropdown,
-                    link = giant.pushOriginalEvent(event);
+                var dropdown = this.dropdown;
 
                 if (dropdown.isOpen) {
                     dropdown
@@ -120,8 +118,6 @@ giant.postpone(giant, 'DropdownButton', function (ns, className) {
                         .addToParent(this)
                         .openPopup();
                 }
-
-                link.unlink();
             }
         });
 });

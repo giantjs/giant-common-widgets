@@ -68,12 +68,10 @@ giant.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
             },
 
             /**
-             * @param {jQuery.Event} event
-             * @ignore */
-            onClick: function (event) {
-                var link = giant.pushOriginalEvent(event);
+             * @ignore
+             */
+            onClick: function () {
                 this.clickButton();
-                link.unlink();
             }
         });
 }, jQuery);

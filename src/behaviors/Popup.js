@@ -240,13 +240,10 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
 
             /**
              * Default outside click handler
-             * @param {jQuery.Event} event
              * @ignore
              */
-            onOutsideClick: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onOutsideClick: function () {
                 this.closePopup();
-                link.unlink();
             },
 
             /**
@@ -255,9 +252,7 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
              */
             onBodyClick: function (event) {
                 if (this._isOutside($(event.target))) {
-                    var link = giant.pushOriginalEvent(event);
                     this.triggerSync(this.EVENT_POPUP_OUTSIDE_CLICK);
-                    link.unlink();
                 }
             }
         });

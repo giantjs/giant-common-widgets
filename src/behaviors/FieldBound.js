@@ -50,23 +50,17 @@ giant.postpone(giant, 'FieldBound', function () {
             },
 
             /**
-             * @param {giant.EntityChangeEvent} event
              * @ignore
              */
-            onDocumentReplace: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onDocumentReplace: function () {
                 this._updateFieldValue();
-                link.unlink();
             },
 
             /**
-             * @param {giant.EntityChangeEvent} event
              * @ignore
              */
-            onFieldChange: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onFieldChange: function () {
                 this._updateFieldValue();
-                link.unlink();
             }
         });
 });

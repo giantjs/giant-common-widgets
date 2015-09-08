@@ -251,13 +251,10 @@ giant.postpone(giant, 'FormField', function (ns, className) {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
              * @ignore
              */
-            onInputBlur: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onInputBlur: function () {
                 this.updateWarningMessage();
-                link.unlink();
             },
 
             /**
@@ -274,23 +271,17 @@ giant.postpone(giant, 'FormField', function (ns, className) {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
              * @ignore
              */
-            onInputValid: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onInputValid: function () {
                 this.updateWarningMessage();
-                link.unlink();
             },
 
             /**
-             * @param {giant.WidgetEvent} event
              * @ignore
              */
-            onFormReset: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onFormReset: function () {
                 this.clearWarningMessage();
-                link.unlink();
             }
         });
 });

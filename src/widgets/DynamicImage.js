@@ -124,34 +124,25 @@ giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
             },
 
             /**
-             * @param {giant.ImageEvent} event
              * @ignore
              */
-            onImageLoadStart: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onImageLoadStart: function () {
                 this.triggerSync(this.EVENT_IMAGE_LOAD_START);
-                link.unlink();
             },
 
             /**
-             * @param {giant.ImageEvent} event
              * @ignore
              */
-            onImageLoadSuccess: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onImageLoadSuccess: function () {
                 this._setImageElement(event.imageElement);
                 this.triggerSync(this.EVENT_IMAGE_LOAD_SUCCESS);
-                link.unlink();
             },
 
             /**
-             * @param {giant.ImageEvent} event
              * @ignore
              */
-            onImageLoadFailure: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onImageLoadFailure: function () {
                 this.triggerSync(this.EVENT_IMAGE_LOAD_FAILURE);
-                link.unlink();
             }
         });
 }, jQuery);

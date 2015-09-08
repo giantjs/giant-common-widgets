@@ -246,41 +246,28 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
              * @ignore
              */
-            onInputSubmit: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onInputSubmit: function () {
                 this.trySubmittingForm();
-                link.unlink();
             },
 
             /**
-             * @param {giant.WidgetEvent} event
              * @ignore
              */
-            onInputValid: function (event) {
-                var wasValid = this.isValid(),
-                    link = giant.pushOriginalEvent(event);
-
+            onInputValid: function () {
+                var wasValid = this.isValid();
                 this.validFieldCount++;
                 this._triggerValidityEvent(wasValid);
-
-                link.unlink();
             },
 
             /**
-             * @param {giant.WidgetEvent} event
              * @ignore
              */
-            onInputInvalid: function (event) {
-                var wasValid = this.isValid(),
-                    link = giant.pushOriginalEvent(event);
-
+            onInputInvalid: function () {
+                var wasValid = this.isValid();
                 this.validFieldCount--;
                 this._triggerValidityEvent(wasValid);
-
-                link.unlink();
             },
 
             /**

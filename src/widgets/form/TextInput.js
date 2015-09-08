@@ -130,8 +130,6 @@ giant.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onKeyDown: function (event) {
-                var link = giant.pushOriginalEvent(event);
-
                 switch (event.which) {
                 case 13:
                     if (this.canSubmit) {
@@ -144,47 +142,35 @@ giant.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
                     this.triggerSync(this.EVENT_INPUT_TAB);
                     break;
                 }
-
-                link.unlink();
             },
 
             /**
              * Triggered on onkeyup, oninput, and onchange.
              * However, does not trigger Input event unless the value actually changed.
-             * @param {jQuery.Event} event
              * @ignore
              */
-            onChange: function (event) {
+            onChange: function () {
                 var element = this.getElement(),
                     newInputValue;
 
                 if (element) {
                     newInputValue = $(element).val();
-
-                    var link = giant.pushOriginalEvent(event);
                     this.setInputValue(newInputValue);
-                    link.unlink();
                 }
             },
 
             /**
-             * @param {giant.WidgetEvent} event
              * @ignore
              */
-            onFocusIn: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onFocusIn: function () {
                 this.triggerSync(this.EVENT_INPUT_FOCUS);
-                link.unlink();
             },
 
             /**
-             * @param {giant.WidgetEvent} event
              * @ignore
              */
-            onFocusOut: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onFocusOut: function () {
                 this.triggerSync(this.EVENT_INPUT_BLUR);
-                link.unlink();
             }
         });
 

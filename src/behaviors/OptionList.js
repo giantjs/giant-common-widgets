@@ -216,14 +216,11 @@ giant.postpone(giant, 'OptionList', function () {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
              * @ignore
              */
-            onItemsChange: function (event) {
-                var link = giant.pushOriginalEvent(event);
+            onItemsChange: function () {
                 this._focusOnOption();
                 this._updateFocusedOptionName();
-                link.unlink();
             },
 
             /**
@@ -236,7 +233,6 @@ giant.postpone(giant, 'OptionList', function () {
                     children = this.children,
                     sortedChildNames = children.getKeys().sort(),
                     currentChildIndex = sortedChildNames.indexOf(this.focusedOptionName),
-                    link = giant.pushOriginalEvent(event),
                     newFocusedOptionName;
 
                 switch (charCode) {
@@ -263,8 +259,6 @@ giant.postpone(giant, 'OptionList', function () {
                         .markAsActive();
                     break;
                 }
-
-                link.unlink();
             },
 
             /**
@@ -272,12 +266,8 @@ giant.postpone(giant, 'OptionList', function () {
              * @ignore
              */
             onOptionFocus: function (event) {
-                var newFocusedOptionName = event.senderWidget.childName,
-                    link = giant.pushOriginalEvent(event);
-
+                var newFocusedOptionName = event.senderWidget.childName;
                 this._setFocusedOptionName(newFocusedOptionName);
-
-                link.unlink();
             },
 
             /**
@@ -285,11 +275,8 @@ giant.postpone(giant, 'OptionList', function () {
              * @ignore
              */
             onOptionActive: function (event) {
-                var optionWidget = event.senderWidget,
-                    link = giant.pushOriginalEvent(event);
-
+                var optionWidget = event.senderWidget;
                 this._triggerSelectEvent(optionWidget.childName, optionWidget.optionValue);
-                link.unlink();
             },
 
             /**
@@ -297,12 +284,8 @@ giant.postpone(giant, 'OptionList', function () {
              * @ignore
              */
             onOptionSelect: function (event) {
-                var link = giant.pushOriginalEvent(event),
-                    optionName = event.payload.optionName;
-
+                var optionName = event.payload.optionName;
                 this._setActiveOptionName(optionName);
-
-                link.unlink();
             }
         });
 });
