@@ -145,7 +145,7 @@ giant.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
                     break;
                 }
 
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -163,7 +163,7 @@ giant.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
 
                     var link = giant.pushOriginalEvent(event);
                     this.setInputValue(newInputValue);
-                    link.unLink();
+                    link.unlink();
                 }
             },
 
@@ -174,7 +174,7 @@ giant.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
             onFocusIn: function (event) {
                 var link = giant.pushOriginalEvent(event);
                 this.triggerSync(this.EVENT_INPUT_FOCUS);
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -184,7 +184,7 @@ giant.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
             onFocusOut: function (event) {
                 var link = giant.pushOriginalEvent(event);
                 this.triggerSync(this.EVENT_INPUT_BLUR);
-                link.unLink();
+                link.unlink();
             }
         });
 

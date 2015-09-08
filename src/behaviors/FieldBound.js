@@ -56,7 +56,7 @@ giant.postpone(giant, 'FieldBound', function () {
             onDocumentReplace: function (event) {
                 var link = giant.pushOriginalEvent(event);
                 this._updateFieldValue();
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -66,7 +66,7 @@ giant.postpone(giant, 'FieldBound', function () {
             onFieldChange: function (event) {
                 var link = giant.pushOriginalEvent(event);
                 this._updateFieldValue();
-                link.unLink();
+                link.unlink();
             }
         });
 });

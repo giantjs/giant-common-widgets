@@ -246,7 +246,7 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
             onOutsideClick: function (event) {
                 var link = giant.pushOriginalEvent(event);
                 this.closePopup();
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -257,7 +257,7 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
                 if (this._isOutside($(event.target))) {
                     var link = giant.pushOriginalEvent(event);
                     this.triggerSync(this.EVENT_POPUP_OUTSIDE_CLICK);
-                    link.unLink();
+                    link.unlink();
                 }
             }
         });

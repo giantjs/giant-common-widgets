@@ -252,7 +252,7 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
             onInputSubmit: function (event) {
                 var link = giant.pushOriginalEvent(event);
                 this.trySubmittingForm();
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -266,7 +266,7 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
                 this.validFieldCount++;
                 this._triggerValidityEvent(wasValid);
 
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -280,7 +280,7 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
                 this.validFieldCount--;
                 this._triggerValidityEvent(wasValid);
 
-                link.unLink();
+                link.unlink();
             },
 
             /**

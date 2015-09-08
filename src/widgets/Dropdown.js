@@ -132,7 +132,7 @@ giant.postpone(giant, 'Dropdown', function (ns, className, /**jQuery*/$) {
                     // only when select was initiated by user interaction (click on Option)
                     link = giant.pushOriginalEvent(event);
                     this.closePopup();
-                    link.unLink();
+                    link.unlink();
                 }
             },
 
@@ -143,7 +143,7 @@ giant.postpone(giant, 'Dropdown', function (ns, className, /**jQuery*/$) {
             onOptionsEscape: function (event) {
                 var link = giant.pushOriginalEvent(event);
                 this.closePopup();
-                link.unLink();
+                link.unlink();
             }
         });
 }, jQuery);

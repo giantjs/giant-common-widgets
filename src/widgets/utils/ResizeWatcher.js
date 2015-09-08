@@ -106,7 +106,7 @@ giant.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
                     this.updateDimensions();
                 }
 
-                link.unLink();
+                link.unlink();
             }
         });
 }, jQuery);

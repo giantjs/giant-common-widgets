@@ -257,7 +257,7 @@ giant.postpone(giant, 'FormField', function (ns, className) {
             onInputBlur: function (event) {
                 var link = giant.pushOriginalEvent(event);
                 this.updateWarningMessage();
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -280,7 +280,7 @@ giant.postpone(giant, 'FormField', function (ns, className) {
             onInputValid: function (event) {
                 var link = giant.pushOriginalEvent(event);
                 this.updateWarningMessage();
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -290,7 +290,7 @@ giant.postpone(giant, 'FormField', function (ns, className) {
             onFormReset: function (event) {
                 var link = giant.pushOriginalEvent(event);
                 this.clearWarningMessage();
-                link.unLink();
+                link.unlink();
             }
         });
 });

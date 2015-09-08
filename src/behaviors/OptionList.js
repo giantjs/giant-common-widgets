@@ -223,7 +223,7 @@ giant.postpone(giant, 'OptionList', function () {
                 var link = giant.pushOriginalEvent(event);
                 this._focusOnOption();
                 this._updateFocusedOptionName();
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -264,7 +264,7 @@ giant.postpone(giant, 'OptionList', function () {
                     break;
                 }
 
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -277,7 +277,7 @@ giant.postpone(giant, 'OptionList', function () {
 
                 this._setFocusedOptionName(newFocusedOptionName);
 
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -289,7 +289,7 @@ giant.postpone(giant, 'OptionList', function () {
                     link = giant.pushOriginalEvent(event);
 
                 this._triggerSelectEvent(optionWidget.childName, optionWidget.optionValue);
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -302,7 +302,7 @@ giant.postpone(giant, 'OptionList', function () {
 
                 this._setActiveOptionName(optionName);
 
-                link.unLink();
+                link.unlink();
             }
         });
 });

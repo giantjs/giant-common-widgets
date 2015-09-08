@@ -130,7 +130,7 @@ giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
             onImageLoadStart: function (event) {
                 var link = giant.pushOriginalEvent(event);
                 this.triggerSync(this.EVENT_IMAGE_LOAD_START);
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -141,7 +141,7 @@ giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
                 var link = giant.pushOriginalEvent(event);
                 this._setImageElement(event.imageElement);
                 this.triggerSync(this.EVENT_IMAGE_LOAD_SUCCESS);
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -151,7 +151,7 @@ giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
             onImageLoadFailure: function (event) {
                 var link = giant.pushOriginalEvent(event);
                 this.triggerSync(this.EVENT_IMAGE_LOAD_FAILURE);
-                link.unLink();
+                link.unlink();
             }
         });
 }, jQuery);

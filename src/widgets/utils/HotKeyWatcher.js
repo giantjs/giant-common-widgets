@@ -41,7 +41,7 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
                     })
                     .broadcastSync();
 
-                link.unLink();
+                link.unlink();
             }
         });
 });

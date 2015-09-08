@@ -121,7 +121,7 @@ giant.postpone(giant, 'DropdownButton', function (ns, className) {
                         .openPopup();
                 }
 
-                link.unLink();
+                link.unlink();
             }
         });
 });

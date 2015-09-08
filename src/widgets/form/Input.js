@@ -342,7 +342,7 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
                     this.triggerSync(this.EVENT_INPUT_LOST_VALUE);
                 }
 
-                link.unLink();
+                link.unlink();
             }
         });
 }, jQuery);

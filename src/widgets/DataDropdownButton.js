@@ -96,7 +96,7 @@ giant.postpone(giant, 'DataDropdownButton', function (ns, className) {
             onSelectedChange: function (event) {
                 var link = giant.pushOriginalEvent(event);
                 this._updateSelectedOption();
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -106,7 +106,7 @@ giant.postpone(giant, 'DataDropdownButton', function (ns, className) {
             onListItemsChange: function (event) {
                 var link = giant.pushOriginalEvent(event);
                 this._updateSelectedOption();
-                link.unLink();
+                link.unlink();
             },
 
             /**
@@ -119,7 +119,7 @@ giant.postpone(giant, 'DataDropdownButton', function (ns, className) {
                 var link = giant.pushOriginalEvent(event);
                 this.entityKey.toField()
                     .setValue(optionValue);
-                link.unLink();
+                link.unlink();
             }
         });
 });
