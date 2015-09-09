@@ -17,6 +17,7 @@ if (typeof require === 'function') {
     require('giant-event');
     require('giant-templating');
     require('giant-entity');
+    require('giant-utils');
     require('giant-widget');
 }
 
