@@ -147,20 +147,16 @@ giant.postpone(giant, 'BinaryState', function () {
         /** @param {giant.BinaryState} [expr] */
         isBinaryStateOptional: function (expr) {
             return typeof expr === 'undefined' ||
-                   giant.BinaryState.isBaseOf(expr);
+                giant.BinaryState.isBaseOf(expr);
         }
     });
 
-    giant.Properties.addProperties.call(
-        String.prototype,
-        /** @lends String# */{
-            /**
-             * @returns {giant.BinaryState}
-             */
-            toBinaryState: function () {
-                return giant.BinaryState.create(this.valueOf());
-            }
-        },
-        false, false, false
-    );
+    giant.extendBuiltIn(String.prototype, /** @lends String# */{
+        /**
+         * @returns {giant.BinaryState}
+         */
+        toBinaryState: function () {
+            return giant.BinaryState.create(this.valueOf());
+        }
+    });
 }());
