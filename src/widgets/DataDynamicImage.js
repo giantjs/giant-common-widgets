@@ -22,6 +22,9 @@ giant.postpone(giant, 'DataDynamicImage', function (ns, className) {
      * Keeps the image in sync with the changes of the corresponding field.
      * @class
      * @extends giant.DynamicImage
+     * @extends giant.EntityBound
+     * @extends giant.EntityWidget
+     * @extends giant.FieldBound
      */
     giant.DataDynamicImage = self
         .addMethods(/** @lends giant.DataDynamicImage# */{
