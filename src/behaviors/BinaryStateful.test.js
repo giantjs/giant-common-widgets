@@ -123,7 +123,7 @@
         var binaryStateful = BinaryStateful.create()
             .addBinaryState('foo');
 
-        raises(function () {
+        throws(function () {
             binaryStateful.isStateOn('bar');
         }, "should raise exception on absent state");
 

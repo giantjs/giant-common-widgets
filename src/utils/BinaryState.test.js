@@ -5,7 +5,7 @@
     module("BinaryState");
 
     test("Instantiation", function () {
-        raises(function () {
+        throws(function () {
             giant.BinaryState.create();
         }, "should raise exception on missing arguments");
 
@@ -105,7 +105,7 @@
         var binaryState = 'foo'.toBinaryState(),
             remoteState = 'hello'.toBinaryState().addSource('world');
 
-        raises(function () {
+        throws(function () {
             binaryState.addStateAsSource('foo');
         }, "should raise exception on invalid arguments");
 

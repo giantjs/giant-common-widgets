@@ -149,7 +149,7 @@
         var highlightable = Highlightable.create(),
             result = [];
 
-        raises(function () {
+        throws(function () {
             highlightable.highlightOn(123);
         }, "should raise exception on invalid argument");
 
@@ -172,7 +172,7 @@
         var highlightable = Highlightable.create(),
             result = [];
 
-        raises(function () {
+        throws(function () {
             highlightable.highlightOff(123);
         }, "should raise exception on invalid argument");
 
@@ -195,7 +195,7 @@
         var highlightable = Highlightable.create()
             .highlightOn('foo');
 
-        raises(function () {
+        throws(function () {
             highlightable.isHighlighted(123);
         }, "should raise exception on invalid argument");
 
