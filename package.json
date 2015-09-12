@@ -33,8 +33,7 @@
   },
   "devDependencies": {},
   "files": [
-    "giant-common-widgets.js",
-    "giant-common-widgets.css"
+    "lib"
   ],
-  "main": "giant-common-widgets.js"
+  "main": "lib/giant-common-widgets.js"
 }

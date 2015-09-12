@@ -1,7 +1,4 @@
 /*.tgz
 /.idea/
-/doc/
-/giant-common-widgets.css
-/giant-common-widgets.js
 /node_modules/
-/out/
+/lib/
