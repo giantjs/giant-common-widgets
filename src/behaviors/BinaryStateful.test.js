@@ -229,9 +229,9 @@
         expect(6);
 
         var parent = BinaryStateful.create()
-                .addBinaryState('foo'),
+                .addBinaryState('foo', true),
             child = BinaryStateful.create()
-                .addBinaryState('foo')
+                .addBinaryState('foo', true)
                 .addToParent(parent);
 
         parent.addMocks({
