@@ -26,7 +26,7 @@ giant.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
         })
         .addConstants(/** @lends giant.ResizeWatcher */{
             /** @constant */
-            EVENT_WINDOW_RESIZE_DEBOUNCED: 'window-resize-debounced',
+            EVENT_WINDOW_RESIZE_DEBOUNCED: 'giant.ResizeWatcher.windowResizeDebounced',
 
             /**
              * Delay in ms to wait between the last window resize event and
@@ -80,7 +80,7 @@ giant.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
                 this.currentHeight = currentHeight;
 
                 if (wasWindowResized && rootWidget) {
-                    rootWidget.broadcastSync(this.EVENT_WINDOW_RESIZE_DEBOUNCED);
+                    rootWidget.broadcastSync(self.EVENT_WINDOW_RESIZE_DEBOUNCED);
                 }
 
                 return this;
@@ -91,7 +91,7 @@ giant.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onWindowResize: function (event) {
-                this.windowResizeDebouncer.runDebounced(this.RESIZE_DEBOUNCE_DELAY, event);
+                this.windowResizeDebouncer.runDebounced(self.RESIZE_DEBOUNCE_DELAY, event);
             },
 
             /**

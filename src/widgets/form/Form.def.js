@@ -26,16 +26,16 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
     giant.Form = self
         .addConstants(/** @lends giant.Form */{
             /** @constant */
-            EVENT_FORM_VALID: 'form-valid',
+            EVENT_FORM_VALID: 'giant.Form.valid',
 
             /** @constant */
-            EVENT_FORM_INVALID: 'form-invalid',
+            EVENT_FORM_INVALID: 'giant.Form.invalid',
 
             /** @constant */
-            EVENT_FORM_SUBMIT: 'form-submit',
+            EVENT_FORM_SUBMIT: 'giant.Form.submit',
 
             /** @constant */
-            EVENT_FORM_RESET: 'form-reset'
+            EVENT_FORM_RESET: 'giant.Form.reset'
         })
         .addPublic(/** @lends giant.Form */{
             /**
@@ -73,16 +73,16 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
                 var isValid = this.isValid();
 
                 if (isValid && !wasValid) {
-                    this.triggerSync(this.EVENT_FORM_INVALID);
+                    this.triggerSync(self.EVENT_FORM_INVALID);
                 } else if (!isValid && wasValid) {
-                    this.triggerSync(this.EVENT_FORM_VALID);
+                    this.triggerSync(self.EVENT_FORM_VALID);
                 }
             },
 
             /** @private */
             _triggerSubmissionEvent: function () {
                 if (this.validFieldCount === this.fieldCount) {
-                    this.triggerSync(this.EVENT_FORM_SUBMIT);
+                    this.triggerSync(self.EVENT_FORM_SUBMIT);
                 }
             }
         })
@@ -213,7 +213,7 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
                     .callOnEachItem('clearInputValue', updateDom);
 
                 // broadcasting form reset event so fields can clean up if they want to
-                this.broadcastSync(this.EVENT_FORM_RESET);
+                this.broadcastSync(self.EVENT_FORM_RESET);
 
                 return this;
             },

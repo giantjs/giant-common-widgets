@@ -31,7 +31,7 @@ giant.postpone(giant, 'Highlightable', function () {
                 this.highlightIds
                     .passEachItemTo(this.removeCssClass, this);
 
-                var highlightIds = this.getBinaryState(this.STATE_NAME_HIGHLIGHTABLE)
+                var highlightIds = this.getBinaryState(self.STATE_NAME_HIGHLIGHTABLE)
                     .getSourceIds()
                     .toCollection();
 
@@ -45,7 +45,7 @@ giant.postpone(giant, 'Highlightable', function () {
             /** Call from host's init. */
             init: function () {
                 // highlightable state does not cascade
-                this.addBinaryState(this.STATE_NAME_HIGHLIGHTABLE);
+                this.addBinaryState(self.STATE_NAME_HIGHLIGHTABLE);
 
                 /**
                  * Lookup of highlight identifiers currently assigned to the instance.
@@ -61,7 +61,7 @@ giant.postpone(giant, 'Highlightable', function () {
              */
             addBinaryStateSource: function (stateName, sourceId) {
                 giant.BinaryStateful.addBinaryStateSource.call(this, stateName, sourceId);
-                if (stateName === this.STATE_NAME_HIGHLIGHTABLE) {
+                if (stateName === self.STATE_NAME_HIGHLIGHTABLE) {
                     this._updateHighlightedState();
                 }
                 return this;
@@ -73,7 +73,7 @@ giant.postpone(giant, 'Highlightable', function () {
              */
             addImposedStateSource: function (stateName) {
                 giant.BinaryStateful.addImposedStateSource.call(this, stateName);
-                if (stateName === this.STATE_NAME_HIGHLIGHTABLE) {
+                if (stateName === self.STATE_NAME_HIGHLIGHTABLE) {
                     this._updateHighlightedState();
                 }
                 return this;
@@ -86,7 +86,7 @@ giant.postpone(giant, 'Highlightable', function () {
              */
             removeBinaryStateSource: function (stateName, sourceId) {
                 giant.BinaryStateful.removeBinaryStateSource.call(this, stateName, sourceId);
-                if (stateName === this.STATE_NAME_HIGHLIGHTABLE) {
+                if (stateName === self.STATE_NAME_HIGHLIGHTABLE) {
                     this._updateHighlightedState();
                 }
                 return this;
@@ -98,7 +98,7 @@ giant.postpone(giant, 'Highlightable', function () {
              */
             removeImposedStateSource: function (stateName) {
                 giant.BinaryStateful.removeImposedStateSource.call(this, stateName);
-                if (stateName === this.STATE_NAME_HIGHLIGHTABLE) {
+                if (stateName === self.STATE_NAME_HIGHLIGHTABLE) {
                     this._updateHighlightedState();
                 }
                 return this;
@@ -126,7 +126,7 @@ giant.postpone(giant, 'Highlightable', function () {
             highlightOn: function (highlightId) {
                 giant.isStringOptional(highlightId, "Invalid highlight ID");
                 this.addBinaryStateSource(
-                    this.STATE_NAME_HIGHLIGHTABLE,
+                    self.STATE_NAME_HIGHLIGHTABLE,
                     highlightId || 'highlighted');
                 return this;
             },
@@ -139,7 +139,7 @@ giant.postpone(giant, 'Highlightable', function () {
             highlightOff: function (highlightId) {
                 giant.isStringOptional(highlightId, "Invalid highlight ID");
                 this.removeBinaryStateSource(
-                    this.STATE_NAME_HIGHLIGHTABLE,
+                    self.STATE_NAME_HIGHLIGHTABLE,
                     highlightId || 'highlighted');
                 return this;
             },
@@ -152,9 +152,9 @@ giant.postpone(giant, 'Highlightable', function () {
             isHighlighted: function (highlightId) {
                 giant.isStringOptional(highlightId, "Invalid highlight ID");
                 return highlightId ?
-                       this.getBinaryState(this.STATE_NAME_HIGHLIGHTABLE)
+                       this.getBinaryState(self.STATE_NAME_HIGHLIGHTABLE)
                            .hasSource(highlightId) :
-                       this.isStateOn(this.STATE_NAME_HIGHLIGHTABLE);
+                       this.isStateOn(self.STATE_NAME_HIGHLIGHTABLE);
             }
         });
 });

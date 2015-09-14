@@ -17,7 +17,7 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
     giant.HotKeyWatcher = self
         .addConstants(/** @lends giant.HotKeyWatcher */{
             /** @constant */
-            EVENT_HOT_KEY_DOWN: 'hot-key-down'
+            EVENT_HOT_KEY_DOWN: 'giant.HotKeyWatcher.hotKeyDown'
         })
         .addMethods(/** @lends giant.HotKeyWatcher# */{
             /**
@@ -32,7 +32,7 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
                                    rootWidget;
 
                 rootWidget
-                    .spawnEvent(this.EVENT_HOT_KEY_DOWN)
+                    .spawnEvent(self.EVENT_HOT_KEY_DOWN)
                     .setPayloadItems({
                         charCode    : event.which,
                         originWidget: originWidget

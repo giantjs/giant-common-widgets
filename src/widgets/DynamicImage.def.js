@@ -23,13 +23,13 @@ giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
     giant.DynamicImage = self
         .addConstants(/** @lends giant.DynamicImage */{
             /** @constant */
-            EVENT_IMAGE_LOAD_START: 'image-load-start',
+            EVENT_IMAGE_LOAD_START: 'giant.DynamicImage.load.start',
 
             /** @constant */
-            EVENT_IMAGE_LOAD_SUCCESS: 'image-load-success',
+            EVENT_IMAGE_LOAD_SUCCESS: 'giant.DynamicImage.load.success',
 
             /** @constant */
-            EVENT_IMAGE_LOAD_FAILURE: 'image-load-failure'
+            EVENT_IMAGE_LOAD_FAILURE: 'giant.DynamicImage.load.failure'
         })
         .addPrivateMethods(/** @lends giant.DynamicImage# */{
             /** @private */
@@ -127,7 +127,7 @@ giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onImageLoadStart: function () {
-                this.triggerSync(this.EVENT_IMAGE_LOAD_START);
+                this.triggerSync(self.EVENT_IMAGE_LOAD_START);
             },
 
             /**
@@ -135,14 +135,14 @@ giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
              */
             onImageLoadSuccess: function () {
                 this._setImageElement(event.imageElement);
-                this.triggerSync(this.EVENT_IMAGE_LOAD_SUCCESS);
+                this.triggerSync(self.EVENT_IMAGE_LOAD_SUCCESS);
             },
 
             /**
              * @ignore
              */
             onImageLoadFailure: function () {
-                this.triggerSync(this.EVENT_IMAGE_LOAD_FAILURE);
+                this.triggerSync(self.EVENT_IMAGE_LOAD_FAILURE);
             }
         });
 }, jQuery);

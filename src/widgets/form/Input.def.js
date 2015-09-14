@@ -22,34 +22,34 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
     giant.Input = self
         .addConstants(/** @lends giant.Input */{
             /** @constant */
-            EVENT_INPUT_GOT_VALUE: 'input-got-value',
+            EVENT_INPUT_GOT_VALUE: 'giant.Input.value.got',
 
             /** @constant */
-            EVENT_INPUT_LOST_VALUE: 'input-lost-value',
+            EVENT_INPUT_LOST_VALUE: 'giant.Input.value.lost',
 
             /** @constant */
-            EVENT_INPUT_FOCUS: 'input-focus',
+            EVENT_INPUT_FOCUS: 'giant.Input.focus',
 
             /** @constant */
-            EVENT_INPUT_BLUR: 'input-blur',
+            EVENT_INPUT_BLUR: 'giant.Input.blur',
 
             /** @constant */
-            EVENT_INPUT_TAB: 'input-tab',
+            EVENT_INPUT_TAB: 'giant.Input.tab',
 
             /** @constant */
-            EVENT_INPUT_VALUE_CHANGE: 'input-value-change',
+            EVENT_INPUT_VALUE_CHANGE: 'giant.Input.value.change',
 
             /** @constant */
-            EVENT_INPUT_VALID: 'input-valid',
+            EVENT_INPUT_VALID: 'giant.Input.valid',
 
             /** @constant */
-            EVENT_INPUT_INVALID: 'input-invalid',
+            EVENT_INPUT_INVALID: 'giant.Input.invalid',
 
             /** @constant */
-            EVENT_INPUT_ERROR_CHANGE: 'input-error-change',
+            EVENT_INPUT_ERROR_CHANGE: 'giant.Input.error.change',
 
             /** @constant */
-            EVENT_INPUT_SUBMIT: 'input-submit',
+            EVENT_INPUT_SUBMIT: 'giant.Input.submit',
 
             /**
              * @type {object}
@@ -121,7 +121,7 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
                 var newInputValue = this.inputValue;
 
                 if (oldInputValue !== newInputValue) {
-                    this.spawnEvent(this.EVENT_INPUT_VALUE_CHANGE)
+                    this.spawnEvent(self.EVENT_INPUT_VALUE_CHANGE)
                         .setPayloadItems({
                             oldInputValue: oldInputValue,
                             newInputValue: newInputValue
@@ -183,7 +183,7 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
             afterAdd: function () {
                 base.afterAdd.call(this);
                 this.validateInputValue();
-                this.subscribeTo(this.EVENT_INPUT_VALUE_CHANGE, this.onValueChange);
+                this.subscribeTo(self.EVENT_INPUT_VALUE_CHANGE, this.onValueChange);
             },
 
             /**
@@ -268,15 +268,15 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
                 // triggering validation event
                 if (wasValid && !isValid) {
                     // input just became invalid
-                    this.spawnEvent(this.EVENT_INPUT_INVALID)
+                    this.spawnEvent(self.EVENT_INPUT_INVALID)
                         .setPayloadItem('newValidationError', newValidationError)
                         .triggerSync();
                 } else if (!wasValid && isValid) {
                     // input just became valid
-                    this.triggerSync(this.EVENT_INPUT_VALID);
+                    this.triggerSync(self.EVENT_INPUT_VALID);
                 } else if (newValidationError !== oldValidationError) {
                     // triggering event about error change
-                    this.spawnEvent(this.EVENT_INPUT_ERROR_CHANGE)
+                    this.spawnEvent(self.EVENT_INPUT_ERROR_CHANGE)
                         .setPayloadItems({
                             oldValidationError: oldValidationError,
                             newValidationError: newValidationError
@@ -336,9 +336,9 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
                 this.validateInputValue();
 
                 if (newInputValue && !oldInputValue) {
-                    this.triggerSync(this.EVENT_INPUT_GOT_VALUE);
+                    this.triggerSync(self.EVENT_INPUT_GOT_VALUE);
                 } else if (!newInputValue && oldInputValue) {
-                    this.triggerSync(this.EVENT_INPUT_LOST_VALUE);
+                    this.triggerSync(self.EVENT_INPUT_LOST_VALUE);
                 }
             }
         });

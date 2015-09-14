@@ -22,13 +22,13 @@ giant.postpone(giant, 'Editable', function () {
              * Signals that the host has changed to edit mode.
              * @constant
              */
-            EVENT_EDIT_MODE: 'edit-mode',
+            EVENT_EDIT_MODE: 'giant.Editable.editMode',
 
             /**
              * Signals that the host has changed to display mode.
              * @constant
              */
-            EVENT_DISPLAY_MODE: 'display-mode'
+            EVENT_DISPLAY_MODE: 'giant.Editable.displayMode'
         })
         .addPrivateMethods(/** @lends giant.Editable# */{
             /** @private */
@@ -36,13 +36,13 @@ giant.postpone(giant, 'Editable', function () {
                 var eventName;
 
                 // applying appropriate CSS classes
-                if (this.isStateOn(this.STATE_NAME_EDITABLE)) {
-                    eventName = this.EVENT_EDIT_MODE;
+                if (this.isStateOn(self.STATE_NAME_EDITABLE)) {
+                    eventName = self.EVENT_EDIT_MODE;
 
                     this.removeCssClass('display-mode')
                         .addCssClass('edit-mode');
                 } else {
-                    eventName = this.EVENT_DISPLAY_MODE;
+                    eventName = self.EVENT_DISPLAY_MODE;
 
                     this.removeCssClass('edit-mode')
                         .addCssClass('display-mode');
@@ -64,7 +64,7 @@ giant.postpone(giant, 'Editable', function () {
             /** Call from host's .init */
             init: function () {
                 // expansion is not cascading (by default)
-                this.addBinaryState(this.STATE_NAME_EDITABLE);
+                this.addBinaryState(self.STATE_NAME_EDITABLE);
             },
 
             /** Call from host's .afterAdd */
@@ -78,7 +78,7 @@ giant.postpone(giant, 'Editable', function () {
              * @returns {string}
              */
             contentMarkup: function () {
-                return this.isStateOn(this.STATE_NAME_EDITABLE) ?
+                return this.isStateOn(self.STATE_NAME_EDITABLE) ?
                     this.editMarkup() :
                     this.displayMarkup();
             },
@@ -88,7 +88,7 @@ giant.postpone(giant, 'Editable', function () {
              * @param {string} stateName
              */
             afterStateOn: function (stateName) {
-                if (stateName === this.STATE_NAME_EDITABLE) {
+                if (stateName === self.STATE_NAME_EDITABLE) {
                     this._updateEditableState();
                 }
             },
@@ -98,7 +98,7 @@ giant.postpone(giant, 'Editable', function () {
              * @param {string} stateName
              */
             afterStateOff: function (stateName) {
-                if (stateName === this.STATE_NAME_EDITABLE) {
+                if (stateName === self.STATE_NAME_EDITABLE) {
                     this._updateEditableState();
                 }
             },
@@ -108,7 +108,7 @@ giant.postpone(giant, 'Editable', function () {
              * @returns {giant.Editable}
              */
             toEditMode: function () {
-                this.addBinaryStateSource(this.STATE_NAME_EDITABLE, 'default');
+                this.addBinaryStateSource(self.STATE_NAME_EDITABLE, 'default');
                 return this;
             },
 
@@ -117,7 +117,7 @@ giant.postpone(giant, 'Editable', function () {
              * @returns {giant.Editable}
              */
             toDisplayMode: function () {
-                this.removeBinaryStateSource(this.STATE_NAME_EDITABLE, 'default');
+                this.removeBinaryStateSource(self.STATE_NAME_EDITABLE, 'default');
                 return this;
             },
 
@@ -126,7 +126,7 @@ giant.postpone(giant, 'Editable', function () {
              * @returns {boolean}
              */
             isInEditMode: function () {
-                return this.isStateOn(this.STATE_NAME_EDITABLE);
+                return this.isStateOn(self.STATE_NAME_EDITABLE);
             },
 
             /**
@@ -134,7 +134,7 @@ giant.postpone(giant, 'Editable', function () {
              * @returns {boolean}
              */
             isInDisplayMode: function () {
-                return !this.isStateOn(this.STATE_NAME_EDITABLE);
+                return !this.isStateOn(self.STATE_NAME_EDITABLE);
             }
         });
 

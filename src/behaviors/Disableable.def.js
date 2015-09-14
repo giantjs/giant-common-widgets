@@ -37,19 +37,19 @@ giant.postpone(giant, 'Disableable', function () {
             /** Call from host's .init. */
             init: function () {
                 // disableable state is cascading
-                this.addBinaryState(this.STATE_NAME_DISABLEBABLE, true);
+                this.addBinaryState(self.STATE_NAME_DISABLEBABLE, true);
             },
 
             /** Call from host's .afterStateOn */
             afterStateOn: function (stateName) {
-                if (stateName === this.STATE_NAME_DISABLEBABLE) {
+                if (stateName === self.STATE_NAME_DISABLEBABLE) {
                     this._updateEnabledStyle();
                 }
             },
 
             /** Call from host's .afterStateOff */
             afterStateOff: function (stateName) {
-                if (stateName === this.STATE_NAME_DISABLEBABLE) {
+                if (stateName === self.STATE_NAME_DISABLEBABLE) {
                     this._updateEnabledStyle();
                 }
             },
@@ -60,7 +60,7 @@ giant.postpone(giant, 'Disableable', function () {
              * @returns {giant.Disableable}
              */
             disableBy: function (disablingSource) {
-                this.addBinaryStateSource(this.STATE_NAME_DISABLEBABLE, disablingSource);
+                this.addBinaryStateSource(self.STATE_NAME_DISABLEBABLE, disablingSource);
                 return this;
             },
 
@@ -70,7 +70,7 @@ giant.postpone(giant, 'Disableable', function () {
              * @returns {giant.Disableable}
              */
             enableBy: function (disablingSource) {
-                this.removeBinaryStateSource(this.STATE_NAME_DISABLEBABLE, disablingSource);
+                this.removeBinaryStateSource(self.STATE_NAME_DISABLEBABLE, disablingSource);
                 return this;
             },
 
@@ -79,7 +79,7 @@ giant.postpone(giant, 'Disableable', function () {
              * @returns {giant.Disableable}
              */
             forceEnable: function () {
-                this.removeBinaryStateSource(this.STATE_NAME_DISABLEBABLE);
+                this.removeBinaryStateSource(self.STATE_NAME_DISABLEBABLE);
                 return this;
             },
 
@@ -88,7 +88,7 @@ giant.postpone(giant, 'Disableable', function () {
              * @returns {boolean}
              */
             isDisabled: function () {
-                return this.isStateOn(this.STATE_NAME_DISABLEBABLE);
+                return this.isStateOn(self.STATE_NAME_DISABLEBABLE);
             }
         });
 });

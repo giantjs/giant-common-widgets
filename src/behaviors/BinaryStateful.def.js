@@ -63,7 +63,7 @@ giant.postpone(giant, 'BinaryStateful', function () {
                     .forEachItem(function (binaryState, stateName) {
                         binaryState.stateSources
                             // fetching imposed source IDs
-                            .filterByPrefix(that.SOURCE_ID_IMPOSED)
+                            .filterByPrefix(self.SOURCE_ID_IMPOSED)
                             .getKeysAsHash()
                             .toCollection()
 
@@ -149,7 +149,7 @@ giant.postpone(giant, 'BinaryStateful', function () {
                     sourceCountBefore = state.getSourceCount(),
                     sourceCountAfter;
 
-                state.addSource(this.SOURCE_ID_IMPOSED);
+                state.addSource(self.SOURCE_ID_IMPOSED);
                 sourceCountAfter = state.getSourceCount();
 
                 if (sourceCountAfter && !sourceCountBefore) {
@@ -222,7 +222,7 @@ giant.postpone(giant, 'BinaryStateful', function () {
                     sourceCountBefore = state.getSourceCount(),
                     sourceCountAfter;
 
-                state.removeSource(this.SOURCE_ID_IMPOSED);
+                state.removeSource(self.SOURCE_ID_IMPOSED);
                 sourceCountAfter = state.getSourceCount();
 
                 if (!sourceCountAfter && sourceCountBefore) {

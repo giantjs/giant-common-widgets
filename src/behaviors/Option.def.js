@@ -18,16 +18,16 @@ giant.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
     giant.Option = self
         .addConstants(/** @lends giant.Option */{
             /** @constant */
-            EVENT_OPTION_FOCUS: 'option-focus',
+            EVENT_OPTION_FOCUS: 'giant.Option.focus',
 
             /** @constant */
-            EVENT_OPTION_BLUR: 'option-blur',
+            EVENT_OPTION_BLUR: 'giant.Option.blur',
 
             /** @constant */
-            EVENT_OPTION_ACTIVE: 'option-active',
+            EVENT_OPTION_ACTIVE: 'giant.Option.active',
 
             /** @constant */
-            EVENT_OPTION_INACTIVE: 'option-inactive',
+            EVENT_OPTION_INACTIVE: 'giant.Option.inactive',
 
             /** @constant */
             HIGHLIGHTED_FOCUS: 'highlighted-focus',
@@ -80,8 +80,8 @@ giant.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
              */
             markAsFocused: function () {
                 if (!this.isFocused()) {
-                    this.highlightOn(this.HIGHLIGHTED_FOCUS)
-                        .spawnEvent(this.EVENT_OPTION_FOCUS)
+                    this.highlightOn(self.HIGHLIGHTED_FOCUS)
+                        .spawnEvent(self.EVENT_OPTION_FOCUS)
                         .setPayloadItems({
                             optionName : this.childName,
                             optionValue: this.optionValue
@@ -97,8 +97,8 @@ giant.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
              */
             markAsBlurred: function () {
                 if (this.isFocused()) {
-                    this.highlightOff(this.HIGHLIGHTED_FOCUS)
-                        .spawnEvent(this.EVENT_OPTION_BLUR)
+                    this.highlightOff(self.HIGHLIGHTED_FOCUS)
+                        .spawnEvent(self.EVENT_OPTION_BLUR)
                         .setPayloadItems({
                             optionName : this.childName,
                             optionValue: this.optionValue
@@ -113,7 +113,7 @@ giant.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
              * @returns {boolean}
              */
             isFocused: function () {
-                return this.isHighlighted(this.HIGHLIGHTED_FOCUS);
+                return this.isHighlighted(self.HIGHLIGHTED_FOCUS);
             },
 
             /**
@@ -122,8 +122,8 @@ giant.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
              */
             markAsActive: function () {
                 if (!this.isActive()) {
-                    this.highlightOn(this.HIGHLIGHTED_ACTIVE)
-                        .spawnEvent(this.EVENT_OPTION_ACTIVE)
+                    this.highlightOn(self.HIGHLIGHTED_ACTIVE)
+                        .spawnEvent(self.EVENT_OPTION_ACTIVE)
                         .setPayloadItems({
                             optionName : this.childName,
                             optionValue: this.optionValue
@@ -139,8 +139,8 @@ giant.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
              */
             markAsInactive: function () {
                 if (this.isActive()) {
-                    this.highlightOff(this.HIGHLIGHTED_ACTIVE)
-                        .spawnEvent(this.EVENT_OPTION_INACTIVE)
+                    this.highlightOff(self.HIGHLIGHTED_ACTIVE)
+                        .spawnEvent(self.EVENT_OPTION_INACTIVE)
                         .setPayloadItems({
                             optionName : this.childName,
                             optionValue: this.optionValue
@@ -155,7 +155,7 @@ giant.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
              * @returns {boolean}
              */
             isActive: function () {
-                return this.isHighlighted(this.HIGHLIGHTED_ACTIVE);
+                return this.isHighlighted(self.HIGHLIGHTED_ACTIVE);
             },
 
             /**

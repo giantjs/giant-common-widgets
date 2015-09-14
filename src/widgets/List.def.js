@@ -22,7 +22,7 @@ giant.postpone(giant, 'List', function (ns, className) {
     giant.List = self
         .addConstants(/** @lends giant.List */{
             /** @constant */
-            EVENT_LIST_ITEMS_CHANGE: 'list-items-change'
+            EVENT_LIST_ITEMS_CHANGE: 'giant.List.itemsChange'
         })
         .addMethods(/** @lends giant.List# */{
             /** @ignore */

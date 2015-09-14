@@ -20,13 +20,13 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
     giant.Popup = self
         .addConstants(/** @lends giant.Popup */{
             /** @constant */
-            EVENT_POPUP_OUTSIDE_CLICK: 'popup-outside-click',
+            EVENT_POPUP_OUTSIDE_CLICK: 'giant.Popup.outsideClick',
 
             /** @constant */
-            EVENT_POPUP_OPEN: 'popup-open',
+            EVENT_POPUP_OPEN: 'giant.Popup.open',
 
             /** @constant */
-            EVENT_POPUP_CLOSE: 'popup-close'
+            EVENT_POPUP_CLOSE: 'giant.Popup.close'
         })
         .addPrivateMethods(/** @lends giant.Popup# */{
             /**
@@ -137,14 +137,14 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
              * Call from host class' afterAdd.
              */
             afterAdd: function () {
-                this.subscribeTo(this.EVENT_POPUP_OUTSIDE_CLICK, this.onOutsideClick);
+                this.subscribeTo(self.EVENT_POPUP_OUTSIDE_CLICK, this.onOutsideClick);
             },
 
             /**
              * Call from host class' afterRemove.
              */
             afterRemove: function () {
-                this.unsubscribeFrom(this.EVENT_POPUP_OUTSIDE_CLICK);
+                this.unsubscribeFrom(self.EVENT_POPUP_OUTSIDE_CLICK);
 
                 // removing DOM in case popup was removed via its parent with
                 // which does not contain the DOM of the popup
@@ -179,7 +179,7 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
 
                     this.isOpen = true;
 
-                    this.triggerSync(this.EVENT_POPUP_OPEN);
+                    this.triggerSync(self.EVENT_POPUP_OPEN);
                 }
 
                 return this;
@@ -201,7 +201,7 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
 
                     // must trigger before removing widget from hierarchy
                     // otherwise event won't bubble
-                    this.triggerSync(this.EVENT_POPUP_CLOSE);
+                    this.triggerSync(self.EVENT_POPUP_CLOSE);
 
                     this.removeFromParent();
                 }
@@ -252,7 +252,7 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
              */
             onBodyClick: function (event) {
                 if (this._isOutside($(event.target))) {
-                    this.triggerSync(this.EVENT_POPUP_OUTSIDE_CLICK);
+                    this.triggerSync(self.EVENT_POPUP_OUTSIDE_CLICK);
                 }
             }
         });

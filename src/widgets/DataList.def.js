@@ -121,8 +121,8 @@ giant.postpone(giant, 'DataList', function (ns, className) {
                 this._initChildLookup();
 
                 this
-                    .subscribeTo(this.EVENT_CHILD_ADD, this.onChildAdd)
-                    .subscribeTo(this.EVENT_CHILD_REMOVE, this.onChildRemove)
+                    .subscribeTo(self.EVENT_CHILD_ADD, this.onChildAdd)
+                    .subscribeTo(self.EVENT_CHILD_REMOVE, this.onChildRemove)
                     .bindToEntityContentChange(this.entityKey, 'onItemChange');
             },
 
@@ -202,7 +202,7 @@ giant.postpone(giant, 'DataList', function (ns, className) {
                 itemWidgetsToAdd
                     .passEachItemTo(this.addItemWidget, this);
 
-                this.spawnEvent(this.EVENT_LIST_ITEMS_CHANGE)
+                this.spawnEvent(self.EVENT_LIST_ITEMS_CHANGE)
                     .setPayloadItems({
                         itemsRemoved: itemWidgetsToRemove,
                         itemsAdded  : itemWidgetsToAdd

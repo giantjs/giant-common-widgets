@@ -17,15 +17,15 @@ giant.postpone(giant, 'Expandable', function () {
             STATE_NAME_EXPANDABLE: 'state-expandable',
 
             /** @constants */
-            EVENT_EXPAND: 'expand',
+            EVENT_EXPAND: 'giant.Expandable.expand',
 
             /** @constants */
-            EVENT_RETRACT: 'retract'
+            EVENT_RETRACT: 'giant.Expandable.retract'
         })
         .addPrivateMethods(/** @lends giant.Expandable# */{
             /** @private */
             _updateExpandedState: function () {
-                if (this.isStateOn(this.STATE_NAME_EXPANDABLE)) {
+                if (this.isStateOn(self.STATE_NAME_EXPANDABLE)) {
                     this
                         .removeCssClass('widget-retracted')
                         .addCssClass('widget-expanded');
@@ -40,40 +40,40 @@ giant.postpone(giant, 'Expandable', function () {
             /** Call from host's init. */
             init: function () {
                 // expansion is not cascading (by default)
-                this.addBinaryState(this.STATE_NAME_EXPANDABLE);
+                this.addBinaryState(self.STATE_NAME_EXPANDABLE);
             },
 
             /** @ignore */
             afterStateOn: function (stateName) {
-                if (stateName === this.STATE_NAME_EXPANDABLE) {
+                if (stateName === self.STATE_NAME_EXPANDABLE) {
                     this._updateExpandedState();
-                    this.triggerSync(this.EVENT_EXPAND);
+                    this.triggerSync(self.EVENT_EXPAND);
                 }
             },
 
             /** @ignore */
             afterStateOff: function (stateName) {
-                if (stateName === this.STATE_NAME_EXPANDABLE) {
+                if (stateName === self.STATE_NAME_EXPANDABLE) {
                     this._updateExpandedState();
-                    this.triggerSync(this.EVENT_RETRACT);
+                    this.triggerSync(self.EVENT_RETRACT);
                 }
             },
 
             /** @returns {giant.Expandable} */
             expandWidget: function () {
-                this.addBinaryStateSource(this.STATE_NAME_EXPANDABLE, 'default');
+                this.addBinaryStateSource(self.STATE_NAME_EXPANDABLE, 'default');
                 return this;
             },
 
             /** @returns {giant.Expandable} */
             contractWidget: function () {
-                this.removeBinaryStateSource(this.STATE_NAME_EXPANDABLE, 'default');
+                this.removeBinaryStateSource(self.STATE_NAME_EXPANDABLE, 'default');
                 return this;
             },
 
             /** @returns {boolean} */
             isExpanded: function () {
-                return this.isStateOn(this.STATE_NAME_EXPANDABLE);
+                return this.isStateOn(self.STATE_NAME_EXPANDABLE);
             }
         });
 });

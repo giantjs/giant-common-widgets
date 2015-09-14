@@ -17,10 +17,10 @@ giant.postpone(giant, 'OptionList', function () {
     giant.OptionList = self
         .addConstants(/** @lends giant.OptionList */{
             /** @constant */
-            EVENT_OPTION_SELECT: 'option-select',
+            EVENT_OPTION_SELECT: 'giant.Option.select',
 
             /** @constant */
-            EVENT_OPTIONS_ESCAPE: 'options-escape'
+            EVENT_OPTIONS_ESCAPE: 'giant.Option.escape'
         })
         .addPrivateMethods(/** @lends giant.OptionList# */{
             /**
@@ -29,7 +29,7 @@ giant.postpone(giant, 'OptionList', function () {
              * @private
              */
             _triggerSelectEvent: function (optionName, optionValue) {
-                this.spawnEvent(this.EVENT_OPTION_SELECT)
+                this.spawnEvent(self.EVENT_OPTION_SELECT)
                     .setPayloadItems({
                         optionName : optionName,
                         optionValue: optionValue
@@ -251,7 +251,7 @@ giant.postpone(giant, 'OptionList', function () {
                     break;
 
                 case 27: // esc
-                    this.triggerSync(this.EVENT_OPTIONS_ESCAPE);
+                    this.triggerSync(self.EVENT_OPTIONS_ESCAPE);
                     break;
 
                 case 13: // enter

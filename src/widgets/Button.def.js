@@ -25,7 +25,7 @@ giant.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
     giant.Button = self
         .addConstants(/** @lends giant.Button */{
             /** @constants */
-            EVENT_BUTTON_CLICK: 'button-click'
+            EVENT_BUTTON_CLICK: 'giant.Button.click'
         })
         .addMethods(/** @lends giant.Button# */{
             /** @ignore */
@@ -62,7 +62,7 @@ giant.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
              */
             clickButton: function () {
                 if (!this.isDisabled()) {
-                    this.triggerSync(this.EVENT_BUTTON_CLICK);
+                    this.triggerSync(self.EVENT_BUTTON_CLICK);
                 }
                 return this;
             },

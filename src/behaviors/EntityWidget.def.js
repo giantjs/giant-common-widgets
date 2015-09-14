@@ -29,7 +29,7 @@ giant.postpone(giant, 'EntityWidget', function () {
              * @returns {giant.EntityWidget}
              */
             revealKey: function () {
-                this.addAttribute(this.ATTRIBUTE_NAME_ENTITY_KEY, this.entityKey.toString());
+                this.addAttribute(self.ATTRIBUTE_NAME_ENTITY_KEY, this.entityKey.toString());
                 return this;
             },
 
@@ -37,7 +37,7 @@ giant.postpone(giant, 'EntityWidget', function () {
              * @returns {giant.EntityWidget}
              */
             hideKey: function () {
-                this.removeAttribute(this.ATTRIBUTE_NAME_ENTITY_KEY);
+                this.removeAttribute(self.ATTRIBUTE_NAME_ENTITY_KEY);
                 return this;
             }
         });
