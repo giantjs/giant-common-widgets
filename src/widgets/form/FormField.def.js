@@ -79,10 +79,10 @@ giant.postpone(giant, 'FormField', function (ns, className) {
             afterAdd: function () {
                 base.afterAdd.call(this);
                 this
-                    .subscribeTo(giant.Input.EVENT_INPUT_BLUR, this.onInputBlur)
-                    .subscribeTo(giant.Input.EVENT_INPUT_TAB, this.onInputTab)
-                    .subscribeTo(giant.Input.EVENT_INPUT_VALID, this.onInputValid)
-                    .subscribeTo(giant.Form.EVENT_FORM_RESET, this.onFormReset);
+                    .subscribeTo(giant.EVENT_INPUT_BLUR, this.onInputBlur)
+                    .subscribeTo(giant.EVENT_INPUT_TAB, this.onInputTab)
+                    .subscribeTo(giant.EVENT_INPUT_VALID, this.onInputValid)
+                    .subscribeTo(giant.EVENT_FORM_RESET, this.onFormReset);
             },
 
             /**

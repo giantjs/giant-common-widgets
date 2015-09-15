@@ -16,19 +16,7 @@ giant.postpone(giant, 'Editable', function () {
     giant.Editable = self
         .addConstants(/** @lends giant.Editable */{
             /** @constant */
-            STATE_NAME_EDITABLE: 'state-editable',
-
-            /**
-             * Signals that the host has changed to edit mode.
-             * @constant
-             */
-            EVENT_EDIT_MODE: 'giant.Editable.editMode',
-
-            /**
-             * Signals that the host has changed to display mode.
-             * @constant
-             */
-            EVENT_DISPLAY_MODE: 'giant.Editable.displayMode'
+            STATE_NAME_EDITABLE: 'state-editable'
         })
         .addPrivateMethods(/** @lends giant.Editable# */{
             /** @private */
@@ -37,12 +25,12 @@ giant.postpone(giant, 'Editable', function () {
 
                 // applying appropriate CSS classes
                 if (this.isStateOn(self.STATE_NAME_EDITABLE)) {
-                    eventName = self.EVENT_EDIT_MODE;
+                    eventName = giant.EVENT_EDITABLE_EDIT_MODE;
 
                     this.removeCssClass('display-mode')
                         .addCssClass('edit-mode');
                 } else {
-                    eventName = self.EVENT_DISPLAY_MODE;
+                    eventName = giant.EVENT_EDITABLE_DISPLAY_MODE;
 
                     this.removeCssClass('edit-mode')
                         .addCssClass('display-mode');
@@ -150,3 +138,19 @@ giant.postpone(giant, 'Editable', function () {
      * @returns {string}
      */
 });
+
+(function () {
+    "use strict";
+
+    /**
+     * Signals that the host has changed to edit mode.
+     * @constant
+     */
+    giant.EVENT_EDITABLE_EDIT_MODE = 'giant.Editable.editMode';
+
+    /**
+     * Signals that the host has changed to display mode.
+     * @constant
+     */
+    giant.EVENT_EDITABLE_DISPLAY_MODE = 'giant.Editable.displayMode';
+}());

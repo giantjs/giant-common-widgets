@@ -134,12 +134,12 @@ giant.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
                 case 13:
                     if (this.canSubmit) {
                         // signaling that the input is attempting to submit the form
-                        this.triggerSync(self.EVENT_INPUT_SUBMIT);
+                        this.triggerSync(giant.EVENT_INPUT_SUBMIT);
                     }
                     break;
 
                 case 9:
-                    this.triggerSync(self.EVENT_INPUT_TAB);
+                    this.triggerSync(giant.EVENT_INPUT_TAB);
                     break;
                 }
             },
@@ -163,14 +163,14 @@ giant.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onFocusIn: function () {
-                this.triggerSync(self.EVENT_INPUT_FOCUS);
+                this.triggerSync(giant.EVENT_INPUT_FOCUS);
             },
 
             /**
              * @ignore
              */
             onFocusOut: function () {
-                this.triggerSync(self.EVENT_INPUT_BLUR);
+                this.triggerSync(giant.EVENT_INPUT_BLUR);
             }
         });
 

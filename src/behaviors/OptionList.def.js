@@ -15,13 +15,6 @@ giant.postpone(giant, 'OptionList', function () {
      * @extends giant.List
      */
     giant.OptionList = self
-        .addConstants(/** @lends giant.OptionList */{
-            /** @constant */
-            EVENT_OPTION_SELECT: 'giant.Option.select',
-
-            /** @constant */
-            EVENT_OPTIONS_ESCAPE: 'giant.Option.escape'
-        })
         .addPrivateMethods(/** @lends giant.OptionList# */{
             /**
              * @param {string} optionName
@@ -29,7 +22,7 @@ giant.postpone(giant, 'OptionList', function () {
              * @private
              */
             _triggerSelectEvent: function (optionName, optionValue) {
-                this.spawnEvent(self.EVENT_OPTION_SELECT)
+                this.spawnEvent(giant.EVENT_OPTION_SELECT)
                     .setPayloadItems({
                         optionName : optionName,
                         optionValue: optionValue
@@ -99,8 +92,8 @@ giant.postpone(giant, 'OptionList', function () {
              */
             _focusOnOption: function () {
                 var focusedOption = this.getFocusedOption() ||
-                                    this.getSelectedOption() ||
-                                    this.children.getFirstValue();
+                    this.getSelectedOption() ||
+                    this.children.getFirstValue();
 
                 if (focusedOption) {
                     // there is a suitable option to focus on
@@ -136,11 +129,11 @@ giant.postpone(giant, 'OptionList', function () {
             /** Call from host's afterAdd. */
             afterAdd: function () {
                 this
-                    .subscribeTo(giant.List.EVENT_LIST_ITEMS_CHANGE, this.onItemsChange)
-                    .subscribeTo(giant.HotKeyWatcher.EVENT_HOT_KEY_DOWN, this.onHotKeyPress)
-                    .subscribeTo(giant.Option.EVENT_OPTION_FOCUS, this.onOptionFocus)
-                    .subscribeTo(giant.Option.EVENT_OPTION_ACTIVE, this.onOptionActive)
-                    .subscribeTo(giant.OptionList.EVENT_OPTION_SELECT, this.onOptionSelect);
+                    .subscribeTo(giant.EVENT_LIST_ITEMS_CHANGE, this.onItemsChange)
+                    .subscribeTo(giant.EVENT_HOT_KEY_DOWN, this.onHotKeyPress)
+                    .subscribeTo(giant.EVENT_OPTION_FOCUS, this.onOptionFocus)
+                    .subscribeTo(giant.EVENT_OPTION_ACTIVE, this.onOptionActive)
+                    .subscribeTo(giant.EVENT_OPTION_SELECT, this.onOptionSelect);
 
                 this._focusOnOption();
                 this._updateFocusedOptionName();
@@ -251,7 +244,7 @@ giant.postpone(giant, 'OptionList', function () {
                     break;
 
                 case 27: // esc
-                    this.triggerSync(self.EVENT_OPTIONS_ESCAPE);
+                    this.triggerSync(giant.EVENT_OPTIONS_ESCAPE);
                     break;
 
                 case 13: // enter
@@ -289,3 +282,19 @@ giant.postpone(giant, 'OptionList', function () {
             }
         });
 });
+
+(function () {
+    "use strict";
+
+    /**
+     * Signals that an Option was selected.
+     * @constant
+     */
+    giant.EVENT_OPTION_SELECT = 'giant.Option.select';
+
+    /**
+     * Signals that ESC was pressed while an Option is in focus.
+     * @constant
+     */
+    giant.EVENT_OPTIONS_ESCAPE = 'giant.Option.escape';
+}());

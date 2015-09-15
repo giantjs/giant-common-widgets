@@ -51,7 +51,7 @@ giant.postpone(giant, 'AlignedPopup', function (ns, className, /**jQuery*/$) {
             /** Call from host class' afterAdd. */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                this.subscribeTo(giant.ResizeWatcher.EVENT_WINDOW_RESIZE_DEBOUNCED, this.onResize);
+                this.subscribeTo(giant.EVENT_WINDOW_RESIZE_DEBOUNCED, this.onResize);
             },
 
             /** Call from host class' afterRender. */

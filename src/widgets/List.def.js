@@ -20,10 +20,6 @@ giant.postpone(giant, 'List', function (ns, className) {
      * @extends giant.Widget
      */
     giant.List = self
-        .addConstants(/** @lends giant.List */{
-            /** @constant */
-            EVENT_LIST_ITEMS_CHANGE: 'giant.List.itemsChange'
-        })
         .addMethods(/** @lends giant.List# */{
             /** @ignore */
             init: function () {
@@ -46,3 +42,13 @@ giant.postpone(giant, 'List', function (ns, className) {
             }
         });
 });
+
+(function () {
+    "use strict";
+
+    /**
+     * Signals that the items in a List have changed.
+     * @constant
+     */
+    giant.EVENT_LIST_ITEMS_CHANGE = 'giant.List.itemsChange';
+}());

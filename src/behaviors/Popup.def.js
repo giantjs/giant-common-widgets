@@ -18,16 +18,6 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
      * @extends giant.Widget
      */
     giant.Popup = self
-        .addConstants(/** @lends giant.Popup */{
-            /** @constant */
-            EVENT_POPUP_OUTSIDE_CLICK: 'giant.Popup.outsideClick',
-
-            /** @constant */
-            EVENT_POPUP_OPEN: 'giant.Popup.open',
-
-            /** @constant */
-            EVENT_POPUP_CLOSE: 'giant.Popup.close'
-        })
         .addPrivateMethods(/** @lends giant.Popup# */{
             /**
              * @param {boolean} a
@@ -67,16 +57,16 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
             _isOutside: function ($element) {
                 var element;
                 if (this.outsideSelectors
-                    .mapValues(this._hasClosest.bind(this, $element))
-                    .getValues()
-                    .reduce(this._or, false)
-                    ) {
+                        .mapValues(this._hasClosest.bind(this, $element))
+                        .getValues()
+                        .reduce(this._or, false)
+                ) {
                     return true;
                 } else if (this.insideSelectors
-                    .mapValues(this._hasClosest.bind(this, $element))
-                    .getValues()
-                    .reduce(this._or, false)
-                    ) {
+                        .mapValues(this._hasClosest.bind(this, $element))
+                        .getValues()
+                        .reduce(this._or, false)
+                ) {
                     return false;
                 } else {
                     element = this.getElement();
@@ -137,14 +127,14 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
              * Call from host class' afterAdd.
              */
             afterAdd: function () {
-                this.subscribeTo(self.EVENT_POPUP_OUTSIDE_CLICK, this.onOutsideClick);
+                this.subscribeTo(giant.EVENT_POPUP_OUTSIDE_CLICK, this.onOutsideClick);
             },
 
             /**
              * Call from host class' afterRemove.
              */
             afterRemove: function () {
-                this.unsubscribeFrom(self.EVENT_POPUP_OUTSIDE_CLICK);
+                this.unsubscribeFrom(giant.EVENT_POPUP_OUTSIDE_CLICK);
 
                 // removing DOM in case popup was removed via its parent with
                 // which does not contain the DOM of the popup
@@ -179,7 +169,7 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
 
                     this.isOpen = true;
 
-                    this.triggerSync(self.EVENT_POPUP_OPEN);
+                    this.triggerSync(giant.EVENT_POPUP_OPEN);
                 }
 
                 return this;
@@ -201,7 +191,7 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
 
                     // must trigger before removing widget from hierarchy
                     // otherwise event won't bubble
-                    this.triggerSync(self.EVENT_POPUP_CLOSE);
+                    this.triggerSync(giant.EVENT_POPUP_CLOSE);
 
                     this.removeFromParent();
                 }
@@ -252,8 +242,30 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
              */
             onBodyClick: function (event) {
                 if (this._isOutside($(event.target))) {
-                    this.triggerSync(self.EVENT_POPUP_OUTSIDE_CLICK);
+                    this.triggerSync(giant.EVENT_POPUP_OUTSIDE_CLICK);
                 }
             }
         });
 }, jQuery);
+
+(function () {
+    "use strict";
+
+    /**
+     * Signals that the user clicked outside an open Popup.
+     * @constant
+     */
+    giant.EVENT_POPUP_OUTSIDE_CLICK = 'giant.Popup.outsideClick';
+
+    /**
+     * Signals that a Popup was opened.
+     * @constant
+     */
+    giant.EVENT_POPUP_OPEN = 'giant.Popup.open';
+
+    /**
+     * Signals tha a Popup was closed.
+     * @constant
+     */
+    giant.EVENT_POPUP_CLOSE = 'giant.Popup.close';
+}());

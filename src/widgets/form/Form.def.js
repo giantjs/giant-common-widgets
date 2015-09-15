@@ -24,19 +24,6 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
      * @extends giant.Disableable
      */
     giant.Form = self
-        .addConstants(/** @lends giant.Form */{
-            /** @constant */
-            EVENT_FORM_VALID: 'giant.Form.valid',
-
-            /** @constant */
-            EVENT_FORM_INVALID: 'giant.Form.invalid',
-
-            /** @constant */
-            EVENT_FORM_SUBMIT: 'giant.Form.submit',
-
-            /** @constant */
-            EVENT_FORM_RESET: 'giant.Form.reset'
-        })
         .addPublic(/** @lends giant.Form */{
             /**
              * @type {giant.MarkupTemplate}
@@ -73,16 +60,16 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
                 var isValid = this.isValid();
 
                 if (isValid && !wasValid) {
-                    this.triggerSync(self.EVENT_FORM_INVALID);
+                    this.triggerSync(giant.EVENT_FORM_INVALID);
                 } else if (!isValid && wasValid) {
-                    this.triggerSync(self.EVENT_FORM_VALID);
+                    this.triggerSync(giant.EVENT_FORM_VALID);
                 }
             },
 
             /** @private */
             _triggerSubmissionEvent: function () {
                 if (this.validFieldCount === this.fieldCount) {
-                    this.triggerSync(self.EVENT_FORM_SUBMIT);
+                    this.triggerSync(giant.EVENT_FORM_SUBMIT);
                 }
             }
         })
@@ -121,9 +108,9 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
                 this._updateCounters();
 
                 this
-                    .subscribeTo(giant.Input.EVENT_INPUT_SUBMIT, this.onInputSubmit)
-                    .subscribeTo(giant.Input.EVENT_INPUT_VALID, this.onInputValid)
-                    .subscribeTo(giant.Input.EVENT_INPUT_INVALID, this.onInputInvalid);
+                    .subscribeTo(giant.EVENT_INPUT_SUBMIT, this.onInputSubmit)
+                    .subscribeTo(giant.EVENT_INPUT_VALID, this.onInputValid)
+                    .subscribeTo(giant.EVENT_INPUT_INVALID, this.onInputInvalid);
             },
 
             /** @ignore */
@@ -213,7 +200,7 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
                     .callOnEachItem('clearInputValue', updateDom);
 
                 // broadcasting form reset event so fields can clean up if they want to
-                this.broadcastSync(self.EVENT_FORM_RESET);
+                this.broadcastSync(giant.EVENT_FORM_RESET);
 
                 return this;
             },
@@ -280,6 +267,34 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
             }
         });
 }, jQuery);
+
+(function () {
+    "use strict";
+
+    /**
+     * Signals that a Form became valid.
+     * @constant
+     */
+    giant.EVENT_FORM_VALID = 'giant.Form.valid';
+
+    /**
+     * Signals tha a Form became invalid.
+     * @constant
+     */
+    giant.EVENT_FORM_INVALID = 'giant.Form.invalid';
+
+    /**
+     * Signals initiation of a Form submission.
+     * @constant
+     */
+    giant.EVENT_FORM_SUBMIT = 'giant.Form.submit';
+
+    /**
+     * Signals that a Form was reset.
+     * @constant
+     */
+    giant.EVENT_FORM_RESET = 'giant.Form.reset';
+}());
 
 (function () {
     "use strict";

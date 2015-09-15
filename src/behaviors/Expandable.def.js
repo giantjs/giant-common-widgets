@@ -14,13 +14,7 @@ giant.postpone(giant, 'Expandable', function () {
     giant.Expandable = self
         .addConstants(/** @lends giant.Expandable */{
             /** @constant */
-            STATE_NAME_EXPANDABLE: 'state-expandable',
-
-            /** @constants */
-            EVENT_EXPAND: 'giant.Expandable.expand',
-
-            /** @constants */
-            EVENT_RETRACT: 'giant.Expandable.retract'
+            STATE_NAME_EXPANDABLE: 'state-expandable'
         })
         .addPrivateMethods(/** @lends giant.Expandable# */{
             /** @private */
@@ -47,7 +41,7 @@ giant.postpone(giant, 'Expandable', function () {
             afterStateOn: function (stateName) {
                 if (stateName === self.STATE_NAME_EXPANDABLE) {
                     this._updateExpandedState();
-                    this.triggerSync(self.EVENT_EXPAND);
+                    this.triggerSync(giant.EVENT_EXPANDABLE_EXPAND);
                 }
             },
 
@@ -55,7 +49,7 @@ giant.postpone(giant, 'Expandable', function () {
             afterStateOff: function (stateName) {
                 if (stateName === self.STATE_NAME_EXPANDABLE) {
                     this._updateExpandedState();
-                    this.triggerSync(self.EVENT_RETRACT);
+                    this.triggerSync(giant.EVENT_EXPANDABLE_RETRACT);
                 }
             },
 
@@ -77,3 +71,19 @@ giant.postpone(giant, 'Expandable', function () {
             }
         });
 });
+
+(function () {
+    "use strict";
+
+    /**
+     * Signals that an Expandable has expanded.
+     * @constants
+     */
+    giant.EVENT_EXPANDABLE_EXPAND = 'giant.Expandable.expand';
+
+    /**
+     * Signals that an Expandable has retracted.
+     * @constants
+     */
+    giant.EVENT_EXPANDABLE_RETRACT = 'giant.Expandable.retract';
+}());

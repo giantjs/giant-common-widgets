@@ -15,7 +15,7 @@ giant.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
 
     /**
      * Singleton that watches window resize events and broadcasts debounced (100ms) widget events in response.
-     * Listen to giant.ResizeWatcher.EVENT_WINDOW_RESIZE_DEBOUNCED in any widget to get
+     * Listen to giant.EVENT_WINDOW_RESIZE_DEBOUNCED in any widget to get
      * notified of changes to window size.
      * @class
      * @extends giant.Base
@@ -25,9 +25,6 @@ giant.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
             return 'singleton';
         })
         .addConstants(/** @lends giant.ResizeWatcher */{
-            /** @constant */
-            EVENT_WINDOW_RESIZE_DEBOUNCED: 'giant.ResizeWatcher.windowResizeDebounced',
-
             /**
              * Delay in ms to wait between the last window resize event and
              * triggering the widget resize event.
@@ -80,7 +77,7 @@ giant.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
                 this.currentHeight = currentHeight;
 
                 if (wasWindowResized && rootWidget) {
-                    rootWidget.broadcastSync(self.EVENT_WINDOW_RESIZE_DEBOUNCED);
+                    rootWidget.broadcastSync(giant.EVENT_WINDOW_RESIZE_DEBOUNCED);
                 }
 
                 return this;
@@ -105,6 +102,16 @@ giant.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
             }
         });
 }, jQuery);
+
+(function () {
+    "use strict";
+
+    /**
+     * Signals that the window was resized withing the last 100ms.
+     * @constant
+     */
+    giant.EVENT_WINDOW_RESIZE_DEBOUNCED = 'giant.ResizeWatcher.windowResizeDebounced';
+}());
 
 (function (/**jQuery*/$) {
     "use strict";

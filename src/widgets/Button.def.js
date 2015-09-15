@@ -23,10 +23,6 @@ giant.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
      * @extends giant.Disableable
      */
     giant.Button = self
-        .addConstants(/** @lends giant.Button */{
-            /** @constants */
-            EVENT_BUTTON_CLICK: 'giant.Button.click'
-        })
         .addMethods(/** @lends giant.Button# */{
             /** @ignore */
             init: function () {
@@ -62,7 +58,7 @@ giant.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
              */
             clickButton: function () {
                 if (!this.isDisabled()) {
-                    this.triggerSync(self.EVENT_BUTTON_CLICK);
+                    this.triggerSync(giant.EVENT_BUTTON_CLICK);
                 }
                 return this;
             },
@@ -75,3 +71,13 @@ giant.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
             }
         });
 }, jQuery);
+
+(function () {
+    "use strict";
+
+    /**
+     * Signals that a Button was clicked.
+     * @constants
+     */
+    giant.EVENT_BUTTON_CLICK = 'giant.Button.click';
+}());

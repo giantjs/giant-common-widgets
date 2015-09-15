@@ -61,8 +61,8 @@ giant.postpone(giant, 'DropdownButton', function (ns, className) {
                 this._updateOpenStyle();
 
                 this
-                    .subscribeTo(giant.Popup.EVENT_POPUP_OPEN, this.onDropdownOpen)
-                    .subscribeTo(giant.Popup.EVENT_POPUP_CLOSE, this.onDropdownClose);
+                    .subscribeTo(giant.EVENT_POPUP_OPEN, this.onDropdownOpen)
+                    .subscribeTo(giant.EVENT_POPUP_CLOSE, this.onDropdownClose);
             },
 
             /**

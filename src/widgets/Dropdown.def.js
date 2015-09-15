@@ -47,9 +47,9 @@ giant.postpone(giant, 'Dropdown', function (ns, className, /**jQuery*/$) {
                 giant.AlignedPopup.afterAdd.call(this);
 
                 this
-                    .subscribeTo(giant.Option.EVENT_OPTION_FOCUS, this.onOptionFocus)
-                    .subscribeTo(giant.OptionList.EVENT_OPTION_SELECT, this.onOptionSelect)
-                    .subscribeTo(giant.OptionList.EVENT_OPTIONS_ESCAPE, this.onOptionsEscape);
+                    .subscribeTo(giant.EVENT_OPTION_FOCUS, this.onOptionFocus)
+                    .subscribeTo(giant.EVENT_OPTION_SELECT, this.onOptionSelect)
+                    .subscribeTo(giant.EVENT_OPTIONS_ESCAPE, this.onOptionsEscape);
             },
 
             /** @ignore */

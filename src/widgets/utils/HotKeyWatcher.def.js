@@ -7,7 +7,7 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
 
     /**
      * Static class that watches key events globally and broadcasts widget events in response.
-     * Listen to giant.HotKeyWatcher.EVENT_HOT_KEY_DOWN in any widget to get notified of
+     * Listen to giant.EVENT_HOT_KEY_DOWN in any widget to get notified of
      * global key events. (Eg. for navigating within a custom control.)
      * In case you want to suppress hotkey events originating from eg. Input widgets,
      * query the original events and look at the target that received the keydown.
@@ -15,10 +15,6 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
      * @extends giant.Base
      */
     giant.HotKeyWatcher = self
-        .addConstants(/** @lends giant.HotKeyWatcher */{
-            /** @constant */
-            EVENT_HOT_KEY_DOWN: 'giant.HotKeyWatcher.hotKeyDown'
-        })
         .addMethods(/** @lends giant.HotKeyWatcher# */{
             /**
              * @param {jQuery.Event} event
@@ -28,11 +24,11 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
                 var rootWidget = giant.Widget.rootWidget,
                     keyboardEvent = event.originalEvent,
                     originWidget = keyboardEvent instanceof Event &&
-                                   keyboardEvent.toWidget() ||
-                                   rootWidget;
+                        keyboardEvent.toWidget() ||
+                        rootWidget;
 
                 rootWidget
-                    .spawnEvent(self.EVENT_HOT_KEY_DOWN)
+                    .spawnEvent(giant.EVENT_HOT_KEY_DOWN)
                     .setPayloadItems({
                         charCode    : event.which,
                         originWidget: originWidget
@@ -41,6 +37,16 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
             }
         });
 });
+
+(function () {
+    "use strict";
+
+    /**
+     * Signals that a hot key was pressed.
+     * @constant
+     */
+    giant.EVENT_HOT_KEY_DOWN = 'giant.HotKeyWatcher.hotKeyDown';
+}());
 
 (function (/**jQuery*/$) {
     "use strict";

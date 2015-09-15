@@ -21,36 +21,6 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
      */
     giant.Input = self
         .addConstants(/** @lends giant.Input */{
-            /** @constant */
-            EVENT_INPUT_GOT_VALUE: 'giant.Input.value.got',
-
-            /** @constant */
-            EVENT_INPUT_LOST_VALUE: 'giant.Input.value.lost',
-
-            /** @constant */
-            EVENT_INPUT_FOCUS: 'giant.Input.focus',
-
-            /** @constant */
-            EVENT_INPUT_BLUR: 'giant.Input.blur',
-
-            /** @constant */
-            EVENT_INPUT_TAB: 'giant.Input.tab',
-
-            /** @constant */
-            EVENT_INPUT_VALUE_CHANGE: 'giant.Input.value.change',
-
-            /** @constant */
-            EVENT_INPUT_VALID: 'giant.Input.valid',
-
-            /** @constant */
-            EVENT_INPUT_INVALID: 'giant.Input.invalid',
-
-            /** @constant */
-            EVENT_INPUT_ERROR_CHANGE: 'giant.Input.error.change',
-
-            /** @constant */
-            EVENT_INPUT_SUBMIT: 'giant.Input.submit',
-
             /**
              * @type {object}
              * @constant
@@ -67,16 +37,16 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
              */
             inputTypes: {
                 // basic input types
-                'button'        : 'button',
-                'checkbox'      : 'checkbox',
-                'file'          : 'file',
-                'hidden'        : 'hidden',
-                'image'         : 'image',
-                'password'      : 'password',
-                'radio'         : 'radio',
-                'reset'         : 'reset',
-                'submit'        : 'submit',
-                'text'          : 'text',
+                'button'  : 'button',
+                'checkbox': 'checkbox',
+                'file'    : 'file',
+                'hidden'  : 'hidden',
+                'image'   : 'image',
+                'password': 'password',
+                'radio'   : 'radio',
+                'reset'   : 'reset',
+                'submit'  : 'submit',
+                'text'    : 'text',
 
                 // HTML 5 types
                 'color'         : 'color',
@@ -121,7 +91,7 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
                 var newInputValue = this.inputValue;
 
                 if (oldInputValue !== newInputValue) {
-                    this.spawnEvent(self.EVENT_INPUT_VALUE_CHANGE)
+                    this.spawnEvent(giant.EVENT_INPUT_VALUE_CHANGE)
                         .setPayloadItems({
                             oldInputValue: oldInputValue,
                             newInputValue: newInputValue
@@ -183,7 +153,7 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
             afterAdd: function () {
                 base.afterAdd.call(this);
                 this.validateInputValue();
-                this.subscribeTo(self.EVENT_INPUT_VALUE_CHANGE, this.onValueChange);
+                this.subscribeTo(giant.EVENT_INPUT_VALUE_CHANGE, this.onValueChange);
             },
 
             /**
@@ -268,15 +238,15 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
                 // triggering validation event
                 if (wasValid && !isValid) {
                     // input just became invalid
-                    this.spawnEvent(self.EVENT_INPUT_INVALID)
+                    this.spawnEvent(giant.EVENT_INPUT_INVALID)
                         .setPayloadItem('newValidationError', newValidationError)
                         .triggerSync();
                 } else if (!wasValid && isValid) {
                     // input just became valid
-                    this.triggerSync(self.EVENT_INPUT_VALID);
+                    this.triggerSync(giant.EVENT_INPUT_VALID);
                 } else if (newValidationError !== oldValidationError) {
                     // triggering event about error change
-                    this.spawnEvent(self.EVENT_INPUT_ERROR_CHANGE)
+                    this.spawnEvent(giant.EVENT_INPUT_ERROR_CHANGE)
                         .setPayloadItems({
                             oldValidationError: oldValidationError,
                             newValidationError: newValidationError
@@ -336,9 +306,9 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
                 this.validateInputValue();
 
                 if (newInputValue && !oldInputValue) {
-                    this.triggerSync(self.EVENT_INPUT_GOT_VALUE);
+                    this.triggerSync(giant.EVENT_INPUT_GOT_VALUE);
                 } else if (!newInputValue && oldInputValue) {
-                    this.triggerSync(self.EVENT_INPUT_LOST_VALUE);
+                    this.triggerSync(giant.EVENT_INPUT_LOST_VALUE);
                 }
             }
         });
@@ -347,18 +317,82 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
+    /**
+     * Signals that an Input went from not having a value to having one.
+     * @constant
+     */
+    giant.EVENT_INPUT_GOT_VALUE = 'giant.Input.value.got';
+
+    /**
+     * Signals that an Input went from having a value to not having one.
+     * @constant
+     */
+    giant.EVENT_INPUT_LOST_VALUE = 'giant.Input.value.lost';
+
+    /**
+     * Signals that an Input came into focus.
+     * @constant
+     */
+    giant.EVENT_INPUT_FOCUS = 'giant.Input.focus';
+
+    /**
+     * Signals that an Input lost focus.
+     * @constant
+     */
+    giant.EVENT_INPUT_BLUR = 'giant.Input.blur';
+
+    /**
+     * Signals that the user pressed TAB while an Input was in focus.
+     * @constant
+     */
+    giant.EVENT_INPUT_TAB = 'giant.Input.tab';
+
+    /**
+     * Signals that the value of an Input changed.
+     * @constant
+     */
+    giant.EVENT_INPUT_VALUE_CHANGE = 'giant.Input.value.change';
+
+    /**
+     * Signals that an Input went from invalid to valid.
+     * @constant
+     */
+    giant.EVENT_INPUT_VALID = 'giant.Input.valid';
+
+    /**
+     * Signals that an Input went from valid to invalid.
+     * @constant
+     */
+    giant.EVENT_INPUT_INVALID = 'giant.Input.invalid';
+
+    /**
+     * Signals that the error associated with an Input changed.
+     * @constant
+     */
+    giant.EVENT_INPUT_ERROR_CHANGE = 'giant.Input.error.change';
+
+    /**
+     * Signals a form submission initiated on an Input.
+     * @constant
+     */
+    giant.EVENT_INPUT_SUBMIT = 'giant.Input.submit';
+}());
+
+(function () {
+    "use strict";
+
     giant.addTypes(/** @lends giant */{
         /** @param {string} expr */
         isInputType: function (expr) {
             return expr &&
-                   (giant.Input.inputTagNames[expr] === expr ||
-                    giant.Input.inputTypes[expr] === expr);
+                (giant.Input.inputTagNames[expr] === expr ||
+                giant.Input.inputTypes[expr] === expr);
         },
 
         /** @param {string} expr */
         isInputTypeOptional: function (expr) {
             return giant.Input.inputTagNames[expr] === expr ||
-                   giant.Input.inputTypes[expr] === expr;
+                giant.Input.inputTypes[expr] === expr;
         }
     });
 }());

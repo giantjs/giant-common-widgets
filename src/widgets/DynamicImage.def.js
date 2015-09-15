@@ -21,16 +21,6 @@ giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
      * @extends giant.Image
      */
     giant.DynamicImage = self
-        .addConstants(/** @lends giant.DynamicImage */{
-            /** @constant */
-            EVENT_IMAGE_LOAD_START: 'giant.DynamicImage.load.start',
-
-            /** @constant */
-            EVENT_IMAGE_LOAD_SUCCESS: 'giant.DynamicImage.load.success',
-
-            /** @constant */
-            EVENT_IMAGE_LOAD_FAILURE: 'giant.DynamicImage.load.failure'
-        })
         .addPrivateMethods(/** @lends giant.DynamicImage# */{
             /** @private */
             _updateImageElement: function () {
@@ -98,21 +88,20 @@ giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
             setImageUrl: function (imageUrl) {
                 giant.isLocation(imageUrl, "Invalid image URL");
 
-                var Image = giant.Image,
-                    oldImageUrl = this.imageUrl;
+                var oldImageUrl = this.imageUrl;
 
                 if (!imageUrl.equals(oldImageUrl)) {
                     if (oldImageUrl) {
                         oldImageUrl
-                            .unsubscribeFrom(Image.EVENT_IMAGE_LOAD_START, this.onImageLoadStart)
-                            .unsubscribeFrom(Image.EVENT_IMAGE_LOAD_SUCCESS, this.onImageLoadSuccess)
-                            .unsubscribeFrom(Image.EVENT_IMAGE_LOAD_FAILURE, this.onImageLoadFailure);
+                            .unsubscribeFrom(giant.EVENT_IMAGE_LOAD_START, this.onImageLoadStart)
+                            .unsubscribeFrom(giant.EVENT_IMAGE_LOAD_SUCCESS, this.onImageLoadSuccess)
+                            .unsubscribeFrom(giant.EVENT_IMAGE_LOAD_FAILURE, this.onImageLoadFailure);
                     }
 
                     imageUrl
-                        .subscribeTo(Image.EVENT_IMAGE_LOAD_START, this.onImageLoadStart)
-                        .subscribeTo(Image.EVENT_IMAGE_LOAD_SUCCESS, this.onImageLoadSuccess)
-                        .subscribeTo(Image.EVENT_IMAGE_LOAD_FAILURE, this.onImageLoadFailure);
+                        .subscribeTo(giant.EVENT_IMAGE_LOAD_START, this.onImageLoadStart)
+                        .subscribeTo(giant.EVENT_IMAGE_LOAD_SUCCESS, this.onImageLoadSuccess)
+                        .subscribeTo(giant.EVENT_IMAGE_LOAD_FAILURE, this.onImageLoadFailure);
 
                     this.imageUrl = imageUrl;
 
@@ -127,7 +116,7 @@ giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onImageLoadStart: function () {
-                this.triggerSync(self.EVENT_IMAGE_LOAD_START);
+                this.triggerSync(giant.EVENT_IMAGE_LOAD_START);
             },
 
             /**
@@ -135,14 +124,36 @@ giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
              */
             onImageLoadSuccess: function () {
                 this._setImageElement(event.imageElement);
-                this.triggerSync(self.EVENT_IMAGE_LOAD_SUCCESS);
+                this.triggerSync(giant.EVENT_IMAGE_LOAD_SUCCESS);
             },
 
             /**
              * @ignore
              */
             onImageLoadFailure: function () {
-                this.triggerSync(self.EVENT_IMAGE_LOAD_FAILURE);
+                this.triggerSync(giant.EVENT_IMAGE_LOAD_FAILURE);
             }
         });
 }, jQuery);
+
+(function () {
+    "use strict";
+
+    /**
+     * Signals that an Image started to load.
+     * @constant
+     */
+    giant.EVENT_IMAGE_LOAD_START = 'giant.DynamicImage.load.start';
+
+    /**
+     * Signals that an Image finished loading.
+     * @constant
+     */
+    giant.EVENT_IMAGE_LOAD_SUCCESS = 'giant.DynamicImage.load.success';
+
+    /**
+     * Signals that an Image failed loading.
+     * @constant
+     */
+    giant.EVENT_IMAGE_LOAD_FAILURE = 'giant.DynamicImage.load.failure';
+}());

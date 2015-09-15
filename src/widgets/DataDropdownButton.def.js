@@ -69,8 +69,8 @@ giant.postpone(giant, 'DataDropdownButton', function (ns, className) {
 
                 this
                     .bindToEntityChange(this.entityKey, 'onSelectedChange')
-                    .subscribeTo(giant.DataList.EVENT_LIST_ITEMS_CHANGE, this.onListItemsChange)
-                    .subscribeTo(giant.OptionList.EVENT_OPTION_SELECT, this.onOptionSelect);
+                    .subscribeTo(giant.EVENT_LIST_ITEMS_CHANGE, this.onListItemsChange)
+                    .subscribeTo(giant.EVENT_OPTION_SELECT, this.onOptionSelect);
             },
 
             /** @ignore */
