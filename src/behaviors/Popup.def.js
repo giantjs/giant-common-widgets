@@ -251,21 +251,23 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    /**
-     * Signals that the user clicked outside an open Popup.
-     * @constant
-     */
-    giant.EVENT_POPUP_OUTSIDE_CLICK = 'giant.Popup.outsideClick';
+    giant.addGlobalConstants(/** @lends giant */{
+        /**
+         * Signals that the user clicked outside an open Popup.
+         * @constant
+         */
+        EVENT_POPUP_OUTSIDE_CLICK: 'giant.Popup.outsideClick',
 
-    /**
-     * Signals that a Popup was opened.
-     * @constant
-     */
-    giant.EVENT_POPUP_OPEN = 'giant.Popup.open';
+        /**
+         * Signals that a Popup was opened.
+         * @constant
+         */
+        EVENT_POPUP_OPEN: 'giant.Popup.open',
 
-    /**
-     * Signals tha a Popup was closed.
-     * @constant
-     */
-    giant.EVENT_POPUP_CLOSE = 'giant.Popup.close';
+        /**
+         * Signals tha a Popup was closed.
+         * @constant
+         */
+        EVENT_POPUP_CLOSE: 'giant.Popup.close'
+    });
 }());

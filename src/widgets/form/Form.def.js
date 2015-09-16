@@ -271,29 +271,31 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    /**
-     * Signals that a Form became valid.
-     * @constant
-     */
-    giant.EVENT_FORM_VALID = 'giant.Form.valid';
+    giant.addGlobalConstants(/** @lends giant */{
+        /**
+         * Signals that a Form became valid.
+         * @constant
+         */
+        EVENT_FORM_VALID: 'giant.Form.valid',
 
-    /**
-     * Signals tha a Form became invalid.
-     * @constant
-     */
-    giant.EVENT_FORM_INVALID = 'giant.Form.invalid';
+        /**
+         * Signals tha a Form became invalid.
+         * @constant
+         */
+        EVENT_FORM_INVALID: 'giant.Form.invalid',
 
-    /**
-     * Signals initiation of a Form submission.
-     * @constant
-     */
-    giant.EVENT_FORM_SUBMIT = 'giant.Form.submit';
+        /**
+         * Signals initiation of a Form submission.
+         * @constant
+         */
+        EVENT_FORM_SUBMIT: 'giant.Form.submit',
 
-    /**
-     * Signals that a Form was reset.
-     * @constant
-     */
-    giant.EVENT_FORM_RESET = 'giant.Form.reset';
+        /**
+         * Signals that a Form was reset.
+         * @constant
+         */
+        EVENT_FORM_RESET: 'giant.Form.reset'
+    });
 }());
 
 (function () {

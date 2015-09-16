@@ -106,11 +106,13 @@ giant.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    /**
-     * Signals that the window was resized withing the last 100ms.
-     * @constant
-     */
-    giant.EVENT_WINDOW_RESIZE_DEBOUNCED = 'giant.ResizeWatcher.windowResizeDebounced';
+    giant.addGlobalConstants(/** @lends giant */{
+        /**
+         * Signals that the window was resized withing the last 100ms.
+         * @constant
+         */
+        EVENT_WINDOW_RESIZE_DEBOUNCED: 'giant.ResizeWatcher.windowResizeDebounced'
+    });
 }());
 
 (function (/**jQuery*/$) {

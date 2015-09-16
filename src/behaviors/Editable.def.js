@@ -142,15 +142,17 @@ giant.postpone(giant, 'Editable', function () {
 (function () {
     "use strict";
 
-    /**
-     * Signals that the host has changed to edit mode.
-     * @constant
-     */
-    giant.EVENT_EDITABLE_EDIT_MODE = 'giant.Editable.editMode';
+    giant.addGlobalConstants(/** @lends giant */{
+        /**
+         * Signals that the host has changed to edit mode.
+         * @constant
+         */
+        EVENT_EDITABLE_EDIT_MODE: 'giant.Editable.editMode',
 
-    /**
-     * Signals that the host has changed to display mode.
-     * @constant
-     */
-    giant.EVENT_EDITABLE_DISPLAY_MODE = 'giant.Editable.displayMode';
+        /**
+         * Signals that the host has changed to display mode.
+         * @constant
+         */
+        EVENT_EDITABLE_DISPLAY_MODE: 'giant.Editable.displayMode'
+    });
 }());

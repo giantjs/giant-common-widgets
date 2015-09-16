@@ -75,9 +75,11 @@ giant.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    /**
-     * Signals that a Button was clicked.
-     * @constants
-     */
-    giant.EVENT_BUTTON_CLICK = 'giant.Button.click';
+    giant.addGlobalConstants(/** @lends giant */{
+        /**
+         * Signals that a Button was clicked.
+         * @constants
+         */
+        EVENT_BUTTON_CLICK: 'giant.Button.click'
+    });
 }());

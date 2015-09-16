@@ -75,15 +75,17 @@ giant.postpone(giant, 'Expandable', function () {
 (function () {
     "use strict";
 
-    /**
-     * Signals that an Expandable has expanded.
-     * @constants
-     */
-    giant.EVENT_EXPANDABLE_EXPAND = 'giant.Expandable.expand';
+    giant.addGlobalConstants(/** @lends giant */{
+        /**
+         * Signals that an Expandable has expanded.
+         * @constants
+         */
+        EVENT_EXPANDABLE_EXPAND: 'giant.Expandable.expand',
 
-    /**
-     * Signals that an Expandable has retracted.
-     * @constants
-     */
-    giant.EVENT_EXPANDABLE_RETRACT = 'giant.Expandable.retract';
+        /**
+         * Signals that an Expandable has retracted.
+         * @constants
+         */
+        EVENT_EXPANDABLE_RETRACT: 'giant.Expandable.retract'
+    });
 }());

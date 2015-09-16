@@ -165,27 +165,29 @@ giant.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    /**
-     * Signals that an Option has gained focus.
-     * @constant
-     */
-    giant.EVENT_OPTION_FOCUS = 'giant.Option.focus';
+    giant.addGlobalConstants(/** @lends giant */{
+        /**
+         * Signals that an Option has gained focus.
+         * @constant
+         */
+        EVENT_OPTION_FOCUS: 'giant.Option.focus',
 
-    /**
-     * Signals that an Option has lost focus.
-     * @constant
-     */
-    giant.EVENT_OPTION_BLUR = 'giant.Option.blur';
+        /**
+         * Signals that an Option has lost focus.
+         * @constant
+         */
+        EVENT_OPTION_BLUR: 'giant.Option.blur',
 
-    /**
-     * Signals that an Option became active.
-     * @constant
-     */
-    giant.EVENT_OPTION_ACTIVE = 'giant.Option.active';
+        /**
+         * Signals that an Option became active.
+         * @constant
+         */
+        EVENT_OPTION_ACTIVE: 'giant.Option.active',
 
-    /**
-     * Signals that an Option became inactive.
-     * @constant
-     */
-    giant.EVENT_OPTION_INACTIVE = 'giant.Option.inactive';
+        /**
+         * Signals that an Option became inactive.
+         * @constant
+         */
+        EVENT_OPTION_INACTIVE: 'giant.Option.inactive'
+    });
 }());

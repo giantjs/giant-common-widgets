@@ -139,21 +139,23 @@ giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    /**
-     * Signals that an Image started to load.
-     * @constant
-     */
-    giant.EVENT_IMAGE_LOAD_START = 'giant.DynamicImage.load.start';
+    giant.addGlobalConstants(/** @lends giant */{
+        /**
+         * Signals that an Image started to load.
+         * @constant
+         */
+        EVENT_DYNAMIC_IMAGE_LOAD_START: 'giant.DynamicImage.load.start',
 
-    /**
-     * Signals that an Image finished loading.
-     * @constant
-     */
-    giant.EVENT_IMAGE_LOAD_SUCCESS = 'giant.DynamicImage.load.success';
+        /**
+         * Signals that an Image finished loading.
+         * @constant
+         */
+        EVENT_DYNAMIC_IMAGE_LOAD_SUCCESS: 'giant.DynamicImage.load.success',
 
-    /**
-     * Signals that an Image failed loading.
-     * @constant
-     */
-    giant.EVENT_IMAGE_LOAD_FAILURE = 'giant.DynamicImage.load.failure';
+        /**
+         * Signals that an Image failed loading.
+         * @constant
+         */
+        EVENT_DYNAMIC_IMAGE_LOAD_FAILURE: 'giant.DynamicImage.load.failure'
+    });
 }());

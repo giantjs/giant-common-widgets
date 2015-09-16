@@ -41,11 +41,13 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
 (function () {
     "use strict";
 
-    /**
-     * Signals that a hot key was pressed.
-     * @constant
-     */
-    giant.EVENT_HOT_KEY_DOWN = 'giant.HotKeyWatcher.hotKeyDown';
+    giant.addGlobalConstants(/** @lends giant */{
+        /**
+         * Signals that a hot key was pressed.
+         * @constant
+         */
+        EVENT_HOT_KEY_DOWN: 'giant.HotKeyWatcher.hotKeyDown'
+    });
 }());
 
 (function (/**jQuery*/$) {

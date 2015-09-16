@@ -317,65 +317,67 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    /**
-     * Signals that an Input went from not having a value to having one.
-     * @constant
-     */
-    giant.EVENT_INPUT_GOT_VALUE = 'giant.Input.value.got';
+    giant.addGlobalConstants(/** @lends giant */{
+        /**
+         * Signals that an Input went from not having a value to having one.
+         * @constant
+         */
+        EVENT_INPUT_GOT_VALUE: 'giant.Input.value.got',
 
-    /**
-     * Signals that an Input went from having a value to not having one.
-     * @constant
-     */
-    giant.EVENT_INPUT_LOST_VALUE = 'giant.Input.value.lost';
+        /**
+         * Signals that an Input went from having a value to not having one.
+         * @constant
+         */
+        EVENT_INPUT_LOST_VALUE: 'giant.Input.value.lost',
 
-    /**
-     * Signals that an Input came into focus.
-     * @constant
-     */
-    giant.EVENT_INPUT_FOCUS = 'giant.Input.focus';
+        /**
+         * Signals that an Input came into focus.
+         * @constant
+         */
+        EVENT_INPUT_FOCUS: 'giant.Input.focus',
 
-    /**
-     * Signals that an Input lost focus.
-     * @constant
-     */
-    giant.EVENT_INPUT_BLUR = 'giant.Input.blur';
+        /**
+         * Signals that an Input lost focus.
+         * @constant
+         */
+        EVENT_INPUT_BLUR: 'giant.Input.blur',
 
-    /**
-     * Signals that the user pressed TAB while an Input was in focus.
-     * @constant
-     */
-    giant.EVENT_INPUT_TAB = 'giant.Input.tab';
+        /**
+         * Signals that the user pressed TAB while an Input was in focus.
+         * @constant
+         */
+        EVENT_INPUT_TAB: 'giant.Input.tab',
 
-    /**
-     * Signals that the value of an Input changed.
-     * @constant
-     */
-    giant.EVENT_INPUT_VALUE_CHANGE = 'giant.Input.value.change';
+        /**
+         * Signals that the value of an Input changed.
+         * @constant
+         */
+        EVENT_INPUT_VALUE_CHANGE: 'giant.Input.value.change',
 
-    /**
-     * Signals that an Input went from invalid to valid.
-     * @constant
-     */
-    giant.EVENT_INPUT_VALID = 'giant.Input.valid';
+        /**
+         * Signals that an Input went from invalid to valid.
+         * @constant
+         */
+        EVENT_INPUT_VALID: 'giant.Input.valid',
 
-    /**
-     * Signals that an Input went from valid to invalid.
-     * @constant
-     */
-    giant.EVENT_INPUT_INVALID = 'giant.Input.invalid';
+        /**
+         * Signals that an Input went from valid to invalid.
+         * @constant
+         */
+        EVENT_INPUT_INVALID: 'giant.Input.invalid',
 
-    /**
-     * Signals that the error associated with an Input changed.
-     * @constant
-     */
-    giant.EVENT_INPUT_ERROR_CHANGE = 'giant.Input.error.change';
+        /**
+         * Signals that the error associated with an Input changed.
+         * @constant
+         */
+        EVENT_INPUT_ERROR_CHANGE: 'giant.Input.error.change',
 
-    /**
-     * Signals a form submission initiated on an Input.
-     * @constant
-     */
-    giant.EVENT_INPUT_SUBMIT = 'giant.Input.submit';
+        /**
+         * Signals a form submission initiated on an Input.
+         * @constant
+         */
+        EVENT_INPUT_SUBMIT: 'giant.Input.submit'
+    });
 }());
 
 (function () {

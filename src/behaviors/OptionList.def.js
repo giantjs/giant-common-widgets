@@ -286,15 +286,17 @@ giant.postpone(giant, 'OptionList', function () {
 (function () {
     "use strict";
 
-    /**
-     * Signals that an Option was selected.
-     * @constant
-     */
-    giant.EVENT_OPTION_SELECT = 'giant.Option.select';
+    giant.addGlobalConstants(/** @lends giant */{
+        /**
+         * Signals that an Option was selected.
+         * @constant
+         */
+        EVENT_OPTION_SELECT: 'giant.Option.select',
 
-    /**
-     * Signals that ESC was pressed while an Option is in focus.
-     * @constant
-     */
-    giant.EVENT_OPTIONS_ESCAPE = 'giant.Option.escape';
+        /**
+         * Signals that ESC was pressed while an Option is in focus.
+         * @constant
+         */
+        EVENT_OPTIONS_ESCAPE: 'giant.Option.escape'
+    });
 }());
