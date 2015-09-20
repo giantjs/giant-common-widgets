@@ -46,9 +46,11 @@ giant.postpone(giant, 'List', function (ns, className) {
 (function () {
     "use strict";
 
-    /**
-     * Signals that the items in a List have changed.
-     * @constant
-     */
-    giant.EVENT_LIST_ITEMS_CHANGE = 'giant.List.itemsChange';
+    giant.addGlobalConstants(/** @lends giant */{
+        /**
+         * Signals that the items in a List have changed.
+         * @constant
+         */
+        EVENT_LIST_ITEMS_CHANGE: 'widget.change.items'
+    });
 }());

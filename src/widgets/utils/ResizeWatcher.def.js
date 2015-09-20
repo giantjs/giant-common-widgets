@@ -111,7 +111,7 @@ giant.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
          * Signals that the window was resized withing the last 100ms.
          * @constant
          */
-        EVENT_WINDOW_RESIZE_DEBOUNCED: 'giant.ResizeWatcher.windowResizeDebounced'
+        EVENT_WINDOW_RESIZE_DEBOUNCED: 'widget.resize.window.debounced'
     });
 }());
 

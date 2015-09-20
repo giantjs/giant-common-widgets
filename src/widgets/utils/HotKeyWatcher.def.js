@@ -46,7 +46,7 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
          * Signals that a hot key was pressed.
          * @constant
          */
-        EVENT_HOT_KEY_DOWN: 'giant.HotKeyWatcher.hotKeyDown'
+        EVENT_HOT_KEY_DOWN: 'widget.press.hotKey'
     });
 }());
 

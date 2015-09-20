@@ -80,12 +80,12 @@ giant.postpone(giant, 'Expandable', function () {
          * Signals that an Expandable has expanded.
          * @constants
          */
-        EVENT_EXPANDABLE_EXPAND: 'giant.Expandable.expand',
+        EVENT_EXPANDABLE_EXPAND: 'widget.expanded.on',
 
         /**
          * Signals that an Expandable has retracted.
          * @constants
          */
-        EVENT_EXPANDABLE_RETRACT: 'giant.Expandable.retract'
+        EVENT_EXPANDABLE_RETRACT: 'widget.expanded.off'
     });
 }());

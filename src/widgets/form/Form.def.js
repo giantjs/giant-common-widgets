@@ -276,25 +276,25 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
          * Signals that a Form became valid.
          * @constant
          */
-        EVENT_FORM_VALID: 'giant.Form.valid',
+        EVENT_FORM_VALID: 'widget.validity.on.form',
 
         /**
          * Signals tha a Form became invalid.
          * @constant
          */
-        EVENT_FORM_INVALID: 'giant.Form.invalid',
+        EVENT_FORM_INVALID: 'widget.validity.off.form',
 
         /**
          * Signals initiation of a Form submission.
          * @constant
          */
-        EVENT_FORM_SUBMIT: 'giant.Form.submit',
+        EVENT_FORM_SUBMIT: 'widget.submit.form',
 
         /**
          * Signals that a Form was reset.
          * @constant
          */
-        EVENT_FORM_RESET: 'giant.Form.reset'
+        EVENT_FORM_RESET: 'widget.reset.form'
     });
 }());
 

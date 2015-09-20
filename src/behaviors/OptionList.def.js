@@ -291,12 +291,12 @@ giant.postpone(giant, 'OptionList', function () {
          * Signals that an Option was selected.
          * @constant
          */
-        EVENT_OPTION_SELECT: 'giant.Option.select',
+        EVENT_OPTION_SELECT: 'widget.select.on.option',
 
         /**
          * Signals that ESC was pressed while an Option is in focus.
          * @constant
          */
-        EVENT_OPTIONS_ESCAPE: 'giant.Option.escape'
+        EVENT_OPTIONS_ESCAPE: 'widget.select.off.option'
     });
 }());

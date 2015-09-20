@@ -256,18 +256,18 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
          * Signals that the user clicked outside an open Popup.
          * @constant
          */
-        EVENT_POPUP_OUTSIDE_CLICK: 'giant.Popup.outsideClick',
+        EVENT_POPUP_OUTSIDE_CLICK: 'widget.click.popup.outside',
 
         /**
          * Signals that a Popup was opened.
          * @constant
          */
-        EVENT_POPUP_OPEN: 'giant.Popup.open',
+        EVENT_POPUP_OPEN: 'widget.open.on.popup',
 
         /**
          * Signals tha a Popup was closed.
          * @constant
          */
-        EVENT_POPUP_CLOSE: 'giant.Popup.close'
+        EVENT_POPUP_CLOSE: 'widget.open.off.popup'
     });
 }());

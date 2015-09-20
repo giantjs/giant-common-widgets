@@ -147,12 +147,12 @@ giant.postpone(giant, 'Editable', function () {
          * Signals that the host has changed to edit mode.
          * @constant
          */
-        EVENT_EDITABLE_EDIT_MODE: 'giant.Editable.editMode',
+        EVENT_EDITABLE_EDIT_MODE: 'widget.editMode.on',
 
         /**
          * Signals that the host has changed to display mode.
          * @constant
          */
-        EVENT_EDITABLE_DISPLAY_MODE: 'giant.Editable.displayMode'
+        EVENT_EDITABLE_DISPLAY_MODE: 'widget.editMode.off'
     });
 }());

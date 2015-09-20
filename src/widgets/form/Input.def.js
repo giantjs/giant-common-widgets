@@ -322,61 +322,61 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
          * Signals that an Input went from not having a value to having one.
          * @constant
          */
-        EVENT_INPUT_GOT_VALUE: 'giant.Input.value.got',
+        EVENT_INPUT_GOT_VALUE: 'widget.value.on.input',
 
         /**
          * Signals that an Input went from having a value to not having one.
          * @constant
          */
-        EVENT_INPUT_LOST_VALUE: 'giant.Input.value.lost',
+        EVENT_INPUT_LOST_VALUE: 'widget.value.off.input',
 
         /**
          * Signals that an Input came into focus.
          * @constant
          */
-        EVENT_INPUT_FOCUS: 'giant.Input.focus',
+        EVENT_INPUT_FOCUS: 'widget.focus.on.input',
 
         /**
          * Signals that an Input lost focus.
          * @constant
          */
-        EVENT_INPUT_BLUR: 'giant.Input.blur',
+        EVENT_INPUT_BLUR: 'widget.focus.off.input',
 
         /**
          * Signals that the user pressed TAB while an Input was in focus.
          * @constant
          */
-        EVENT_INPUT_TAB: 'giant.Input.tab',
+        EVENT_INPUT_TAB: 'widget.press.tab.input',
 
         /**
          * Signals that the value of an Input changed.
          * @constant
          */
-        EVENT_INPUT_VALUE_CHANGE: 'giant.Input.value.change',
+        EVENT_INPUT_VALUE_CHANGE: 'widget.value.change.input',
 
         /**
          * Signals that an Input went from invalid to valid.
          * @constant
          */
-        EVENT_INPUT_VALID: 'giant.Input.valid',
+        EVENT_INPUT_VALID: 'widget.validity.on.input',
 
         /**
          * Signals that an Input went from valid to invalid.
          * @constant
          */
-        EVENT_INPUT_INVALID: 'giant.Input.invalid',
+        EVENT_INPUT_INVALID: 'widget.validity.off.input',
 
         /**
          * Signals that the error associated with an Input changed.
          * @constant
          */
-        EVENT_INPUT_ERROR_CHANGE: 'giant.Input.error.change',
+        EVENT_INPUT_ERROR_CHANGE: 'widget.error.change.input',
 
         /**
          * Signals a form submission initiated on an Input.
          * @constant
          */
-        EVENT_INPUT_SUBMIT: 'giant.Input.submit'
+        EVENT_INPUT_SUBMIT: 'widget.submit.input'
     });
 }());
 

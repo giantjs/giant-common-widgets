@@ -80,6 +80,6 @@ giant.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
          * Signals that a Button was clicked.
          * @constants
          */
-        EVENT_BUTTON_CLICK: 'giant.Button.click'
+        EVENT_BUTTON_CLICK: 'widget.click.button'
     });
 }());
