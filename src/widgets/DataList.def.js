@@ -219,7 +219,7 @@ giant.postpone(giant, 'DataList', function (ns, className) {
             onChildAdd: function (event) {
                 var childWidget;
 
-                if (event.senderWidget === this) {
+                if (event.sender === this) {
                     childWidget = event.payload.childWidget;
 
                     // when child is already associated with an item key
@@ -235,7 +235,7 @@ giant.postpone(giant, 'DataList', function (ns, className) {
             onChildRemove: function (event) {
                 var childWidget;
 
-                if (event.senderWidget === this) {
+                if (event.sender === this) {
                     childWidget = event.payload.childWidget;
 
                     // updating lookup buffers

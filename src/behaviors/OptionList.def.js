@@ -259,7 +259,7 @@ giant.postpone(giant, 'OptionList', function () {
              * @ignore
              */
             onOptionFocus: function (event) {
-                var newFocusedOptionName = event.senderWidget.childName;
+                var newFocusedOptionName = event.sender.childName;
                 this._setFocusedOptionName(newFocusedOptionName);
             },
 
@@ -268,7 +268,7 @@ giant.postpone(giant, 'OptionList', function () {
              * @ignore
              */
             onOptionActive: function (event) {
-                var optionWidget = event.senderWidget;
+                var optionWidget = event.sender;
                 this._triggerSelectEvent(optionWidget.childName, optionWidget.optionValue);
             },
 

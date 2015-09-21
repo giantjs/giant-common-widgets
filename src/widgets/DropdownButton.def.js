@@ -87,7 +87,7 @@ giant.postpone(giant, 'DropdownButton', function (ns, className) {
              * @ignore
              */
             onDropdownOpen: function (event) {
-                if (event.senderWidget === this.dropdown) {
+                if (event.sender === this.dropdown) {
                     this._updateOpenStyle();
                 }
             },
@@ -97,7 +97,7 @@ giant.postpone(giant, 'DropdownButton', function (ns, className) {
              * @ignore
              */
             onDropdownClose: function (event) {
-                if (event.senderWidget === this.dropdown) {
+                if (event.sender === this.dropdown) {
                     this._updateOpenStyle();
                 }
             },
