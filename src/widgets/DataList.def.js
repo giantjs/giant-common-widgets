@@ -103,8 +103,8 @@ giant.postpone(giant, 'DataList', function (ns, className) {
                 giant.EntityWidget.init.call(this, fieldKey);
 
                 this
-                    .elevateMethod('onChildAdd')
-                    .elevateMethod('onChildRemove');
+                    .elevateMethod('onItemAdd')
+                    .elevateMethod('onItemRemove');
 
                 /**
                  * Lookup associating item keys with widget (child) names.
@@ -121,8 +121,8 @@ giant.postpone(giant, 'DataList', function (ns, className) {
                 this._initChildLookup();
 
                 this
-                    .subscribeTo(giant.EVENT_WIDGET_CHILD_ADD, this.onChildAdd)
-                    .subscribeTo(giant.EVENT_WIDGET_CHILD_REMOVE, this.onChildRemove)
+                    .subscribeTo(giant.EVENT_DATA_LIST_ITEM_ADD, this.onItemAdd)
+                    .subscribeTo(giant.EVENT_DATA_LIST_ITEM_REMOVE, this.onItemRemove)
                     .bindToEntityContentChange(this.entityKey, 'onItemChange');
             },
 
@@ -216,7 +216,7 @@ giant.postpone(giant, 'DataList', function (ns, className) {
              * @param {giant.WidgetEvent} event
              * @ignore
              */
-            onChildAdd: function (event) {
+            onItemAdd: function (event) {
                 var childWidget;
 
                 if (event.sender === this) {
@@ -232,7 +232,7 @@ giant.postpone(giant, 'DataList', function (ns, className) {
              * @param {giant.WidgetEvent} event
              * @ignore
              */
-            onChildRemove: function (event) {
+            onItemRemove: function (event) {
                 var childWidget;
 
                 if (event.sender === this) {

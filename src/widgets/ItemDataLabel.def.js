@@ -20,5 +20,5 @@ giant.postpone(giant, 'ItemDataLabel', function (ns, className) {
      * @extends giant.DataListItem
      */
     giant.ItemDataLabel = base.extend(className)
-        .addTrait(giant.DataListItem);
+        .addTraitAndExtend(giant.DataListItem);
 });
