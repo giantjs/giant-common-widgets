@@ -1,8 +1,8 @@
 /*global giant */
-giant.postpone(giant, 'Highlightable', function () {
+$oop.postpone(giant, 'Highlightable', function () {
     "use strict";
 
-    var base = giant.Base,
+    var base = $oop.Base,
         self = base.extend();
 
     /**
@@ -12,7 +12,7 @@ giant.postpone(giant, 'Highlightable', function () {
      * Overrides BinaryStateful's methods, must be added *after* BinaryStateful, and on a different
      * prototype level (using addTraitAndExtend()).
      * @class
-     * @extends giant.Base
+     * @extends $oop.Base
      * @extends giant.BinaryStateful
      * @extends giant.Widget
      */

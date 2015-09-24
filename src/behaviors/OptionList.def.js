@@ -1,8 +1,8 @@
 /*global giant */
-giant.postpone(giant, 'OptionList', function () {
+$oop.postpone(giant, 'OptionList', function () {
     "use strict";
 
-    var base = giant.Base,
+    var base = $oop.Base,
         self = base.extend();
 
     /**
@@ -11,7 +11,7 @@ giant.postpone(giant, 'OptionList', function () {
      * Whatever uses the OptionList should take care of initializing the focused and selected states in afterAdd.
      * The OptionList returns to its neutral state after being removed from the hierarchy.
      * @class
-     * @extends giant.Base
+     * @extends $oop.Base
      * @extends giant.List
      */
     giant.OptionList = self
@@ -286,7 +286,7 @@ giant.postpone(giant, 'OptionList', function () {
 (function () {
     "use strict";
 
-    giant.addGlobalConstants(/** @lends giant */{
+    $oop.addGlobalConstants.call(giant, /** @lends giant */{
         /**
          * Signals that an Option was selected.
          * @constant

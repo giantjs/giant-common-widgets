@@ -1,5 +1,5 @@
 /*global giant */
-giant.postpone(giant, 'DataList', function (ns, className) {
+$oop.postpone(giant, 'DataList', function (ns, className) {
     "use strict";
 
     var base = giant.List,

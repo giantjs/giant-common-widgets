@@ -1,13 +1,13 @@
 /*global giant */
-giant.postpone(giant, 'Expandable', function () {
+$oop.postpone(giant, 'Expandable', function () {
     "use strict";
 
-    var base = giant.Base,
+    var base = $oop.Base,
         self = base.extend();
 
     /**
      * @class
-     * @extends giant.Base
+     * @extends $oop.Base
      * @extends giant.BinaryStateful
      * @extends giant.Widget
      */
@@ -75,7 +75,7 @@ giant.postpone(giant, 'Expandable', function () {
 (function () {
     "use strict";
 
-    giant.addGlobalConstants(/** @lends giant */{
+    $oop.addGlobalConstants.call(giant, /** @lends giant */{
         /**
          * Signals that an Expandable has expanded.
          * @constants

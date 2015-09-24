@@ -1,14 +1,14 @@
 /*global giant */
-giant.postpone(giant, 'EntityWidget', function () {
+$oop.postpone(giant, 'EntityWidget', function () {
     "use strict";
 
-    var base = giant.Base,
+    var base = $oop.Base,
         self = base.extend();
 
     /**
      * Expects to be added to widget classes.
      * @class
-     * @extends giant.Base
+     * @extends $oop.Base
      * @extends giant.Widget
      */
     giant.EntityWidget = self
@@ -43,7 +43,7 @@ giant.postpone(giant, 'EntityWidget', function () {
         });
 });
 
-giant.postpone(giant, 'revealKeys', function () {
+$oop.postpone(giant, 'revealKeys', function () {
     "use strict";
 
     /**
@@ -57,7 +57,7 @@ giant.postpone(giant, 'revealKeys', function () {
     };
 });
 
-giant.postpone(giant, 'hideKeys', function () {
+$oop.postpone(giant, 'hideKeys', function () {
     "use strict";
 
     /**

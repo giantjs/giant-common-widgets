@@ -1,5 +1,5 @@
 /*global giant */
-giant.postpone(giant, 'List', function (ns, className) {
+$oop.postpone(giant, 'List', function (ns, className) {
     "use strict";
 
     var base = giant.Widget,
@@ -46,7 +46,7 @@ giant.postpone(giant, 'List', function (ns, className) {
 (function () {
     "use strict";
 
-    giant.addGlobalConstants(/** @lends giant */{
+    $oop.addGlobalConstants.call(giant, /** @lends giant */{
         /**
          * Signals that the items in a List have changed.
          * @constant

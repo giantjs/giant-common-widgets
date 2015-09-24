@@ -1,5 +1,5 @@
 /*global giant, jQuery */
-giant.postpone(giant, 'HtmlLabel', function (ns, className, /**jQuery*/$) {
+$oop.postpone(giant, 'HtmlLabel', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = giant.Label,

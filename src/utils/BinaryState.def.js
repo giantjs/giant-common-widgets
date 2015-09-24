@@ -1,8 +1,8 @@
 /*global giant */
-giant.postpone(giant, 'BinaryState', function () {
+$oop.postpone(giant, 'BinaryState', function () {
     "use strict";
 
-    var base = giant.Base,
+    var base = $oop.Base,
         self = base.extend();
 
     /**
@@ -20,7 +20,7 @@ giant.postpone(giant, 'BinaryState', function () {
      * The value is false when no source contributes the state, true otherwise.
      * TODO: Remove .addStateAsSource.
      * @class
-     * @extends giant.Base
+     * @extends $oop.Base
      */
     giant.BinaryState = self
         .addMethods(/** @lends giant.BinaryState# */{
@@ -151,7 +151,7 @@ giant.postpone(giant, 'BinaryState', function () {
         }
     });
 
-    giant.extendBuiltIn(String.prototype, /** @lends String# */{
+    $oop.extendBuiltIn(String.prototype, /** @lends String# */{
         /**
          * @returns {giant.BinaryState}
          */

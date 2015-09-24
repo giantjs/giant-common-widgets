@@ -1,5 +1,5 @@
 /*global giant */
-giant.postpone(giant, 'DataDropdownButton', function (ns, className) {
+$oop.postpone(giant, 'DataDropdownButton', function (ns, className) {
     "use strict";
 
     var base = giant.DropdownButton,

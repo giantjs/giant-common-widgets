@@ -1,8 +1,8 @@
 /*global giant */
-giant.postpone(giant, 'DocumentBody', function () {
+$oop.postpone(giant, 'DocumentBody', function () {
     "use strict";
 
-    var base = giant.Base,
+    var base = $oop.Base,
         self = base.extend()
             .addTraitAndExtend(giant.Renderable);
 
@@ -14,7 +14,7 @@ giant.postpone(giant, 'DocumentBody', function () {
 
     /**
      * @class
-     * @extends giant.Base
+     * @extends $oop.Base
      * @extends giant.Renderable
      */
     giant.DocumentBody = self

@@ -1,8 +1,8 @@
 /*global giant, jQuery */
-giant.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
+$oop.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = giant.Base,
+    var base = $oop.Base,
         self = base.extend(),
         $window = window && $(window);
 
@@ -18,7 +18,7 @@ giant.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
      * Listen to giant.EVENT_WINDOW_RESIZE_DEBOUNCED in any widget to get
      * notified of changes to window size.
      * @class
-     * @extends giant.Base
+     * @extends $oop.Base
      */
     giant.ResizeWatcher = self
         .setInstanceMapper(function () {
@@ -108,7 +108,7 @@ giant.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    giant.addGlobalConstants(/** @lends giant */{
+    $oop.addGlobalConstants.call(giant, /** @lends giant */{
         /**
          * Signals that the window was resized withing the last 100ms.
          * @constant

@@ -1,15 +1,15 @@
 /*global giant, jQuery */
-giant.postpone(giant, 'DataListItem', function () {
+$oop.postpone(giant, 'DataListItem', function () {
     "use strict";
 
-    var base = giant.Base,
+    var base = $oop.Base,
         self = base.extend();
 
     /**
      * The DataListItem trait associates widgets with an item key.
      * Any widget that to be used as an item in a DataList is expected to have tgis trait.
      * @class
-     * @extends giant.Base
+     * @extends $oop.Base
      * @extends giant.Widget
      */
     giant.DataListItem = self
@@ -78,7 +78,7 @@ giant.postpone(giant, 'DataListItem', function () {
         });
 }, jQuery);
 
-giant.addGlobalConstants(/** @lends giant */{
+$oop.addGlobalConstants.call(giant, /** @lends giant */{
     /**
      * Signals tha a Widget has been added as child.
      * @constant

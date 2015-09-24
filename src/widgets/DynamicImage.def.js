@@ -1,5 +1,5 @@
 /*global giant, jQuery */
-giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
+$oop.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = giant.Image,
@@ -139,7 +139,7 @@ giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    giant.addGlobalConstants(/** @lends giant */{
+    $oop.addGlobalConstants.call(giant, /** @lends giant */{
         /**
          * Signals that an Image started to load.
          * @constant

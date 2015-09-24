@@ -1,5 +1,5 @@
 /*global giant, jQuery */
-giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
+$oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = giant.Widget,
@@ -271,7 +271,7 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    giant.addGlobalConstants(/** @lends giant */{
+    $oop.addGlobalConstants.call(giant, /** @lends giant */{
         /**
          * Signals that a Form became valid.
          * @constant

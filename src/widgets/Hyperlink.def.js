@@ -1,5 +1,5 @@
 /*global giant, jQuery */
-giant.postpone(giant, 'Hyperlink', function (ns, className, /**jQuery*/$) {
+$oop.postpone(giant, 'Hyperlink', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = giant.Widget,

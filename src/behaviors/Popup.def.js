@@ -1,8 +1,8 @@
 /*global giant, jQuery, UIEvent */
-giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
+$oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = giant.Base,
+    var base = $oop.Base,
         self = base.extend(),
         $document = document && $(document);
 
@@ -14,7 +14,7 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
      * Popups may be closed by clicking outside of the widget's DOM.
      * Expects to be added to Widget classes.
      * @class
-     * @extends giant.Base
+     * @extends $oop.Base
      * @extends giant.Widget
      */
     giant.Popup = self
@@ -253,7 +253,7 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    giant.addGlobalConstants(/** @lends giant */{
+    $oop.addGlobalConstants.call(giant, /** @lends giant */{
         /**
          * Signals that the user clicked outside an open Popup.
          * @constant

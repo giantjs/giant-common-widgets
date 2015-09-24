@@ -1,5 +1,5 @@
 /*global giant */
-giant.postpone(giant, 'DataHyperlink', function (ns, className) {
+$oop.postpone(giant, 'DataHyperlink', function (ns, className) {
     "use strict";
 
     var base = giant.Hyperlink,

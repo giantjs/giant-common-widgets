@@ -1,5 +1,5 @@
 /*global giant */
-giant.postpone(giant, 'PasswordInput', function (ns, className) {
+$oop.postpone(giant, 'PasswordInput', function (ns, className) {
     "use strict";
 
     var base = giant.TextInput,
@@ -67,7 +67,7 @@ giant.postpone(giant, 'PasswordInput', function (ns, className) {
         });
 });
 
-giant.amendPostponed(giant, 'Input', function () {
+$oop.amendPostponed(giant, 'Input', function () {
     "use strict";
 
     giant.Input

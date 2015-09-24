@@ -1,8 +1,8 @@
 /*global giant */
-giant.postpone(giant, 'Editable', function () {
+$oop.postpone(giant, 'Editable', function () {
     "use strict";
 
-    var base = giant.Base,
+    var base = $oop.Base,
         self = base.extend();
 
     /**
@@ -10,7 +10,7 @@ giant.postpone(giant, 'Editable', function () {
      * in two modes: display mode, and edit mode, each mode implementing a different markup.
      * TODO: Refactor .editMarkup() and .displayMarkup() into .editTemplate and .displayTemplate.
      * @class
-     * @extends giant.Base
+     * @extends $oop.Base
      * @extends giant.BinaryStateful
      */
     giant.Editable = self
@@ -142,7 +142,7 @@ giant.postpone(giant, 'Editable', function () {
 (function () {
     "use strict";
 
-    giant.addGlobalConstants(/** @lends giant */{
+    $oop.addGlobalConstants.call(giant, /** @lends giant */{
         /**
          * Signals that the host has changed to edit mode.
          * @constant

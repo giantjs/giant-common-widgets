@@ -1,5 +1,5 @@
 /*global giant */
-giant.postpone(giant, 'DataDynamicImage', function (ns, className) {
+$oop.postpone(giant, 'DataDynamicImage', function (ns, className) {
     "use strict";
 
     var base = giant.DynamicImage,

@@ -1,5 +1,5 @@
 /*global giant */
-giant.postpone(giant, 'Flow', function (ns, className) {
+$oop.postpone(giant, 'Flow', function (ns, className) {
     "use strict";
 
     var base = giant.List,

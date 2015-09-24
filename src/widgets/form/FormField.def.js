@@ -1,5 +1,5 @@
 /*global giant, jQuery */
-giant.postpone(giant, 'FormField', function (ns, className) {
+$oop.postpone(giant, 'FormField', function (ns, className) {
     "use strict";
 
     var base = giant.Widget,

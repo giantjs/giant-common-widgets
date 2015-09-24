@@ -1,5 +1,5 @@
 /*global giant, jQuery */
-giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
+$oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = giant.Widget,
@@ -317,7 +317,7 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    giant.addGlobalConstants(/** @lends giant */{
+    $oop.addGlobalConstants.call(giant, /** @lends giant */{
         /**
          * Signals that an Input went from not having a value to having one.
          * @constant

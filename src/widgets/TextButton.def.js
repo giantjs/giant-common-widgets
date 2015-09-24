@@ -1,5 +1,5 @@
 /*global giant, jQuery */
-giant.postpone(giant, 'TextButton', function (ns, className) {
+$oop.postpone(giant, 'TextButton', function (ns, className) {
     "use strict";
 
     var base = giant.Button,

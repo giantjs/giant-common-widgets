@@ -1,5 +1,5 @@
 /*global giant */
-giant.postpone(giant, 'DataTextInput', function (ns, className) {
+$oop.postpone(giant, 'DataTextInput', function (ns, className) {
     "use strict";
 
     var base = giant.TextInput,

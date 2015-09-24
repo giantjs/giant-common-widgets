@@ -1,8 +1,8 @@
 /*global giant */
-giant.postpone(giant, 'FieldBound', function () {
+$oop.postpone(giant, 'FieldBound', function () {
     "use strict";
 
-    var base = giant.Base,
+    var base = $oop.Base,
         self = base.extend();
 
     /**
@@ -19,7 +19,7 @@ giant.postpone(giant, 'FieldBound', function () {
      * the field key associated with the host class changes.
      * Expects to be added to widgets that also have the EntityBound and EntityWidget traits.
      * @class
-     * @extends giant.Base
+     * @extends $oop.Base
      * @extends giant.EntityBound
      * @extends giant.EntityWidget
      * @extends giant.Widget

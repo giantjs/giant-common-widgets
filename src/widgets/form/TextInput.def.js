@@ -1,5 +1,5 @@
 /*global giant, jQuery */
-giant.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
+$oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = giant.Input,
@@ -193,7 +193,7 @@ giant.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
         .on('keyup input change', '', 'onChange');
 }, jQuery);
 
-giant.amendPostponed(giant, 'Input', function () {
+$oop.amendPostponed(giant, 'Input', function () {
     "use strict";
 
     giant.Input

@@ -1,8 +1,8 @@
 /*global giant */
-giant.postpone(giant, 'Disableable', function () {
+$oop.postpone(giant, 'Disableable', function () {
     "use strict";
 
-    var base = giant.Base,
+    var base = $oop.Base,
         self = base.extend();
 
     /**
@@ -12,7 +12,7 @@ giant.postpone(giant, 'Disableable', function () {
      * Expects to be added to Widget instances.
      * Expects the host to have the BinaryStateful trait applied.
      * @class
-     * @extends giant.Base
+     * @extends $oop.Base
      * @extends giant.BinaryStateful
      * @extends giant.Widget
      */

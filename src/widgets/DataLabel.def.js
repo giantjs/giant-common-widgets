@@ -1,5 +1,5 @@
 /*global giant */
-giant.postpone(giant, 'DataLabel', function (ns, className) {
+$oop.postpone(giant, 'DataLabel', function (ns, className) {
     "use strict";
 
     var base = giant.Label,

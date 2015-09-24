@@ -1,5 +1,5 @@
 /*global giant, jQuery */
-giant.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
+$oop.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = giant.Widget,
@@ -77,7 +77,7 @@ giant.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    giant.addGlobalConstants(/** @lends giant */{
+    $oop.addGlobalConstants.call(giant, /** @lends giant */{
         /**
          * Signals that a Button was clicked.
          * @constants

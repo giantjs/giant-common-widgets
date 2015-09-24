@@ -1,5 +1,5 @@
 /*global giant, jQuery */
-giant.postpone(giant, 'AlignedPopup', function (ns, className, /**jQuery*/$) {
+$oop.postpone(giant, 'AlignedPopup', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = giant.Popup,

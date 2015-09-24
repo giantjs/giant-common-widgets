@@ -1,8 +1,8 @@
 /*global giant, jQuery */
-giant.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
+$oop.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = giant.Base,
+    var base = $oop.Base,
         self = base.extend();
 
     /**
@@ -10,7 +10,7 @@ giant.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
      * Add this trait to classes aimed to be used as options in a dropdown.
      * Expects host to have the Highlightable trait.
      * @class
-     * @extends giant.Base
+     * @extends $oop.Base
      * @extends giant.Widget
      * @extends giant.BinaryStateful
      * @extends giant.Highlightable
@@ -171,7 +171,7 @@ giant.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    giant.addGlobalConstants(/** @lends giant */{
+    $oop.addGlobalConstants.call(giant, /** @lends giant */{
         /**
          * Signals that an Option has gained focus.
          * @constant

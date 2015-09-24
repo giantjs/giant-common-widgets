@@ -1,8 +1,8 @@
 /*global giant, Event, jQuery */
-giant.postpone(giant, 'HotKeyWatcher', function () {
+$oop.postpone(giant, 'HotKeyWatcher', function () {
     "use strict";
 
-    var base = giant.Base,
+    var base = $oop.Base,
         self = base.extend();
 
     /**
@@ -12,7 +12,7 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
      * In case you want to suppress hotkey events originating from eg. Input widgets,
      * query the original events and look at the target that received the keydown.
      * @class
-     * @extends giant.Base
+     * @extends $oop.Base
      */
     giant.HotKeyWatcher = self
         .addMethods(/** @lends giant.HotKeyWatcher# */{
@@ -44,7 +44,7 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
 (function () {
     "use strict";
 
-    giant.addGlobalConstants(/** @lends giant */{
+    $oop.addGlobalConstants.call(giant, /** @lends giant */{
         /**
          * Signals that a hot key was pressed.
          * @constant

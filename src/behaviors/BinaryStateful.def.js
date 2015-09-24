@@ -1,14 +1,14 @@
 /*global giant */
-giant.postpone(giant, 'BinaryStateful', function () {
+$oop.postpone(giant, 'BinaryStateful', function () {
     "use strict";
 
-    var base = giant.Base,
+    var base = $oop.Base,
         self = base.extend();
 
     /**
      * The BinaryStateful trait manages multiple binary states with multiple contributing sources.
      * @class
-     * @extends giant.Base
+     * @extends $oop.Base
      * @extends giant.Widget
      * @see giant.BinaryState
      */
