@@ -15,7 +15,7 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
      * Expects to be added to Widget classes.
      * @class
      * @extends $oop.Base
-     * @extends giant.Widget
+     * @extends $widget.Widget
      */
     giant.Popup = self
         .addPrivateMethods(/** @lends giant.Popup# */{
@@ -118,7 +118,7 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
              */
             renderInto: function (element) {
                 if (element === document.body) {
-                    giant.Widget.renderInto.call(this, element);
+                    $widget.Widget.renderInto.call(this, element);
                 }
                 return this;
             },

@@ -24,15 +24,15 @@ var $entity = $entity || require('giant-entity');
 /** @namespace */
 var $templating = $templating || require('giant-templating');
 
+/** @namespace */
+var $widget = $widget || require('giant-widget');
+
 /**
  * Whether to poll input values at a regular interval.
  * Set to true when change/input events do not get fired on form autofill, etc.
  * @type {boolean}
  */
 giant.pollInputValues = false;
-if (typeof require === 'function') {
-    require('giant-widget');
-}
 
 /**
  * @function

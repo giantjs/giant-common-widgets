@@ -104,7 +104,7 @@ $oop.postpone(giant, 'DataDropdownButton', function (ns, className) {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
+             * @param {$widget.WidgetEvent} event
              * @ignore
              */
             onOptionSelect: function (event) {

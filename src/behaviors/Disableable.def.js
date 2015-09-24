@@ -14,7 +14,7 @@ $oop.postpone(giant, 'Disableable', function () {
      * @class
      * @extends $oop.Base
      * @extends giant.BinaryStateful
-     * @extends giant.Widget
+     * @extends $widget.Widget
      */
     giant.Disableable = self
         .addConstants(/** @lends giant.Disableable */{

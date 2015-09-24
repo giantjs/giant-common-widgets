@@ -4,7 +4,7 @@ $oop.postpone(giant, 'DocumentBody', function () {
 
     var base = $oop.Base,
         self = base.extend()
-            .addTraitAndExtend(giant.Renderable);
+            .addTraitAndExtend($widget.Renderable);
 
     /**
      * @name giant.DocumentBody.create
@@ -15,7 +15,7 @@ $oop.postpone(giant, 'DocumentBody', function () {
     /**
      * @class
      * @extends $oop.Base
-     * @extends giant.Renderable
+     * @extends $widget.Renderable
      */
     giant.DocumentBody = self
         .setInstanceMapper(function () {
@@ -33,7 +33,7 @@ $oop.postpone(giant, 'DocumentBody', function () {
         .addMethods(/** @lends giant.DocumentBody# */{
             /** @ignore */
             init: function () {
-                giant.Renderable.init.call(this);
+                $widget.Renderable.init.call(this);
                 this.setTagName('body');
 
                 /**

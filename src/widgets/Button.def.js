@@ -2,7 +2,7 @@
 $oop.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = giant.Widget,
+    var base = $widget.Widget,
         self = base.extend(className)
             .addTraitAndExtend(giant.BinaryStateful)
             .addTrait(giant.Disableable);
@@ -18,7 +18,7 @@ $oop.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
      * General purpose button widget.
      * Supports disabling and click events.
      * @class
-     * @extends giant.Widget
+     * @extends $widget.Widget
      * @extends giant.BinaryStateful
      * @extends giant.Disableable
      */

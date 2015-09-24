@@ -2,7 +2,7 @@
 $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = giant.Widget,
+    var base = $widget.Widget,
         self = base.extend(className);
 
     /**
@@ -17,7 +17,7 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
      * The Input is the base class for all input widgets: text, checkbox, radio button, etc.
      * Inputs can be validated by supplying a validator function.
      * @class
-     * @extends giant.Widget
+     * @extends $widget.Widget
      */
     giant.Input = self
         .addConstants(/** @lends giant.Input */{
@@ -293,7 +293,7 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
             /**
              * Called when input value change is detected on the widget level.
              * Updates value attribute and validity, triggers further widget events.
-             * @param {giant.WidgetEvent} event
+             * @param {$widget.WidgetEvent} event
              * @ignore
              */
             onValueChange: function (event) {

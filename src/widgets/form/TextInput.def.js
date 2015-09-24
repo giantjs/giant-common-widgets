@@ -4,7 +4,7 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
 
     var base = giant.Input,
         self = base.extend(className)
-            .addTrait(giant.JqueryWidget);
+            .addTrait($widget.JqueryWidget);
 
     /**
      * Creates a TextInput instance.
@@ -21,7 +21,7 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
      * Also delegates surrogate to Input: instantiating an Input with 'type'='text' will yield a TextInput instance.
      * @class
      * @extends giant.Input
-     * @extends giant.JqueryWidget
+     * @extends $widget.JqueryWidget
      */
     giant.TextInput = self
         .addConstants(/** @lends giant.Input */{
@@ -168,7 +168,7 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
+             * @param {$widget.WidgetEvent} event
              * @ignore
              */
             onFocusIn: function (event) {
@@ -178,7 +178,7 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
+             * @param {$widget.WidgetEvent} event
              * @ignore
              */
             onFocusOut: function (event) {

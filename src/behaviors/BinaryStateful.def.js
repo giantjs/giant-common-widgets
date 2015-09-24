@@ -9,7 +9,7 @@ $oop.postpone(giant, 'BinaryStateful', function () {
      * The BinaryStateful trait manages multiple binary states with multiple contributing sources.
      * @class
      * @extends $oop.Base
-     * @extends giant.Widget
+     * @extends $widget.Widget
      * @see giant.BinaryState
      */
     giant.BinaryStateful = self

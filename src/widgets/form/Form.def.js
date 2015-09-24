@@ -2,7 +2,7 @@
 $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = giant.Widget,
+    var base = $widget.Widget,
         self = base.extend(className)
             .addTraitAndExtend(giant.BinaryStateful)
             .addTrait(giant.Disableable);
@@ -19,14 +19,14 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
      * and supports submitting the form.
      * TODO: Implement disabling for form elements like inputs, etc.
      * @class
-     * @extends giant.Widget
+     * @extends $widget.Widget
      * @extends giant.BinaryStateful
      * @extends giant.Disableable
      */
     giant.Form = self
         .addPublic(/** @lends giant.Form */{
             /**
-             * @type {giant.MarkupTemplate}
+             * @type {$widget.MarkupTemplate}
              */
             contentTemplate: [
                 '<ul class="inputs-container">',
@@ -165,7 +165,7 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
 
             /**
              * Fetches all form field widgets as a WidgetCollection.
-             * @returns {giant.WidgetCollection}
+             * @returns {$widget.WidgetCollection}
              */
             getFormFields: function () {
                 return this.children.filterByType(giant.FormField);

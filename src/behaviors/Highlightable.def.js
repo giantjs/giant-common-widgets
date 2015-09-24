@@ -14,7 +14,7 @@ $oop.postpone(giant, 'Highlightable', function () {
      * @class
      * @extends $oop.Base
      * @extends giant.BinaryStateful
-     * @extends giant.Widget
+     * @extends $widget.Widget
      */
     giant.Highlightable = self
         .addConstants(/** @lends giant.Highlightable */{

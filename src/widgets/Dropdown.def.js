@@ -2,7 +2,7 @@
 $oop.postpone(giant, 'Dropdown', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = giant.Widget,
+    var base = $widget.Widget,
         self = base.extend(className)
             .addTraitAndExtend(giant.AlignedPopup, 'Popup');
 
@@ -21,7 +21,7 @@ $oop.postpone(giant, 'Dropdown', function (ns, className, /**jQuery*/$) {
      * By default, it will align its top left corner to the parent's bottom left corner.
      * The Dropdown controls scrolling of the internal list.
      * @class
-     * @extends giant.Widget
+     * @extends $widget.Widget
      * @extends giant.AlignedPopup
      */
     giant.Dropdown = self
@@ -83,7 +83,7 @@ $oop.postpone(giant, 'Dropdown', function (ns, className, /**jQuery*/$) {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
+             * @param {$widget.WidgetEvent} event
              * @ignore
              */
             onOptionFocus: function (event) {
@@ -118,7 +118,7 @@ $oop.postpone(giant, 'Dropdown', function (ns, className, /**jQuery*/$) {
 
             /**
              * TODO: Use giant events as soon as .getOriginalEventByName is available in giant-event.
-             * @param {giant.WidgetEvent} event
+             * @param {$widget.WidgetEvent} event
              * @ignore
              */
             onOptionSelect: function (event) {

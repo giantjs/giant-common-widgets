@@ -22,7 +22,7 @@ $oop.postpone(giant, 'HotKeyWatcher', function () {
              */
             onKeyDown: function (event) {
                 var link = $event.pushOriginalEvent(event),
-                    rootWidget = giant.Widget.rootWidget,
+                    rootWidget = $widget.Widget.rootWidget,
                     keyboardEvent = event.originalEvent,
                     originWidget = keyboardEvent instanceof Event &&
                         keyboardEvent.toWidget() ||

@@ -4,7 +4,7 @@
 
     module("BinaryStateful");
 
-    var base = giant.Widget,
+    var base = $widget.Widget,
         BinaryStateful = base.extend('BinaryStateful')
             .addTraitAndExtend(giant.BinaryStateful)
             .addMethods({

@@ -10,7 +10,7 @@ $oop.postpone(giant, 'DataListItem', function () {
      * Any widget that to be used as an item in a DataList is expected to have tgis trait.
      * @class
      * @extends $oop.Base
-     * @extends giant.Widget
+     * @extends $widget.Widget
      */
     giant.DataListItem = self
         .addMethods(/** @lends giant.DataListItem# */{
@@ -36,14 +36,14 @@ $oop.postpone(giant, 'DataListItem', function () {
 
             /**
              * TODO: Is this necessary? DataList should always be in sync w/ cache.
-             * @param {giant.Widget} parentWidget
+             * @param {$widget.Widget} parentWidget
              * @returns {giant.DataListItem}
              */
             addToParent: function (parentWidget) {
                 var childName = this.childName,
                     currentChild = parentWidget.children.getItem(childName);
 
-                giant.Widget.addToParent.call(this, parentWidget);
+                $widget.Widget.addToParent.call(this, parentWidget);
 
                 if (currentChild !== this) {
                     // triggering event about being added
@@ -63,7 +63,7 @@ $oop.postpone(giant, 'DataListItem', function () {
             removeFromParent: function () {
                 var parent = this.parent;
 
-                giant.Widget.removeFromParent.call(this);
+                $widget.Widget.removeFromParent.call(this);
 
                 if (parent) {
                     // triggering event about removal

@@ -2,7 +2,7 @@
 $oop.postpone(giant, 'FormField', function (ns, className) {
     "use strict";
 
-    var base = giant.Widget,
+    var base = $widget.Widget,
         self = base.extend(className);
 
     /**
@@ -19,7 +19,7 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
      * Supports enabling/disabling TAB keys.
      * TODO: add create... methods for comment and warning, too
      * @class
-     * @extends giant.Widget
+     * @extends $widget.Widget
      */
     giant.FormField = self
         .addMethods(/** @lends giant.FormField# */{
@@ -258,7 +258,7 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
+             * @param {$widget.WidgetEvent} event
              * @ignore
              */
             onInputTab: function (event) {

@@ -11,7 +11,7 @@ $oop.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
      * Expects host to have the Highlightable trait.
      * @class
      * @extends $oop.Base
-     * @extends giant.Widget
+     * @extends $widget.Widget
      * @extends giant.BinaryStateful
      * @extends giant.Highlightable
      */

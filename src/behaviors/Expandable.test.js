@@ -4,7 +4,7 @@
 
     module("Expandable");
 
-    var base = giant.Widget,
+    var base = $widget.Widget,
         Expandable = base.extend('Expandable')
             .addTraitAndExtend(giant.BinaryStateful)
             .addTraitAndExtend(giant.Expandable)

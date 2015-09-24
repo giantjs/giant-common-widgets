@@ -83,7 +83,7 @@ $oop.postpone(giant, 'DropdownButton', function (ns, className) {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
+             * @param {$widget.WidgetEvent} event
              * @ignore
              */
             onDropdownOpen: function (event) {
@@ -93,7 +93,7 @@ $oop.postpone(giant, 'DropdownButton', function (ns, className) {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
+             * @param {$widget.WidgetEvent} event
              * @ignore
              */
             onDropdownClose: function (event) {

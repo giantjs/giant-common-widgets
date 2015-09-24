@@ -22,7 +22,7 @@ $oop.postpone(giant, 'FieldBound', function () {
      * @extends $oop.Base
      * @extends $entity.EntityBound
      * @extends giant.EntityWidget
-     * @extends giant.Widget
+     * @extends $widget.Widget
      */
     giant.FieldBound = self
         .addPrivateMethods(/** @lends giant.FieldBound# */{

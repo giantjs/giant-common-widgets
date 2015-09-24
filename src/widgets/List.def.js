@@ -2,7 +2,7 @@
 $oop.postpone(giant, 'List', function (ns, className) {
     "use strict";
 
-    var base = giant.Widget,
+    var base = $widget.Widget,
         self = base.extend(className);
 
     /**
@@ -17,7 +17,7 @@ $oop.postpone(giant, 'List', function (ns, className) {
      * By default, it maps to the <em>ul</em> and <em>li</em> HTML elements, but that can be changed by subclassing.
      * Item order follows the normal ordering child widgets, ie. in the order of their names.
      * @class
-     * @extends giant.Widget
+     * @extends $widget.Widget
      */
     giant.List = self
         .addMethods(/** @lends giant.List# */{

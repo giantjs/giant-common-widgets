@@ -4,7 +4,7 @@
 
     module("Highlightable");
 
-    var base = giant.Widget,
+    var base = $widget.Widget,
         Highlightable = base.extend('Highlightable')
             .addTraitAndExtend(giant.BinaryStateful)
             .addTraitAndExtend(giant.Highlightable)

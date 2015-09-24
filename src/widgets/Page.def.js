@@ -2,7 +2,7 @@
 $oop.postpone(giant, 'Page', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = giant.Widget,
+    var base = $widget.Widget,
         self = base.extend(className)
             .addTraitAndExtend(giant.BinaryStateful)
             .addTrait(giant.Disableable);
@@ -21,7 +21,7 @@ $oop.postpone(giant, 'Page', function (ns, className, /**jQuery*/$) {
      * @example
      * MyPage.create().setRootWidget();
      * @class
-     * @extends giant.Widget
+     * @extends $widget.Widget
      * @extends giant.BinaryStateful
      * @extends giant.Disableable
      */

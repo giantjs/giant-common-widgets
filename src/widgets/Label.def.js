@@ -2,7 +2,7 @@
 $oop.postpone(giant, 'Label', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = giant.Widget,
+    var base = $widget.Widget,
         self = base.extend(className);
 
     /**
@@ -15,7 +15,7 @@ $oop.postpone(giant, 'Label', function (ns, className, /**jQuery*/$) {
     /**
      * Displays text, optionally HTML escaped, based on a string literal or stringifiable object.
      * @class
-     * @extends giant.Widget
+     * @extends $widget.Widget
      */
     giant.Label = self
         .addPrivateMethods(/** @lends giant.Label# */{

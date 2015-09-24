@@ -9,7 +9,7 @@ $oop.postpone(giant, 'Expandable', function () {
      * @class
      * @extends $oop.Base
      * @extends giant.BinaryStateful
-     * @extends giant.Widget
+     * @extends $widget.Widget
      */
     giant.Expandable = self
         .addConstants(/** @lends giant.Expandable */{

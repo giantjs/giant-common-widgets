@@ -9,7 +9,7 @@ $oop.postpone(giant, 'EntityWidget', function () {
      * Expects to be added to widget classes.
      * @class
      * @extends $oop.Base
-     * @extends giant.Widget
+     * @extends $widget.Widget
      */
     giant.EntityWidget = self
         .addConstants(/** @lends giant.EntityWidget */{
@@ -52,7 +52,7 @@ $oop.postpone(giant, 'revealKeys', function () {
      * @type {function}
      */
     giant.revealKeys = function () {
-        giant.Widget.rootWidget.getAllDescendants()
+        $widget.Widget.rootWidget.getAllDescendants()
             .callOnEachItem('revealKey');
     };
 });
@@ -65,7 +65,7 @@ $oop.postpone(giant, 'hideKeys', function () {
      * @type {function}
      */
     giant.hideKeys = function () {
-        giant.Widget.rootWidget.getAllDescendants()
+        $widget.Widget.rootWidget.getAllDescendants()
             .callOnEachItem('hideKey');
     };
 });

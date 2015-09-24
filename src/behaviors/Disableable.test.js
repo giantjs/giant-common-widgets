@@ -4,7 +4,7 @@
 
     module("Disableable");
 
-    var base = giant.Widget,
+    var base = $widget.Widget,
         Disableable = base.extend('Disableable')
             .addTraitAndExtend(giant.BinaryStateful)
             .addTraitAndExtend(giant.Disableable)

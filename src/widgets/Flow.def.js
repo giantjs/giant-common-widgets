@@ -32,14 +32,14 @@ $oop.postpone(giant, 'Flow', function (ns, className) {
 
                 /**
                  * Collection of available stage widgets.
-                 * @type {giant.WidgetCollection}
+                 * @type {$widget.WidgetCollection}
                  */
-                this.stages = giant.WidgetCollection.create();
+                this.stages = $widget.WidgetCollection.create();
             },
 
             /**
              * Retrieves stage widget the flow is currently at.
-             * @returns {giant.Widget}
+             * @returns {$widget.Widget}
              */
             getCurrentStage: function () {
                 return this.stages.getItem(this.currentStageName);
@@ -49,7 +49,7 @@ $oop.postpone(giant, 'Flow', function (ns, className) {
              * Adds a stage to the flow.
              * Adds various CSS classes to the specified stage widget.
              * @param {string} stageName
-             * @param {giant.Widget} stageWidget
+             * @param {$widget.Widget} stageWidget
              * @returns {giant.Flow}
              */
             addStage: function (stageName, stageWidget) {

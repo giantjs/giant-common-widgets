@@ -2,7 +2,7 @@
 $oop.postpone(giant, 'Image', function (ns, className) {
     "use strict";
 
-    var base = giant.Widget,
+    var base = $widget.Widget,
         self = base.extend(className);
 
     /**
@@ -15,7 +15,7 @@ $oop.postpone(giant, 'Image', function (ns, className) {
     /**
      * The Image displays an <em>img</em> tag.
      * @class
-     * @extends giant.Widget
+     * @extends $widget.Widget
      */
     giant.Image = self
         .addMethods(/** @lends giant.Image# */{

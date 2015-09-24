@@ -2,7 +2,7 @@
 $oop.postpone(giant, 'Hyperlink', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = giant.Widget,
+    var base = $widget.Widget,
         self = base.extend(className);
 
     /**
@@ -15,7 +15,7 @@ $oop.postpone(giant, 'Hyperlink', function (ns, className, /**jQuery*/$) {
     /**
      * Implements a basic hyperlink.
      * @class
-     * @extends giant.Widget
+     * @extends $widget.Widget
      */
     giant.Hyperlink = self
         .addMethods(/** @lends giant.Hyperlink# */{

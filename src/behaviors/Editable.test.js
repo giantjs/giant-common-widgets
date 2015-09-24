@@ -4,7 +4,7 @@
 
     module("Editable");
 
-    var base = giant.Widget,
+    var base = $widget.Widget,
         Editable = base.extend('Editable')
             .addTraitAndExtend(giant.BinaryStateful)
             .addTraitAndExtend(giant.Editable)

@@ -218,7 +218,7 @@ $oop.postpone(giant, 'OptionList', function () {
 
             /**
              * TODO: break up into smaller methods
-             * @param {giant.WidgetEvent} event
+             * @param {$widget.WidgetEvent} event
              * @ignore
              */
             onHotKeyPress: function (event) {
@@ -255,7 +255,7 @@ $oop.postpone(giant, 'OptionList', function () {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
+             * @param {$widget.WidgetEvent} event
              * @ignore
              */
             onOptionFocus: function (event) {
@@ -264,7 +264,7 @@ $oop.postpone(giant, 'OptionList', function () {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
+             * @param {$widget.WidgetEvent} event
              * @ignore
              */
             onOptionActive: function (event) {
@@ -273,7 +273,7 @@ $oop.postpone(giant, 'OptionList', function () {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
+             * @param {$widget.WidgetEvent} event
              * @ignore
              */
             onOptionSelect: function (event) {

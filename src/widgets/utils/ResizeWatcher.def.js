@@ -67,7 +67,7 @@ $oop.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
                 var currentWidth = $window.width(),
                     currentHeight = $window.height(),
                     wasWindowResized = false,
-                    rootWidget = giant.Widget.rootWidget;
+                    rootWidget = $widget.Widget.rootWidget;
 
                 if (currentWidth !== this.currentWidth || currentHeight !== this.currentHeight) {
                     wasWindowResized = true;
@@ -97,7 +97,7 @@ $oop.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onDebouncedWindowResize: function () {
-                var rootWidget = giant.Widget.rootWidget;
+                var rootWidget = $widget.Widget.rootWidget;
                 if (rootWidget) {
                     this.updateDimensions();
                 }

@@ -42,7 +42,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
 
             /**
              * @param {$entity.ItemKey} itemKey
-             * @returns {giant.Widget}
+             * @returns {$widget.Widget}
              * @private
              */
             _spawnPreparedItemWidget: function (itemKey) {
@@ -137,7 +137,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
              * To specify a custom widget class, either override this method in a subclass, or provide
              * a surrogate definition on DataLabel, in case the custom item widget is also DataLabel-based.
              * @param {$entity.ItemKey} itemKey
-             * @returns {giant.Widget}
+             * @returns {$widget.Widget}
              */
             spawnItemWidget: function (itemKey) {
                 return giant.ItemDataLabel.create(itemKey, itemKey)
@@ -157,7 +157,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
             /**
              * Fetches item widget by item key.
              * @param {$entity.ItemKey} itemKey
-             * @returns {giant.Widget}
+             * @returns {$widget.Widget}
              */
             getItemWidgetByKey: function (itemKey) {
                 var childName = this.childNamesByItemKey.getItem(itemKey.toString());
@@ -213,7 +213,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
+             * @param {$widget.WidgetEvent} event
              * @ignore
              */
             onItemAdd: function (event) {
@@ -229,7 +229,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
             },
 
             /**
-             * @param {giant.WidgetEvent} event
+             * @param {$widget.WidgetEvent} event
              * @ignore
              */
             onItemRemove: function (event) {
