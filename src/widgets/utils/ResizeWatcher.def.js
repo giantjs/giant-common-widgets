@@ -51,7 +51,7 @@ $oop.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
 
                 /**
                  * Debouncer instance for debouncing window resize events, which may come in rapid succession.
-                 * @type {giant.Debouncer}
+                 * @type {$utils.Debouncer}
                  */
                 this.windowResizeDebouncer = this.onDebouncedWindowResize.toDebouncer();
 

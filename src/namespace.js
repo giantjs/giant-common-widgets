@@ -9,6 +9,9 @@ var $assertion = $assertion || require('giant-assertion');
 /** @namespace */
 var $oop = $oop || require('giant-oop');
 
+/** @namespace */
+var $utils = $utils || require('giant-utils');
+
 /**
  * Whether to poll input values at a regular interval.
  * Set to true when change/input events do not get fired on form autofill, etc.
@@ -20,7 +23,6 @@ if (typeof require === 'function') {
     require('giant-event');
     require('giant-templating');
     require('giant-entity');
-    require('giant-utils');
     require('giant-widget');
 }
 

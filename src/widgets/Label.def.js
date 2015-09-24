@@ -24,7 +24,7 @@ $oop.postpone(giant, 'Label', function (ns, className, /**jQuery*/$) {
              * @private
              */
             _updateLabelStyle: function () {
-                var labelText = giant.Stringifier.stringify(this.labelText);
+                var labelText = $utils.Stringifier.stringify(this.labelText);
                 if (labelText) {
                     this
                         .removeCssClass('no-text')
@@ -42,7 +42,7 @@ $oop.postpone(giant, 'Label', function (ns, className, /**jQuery*/$) {
                     currentLabelText;
 
                 if (element) {
-                    currentLabelText = giant.Stringifier.stringify(this.labelText);
+                    currentLabelText = $utils.Stringifier.stringify(this.labelText);
                     $(element).html(this.htmlEscaped ?
                         currentLabelText.toHtml() :
                         currentLabelText);
@@ -73,7 +73,7 @@ $oop.postpone(giant, 'Label', function (ns, className, /**jQuery*/$) {
 
             /** @ignore */
             contentMarkup: function () {
-                var currentLabelText = giant.Stringifier.stringify(this.labelText);
+                var currentLabelText = $utils.Stringifier.stringify(this.labelText);
                 return this.htmlEscaped ?
                     currentLabelText.toHtml() :
                     currentLabelText;
