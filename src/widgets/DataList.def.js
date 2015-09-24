@@ -4,7 +4,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
 
     var base = giant.List,
         self = base.extend(className)
-            .addTrait(giant.EntityBound)
+            .addTrait($entity.EntityBound)
             .addTrait(giant.EntityWidget)
             .addTraitAndExtend(giant.FieldBound);
 
@@ -12,7 +12,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
      * Creates a DataList instance.
      * @name giant.DataList.create
      * @function
-     * @param {giant.FieldKey} fieldKey Key to an ordered reference collection.
+     * @param {$entity.FieldKey} fieldKey Key to an ordered reference collection.
      * @returns {giant.DataList}
      */
 
@@ -24,7 +24,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
      * TODO: Add unit tests.
      * @class
      * @extends giant.List
-     * @extends giant.EntityBound
+     * @extends $entity.EntityBound
      * @extends giant.EntityWidget
      * @extends giant.FieldBound
      */
@@ -32,7 +32,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
         .addPrivateMethods(/** @lends giant.DataList# */{
             /**
              * @param {string} childName
-             * @param {giant.ItemKey} itemKey
+             * @param {$entity.ItemKey} itemKey
              * @private
              * @memberOf giant.DataList
              */
@@ -41,7 +41,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
             },
 
             /**
-             * @param {giant.ItemKey} itemKey
+             * @param {$entity.ItemKey} itemKey
              * @returns {giant.Widget}
              * @private
              */
@@ -52,7 +52,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
             },
 
             /**
-             * @param {giant.ItemKey} itemKey
+             * @param {$entity.ItemKey} itemKey
              * @private
              */
             _addItem: function (itemKey) {
@@ -69,7 +69,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
             },
 
             /**
-             * @param {giant.ItemKey} itemKey
+             * @param {$entity.ItemKey} itemKey
              * @private
              */
             _removeItem: function (itemKey) {
@@ -92,14 +92,14 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
         })
         .addMethods(/** @lends giant.DataList# */{
             /**
-             * @param {giant.FieldKey} fieldKey
+             * @param {$entity.FieldKey} fieldKey
              * @ignore
              */
             init: function (fieldKey) {
                 $assertion.isFieldKey(fieldKey, "Invalid field key");
 
                 base.init.call(this);
-                giant.EntityBound.init.call(this);
+                $entity.EntityBound.init.call(this);
                 giant.EntityWidget.init.call(this, fieldKey);
 
                 this
@@ -136,7 +136,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
              * Creates item widget for the specified item key.
              * To specify a custom widget class, either override this method in a subclass, or provide
              * a surrogate definition on DataLabel, in case the custom item widget is also DataLabel-based.
-             * @param {giant.ItemKey} itemKey
+             * @param {$entity.ItemKey} itemKey
              * @returns {giant.Widget}
              */
             spawnItemWidget: function (itemKey) {
@@ -147,7 +147,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
             /**
              * Retrieves the item childName associated with the specified itemKey. (Child name determines order.)
              * To specify custom child name for item widgets, override this method.
-             * @param {giant.ItemKey} itemKey
+             * @param {$entity.ItemKey} itemKey
              * @returns {string}
              */
             spawnItemName: function (itemKey) {
@@ -156,7 +156,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
 
             /**
              * Fetches item widget by item key.
-             * @param {giant.ItemKey} itemKey
+             * @param {$entity.ItemKey} itemKey
              * @returns {giant.Widget}
              */
             getItemWidgetByKey: function (itemKey) {
@@ -245,12 +245,12 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
             },
 
             /**
-             * @param {giant.EntityChangeEvent} event
+             * @param {$entity.EntityChangeEvent} event
              * @ignore
              */
             onItemChange: function (event) {
                 var itemKey = event.sender;
-                if (itemKey.isA(giant.ItemKey)) {
+                if (itemKey.isA($entity.ItemKey)) {
                     if (event.beforeNode !== undefined && event.afterNode === undefined) {
                         // item was removed
                         this._removeItem(itemKey);

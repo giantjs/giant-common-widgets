@@ -10,7 +10,7 @@ $oop.postpone(giant, 'DataDropdown', function (ns, className) {
      * Creates a DataDropdown instance.
      * @name giant.DataDropdown.create
      * @function
-     * @param {giant.FieldKey} fieldKey
+     * @param {$entity.FieldKey} fieldKey
      * @returns {giant.DataDropdown}
      */
 
@@ -23,7 +23,7 @@ $oop.postpone(giant, 'DataDropdown', function (ns, className) {
     giant.DataDropdown = self
         .addMethods(/** @lends giant.DataDropdown# */{
             /**
-             * @param {giant.FieldKey} fieldKey
+             * @param {$entity.FieldKey} fieldKey
              * @ignore
              */
             init: function (fieldKey) {

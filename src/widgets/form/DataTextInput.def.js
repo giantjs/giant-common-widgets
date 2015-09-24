@@ -4,7 +4,7 @@ $oop.postpone(giant, 'DataTextInput', function (ns, className) {
 
     var base = giant.TextInput,
         self = base.extend(className)
-            .addTrait(giant.EntityBound)
+            .addTrait($entity.EntityBound)
             .addTrait(giant.EntityWidget)
             .addTraitAndExtend(giant.FieldBound);
 
@@ -12,7 +12,7 @@ $oop.postpone(giant, 'DataTextInput', function (ns, className) {
      * Creates a DataTextInput instance.
      * @name giant.DataTextInput.create
      * @function
-     * @param {giant.FieldKey} inputFieldKey
+     * @param {$entity.FieldKey} inputFieldKey
      * @returns {giant.DataTextInput}
      */
 
@@ -21,19 +21,19 @@ $oop.postpone(giant, 'DataTextInput', function (ns, className) {
      * Keeps the value of the input field in sync with the changes of the cache field.
      * @class
      * @extends giant.TextInput
-     * @extends giant.EntityBound
+     * @extends $entity.EntityBound
      * @extends giant.EntityWidget
      * @extends giant.FieldBound
      */
     giant.DataTextInput = self
         .addMethods(/** @lends giant.DataTextInput# */{
             /**
-             * @param {giant.FieldKey} inputFieldKey
+             * @param {$entity.FieldKey} inputFieldKey
              * @ignore
              */
             init: function (inputFieldKey) {
                 base.init.call(this);
-                giant.EntityBound.init.call(this);
+                $entity.EntityBound.init.call(this);
                 giant.EntityWidget.init.call(this, inputFieldKey);
             },
 

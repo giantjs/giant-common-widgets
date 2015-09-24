@@ -4,7 +4,7 @@ $oop.postpone(giant, 'DataDynamicImage', function (ns, className) {
 
     var base = giant.DynamicImage,
         self = base.extend(className)
-            .addTrait(giant.EntityBound)
+            .addTrait($entity.EntityBound)
             .addTrait(giant.EntityWidget)
             .addTraitAndExtend(giant.FieldBound);
 
@@ -12,7 +12,7 @@ $oop.postpone(giant, 'DataDynamicImage', function (ns, className) {
      * Creates a DataDynamicImage instance.
      * @name giant.DataDynamicImage.create
      * @function
-     * @param {giant.FieldKey} urlFieldKey Field holding image URL.
+     * @param {$entity.FieldKey} urlFieldKey Field holding image URL.
      * @returns {giant.DataDynamicImage}
      */
 
@@ -22,21 +22,21 @@ $oop.postpone(giant, 'DataDynamicImage', function (ns, className) {
      * Keeps the image in sync with the changes of the corresponding field.
      * @class
      * @extends giant.DynamicImage
-     * @extends giant.EntityBound
+     * @extends $entity.EntityBound
      * @extends giant.EntityWidget
      * @extends giant.FieldBound
      */
     giant.DataDynamicImage = self
         .addMethods(/** @lends giant.DataDynamicImage# */{
             /**
-             * @param {giant.FieldKey} urlFieldKey
+             * @param {$entity.FieldKey} urlFieldKey
              * @ignore
              */
             init: function (urlFieldKey) {
                 $assertion.isFieldKey(urlFieldKey, "Invalid field key");
 
                 base.init.call(this);
-                giant.EntityBound.init.call(this);
+                $entity.EntityBound.init.call(this);
                 giant.EntityWidget.init.call(this, urlFieldKey);
             },
 

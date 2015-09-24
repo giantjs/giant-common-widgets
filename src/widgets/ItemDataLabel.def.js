@@ -8,8 +8,8 @@ $oop.postpone(giant, 'ItemDataLabel', function (ns, className) {
      * Creates a ItemDataLabel instance.
      * @name giant.ItemDataLabel.create
      * @function
-     * @param {giant.FieldKey} textFieldKey Identifies field to be displayed.
-     * @param {giant.ItemKey} itemKey Identifies item the widget is associated with.
+     * @param {$entity.FieldKey} textFieldKey Identifies field to be displayed.
+     * @param {$entity.ItemKey} itemKey Identifies item the widget is associated with.
      * @returns {giant.ItemDataLabel}
      */
 

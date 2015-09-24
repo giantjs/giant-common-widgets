@@ -18,10 +18,10 @@ $oop.postpone(giant, 'EntityWidget', function () {
         })
         .addMethods(/** @lends giant.EntityWidget# */{
             /**
-             * @param {giant.EntityKey} entityKey
+             * @param {$entity.EntityKey} entityKey
              */
             init: function (entityKey) {
-                /** @type {giant.EntityKey} */
+                /** @type {$entity.EntityKey} */
                 this.entityKey = entityKey;
             },
 

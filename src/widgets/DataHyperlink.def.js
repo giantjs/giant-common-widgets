@@ -4,7 +4,7 @@ $oop.postpone(giant, 'DataHyperlink', function (ns, className) {
 
     var base = giant.Hyperlink,
         self = base.extend(className)
-            .addTrait(giant.EntityBound)
+            .addTrait($entity.EntityBound)
             .addTrait(giant.EntityWidget)
             .addTraitAndExtend(giant.FieldBound);
 
@@ -12,8 +12,8 @@ $oop.postpone(giant, 'DataHyperlink', function (ns, className) {
      * Creates a DataHyperlink instance.
      * @name giant.DataHyperlink.create
      * @function
-     * @param {giant.FieldKey} urlKey Points to the link's URL.
-     * @param {giant.FieldKey} textKey Points to the link's text.
+     * @param {$entity.FieldKey} urlKey Points to the link's URL.
+     * @param {$entity.FieldKey} textKey Points to the link's text.
      * @returns {giant.DataHyperlink}
      */
 
@@ -25,15 +25,15 @@ $oop.postpone(giant, 'DataHyperlink', function (ns, className) {
      * it might be a better idea to subclass Hyperlink directly than using DataHyperlink.
      * @class
      * @extends giant.Hyperlink
-     * @extends giant.EntityBound
+     * @extends $entity.EntityBound
      * @extends giant.EntityWidget
      * @extends giant.FieldBound
      */
     giant.DataHyperlink = self
         .addMethods(/** @lends giant.DataHyperlink# */{
             /**
-             * @param {giant.FieldKey} urlKey
-             * @param {giant.FieldKey} textKey
+             * @param {$entity.FieldKey} urlKey
+             * @param {$entity.FieldKey} textKey
              * @ignore
              */
             init: function (urlKey, textKey) {
@@ -43,12 +43,12 @@ $oop.postpone(giant, 'DataHyperlink', function (ns, className) {
 
                 /**
                  * Field key that identifies the text
-                 * @type {giant.FieldKey}
+                 * @type {$entity.FieldKey}
                  */
                 this.textKey = textKey;
 
                 base.init.call(this);
-                giant.EntityBound.init.call(this);
+                $entity.EntityBound.init.call(this);
                 giant.EntityWidget.init.call(this, urlKey);
             },
 

@@ -20,7 +20,7 @@ $oop.postpone(giant, 'FieldBound', function () {
      * Expects to be added to widgets that also have the EntityBound and EntityWidget traits.
      * @class
      * @extends $oop.Base
-     * @extends giant.EntityBound
+     * @extends $entity.EntityBound
      * @extends giant.EntityWidget
      * @extends giant.Widget
      */

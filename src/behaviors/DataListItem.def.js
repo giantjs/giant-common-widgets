@@ -16,16 +16,16 @@ $oop.postpone(giant, 'DataListItem', function () {
         .addMethods(/** @lends giant.DataListItem# */{
             /**
              * Call from host's init.
-             * @param {giant.ItemKey} [itemKey]
+             * @param {$entity.ItemKey} [itemKey]
              */
             init: function (itemKey) {
-                /** @type {giant.ItemKey} */
+                /** @type {$entity.ItemKey} */
                 this.itemKey = itemKey;
             },
 
             /**
              * Associates item widget with an item key.
-             * @param {giant.ItemKey} itemKey
+             * @param {$entity.ItemKey} itemKey
              * @returns {giant.DataListItem}
              */
             setItemKey: function (itemKey) {

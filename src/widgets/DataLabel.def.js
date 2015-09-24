@@ -4,7 +4,7 @@ $oop.postpone(giant, 'DataLabel', function (ns, className) {
 
     var base = giant.Label,
         self = base.extend(className)
-            .addTrait(giant.EntityBound)
+            .addTrait($entity.EntityBound)
             .addTrait(giant.EntityWidget)
             .addTraitAndExtend(giant.FieldBound);
 
@@ -12,7 +12,7 @@ $oop.postpone(giant, 'DataLabel', function (ns, className) {
      * Creates a DataLabel instance.
      * @name giant.DataLabel.create
      * @function
-     * @param {giant.FieldKey} textFieldKey Key to a text field.
+     * @param {$entity.FieldKey} textFieldKey Key to a text field.
      * @returns {giant.DataLabel}
      */
 
@@ -21,21 +21,21 @@ $oop.postpone(giant, 'DataLabel', function (ns, className) {
      * Keeps the text in sync with the changes of the corresponding field.
      * @class
      * @extends giant.Label
-     * @extends giant.EntityBound
+     * @extends $entity.EntityBound
      * @extends giant.EntityWidget
      * @extends giant.FieldBound
      */
     giant.DataLabel = self
         .addMethods(/** @lends giant.DataLabel# */{
             /**
-             * @param {giant.FieldKey} fieldKey
+             * @param {$entity.FieldKey} fieldKey
              * @ignore
              */
             init: function (fieldKey) {
                 $assertion.isFieldKey(fieldKey, "Invalid field key");
 
                 base.init.call(this);
-                giant.EntityBound.init.call(this);
+                $entity.EntityBound.init.call(this);
                 giant.EntityWidget.init.call(this, fieldKey);
             },
 

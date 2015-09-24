@@ -4,14 +4,14 @@ $oop.postpone(giant, 'DataDropdownButton', function (ns, className) {
 
     var base = giant.DropdownButton,
         self = base.extend(className)
-            .addTrait(giant.EntityBound)
+            .addTrait($entity.EntityBound)
             .addTrait(giant.EntityWidget);
 
     /**
      * @name giant.DataDropdownButton.create
      * @function
-     * @param {giant.FieldKey} labelKey
-     * @param {giant.FieldKey} optionsKey
+     * @param {$entity.FieldKey} labelKey
+     * @param {$entity.FieldKey} optionsKey
      * @returns {giant.DataDropdownButton}
      */
 
@@ -37,8 +37,8 @@ $oop.postpone(giant, 'DataDropdownButton', function (ns, className) {
         })
         .addMethods(/** @lends giant.DataDropdownButton# */{
             /**
-             * @param {giant.FieldKey} selectedKey
-             * @param {giant.FieldKey} optionsKey
+             * @param {$entity.FieldKey} selectedKey
+             * @param {$entity.FieldKey} optionsKey
              * @ignore
              */
             init: function (selectedKey, optionsKey) {
@@ -48,13 +48,13 @@ $oop.postpone(giant, 'DataDropdownButton', function (ns, className) {
 
                 /**
                  * Field key that identifies the options
-                 * @type {giant.FieldKey}
+                 * @type {$entity.FieldKey}
                  */
                 this.optionsKey = optionsKey;
 
                 giant.EntityWidget.init.call(this, selectedKey);
                 base.init.call(this);
-                giant.EntityBound.init.call(this);
+                $entity.EntityBound.init.call(this);
 
                 this
                     .elevateMethod('onOptionSelect')
