@@ -130,7 +130,7 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onKeyDown: function (event) {
-                var link = giant.pushOriginalEvent(event);
+                var link = $event.pushOriginalEvent(event);
 
                 switch (event.which) {
                 case 13:
@@ -155,7 +155,7 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onChange: function (event) {
-                var link = giant.pushOriginalEvent(event),
+                var link = $event.pushOriginalEvent(event),
                     element = this.getElement(),
                     newInputValue;
 
@@ -172,7 +172,7 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onFocusIn: function (event) {
-                var link = giant.pushOriginalEvent(event);
+                var link = $event.pushOriginalEvent(event);
                 this.triggerSync(giant.EVENT_INPUT_FOCUS);
                 link.unlink();
             },
@@ -182,7 +182,7 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onFocusOut: function (event) {
-                var link = giant.pushOriginalEvent(event);
+                var link = $event.pushOriginalEvent(event);
                 this.triggerSync(giant.EVENT_INPUT_BLUR);
                 link.unlink();
             }

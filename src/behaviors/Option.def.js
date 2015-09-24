@@ -151,7 +151,7 @@ $oop.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onOptionClick: function (event) {
-                var link = giant.pushOriginalEvent(event);
+                var link = $event.pushOriginalEvent(event);
                 this.markAsActive();
                 link.unlink();
             },
@@ -161,7 +161,7 @@ $oop.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onOptionHover: function (event) {
-                var link = giant.pushOriginalEvent(event);
+                var link = $event.pushOriginalEvent(event);
                 this.markAsFocused();
                 link.unlink();
             }

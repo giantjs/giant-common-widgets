@@ -79,8 +79,8 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
              * @private
              */
             _getLastUiEvent: function () {
-                var lastEvent = window && giant.originalEventStack.getLastEvent();
-                return lastEvent && giant.Event.isBaseOf(lastEvent) ?
+                var lastEvent = window && $event.originalEventStack.getLastEvent();
+                return lastEvent && $event.Event.isBaseOf(lastEvent) ?
                     lastEvent.getOriginalEventByType(UIEvent) :
                     undefined;
             }
@@ -241,7 +241,7 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onBodyClick: function (event) {
-                var link = giant.pushOriginalEvent(event);
+                var link = $event.pushOriginalEvent(event);
                 if (this._isOutside($(event.target))) {
                     this.triggerSync(giant.EVENT_POPUP_OUTSIDE_CLICK);
                 }

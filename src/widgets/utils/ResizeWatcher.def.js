@@ -88,7 +88,7 @@ $oop.postpone(giant, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onWindowResize: function (event) {
-                var link = giant.pushOriginalEvent(event);
+                var link = $event.pushOriginalEvent(event);
                 this.windowResizeDebouncer.runDebounced(self.RESIZE_DEBOUNCE_DELAY, event);
                 link.unlink();
             },

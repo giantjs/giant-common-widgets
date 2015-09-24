@@ -15,6 +15,9 @@ var $utils = $utils || require('giant-utils');
 /** @namespace */
 var $data = $data || require('giant-data');
 
+/** @namespace */
+var $event = $event || require('giant-event');
+
 /**
  * Whether to poll input values at a regular interval.
  * Set to true when change/input events do not get fired on form autofill, etc.
@@ -22,7 +25,6 @@ var $data = $data || require('giant-data');
  */
 giant.pollInputValues = false;
 if (typeof require === 'function') {
-    require('giant-event');
     require('giant-templating');
     require('giant-entity');
     require('giant-widget');
