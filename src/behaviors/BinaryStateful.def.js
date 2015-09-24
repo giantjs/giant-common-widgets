@@ -1,5 +1,5 @@
-/*global giant */
-$oop.postpone(giant, 'BinaryStateful', function () {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'BinaryStateful', function () {
     "use strict";
 
     var base = $oop.Base,
@@ -10,17 +10,17 @@ $oop.postpone(giant, 'BinaryStateful', function () {
      * @class
      * @extends $oop.Base
      * @extends $widget.Widget
-     * @see giant.BinaryState
+     * @see $commonWidgets.BinaryState
      */
-    giant.BinaryStateful = self
-        .addConstants(/** @lends giant.BinaryStateful */{
+    $commonWidgets.BinaryStateful = self
+        .addConstants(/** @lends $commonWidgets.BinaryStateful */{
             /**
              * Identifier for imposed source.
              * @constant
              */
             SOURCE_ID_IMPOSED: 'imposed'
         })
-        .addMethods(/** @lends giant.BinaryStateful# */{
+        .addMethods(/** @lends $commonWidgets.BinaryStateful# */{
             /**
              * Call from host's init.
              */
@@ -77,7 +77,7 @@ $oop.postpone(giant, 'BinaryStateful', function () {
              * TODO: Add test for isCascading argument.
              * @param {string} stateName Identifies the state.
              * @param {boolean} [isCascading=false] Whether new state is cascading.
-             * @returns {giant.BinaryStateful}
+             * @returns {$commonWidgets.BinaryStateful}
              */
             addBinaryState: function (stateName, isCascading) {
                 var binaryStateLayers = this.binaryStates;
@@ -92,7 +92,7 @@ $oop.postpone(giant, 'BinaryStateful', function () {
 
             /**
              * @param {string} stateName
-             * @returns {giant.BinaryState}
+             * @returns {$commonWidgets.BinaryState}
              */
             getBinaryState: function (stateName) {
                 return this.binaryStates.getItem(stateName);
@@ -111,7 +111,7 @@ $oop.postpone(giant, 'BinaryStateful', function () {
              * Adds the specified contributing source to the specified state.
              * @param {string} stateName Identifies state.
              * @param {string} sourceId Identifies source.
-             * @returns {giant.BinaryStateful}
+             * @returns {$commonWidgets.BinaryStateful}
              */
             addBinaryStateSource: function (stateName, sourceId) {
                 var state = this.getBinaryState(stateName),
@@ -127,7 +127,7 @@ $oop.postpone(giant, 'BinaryStateful', function () {
 
                     // adding source to suitable descendants
                     this.getAllDescendants()
-                        .filterBySelector(function (/**giant.BinaryStateful*/descendant) {
+                        .filterBySelector(function (/**$commonWidgets.BinaryStateful*/descendant) {
                             var state = descendant.binaryStates && descendant.getBinaryState(stateName);
                             return state && state.isCascading;
                         })
@@ -142,7 +142,7 @@ $oop.postpone(giant, 'BinaryStateful', function () {
             /**
              * Imposes a source on the specified state provided that that state allows cascading.
              * @param {string} stateName
-             * @returns {giant.BinaryStateful}
+             * @returns {$commonWidgets.BinaryStateful}
              */
             addImposedStateSource: function (stateName) {
                 var state = this.getBinaryState(stateName),
@@ -163,7 +163,7 @@ $oop.postpone(giant, 'BinaryStateful', function () {
             /**
              * Applies sources imposed by parents on the current instance.
              * @param {string} stateName Identifies state to add imposed sources to.
-             * @returns {giant.BinaryStateful}
+             * @returns {$commonWidgets.BinaryStateful}
              */
             applyImposedStateSource: function (stateName) {
                 // querying nearest parent for matching state
@@ -184,7 +184,7 @@ $oop.postpone(giant, 'BinaryStateful', function () {
              * @param {string} stateName Identifies state.
              * @param {string} [sourceId] Identifies source. When omitted, all sources will be
              * removed.
-             * @returns {giant.BinaryStateful}
+             * @returns {$commonWidgets.BinaryStateful}
              */
             removeBinaryStateSource: function (stateName, sourceId) {
                 var state = this.getBinaryState(stateName),
@@ -200,7 +200,7 @@ $oop.postpone(giant, 'BinaryStateful', function () {
 
                     // adding source to suitable descendants
                     this.getAllDescendants()
-                        .filterBySelector(function (/**giant.BinaryStateful*/descendant) {
+                        .filterBySelector(function (/**$commonWidgets.BinaryStateful*/descendant) {
                             var state = descendant.binaryStates && descendant.getBinaryState(stateName);
                             return state && state.isCascading;
                         })
@@ -215,7 +215,7 @@ $oop.postpone(giant, 'BinaryStateful', function () {
             /**
              * Removes contributing source imposed by the specified instance from the specified state.
              * @param {string} stateName
-             * @returns {giant.BinaryStateful}
+             * @returns {$commonWidgets.BinaryStateful}
              */
             removeImposedStateSource: function (stateName) {
                 var state = this.getBinaryState(stateName),
@@ -237,7 +237,7 @@ $oop.postpone(giant, 'BinaryStateful', function () {
              * Sets cascading flag on the specified state and updates imposed state on the current instance.
              * @param {string} stateName
              * @param {boolean} isCascading
-             * @returns {giant.BinaryStateful}
+             * @returns {$commonWidgets.BinaryStateful}
              */
             setIsCascading: function (stateName, isCascading) {
                 var state = this.getBinaryState(stateName),
@@ -260,14 +260,14 @@ $oop.postpone(giant, 'BinaryStateful', function () {
 
     /**
      * Called after the state value changes from false to true.
-     * @name giant.BinaryStateful#afterStateOn
+     * @name $commonWidgets.BinaryStateful#afterStateOn
      * @function
      * @param {string} stateName
      */
 
     /**
      * Called after the state value changes from true to false.
-     * @name giant.BinaryStateful#afterStateOff
+     * @name $commonWidgets.BinaryStateful#afterStateOff
      * @function
      * @param {string} stateName
      */

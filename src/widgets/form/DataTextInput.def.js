@@ -1,32 +1,32 @@
-/*global giant */
-$oop.postpone(giant, 'DataTextInput', function (ns, className) {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'DataTextInput', function (ns, className) {
     "use strict";
 
-    var base = giant.TextInput,
+    var base = $commonWidgets.TextInput,
         self = base.extend(className)
             .addTrait($entity.EntityBound)
-            .addTrait(giant.EntityWidget)
-            .addTraitAndExtend(giant.FieldBound);
+            .addTrait($commonWidgets.EntityWidget)
+            .addTraitAndExtend($commonWidgets.FieldBound);
 
     /**
      * Creates a DataTextInput instance.
-     * @name giant.DataTextInput.create
+     * @name $commonWidgets.DataTextInput.create
      * @function
      * @param {$entity.FieldKey} inputFieldKey
-     * @returns {giant.DataTextInput}
+     * @returns {$commonWidgets.DataTextInput}
      */
 
     /**
      * The DataTextInput adds data binding to TextInput, reflecting the value of a field in the cache.
      * Keeps the value of the input field in sync with the changes of the cache field.
      * @class
-     * @extends giant.TextInput
+     * @extends $commonWidgets.TextInput
      * @extends $entity.EntityBound
-     * @extends giant.EntityWidget
-     * @extends giant.FieldBound
+     * @extends $commonWidgets.EntityWidget
+     * @extends $commonWidgets.FieldBound
      */
-    giant.DataTextInput = self
-        .addMethods(/** @lends giant.DataTextInput# */{
+    $commonWidgets.DataTextInput = self
+        .addMethods(/** @lends $commonWidgets.DataTextInput# */{
             /**
              * @param {$entity.FieldKey} inputFieldKey
              * @ignore
@@ -34,24 +34,24 @@ $oop.postpone(giant, 'DataTextInput', function (ns, className) {
             init: function (inputFieldKey) {
                 base.init.call(this);
                 $entity.EntityBound.init.call(this);
-                giant.EntityWidget.init.call(this, inputFieldKey);
+                $commonWidgets.EntityWidget.init.call(this, inputFieldKey);
             },
 
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                giant.FieldBound.afterAdd.call(this);
+                $commonWidgets.FieldBound.afterAdd.call(this);
             },
 
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                giant.FieldBound.afterRemove.call(this);
+                $commonWidgets.FieldBound.afterRemove.call(this);
             },
 
             /**
              * @param {*} fieldValue
-             * @returns {giant.DataTextInput}
+             * @returns {$commonWidgets.DataTextInput}
              * @ignore
              */
             setFieldValue: function (fieldValue) {

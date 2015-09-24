@@ -1,5 +1,5 @@
-/*global giant, jQuery */
-$oop.postpone(giant, 'Label', function (ns, className, /**jQuery*/$) {
+/*global $commonWidgets, jQuery */
+$oop.postpone($commonWidgets, 'Label', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = $widget.Widget,
@@ -7,9 +7,9 @@ $oop.postpone(giant, 'Label', function (ns, className, /**jQuery*/$) {
 
     /**
      * Creates a Label instance.
-     * @name giant.Label.create
+     * @name $commonWidgets.Label.create
      * @function
-     * @returns {giant.Label}
+     * @returns {$commonWidgets.Label}
      */
 
     /**
@@ -17,8 +17,8 @@ $oop.postpone(giant, 'Label', function (ns, className, /**jQuery*/$) {
      * @class
      * @extends $widget.Widget
      */
-    giant.Label = self
-        .addPrivateMethods(/** @lends giant.Label# */{
+    $commonWidgets.Label = self
+        .addPrivateMethods(/** @lends $commonWidgets.Label# */{
             /**
              * Updates Label's CSS classes based on its content.
              * @private
@@ -49,7 +49,7 @@ $oop.postpone(giant, 'Label', function (ns, className, /**jQuery*/$) {
                 }
             }
         })
-        .addMethods(/** @lends giant.Label# */{
+        .addMethods(/** @lends $commonWidgets.Label# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -83,7 +83,7 @@ $oop.postpone(giant, 'Label', function (ns, className, /**jQuery*/$) {
              * Sets flag that determines whether label will HTML escape text before rendering.
              * Use with care: script embedded in labelText might compromise security!
              * @param {boolean} htmlEscaped
-             * @returns {giant.Label}
+             * @returns {$commonWidgets.Label}
              */
             setHtmlEscaped: function (htmlEscaped) {
                 this.htmlEscaped = htmlEscaped;
@@ -95,7 +95,7 @@ $oop.postpone(giant, 'Label', function (ns, className, /**jQuery*/$) {
              * Sets text to display on label. Accepts strings or objects that implement .toString().
              * Displayed text will be HTML encoded.
              * @param {string|object} labelText
-             * @returns {giant.Label}
+             * @returns {$commonWidgets.Label}
              */
             setLabelText: function (labelText) {
                 this.labelText = labelText;

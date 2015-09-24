@@ -1,5 +1,5 @@
-/*global giant, jQuery */
-$oop.postpone(giant, 'FormField', function (ns, className) {
+/*global $commonWidgets, jQuery */
+$oop.postpone($commonWidgets, 'FormField', function (ns, className) {
     "use strict";
 
     var base = $widget.Widget,
@@ -7,10 +7,10 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
 
     /**
      * Creates a FormField instance.
-     * @name giant.FormField.create
+     * @name $commonWidgets.FormField.create
      * @function
      * @param {string} [inputType] Corresponds to the input tag's type argument. Defaults to 'text'.
-     * @returns {giant.FormField}
+     * @returns {$commonWidgets.FormField}
      */
 
     /**
@@ -21,8 +21,8 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
      * @class
      * @extends $widget.Widget
      */
-    giant.FormField = self
-        .addMethods(/** @lends giant.FormField# */{
+    $commonWidgets.FormField = self
+        .addMethods(/** @lends $commonWidgets.FormField# */{
             /**
              * @param {string} [inputType]
              * @ignore
@@ -58,16 +58,16 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
 
                 /**
                  * Widget that optionally displays a comment associated with the input field.
-                 * @type {giant.Label}
+                 * @type {$commonWidgets.Label}
                  */
-                this.commentLabel = giant.Label.create()
+                this.commentLabel = $commonWidgets.Label.create()
                     .setChildName('field-comment');
 
                 /**
                  * Widget that displays a warning message whenever input validation fails.
-                 * @type {giant.Label}
+                 * @type {$commonWidgets.Label}
                  */
-                this.warningLabel = giant.Label.create()
+                this.warningLabel = $commonWidgets.Label.create()
                     .setChildName('field-warning');
 
                 this.spawnInputWidget()
@@ -79,25 +79,25 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
             afterAdd: function () {
                 base.afterAdd.call(this);
                 this
-                    .subscribeTo(giant.EVENT_INPUT_BLUR, this.onInputBlur)
-                    .subscribeTo(giant.EVENT_INPUT_TAB, this.onInputTab)
-                    .subscribeTo(giant.EVENT_INPUT_VALID, this.onInputValid)
-                    .subscribeTo(giant.EVENT_FORM_RESET, this.onFormReset);
+                    .subscribeTo($commonWidgets.EVENT_INPUT_BLUR, this.onInputBlur)
+                    .subscribeTo($commonWidgets.EVENT_INPUT_TAB, this.onInputTab)
+                    .subscribeTo($commonWidgets.EVENT_INPUT_VALID, this.onInputValid)
+                    .subscribeTo($commonWidgets.EVENT_FORM_RESET, this.onFormReset);
             },
 
             /**
              * Creates input widget.
              * Override to specify custom input field.
              * With the input type-based surrogates in place, overriding this method is rarely needed.
-             * @returns {giant.Input}
+             * @returns {$commonWidgets.Input}
              */
             spawnInputWidget: function () {
-                return giant.Input.create(this.inputType);
+                return $commonWidgets.Input.create(this.inputType);
             },
 
             /**
              * Fetches input widget.
-             * @returns {giant.Input}
+             * @returns {$commonWidgets.Input}
              */
             getInputWidget: function () {
                 return this.getChild('field-input');
@@ -115,7 +115,7 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
              * Sets value on input widget.
              * @param {*} inputValue
              * @param {boolean} [updateDom]
-             * @returns {giant.FormField}
+             * @returns {$commonWidgets.FormField}
              */
             setInputValue: function (inputValue, updateDom) {
                 this.getInputWidget()
@@ -126,7 +126,7 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
             /**
              * Clears value on input widget.
              * @param {boolean} [updateDom]
-             * @returns {giant.FormField}
+             * @returns {$commonWidgets.FormField}
              */
             clearInputValue: function (updateDom) {
                 this.getInputWidget()
@@ -136,7 +136,7 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
 
             /**
              * Allows TAB to take effect on the input.
-             * @returns {giant.FormField}
+             * @returns {$commonWidgets.FormField}
              */
             allowTabForwards: function () {
                 this.allowsTabForwards = true;
@@ -145,7 +145,7 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
 
             /**
              * Prevents TAB to take effect on the input.
-             * @returns {giant.FormField}
+             * @returns {$commonWidgets.FormField}
              */
             preventTabForwards: function () {
                 this.allowsTabForwards = false;
@@ -154,7 +154,7 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
 
             /**
              * Allows Shift+TAB to take effect on the input.
-             * @returns {giant.FormField}
+             * @returns {$commonWidgets.FormField}
              */
             allowTabBackwards: function () {
                 this.allowsTabBackwards = true;
@@ -163,7 +163,7 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
 
             /**
              * Prevents Shift+TAB to take effect on the input.
-             * @returns {giant.FormField}
+             * @returns {$commonWidgets.FormField}
              */
             preventTabBackwards: function () {
                 this.allowsTabBackwards = false;
@@ -173,7 +173,7 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
             /**
              * Sets warning message and sets the field to invalid state.
              * @param {string} warningMessage
-             * @returns {giant.FormField}
+             * @returns {$commonWidgets.FormField}
              */
             setWarningMessage: function (warningMessage) {
                 this.warningLabel
@@ -189,7 +189,7 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
 
             /**
              * Clears warning message and restores valid state of the field.
-             * @returns {giant.FormField}
+             * @returns {$commonWidgets.FormField}
              */
             clearWarningMessage: function () {
                 this.warningLabel
@@ -205,7 +205,7 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
             /**
              * Sets comment string.
              * @param {string} comment
-             * @returns {giant.FormField}
+             * @returns {$commonWidgets.FormField}
              */
             setComment: function (comment) {
                 this.commentLabel
@@ -216,7 +216,7 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
 
             /**
              * Clears comment string.
-             * @returns {giant.FormField}
+             * @returns {$commonWidgets.FormField}
              */
             clearComment: function () {
                 this.commentLabel
@@ -226,7 +226,7 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
 
             /**
              * Sets focus on the current field. (More precisely, on the current field's input widget.)
-             * @returns {giant.FormField}
+             * @returns {$commonWidgets.FormField}
              */
             focusOnField: function () {
                 this.getInputWidget()
@@ -236,7 +236,7 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
 
             /**
              * Updates warning message to the last warning if there was one, clears it otherwise.
-             * @returns {giant.FormField}
+             * @returns {$commonWidgets.FormField}
              */
             updateWarningMessage: function () {
                 var inputWidget = this.getInputWidget();
@@ -289,16 +289,16 @@ $oop.postpone(giant, 'FormField', function (ns, className) {
 (function () {
     "use strict";
 
-    $assertion.addTypes(/** @lends giant */{
-        /** @param {giant.FormField} expr */
+    $assertion.addTypes(/** @lends $commonWidgets */{
+        /** @param {$commonWidgets.FormField} expr */
         isFormField: function (expr) {
-            return giant.FormField.isBaseOf(expr);
+            return $commonWidgets.FormField.isBaseOf(expr);
         },
 
-        /** @param {giant.FormField} [expr] */
+        /** @param {$commonWidgets.FormField} [expr] */
         isFormFieldOptional: function (expr) {
             return expr === undefined ||
-                   giant.FormField.isBaseOf(expr);
+                   $commonWidgets.FormField.isBaseOf(expr);
         }
     });
 }());

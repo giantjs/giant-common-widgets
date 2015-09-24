@@ -1,49 +1,49 @@
-/*global giant */
-$oop.postpone(giant, 'DataDropdown', function (ns, className) {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'DataDropdown', function (ns, className) {
     "use strict";
 
-    var base = giant.Dropdown,
+    var base = $commonWidgets.Dropdown,
         self = base.extend(className)
-            .addTrait(giant.EntityWidget);
+            .addTrait($commonWidgets.EntityWidget);
 
     /**
      * Creates a DataDropdown instance.
-     * @name giant.DataDropdown.create
+     * @name $commonWidgets.DataDropdown.create
      * @function
      * @param {$entity.FieldKey} fieldKey
-     * @returns {giant.DataDropdown}
+     * @returns {$commonWidgets.DataDropdown}
      */
 
     /**
      * The DataDropdown extends the functionality of the Dropdown with a List that is bound to a field in the cache.
      * @class
-     * @extends giant.Dropdown
-     * @extends giant.EntityWidget
+     * @extends $commonWidgets.Dropdown
+     * @extends $commonWidgets.EntityWidget
      */
-    giant.DataDropdown = self
-        .addMethods(/** @lends giant.DataDropdown# */{
+    $commonWidgets.DataDropdown = self
+        .addMethods(/** @lends $commonWidgets.DataDropdown# */{
             /**
              * @param {$entity.FieldKey} fieldKey
              * @ignore
              */
             init: function (fieldKey) {
-                giant.EntityWidget.init.call(this, fieldKey);
+                $commonWidgets.EntityWidget.init.call(this, fieldKey);
                 base.init.call(this);
             },
 
             /**
              * Creates a DataList for the dropdown to use as its internal option list.
              * To specify a custom DataList, you don't necessarily have to override the DataDropdown class,
-             * only delegate a surrogate definition to giant.DataList that points to your implementation.
+             * only delegate a surrogate definition to $commonWidgets.DataList that points to your implementation.
              * @example
-             * giant.DataList.addSurrogate(myNameSpace, 'MyDataList', function (fieldKey) {
+             * $commonWidgets.DataList.addSurrogate(myNameSpace, 'MyDataList', function (fieldKey) {
              *     return myCondition === true;
              * })
-             * @returns {giant.DataList}
-             * @see giant.Dropdown#spawnListWidget
+             * @returns {$commonWidgets.DataList}
+             * @see $commonWidgets.Dropdown#spawnListWidget
              */
             spawnListWidget: function () {
-                return giant.DataList.create(this.entityKey);
+                return $commonWidgets.DataList.create(this.entityKey);
             }
         });
 });

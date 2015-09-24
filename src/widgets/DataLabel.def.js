@@ -1,32 +1,32 @@
-/*global giant */
-$oop.postpone(giant, 'DataLabel', function (ns, className) {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'DataLabel', function (ns, className) {
     "use strict";
 
-    var base = giant.Label,
+    var base = $commonWidgets.Label,
         self = base.extend(className)
             .addTrait($entity.EntityBound)
-            .addTrait(giant.EntityWidget)
-            .addTraitAndExtend(giant.FieldBound);
+            .addTrait($commonWidgets.EntityWidget)
+            .addTraitAndExtend($commonWidgets.FieldBound);
 
     /**
      * Creates a DataLabel instance.
-     * @name giant.DataLabel.create
+     * @name $commonWidgets.DataLabel.create
      * @function
      * @param {$entity.FieldKey} textFieldKey Key to a text field.
-     * @returns {giant.DataLabel}
+     * @returns {$commonWidgets.DataLabel}
      */
 
     /**
      * The DataLabel displays text based on the value of a field in the cache.
      * Keeps the text in sync with the changes of the corresponding field.
      * @class
-     * @extends giant.Label
+     * @extends $commonWidgets.Label
      * @extends $entity.EntityBound
-     * @extends giant.EntityWidget
-     * @extends giant.FieldBound
+     * @extends $commonWidgets.EntityWidget
+     * @extends $commonWidgets.FieldBound
      */
-    giant.DataLabel = self
-        .addMethods(/** @lends giant.DataLabel# */{
+    $commonWidgets.DataLabel = self
+        .addMethods(/** @lends $commonWidgets.DataLabel# */{
             /**
              * @param {$entity.FieldKey} fieldKey
              * @ignore
@@ -36,24 +36,24 @@ $oop.postpone(giant, 'DataLabel', function (ns, className) {
 
                 base.init.call(this);
                 $entity.EntityBound.init.call(this);
-                giant.EntityWidget.init.call(this, fieldKey);
+                $commonWidgets.EntityWidget.init.call(this, fieldKey);
             },
 
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                giant.FieldBound.afterAdd.call(this);
+                $commonWidgets.FieldBound.afterAdd.call(this);
             },
 
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                giant.FieldBound.afterRemove.call(this);
+                $commonWidgets.FieldBound.afterRemove.call(this);
             },
 
             /**
              * @param {*} fieldValue
-             * @returns {giant.DataLabel}
+             * @returns {$commonWidgets.DataLabel}
              * @ignore
              */
             setFieldValue: function (fieldValue) {

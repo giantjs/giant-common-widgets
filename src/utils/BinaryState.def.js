@@ -1,5 +1,5 @@
-/*global giant */
-$oop.postpone(giant, 'BinaryState', function () {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'BinaryState', function () {
     "use strict";
 
     var base = $oop.Base,
@@ -7,10 +7,10 @@ $oop.postpone(giant, 'BinaryState', function () {
 
     /**
      * Creates a BinaryState instance.
-     * @name giant.BinaryState.create
+     * @name $commonWidgets.BinaryState.create
      * @function
      * @param {string} stateName Identifies the binary state.
-     * @returns {giant.BinaryState}
+     * @returns {$commonWidgets.BinaryState}
      * @see String#toBinaryState
      */
 
@@ -22,8 +22,8 @@ $oop.postpone(giant, 'BinaryState', function () {
      * @class
      * @extends $oop.Base
      */
-    giant.BinaryState = self
-        .addMethods(/** @lends giant.BinaryState# */{
+    $commonWidgets.BinaryState = self
+        .addMethods(/** @lends $commonWidgets.BinaryState# */{
             /**
              * @param {string} stateName
              * @ignore
@@ -52,7 +52,7 @@ $oop.postpone(giant, 'BinaryState', function () {
 
             /**
              * @param {boolean} isCascading
-             * @returns {giant.BinaryState}
+             * @returns {$commonWidgets.BinaryState}
              */
             setIsCascading: function (isCascading) {
                 this.isCascading = isCascading;
@@ -62,7 +62,7 @@ $oop.postpone(giant, 'BinaryState', function () {
             /**
              * Adds the specified source to the state.
              * @param {string} sourceId Identifies the contributing source.
-             * @returns {giant.BinaryState}
+             * @returns {$commonWidgets.BinaryState}
              */
             addSource: function (sourceId) {
                 this.stateSources.setItem(sourceId, true);
@@ -72,7 +72,7 @@ $oop.postpone(giant, 'BinaryState', function () {
             /**
              * Removes the specified source.
              * @param {string} [sourceId] Identifies the contributing source.
-             * @returns {giant.BinaryState}
+             * @returns {$commonWidgets.BinaryState}
              */
             removeSource: function (sourceId) {
                 if (typeof sourceId === 'string') {
@@ -121,9 +121,9 @@ $oop.postpone(giant, 'BinaryState', function () {
              * Adds another state as contributing source.
              * Takes effect only if state is cascading.
              * TODO: Remove, and place logic in classes that use BinaryState.
-             * @param {giant.BinaryState} binaryState
+             * @param {$commonWidgets.BinaryState} binaryState
              * @param {string} sourceId
-             * @returns {giant.BinaryState}
+             * @returns {$commonWidgets.BinaryState}
              */
             addStateAsSource: function (binaryState, sourceId) {
                 $assertion.isBinaryState(binaryState, "Invalid binary state");
@@ -138,25 +138,25 @@ $oop.postpone(giant, 'BinaryState', function () {
 (function () {
     "use strict";
 
-    $assertion.addTypes(/** @lends giant */{
-        /** @param {giant.BinaryState} expr */
+    $assertion.addTypes(/** @lends $commonWidgets */{
+        /** @param {$commonWidgets.BinaryState} expr */
         isBinaryState: function (expr) {
-            return giant.BinaryState.isBaseOf(expr);
+            return $commonWidgets.BinaryState.isBaseOf(expr);
         },
 
-        /** @param {giant.BinaryState} [expr] */
+        /** @param {$commonWidgets.BinaryState} [expr] */
         isBinaryStateOptional: function (expr) {
             return typeof expr === 'undefined' ||
-                giant.BinaryState.isBaseOf(expr);
+                $commonWidgets.BinaryState.isBaseOf(expr);
         }
     });
 
     $oop.extendBuiltIn(String.prototype, /** @lends String# */{
         /**
-         * @returns {giant.BinaryState}
+         * @returns {$commonWidgets.BinaryState}
          */
         toBinaryState: function () {
-            return giant.BinaryState.create(this.valueOf());
+            return $commonWidgets.BinaryState.create(this.valueOf());
         }
     });
 }());

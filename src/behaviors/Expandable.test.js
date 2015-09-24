@@ -1,4 +1,4 @@
-/*global giant */
+/*global $commonWidgets */
 (function () {
     "use strict";
 
@@ -6,30 +6,30 @@
 
     var base = $widget.Widget,
         Expandable = base.extend('Expandable')
-            .addTraitAndExtend(giant.BinaryStateful)
-            .addTraitAndExtend(giant.Expandable)
+            .addTraitAndExtend($commonWidgets.BinaryStateful)
+            .addTraitAndExtend($commonWidgets.Expandable)
             .addMethods({
                 init: function () {
                     base.init.call(this);
-                    giant.BinaryStateful.init.call(this);
-                    giant.Expandable.init.call(this);
+                    $commonWidgets.BinaryStateful.init.call(this);
+                    $commonWidgets.Expandable.init.call(this);
                 },
 
                 afterAdd: function () {
                     base.afterAdd.call(this);
-                    giant.BinaryStateful.afterAdd.call(this);
+                    $commonWidgets.BinaryStateful.afterAdd.call(this);
                 },
 
                 afterRemove: function () {
                     base.afterRemove.call(this);
-                    giant.BinaryStateful.afterRemove.call(this);
+                    $commonWidgets.BinaryStateful.afterRemove.call(this);
                 }
             });
 
     test("Instantiation", function () {
         Expandable.addMocks({
             addBinaryState: function (stateName) {
-                equal(stateName, giant.Expandable.STATE_NAME_EXPANDABLE,
+                equal(stateName, $commonWidgets.Expandable.STATE_NAME_EXPANDABLE,
                     "should add expandable state to instance");
             }
         });
@@ -52,7 +52,7 @@
 
         expandable.afterStateOn('foo');
 
-        expandable.afterStateOn(giant.Expandable.STATE_NAME_EXPANDABLE);
+        expandable.afterStateOn($commonWidgets.Expandable.STATE_NAME_EXPANDABLE);
     });
 
     test("State off handler", function () {
@@ -68,7 +68,7 @@
 
         expandable.afterStateOff('foo');
 
-        expandable.afterStateOff(giant.Expandable.STATE_NAME_EXPANDABLE);
+        expandable.afterStateOff($commonWidgets.Expandable.STATE_NAME_EXPANDABLE);
     });
 
     test("Expansion", function () {

@@ -1,19 +1,19 @@
-/*global giant, jQuery */
-$oop.postpone(giant, 'AlignedPopup', function (ns, className, /**jQuery*/$) {
+/*global $commonWidgets, jQuery */
+$oop.postpone($commonWidgets, 'AlignedPopup', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = giant.Popup,
+    var base = $commonWidgets.Popup,
         self = base.extend();
 
     /**
      * The AlignedPopup trait extends the Popup trait with aligning the widget's DOM to the DOM of its parent.
      * Relies on jQuery UI's positioning.
      * @class
-     * @extends giant.Popup
+     * @extends $commonWidgets.Popup
      * @link http://api.jqueryui.com/position
      */
-    giant.AlignedPopup = self
-        .addPrivateMethods(/** @lends giant.AlignedPopup# */{
+    $commonWidgets.AlignedPopup = self
+        .addPrivateMethods(/** @lends $commonWidgets.AlignedPopup# */{
             /** @private */
             _alignPopup: function () {
                 var element = this.getElement();
@@ -31,7 +31,7 @@ $oop.postpone(giant, 'AlignedPopup', function (ns, className, /**jQuery*/$) {
                 return this;
             }
         })
-        .addMethods(/** @lends giant.AlignedPopup# */{
+        .addMethods(/** @lends $commonWidgets.AlignedPopup# */{
             /** Call from host class' init. */
             init: function () {
                 base.init.call(this);
@@ -51,7 +51,7 @@ $oop.postpone(giant, 'AlignedPopup', function (ns, className, /**jQuery*/$) {
             /** Call from host class' afterAdd. */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                this.subscribeTo(giant.EVENT_WINDOW_RESIZE_DEBOUNCED, this.onResize);
+                this.subscribeTo($commonWidgets.EVENT_WINDOW_RESIZE_DEBOUNCED, this.onResize);
             },
 
             /** Call from host class' afterRender. */
@@ -64,7 +64,7 @@ $oop.postpone(giant, 'AlignedPopup', function (ns, className, /**jQuery*/$) {
              * Sets jQuery UI position option. Accepts any options combination that jQuery UI's .position() does.
              * @param {string} optionName
              * @param {*} [optionValue]
-             * @returns {giant.AlignedPopup}
+             * @returns {$commonWidgets.AlignedPopup}
              * @link http://api.jqueryui.com/position/
              */
             setPositionOption: function (optionName, optionValue) {

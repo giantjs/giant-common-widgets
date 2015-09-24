@@ -1,5 +1,5 @@
-/*global giant */
-$oop.postpone(giant, 'Disableable', function () {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'Disableable', function () {
     "use strict";
 
     var base = $oop.Base,
@@ -13,15 +13,15 @@ $oop.postpone(giant, 'Disableable', function () {
      * Expects the host to have the BinaryStateful trait applied.
      * @class
      * @extends $oop.Base
-     * @extends giant.BinaryStateful
+     * @extends $commonWidgets.BinaryStateful
      * @extends $widget.Widget
      */
-    giant.Disableable = self
-        .addConstants(/** @lends giant.Disableable */{
+    $commonWidgets.Disableable = self
+        .addConstants(/** @lends $commonWidgets.Disableable */{
             /** @constant */
             STATE_NAME_DISABLEBABLE: 'state-disableable'
         })
-        .addPrivateMethods(/** @lends giant.Disableable# */{
+        .addPrivateMethods(/** @lends $commonWidgets.Disableable# */{
             /** @private */
             _updateEnabledStyle: function () {
                 if (this.isDisabled()) {
@@ -33,7 +33,7 @@ $oop.postpone(giant, 'Disableable', function () {
                 }
             }
         })
-        .addMethods(/** @lends giant.Disableable# */{
+        .addMethods(/** @lends $commonWidgets.Disableable# */{
             /** Call from host's .init. */
             init: function () {
                 // disableable state is cascading
@@ -57,7 +57,7 @@ $oop.postpone(giant, 'Disableable', function () {
             /**
              * Disables the instance by the specified source.
              * @param {string} disablingSource
-             * @returns {giant.Disableable}
+             * @returns {$commonWidgets.Disableable}
              */
             disableBy: function (disablingSource) {
                 this.addBinaryStateSource(self.STATE_NAME_DISABLEBABLE, disablingSource);
@@ -67,7 +67,7 @@ $oop.postpone(giant, 'Disableable', function () {
             /**
              * Enables the instance by the specified source.
              * @param {string} disablingSource
-             * @returns {giant.Disableable}
+             * @returns {$commonWidgets.Disableable}
              */
             enableBy: function (disablingSource) {
                 this.removeBinaryStateSource(self.STATE_NAME_DISABLEBABLE, disablingSource);
@@ -76,7 +76,7 @@ $oop.postpone(giant, 'Disableable', function () {
 
             /**
              * Releases all disabling sources at once.
-             * @returns {giant.Disableable}
+             * @returns {$commonWidgets.Disableable}
              */
             forceEnable: function () {
                 this.removeBinaryStateSource(self.STATE_NAME_DISABLEBABLE);

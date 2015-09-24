@@ -1,5 +1,5 @@
-/*global giant, jQuery */
-$oop.postpone(giant, 'DataListItem', function () {
+/*global $commonWidgets, jQuery */
+$oop.postpone($commonWidgets, 'DataListItem', function () {
     "use strict";
 
     var base = $oop.Base,
@@ -12,8 +12,8 @@ $oop.postpone(giant, 'DataListItem', function () {
      * @extends $oop.Base
      * @extends $widget.Widget
      */
-    giant.DataListItem = self
-        .addMethods(/** @lends giant.DataListItem# */{
+    $commonWidgets.DataListItem = self
+        .addMethods(/** @lends $commonWidgets.DataListItem# */{
             /**
              * Call from host's init.
              * @param {$entity.ItemKey} [itemKey]
@@ -26,7 +26,7 @@ $oop.postpone(giant, 'DataListItem', function () {
             /**
              * Associates item widget with an item key.
              * @param {$entity.ItemKey} itemKey
-             * @returns {giant.DataListItem}
+             * @returns {$commonWidgets.DataListItem}
              */
             setItemKey: function (itemKey) {
                 $assertion.isItemKey(itemKey, "Invalid item key");
@@ -37,7 +37,7 @@ $oop.postpone(giant, 'DataListItem', function () {
             /**
              * TODO: Is this necessary? DataList should always be in sync w/ cache.
              * @param {$widget.Widget} parentWidget
-             * @returns {giant.DataListItem}
+             * @returns {$commonWidgets.DataListItem}
              */
             addToParent: function (parentWidget) {
                 var childName = this.childName,
@@ -48,7 +48,7 @@ $oop.postpone(giant, 'DataListItem', function () {
                 if (currentChild !== this) {
                     // triggering event about being added
                     parentWidget
-                        .spawnEvent(giant.EVENT_DATA_LIST_ITEM_ADD)
+                        .spawnEvent($commonWidgets.EVENT_DATA_LIST_ITEM_ADD)
                         .setPayloadItem('childWidget', this)
                         .triggerSync();
                 }
@@ -58,7 +58,7 @@ $oop.postpone(giant, 'DataListItem', function () {
 
             /**
              * TODO: Is this necessary? DataList should always be in sync w/ cache.
-             * @returns {giant.DataListItem}
+             * @returns {$commonWidgets.DataListItem}
              */
             removeFromParent: function () {
                 var parent = this.parent;
@@ -68,7 +68,7 @@ $oop.postpone(giant, 'DataListItem', function () {
                 if (parent) {
                     // triggering event about removal
                     parent
-                        .spawnEvent(giant.EVENT_DATA_LIST_ITEM_REMOVE)
+                        .spawnEvent($commonWidgets.EVENT_DATA_LIST_ITEM_REMOVE)
                         .setPayloadItem('childWidget', this)
                         .triggerSync();
                 }
@@ -78,7 +78,7 @@ $oop.postpone(giant, 'DataListItem', function () {
         });
 }, jQuery);
 
-$oop.addGlobalConstants.call(giant, /** @lends giant */{
+$oop.addGlobalConstants.call($commonWidgets, /** @lends $commonWidgets */{
     /**
      * Signals tha a Widget has been added as child.
      * @constant

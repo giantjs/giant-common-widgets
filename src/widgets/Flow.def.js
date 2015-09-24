@@ -1,24 +1,24 @@
-/*global giant */
-$oop.postpone(giant, 'Flow', function (ns, className) {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'Flow', function (ns, className) {
     "use strict";
 
-    var base = giant.List,
+    var base = $commonWidgets.List,
         self = base.extend(className);
 
     /**
      * Creates a Flow instance.
-     * @name giant.Flow.create
+     * @name $commonWidgets.Flow.create
      * @function
-     * @returns {giant.Flow}
+     * @returns {$commonWidgets.Flow}
      */
 
     /**
      * The Flow allows to navigate between a set of stage widgets.
      * @class
-     * @extends giant.List
+     * @extends $commonWidgets.List
      */
-    giant.Flow = self
-        .addMethods(/** @lends giant.Flow# */{
+    $commonWidgets.Flow = self
+        .addMethods(/** @lends $commonWidgets.Flow# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -50,7 +50,7 @@ $oop.postpone(giant, 'Flow', function (ns, className) {
              * Adds various CSS classes to the specified stage widget.
              * @param {string} stageName
              * @param {$widget.Widget} stageWidget
-             * @returns {giant.Flow}
+             * @returns {$commonWidgets.Flow}
              */
             addStage: function (stageName, stageWidget) {
                 this.stages.setItem(stageName, stageWidget
@@ -62,7 +62,7 @@ $oop.postpone(giant, 'Flow', function (ns, className) {
             /**
              * Goes to the specified stage.
              * @param {string} stageName
-             * @returns {giant.Flow}
+             * @returns {$commonWidgets.Flow}
              */
             goToStage: function (stageName) {
                 var stages = this.stages,

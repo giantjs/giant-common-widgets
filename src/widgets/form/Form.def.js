@@ -1,17 +1,17 @@
-/*global giant, jQuery */
-$oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
+/*global $commonWidgets, jQuery */
+$oop.postpone($commonWidgets, 'Form', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = $widget.Widget,
         self = base.extend(className)
-            .addTraitAndExtend(giant.BinaryStateful)
-            .addTrait(giant.Disableable);
+            .addTraitAndExtend($commonWidgets.BinaryStateful)
+            .addTrait($commonWidgets.Disableable);
 
     /**
      * Creates a Form instance.
-     * @name giant.Form.create
+     * @name $commonWidgets.Form.create
      * @function
-     * @returns {giant.Form}
+     * @returns {$commonWidgets.Form}
      */
 
     /**
@@ -20,11 +20,11 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
      * TODO: Implement disabling for form elements like inputs, etc.
      * @class
      * @extends $widget.Widget
-     * @extends giant.BinaryStateful
-     * @extends giant.Disableable
+     * @extends $commonWidgets.BinaryStateful
+     * @extends $commonWidgets.Disableable
      */
-    giant.Form = self
-        .addPublic(/** @lends giant.Form */{
+    $commonWidgets.Form = self
+        .addPublic(/** @lends $commonWidgets.Form */{
             /**
              * @type {$widget.MarkupTemplate}
              */
@@ -33,7 +33,7 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
                 '</ul>'
             ].join('').toMarkupTemplate()
         })
-        .addPrivateMethods(/** @lends giant.Form# */{
+        .addPrivateMethods(/** @lends $commonWidgets.Form# */{
             /** @private */
             _updateCounters: function () {
                 var formFields = this.getFormFields(),
@@ -60,25 +60,25 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
                 var isValid = this.isValid();
 
                 if (isValid && !wasValid) {
-                    this.triggerSync(giant.EVENT_FORM_INVALID);
+                    this.triggerSync($commonWidgets.EVENT_FORM_INVALID);
                 } else if (!isValid && wasValid) {
-                    this.triggerSync(giant.EVENT_FORM_VALID);
+                    this.triggerSync($commonWidgets.EVENT_FORM_VALID);
                 }
             },
 
             /** @private */
             _triggerSubmissionEvent: function () {
                 if (this.validFieldCount === this.fieldCount) {
-                    this.triggerSync(giant.EVENT_FORM_SUBMIT);
+                    this.triggerSync($commonWidgets.EVENT_FORM_SUBMIT);
                 }
             }
         })
-        .addMethods(/** @lends giant.Form# */{
+        .addMethods(/** @lends $commonWidgets.Form# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
-                giant.BinaryStateful.init.call(this);
-                giant.Disableable.init.call(this);
+                $commonWidgets.BinaryStateful.init.call(this);
+                $commonWidgets.Disableable.init.call(this);
 
                 this.setTagName('form');
 
@@ -108,9 +108,9 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
                 this._updateCounters();
 
                 this
-                    .subscribeTo(giant.EVENT_INPUT_SUBMIT, this.onInputSubmit)
-                    .subscribeTo(giant.EVENT_INPUT_VALID, this.onInputValid)
-                    .subscribeTo(giant.EVENT_INPUT_INVALID, this.onInputInvalid);
+                    .subscribeTo($commonWidgets.EVENT_INPUT_SUBMIT, this.onInputSubmit)
+                    .subscribeTo($commonWidgets.EVENT_INPUT_VALID, this.onInputValid)
+                    .subscribeTo($commonWidgets.EVENT_INPUT_INVALID, this.onInputInvalid);
             },
 
             /** @ignore */
@@ -131,8 +131,8 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
 
             /**
              * Adds a field to the form.
-             * @param {giant.FormField} formField
-             * @returns {giant.Form}
+             * @param {$commonWidgets.FormField} formField
+             * @returns {$commonWidgets.Form}
              */
             addFormField: function (formField) {
                 $assertion
@@ -157,7 +157,7 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
              * Fetches the field with the specified name from the form.
              * TODO: make sure returned value is either FormField instance or undefined
              * @param {string} fieldName
-             * @returns {giant.FormField}
+             * @returns {$commonWidgets.FormField}
              */
             getFormField: function (fieldName) {
                 return this.getChild(fieldName);
@@ -168,7 +168,7 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
              * @returns {$widget.WidgetCollection}
              */
             getFormFields: function () {
-                return this.children.filterByType(giant.FormField);
+                return this.children.filterByType($commonWidgets.FormField);
             },
 
             /**
@@ -192,7 +192,7 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
             /**
              * Clears input value in all fields.
              * @param {boolean} [updateDom]
-             * @returns {giant.Form}
+             * @returns {$commonWidgets.Form}
              */
             resetForm: function (updateDom) {
                 // clearing input values
@@ -200,7 +200,7 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
                     .callOnEachItem('clearInputValue', updateDom);
 
                 // broadcasting form reset event so fields can clean up if they want to
-                this.broadcastSync(giant.EVENT_FORM_RESET);
+                this.broadcastSync($commonWidgets.EVENT_FORM_RESET);
 
                 return this;
             },
@@ -209,7 +209,7 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
              * Attempts to submit form. It is up to the parent widget to handle the submit event
              * and actually submit the form. (It may not be necessary to submit anything to a server,
              * but rather take some other action.)
-             * @returns {giant.Form}
+             * @returns {$commonWidgets.Form}
              */
             trySubmittingForm: function () {
                 this._triggerSubmissionEvent();
@@ -218,11 +218,11 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
 
             /**
              * Puts focus on first field of the form.
-             * @returns {giant.Form}
+             * @returns {$commonWidgets.Form}
              */
             focusOnFirstField: function () {
                 var firstField = this.children
-                    .filterByType(giant.FormField)
+                    .filterByType($commonWidgets.FormField)
                     .getSortedValues()[0];
 
                 if (firstField) {
@@ -271,7 +271,7 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    $oop.addGlobalConstants.call(giant, /** @lends giant */{
+    $oop.addGlobalConstants.call($commonWidgets, /** @lends $commonWidgets */{
         /**
          * Signals that a Form became valid.
          * @constant
@@ -301,16 +301,16 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    $assertion.addTypes(/** @lends giant */{
-        /** @param {giant.Form} expr */
+    $assertion.addTypes(/** @lends $commonWidgets */{
+        /** @param {$commonWidgets.Form} expr */
         isForm: function (expr) {
-            return giant.Form.isBaseOf(expr);
+            return $commonWidgets.Form.isBaseOf(expr);
         },
 
-        /** @param {giant.Form} [expr] */
+        /** @param {$commonWidgets.Form} [expr] */
         isFormOptional: function (expr) {
             return expr === undefined ||
-                giant.Form.isBaseOf(expr);
+                $commonWidgets.Form.isBaseOf(expr);
         }
     });
 }());

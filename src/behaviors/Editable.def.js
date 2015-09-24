@@ -1,5 +1,5 @@
-/*global giant */
-$oop.postpone(giant, 'Editable', function () {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'Editable', function () {
     "use strict";
 
     var base = $oop.Base,
@@ -11,26 +11,26 @@ $oop.postpone(giant, 'Editable', function () {
      * TODO: Refactor .editMarkup() and .displayMarkup() into .editTemplate and .displayTemplate.
      * @class
      * @extends $oop.Base
-     * @extends giant.BinaryStateful
+     * @extends $commonWidgets.BinaryStateful
      */
-    giant.Editable = self
-        .addConstants(/** @lends giant.Editable */{
+    $commonWidgets.Editable = self
+        .addConstants(/** @lends $commonWidgets.Editable */{
             /** @constant */
             STATE_NAME_EDITABLE: 'state-editable'
         })
-        .addPrivateMethods(/** @lends giant.Editable# */{
+        .addPrivateMethods(/** @lends $commonWidgets.Editable# */{
             /** @private */
             _updateEditableState: function () {
                 var eventName;
 
                 // applying appropriate CSS classes
                 if (this.isStateOn(self.STATE_NAME_EDITABLE)) {
-                    eventName = giant.EVENT_EDITABLE_EDIT_MODE;
+                    eventName = $commonWidgets.EVENT_EDITABLE_EDIT_MODE;
 
                     this.removeCssClass('display-mode')
                         .addCssClass('edit-mode');
                 } else {
-                    eventName = giant.EVENT_EDITABLE_DISPLAY_MODE;
+                    eventName = $commonWidgets.EVENT_EDITABLE_DISPLAY_MODE;
 
                     this.removeCssClass('edit-mode')
                         .addCssClass('display-mode');
@@ -48,7 +48,7 @@ $oop.postpone(giant, 'Editable', function () {
                     .triggerSync();
             }
         })
-        .addMethods(/** @lends giant.Editable# */{
+        .addMethods(/** @lends $commonWidgets.Editable# */{
             /** Call from host's .init */
             init: function () {
                 // expansion is not cascading (by default)
@@ -93,7 +93,7 @@ $oop.postpone(giant, 'Editable', function () {
 
             /**
              * Sets the host to edit mode.
-             * @returns {giant.Editable}
+             * @returns {$commonWidgets.Editable}
              */
             toEditMode: function () {
                 this.addBinaryStateSource(self.STATE_NAME_EDITABLE, 'default');
@@ -102,7 +102,7 @@ $oop.postpone(giant, 'Editable', function () {
 
             /**
              * Sets the host to display mode.
-             * @returns {giant.Editable}
+             * @returns {$commonWidgets.Editable}
              */
             toDisplayMode: function () {
                 this.removeBinaryStateSource(self.STATE_NAME_EDITABLE, 'default');
@@ -127,13 +127,13 @@ $oop.postpone(giant, 'Editable', function () {
         });
 
     /**
-     * @name giant.Editable#editMarkup
+     * @name $commonWidgets.Editable#editMarkup
      * @function
      * @returns {string}
      */
 
     /**
-     * @name giant.Editable#displayMarkup
+     * @name $commonWidgets.Editable#displayMarkup
      * @function
      * @returns {string}
      */
@@ -142,7 +142,7 @@ $oop.postpone(giant, 'Editable', function () {
 (function () {
     "use strict";
 
-    $oop.addGlobalConstants.call(giant, /** @lends giant */{
+    $oop.addGlobalConstants.call($commonWidgets, /** @lends $commonWidgets */{
         /**
          * Signals that the host has changed to edit mode.
          * @constant

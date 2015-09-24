@@ -1,5 +1,5 @@
-/*global giant, jQuery, UIEvent */
-$oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
+/*global $commonWidgets, jQuery, UIEvent */
+$oop.postpone($commonWidgets, 'Popup', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = $oop.Base,
@@ -17,13 +17,13 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
      * @extends $oop.Base
      * @extends $widget.Widget
      */
-    giant.Popup = self
-        .addPrivateMethods(/** @lends giant.Popup# */{
+    $commonWidgets.Popup = self
+        .addPrivateMethods(/** @lends $commonWidgets.Popup# */{
             /**
              * @param {boolean} a
              * @param {boolean} b
              * @returns {boolean}
-             * @memberOf giant.Popup
+             * @memberOf $commonWidgets.Popup
              * @private
              */
             _or: function (a, b) {
@@ -34,7 +34,7 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
              * @param {jQuery} $element
              * @param {string} selector
              * @returns {boolean}
-             * @memberOf giant.Popup
+             * @memberOf $commonWidgets.Popup
              * @private
              */
             _hasClosest: function ($element, selector) {
@@ -85,7 +85,7 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
                     undefined;
             }
         })
-        .addMethods(/** @lends giant.Popup# */{
+        .addMethods(/** @lends $commonWidgets.Popup# */{
             /**
              * Call from host's init.
              */
@@ -114,7 +114,7 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
              * Overrides rendering, ensuring that popups get only rendered inside the document body.
              * This override is supposed to overshadow Widget's implementation.
              * @param {HTMLElement} element
-             * @returns {giant.Popup}
+             * @returns {$commonWidgets.Popup}
              */
             renderInto: function (element) {
                 if (element === document.body) {
@@ -127,14 +127,14 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
              * Call from host class' afterAdd.
              */
             afterAdd: function () {
-                this.subscribeTo(giant.EVENT_POPUP_OUTSIDE_CLICK, this.onOutsideClick);
+                this.subscribeTo($commonWidgets.EVENT_POPUP_OUTSIDE_CLICK, this.onOutsideClick);
             },
 
             /**
              * Call from host class' afterRemove.
              */
             afterRemove: function () {
-                this.unsubscribeFrom(giant.EVENT_POPUP_OUTSIDE_CLICK);
+                this.unsubscribeFrom($commonWidgets.EVENT_POPUP_OUTSIDE_CLICK);
 
                 // removing DOM in case popup was removed via its parent with
                 // which does not contain the DOM of the popup
@@ -157,7 +157,7 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
 
             /**
              * Opens popup. Popup must be added to a parent before calling this method.
-             * @returns {giant.Popup}
+             * @returns {$commonWidgets.Popup}
              */
             openPopup: function () {
                 $assertion.assert(this.parent, "Popup has no parent");
@@ -169,7 +169,7 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
 
                     this.isOpen = true;
 
-                    this.triggerSync(giant.EVENT_POPUP_OPEN);
+                    this.triggerSync($commonWidgets.EVENT_POPUP_OPEN);
                 }
 
                 return this;
@@ -177,7 +177,7 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
 
             /**
              * Closes popup, and removes it from the widget hierarchy.
-             * @returns {giant.Popup}
+             * @returns {$commonWidgets.Popup}
              */
             closePopup: function () {
                 var openUiEvent = this.openUiEvent,
@@ -191,7 +191,7 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
 
                     // must trigger before removing widget from hierarchy
                     // otherwise event won't bubble
-                    this.triggerSync(giant.EVENT_POPUP_CLOSE);
+                    this.triggerSync($commonWidgets.EVENT_POPUP_CLOSE);
 
                     this.removeFromParent();
                 }
@@ -204,7 +204,7 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
              * Clicking on such elements would not trigger an 'outside-click' event even when they're outside of the
              * popup's DOM.
              * @param {string} globalSelector
-             * @returns {giant.Popup}
+             * @returns {$commonWidgets.Popup}
              */
             treatAsInside: function (globalSelector) {
                 if (this.outsideSelectors.getItem(globalSelector)) {
@@ -218,7 +218,7 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
              * Treats DOM elements matching the specified global jQuery selector as outside of the popup.
              * Clicking on such elements would trigger an 'outside-click' event even when they're inside the popup's DOM.
              * @param {string} selector
-             * @returns {giant.Popup}
+             * @returns {$commonWidgets.Popup}
              */
             treatAsOutside: function (selector) {
                 if (this.insideSelectors.getItem(selector)) {
@@ -243,7 +243,7 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
             onBodyClick: function (event) {
                 var link = $event.pushOriginalEvent(event);
                 if (this._isOutside($(event.target))) {
-                    this.triggerSync(giant.EVENT_POPUP_OUTSIDE_CLICK);
+                    this.triggerSync($commonWidgets.EVENT_POPUP_OUTSIDE_CLICK);
                 }
                 link.unlink();
             }
@@ -253,7 +253,7 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    $oop.addGlobalConstants.call(giant, /** @lends giant */{
+    $oop.addGlobalConstants.call($commonWidgets, /** @lends $commonWidgets */{
         /**
          * Signals that the user clicked outside an open Popup.
          * @constant

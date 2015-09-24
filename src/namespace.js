@@ -1,7 +1,7 @@
 /*jshint node:true */
 
 /** @namespace */
-var giant = giant || require('giant-namespace');
+var $commonWidgets = {};
 
 /** @namespace */
 var $assertion = $assertion || require('giant-assertion');
@@ -32,7 +32,7 @@ var $widget = $widget || require('giant-widget');
  * Set to true when change/input events do not get fired on form autofill, etc.
  * @type {boolean}
  */
-giant.pollInputValues = false;
+$commonWidgets.pollInputValues = false;
 
 /**
  * @function

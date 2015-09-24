@@ -1,5 +1,5 @@
-/*global giant, jQuery */
-$oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
+/*global $commonWidgets, jQuery */
+$oop.postpone($commonWidgets, 'Input', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = $widget.Widget,
@@ -7,10 +7,10 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
 
     /**
      * Creates an Input instance.
-     * @name giant.Input.create
+     * @name $commonWidgets.Input.create
      * @function
      * @param {string} inputType Corresponds to the input tag's type argument.
-     * @returns {giant.Input}
+     * @returns {$commonWidgets.Input}
      */
 
     /**
@@ -19,8 +19,8 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
      * @class
      * @extends $widget.Widget
      */
-    giant.Input = self
-        .addConstants(/** @lends giant.Input */{
+    $commonWidgets.Input = self
+        .addConstants(/** @lends $commonWidgets.Input */{
             /**
              * @type {object}
              * @constant
@@ -64,7 +64,7 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
                 'week'          : 'week'
             }
         })
-        .addPrivateMethods(/** @lends giant.Input# */{
+        .addPrivateMethods(/** @lends $commonWidgets.Input# */{
             /**
              * @param {*} inputValue
              * @private
@@ -91,7 +91,7 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
                 var newInputValue = this.inputValue;
 
                 if (oldInputValue !== newInputValue) {
-                    this.spawnEvent(giant.EVENT_INPUT_VALUE_CHANGE)
+                    this.spawnEvent($commonWidgets.EVENT_INPUT_VALUE_CHANGE)
                         .setPayloadItems({
                             oldInputValue: oldInputValue,
                             newInputValue: newInputValue
@@ -100,7 +100,7 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
                 }
             }
         })
-        .addMethods(/** @lends giant.Input# */{
+        .addMethods(/** @lends $commonWidgets.Input# */{
             /**
              * @param {string} inputType
              * @ignore
@@ -153,13 +153,13 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
             afterAdd: function () {
                 base.afterAdd.call(this);
                 this.validateInputValue();
-                this.subscribeTo(giant.EVENT_INPUT_VALUE_CHANGE, this.onValueChange);
+                this.subscribeTo($commonWidgets.EVENT_INPUT_VALUE_CHANGE, this.onValueChange);
             },
 
             /**
              * Sets whether the input can signal to submit the form (if it is in a form).
              * @param {boolean} canSubmit
-             * @returns {giant.Input}
+             * @returns {$commonWidgets.Input}
              */
             setCanSubmit: function (canSubmit) {
                 this.canSubmit = canSubmit;
@@ -179,7 +179,7 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
              * Sets input value and triggers events.
              * @param {*} inputValue
              * @param {boolean} [updateDom]
-             * @returns {giant.Input}
+             * @returns {$commonWidgets.Input}
              */
             setInputValue: function (inputValue, updateDom) {
                 var oldInputValue = this.inputValue;
@@ -198,7 +198,7 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
             /**
              * Clears input value and triggers events.
              * @param {boolean} [updateDom]
-             * @returns {giant.Input}
+             * @returns {$commonWidgets.Input}
              */
             clearInputValue: function (updateDom) {
                 this.setInputValue(undefined, updateDom);
@@ -209,8 +209,8 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
              * Sets validator function. The validator function will be passed the current input value
              * and is expected to return a validation error (code or message) or undefined.
              * @param {function} validatorFunction
-             * @returns {giant.Input}
-             * @see giant.Input#validatorFunction
+             * @returns {$commonWidgets.Input}
+             * @see $commonWidgets.Input#validatorFunction
              */
             setValidatorFunction: function (validatorFunction) {
                 $assertion.isFunction(validatorFunction, "Invalid validatorFunction function");
@@ -222,7 +222,7 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
              * Updates the validity of the current input value, and triggers validity events accordingly.
              * TODO: Manage validity separately from validationError. Validity should start out as undefined
              * and could take values true or false.
-             * @returns {giant.Input}
+             * @returns {$commonWidgets.Input}
              */
             validateInputValue: function () {
                 // validating current value
@@ -238,15 +238,15 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
                 // triggering validation event
                 if (wasValid && !isValid) {
                     // input just became invalid
-                    this.spawnEvent(giant.EVENT_INPUT_INVALID)
+                    this.spawnEvent($commonWidgets.EVENT_INPUT_INVALID)
                         .setPayloadItem('newValidationError', newValidationError)
                         .triggerSync();
                 } else if (!wasValid && isValid) {
                     // input just became valid
-                    this.triggerSync(giant.EVENT_INPUT_VALID);
+                    this.triggerSync($commonWidgets.EVENT_INPUT_VALID);
                 } else if (newValidationError !== oldValidationError) {
                     // triggering event about error change
-                    this.spawnEvent(giant.EVENT_INPUT_ERROR_CHANGE)
+                    this.spawnEvent($commonWidgets.EVENT_INPUT_ERROR_CHANGE)
                         .setPayloadItems({
                             oldValidationError: oldValidationError,
                             newValidationError: newValidationError
@@ -259,7 +259,7 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
 
             /**
              * Focuses on the current input.
-             * @returns {giant.Input}
+             * @returns {$commonWidgets.Input}
              */
             focusOnInput: function () {
                 var element = this.getElement();
@@ -271,7 +271,7 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
 
             /**
              * Removes focus from the current input.
-             * @returns {giant.Input}
+             * @returns {$commonWidgets.Input}
              */
             blurInput: function () {
                 var element = this.getElement();
@@ -306,9 +306,9 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
                 this.validateInputValue();
 
                 if (newInputValue && !oldInputValue) {
-                    this.triggerSync(giant.EVENT_INPUT_GOT_VALUE);
+                    this.triggerSync($commonWidgets.EVENT_INPUT_GOT_VALUE);
                 } else if (!newInputValue && oldInputValue) {
-                    this.triggerSync(giant.EVENT_INPUT_LOST_VALUE);
+                    this.triggerSync($commonWidgets.EVENT_INPUT_LOST_VALUE);
                 }
             }
         });
@@ -317,7 +317,7 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    $oop.addGlobalConstants.call(giant, /** @lends giant */{
+    $oop.addGlobalConstants.call($commonWidgets, /** @lends $commonWidgets */{
         /**
          * Signals that an Input went from not having a value to having one.
          * @constant
@@ -383,18 +383,18 @@ $oop.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    $assertion.addTypes(/** @lends giant */{
+    $assertion.addTypes(/** @lends $commonWidgets */{
         /** @param {string} expr */
         isInputType: function (expr) {
             return expr &&
-                (giant.Input.inputTagNames[expr] === expr ||
-                giant.Input.inputTypes[expr] === expr);
+                ($commonWidgets.Input.inputTagNames[expr] === expr ||
+                $commonWidgets.Input.inputTypes[expr] === expr);
         },
 
         /** @param {string} expr */
         isInputTypeOptional: function (expr) {
-            return giant.Input.inputTagNames[expr] === expr ||
-                giant.Input.inputTypes[expr] === expr;
+            return $commonWidgets.Input.inputTagNames[expr] === expr ||
+                $commonWidgets.Input.inputTypes[expr] === expr;
         }
     });
 }());

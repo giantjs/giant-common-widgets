@@ -1,5 +1,5 @@
-/*global giant, jQuery */
-$oop.postpone(giant, 'Hyperlink', function (ns, className, /**jQuery*/$) {
+/*global $commonWidgets, jQuery */
+$oop.postpone($commonWidgets, 'Hyperlink', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = $widget.Widget,
@@ -7,9 +7,9 @@ $oop.postpone(giant, 'Hyperlink', function (ns, className, /**jQuery*/$) {
 
     /**
      * Creates a Hyperlink instance.
-     * @name giant.Hyperlink.create
+     * @name $commonWidgets.Hyperlink.create
      * @function
-     * @returns {giant.Hyperlink}
+     * @returns {$commonWidgets.Hyperlink}
      */
 
     /**
@@ -17,8 +17,8 @@ $oop.postpone(giant, 'Hyperlink', function (ns, className, /**jQuery*/$) {
      * @class
      * @extends $widget.Widget
      */
-    giant.Hyperlink = self
-        .addMethods(/** @lends giant.Hyperlink# */{
+    $commonWidgets.Hyperlink = self
+        .addMethods(/** @lends $commonWidgets.Hyperlink# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -32,15 +32,15 @@ $oop.postpone(giant, 'Hyperlink', function (ns, className, /**jQuery*/$) {
             /**
              * Creates Label widget to be used inside the link.
              * Override to specify custom widget.
-             * @returns {giant.Label}
+             * @returns {$commonWidgets.Label}
              */
             spawnLabelWidget: function () {
-                return giant.Label.create();
+                return $commonWidgets.Label.create();
             },
 
             /**
              * Retrieves the label widget contained within the link.
-             * @returns {giant.Label}
+             * @returns {$commonWidgets.Label}
              */
             getLabelWidget: function () {
                 return this.getChild('link-label');
@@ -49,7 +49,7 @@ $oop.postpone(giant, 'Hyperlink', function (ns, className, /**jQuery*/$) {
             /**
              * Sets URL for the link.
              * @param {string} targetUrl
-             * @returns {giant.Hyperlink}
+             * @returns {$commonWidgets.Hyperlink}
              */
             setTargetUrl: function (targetUrl) {
                 $assertion.isString(targetUrl, "Invalid target URL");
@@ -69,7 +69,7 @@ $oop.postpone(giant, 'Hyperlink', function (ns, className, /**jQuery*/$) {
              * Expects the caption widget to be a Label.
              * Override when caption widget is something other than Label.
              * @param {string} caption
-             * @returns {giant.Hyperlink}
+             * @returns {$commonWidgets.Hyperlink}
              */
             setCaption: function (caption) {
                 this.getLabelWidget()

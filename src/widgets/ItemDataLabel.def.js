@@ -1,24 +1,24 @@
-/*global giant */
-$oop.postpone(giant, 'ItemDataLabel', function (ns, className) {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'ItemDataLabel', function (ns, className) {
     "use strict";
 
-    var base = giant.DataLabel;
+    var base = $commonWidgets.DataLabel;
 
     /**
      * Creates a ItemDataLabel instance.
-     * @name giant.ItemDataLabel.create
+     * @name $commonWidgets.ItemDataLabel.create
      * @function
      * @param {$entity.FieldKey} textFieldKey Identifies field to be displayed.
      * @param {$entity.ItemKey} itemKey Identifies item the widget is associated with.
-     * @returns {giant.ItemDataLabel}
+     * @returns {$commonWidgets.ItemDataLabel}
      */
 
     /**
      * General DataLabel to be used as a list item.
      * @class
-     * @extends giant.DataLabel
-     * @extends giant.DataListItem
+     * @extends $commonWidgets.DataLabel
+     * @extends $commonWidgets.DataListItem
      */
-    giant.ItemDataLabel = base.extend(className)
-        .addTraitAndExtend(giant.DataListItem);
+    $commonWidgets.ItemDataLabel = base.extend(className)
+        .addTraitAndExtend($commonWidgets.DataListItem);
 });

@@ -1,20 +1,20 @@
-/*global giant */
-$oop.postpone(giant, 'DataHyperlink', function (ns, className) {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'DataHyperlink', function (ns, className) {
     "use strict";
 
-    var base = giant.Hyperlink,
+    var base = $commonWidgets.Hyperlink,
         self = base.extend(className)
             .addTrait($entity.EntityBound)
-            .addTrait(giant.EntityWidget)
-            .addTraitAndExtend(giant.FieldBound);
+            .addTrait($commonWidgets.EntityWidget)
+            .addTraitAndExtend($commonWidgets.FieldBound);
 
     /**
      * Creates a DataHyperlink instance.
-     * @name giant.DataHyperlink.create
+     * @name $commonWidgets.DataHyperlink.create
      * @function
      * @param {$entity.FieldKey} urlKey Points to the link's URL.
      * @param {$entity.FieldKey} textKey Points to the link's text.
-     * @returns {giant.DataHyperlink}
+     * @returns {$commonWidgets.DataHyperlink}
      */
 
     /**
@@ -24,13 +24,13 @@ $oop.postpone(giant, 'DataHyperlink', function (ns, className) {
      * For data links where the two fields are connected (eg. by being in the same document)
      * it might be a better idea to subclass Hyperlink directly than using DataHyperlink.
      * @class
-     * @extends giant.Hyperlink
+     * @extends $commonWidgets.Hyperlink
      * @extends $entity.EntityBound
-     * @extends giant.EntityWidget
-     * @extends giant.FieldBound
+     * @extends $commonWidgets.EntityWidget
+     * @extends $commonWidgets.FieldBound
      */
-    giant.DataHyperlink = self
-        .addMethods(/** @lends giant.DataHyperlink# */{
+    $commonWidgets.DataHyperlink = self
+        .addMethods(/** @lends $commonWidgets.DataHyperlink# */{
             /**
              * @param {$entity.FieldKey} urlKey
              * @param {$entity.FieldKey} textKey
@@ -49,33 +49,33 @@ $oop.postpone(giant, 'DataHyperlink', function (ns, className) {
 
                 base.init.call(this);
                 $entity.EntityBound.init.call(this);
-                giant.EntityWidget.init.call(this, urlKey);
+                $commonWidgets.EntityWidget.init.call(this, urlKey);
             },
 
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                giant.FieldBound.afterAdd.call(this);
+                $commonWidgets.FieldBound.afterAdd.call(this);
             },
 
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                giant.FieldBound.afterRemove.call(this);
+                $commonWidgets.FieldBound.afterRemove.call(this);
             },
 
             /**
              * Creates default data bound Label widget based on the textKey provided at instantiation.
              * Override to specify custom widget.
-             * @returns {giant.DataLabel}
+             * @returns {$commonWidgets.DataLabel}
              */
             spawnLabelWidget: function () {
-                return giant.DataLabel.create(this.textKey);
+                return $commonWidgets.DataLabel.create(this.textKey);
             },
 
             /**
              * @param {string} fieldValue
-             * @returns {giant.DataHyperlink}
+             * @returns {$commonWidgets.DataHyperlink}
              * @ignore
              */
             setFieldValue: function (fieldValue) {

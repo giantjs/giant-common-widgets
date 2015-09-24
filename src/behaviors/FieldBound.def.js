@@ -1,5 +1,5 @@
-/*global giant */
-$oop.postpone(giant, 'FieldBound', function () {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'FieldBound', function () {
     "use strict";
 
     var base = $oop.Base,
@@ -8,10 +8,10 @@ $oop.postpone(giant, 'FieldBound', function () {
     /**
      * Effectuates field value change on widget.
      * Implement in host class.
-     * @name giant.FieldBound#setFieldValue
+     * @name $commonWidgets.FieldBound#setFieldValue
      * @function
      * @param {*} fieldValue
-     * @returns {giant.FieldBound}
+     * @returns {$commonWidgets.FieldBound}
      */
 
     /**
@@ -21,18 +21,18 @@ $oop.postpone(giant, 'FieldBound', function () {
      * @class
      * @extends $oop.Base
      * @extends $entity.EntityBound
-     * @extends giant.EntityWidget
+     * @extends $commonWidgets.EntityWidget
      * @extends $widget.Widget
      */
-    giant.FieldBound = self
-        .addPrivateMethods(/** @lends giant.FieldBound# */{
+    $commonWidgets.FieldBound = self
+        .addPrivateMethods(/** @lends $commonWidgets.FieldBound# */{
             /** @private */
             _updateFieldValue: function () {
                 var fieldValue = this.entityKey.toField().getValue();
                 this.setFieldValue(fieldValue);
             }
         })
-        .addMethods(/** @lends giant.FieldBound# */{
+        .addMethods(/** @lends $commonWidgets.FieldBound# */{
             /** Call from host's afterAdd. */
             afterAdd: function () {
                 this._updateFieldValue();

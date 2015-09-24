@@ -1,17 +1,17 @@
-/*global giant, jQuery */
-$oop.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
+/*global $commonWidgets, jQuery */
+$oop.postpone($commonWidgets, 'Button', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = $widget.Widget,
         self = base.extend(className)
-            .addTraitAndExtend(giant.BinaryStateful)
-            .addTrait(giant.Disableable);
+            .addTraitAndExtend($commonWidgets.BinaryStateful)
+            .addTrait($commonWidgets.Disableable);
 
     /**
      * Creates a Button instance.
-     * @name giant.Button.create
+     * @name $commonWidgets.Button.create
      * @function
-     * @returns {giant.Button}
+     * @returns {$commonWidgets.Button}
      */
 
     /**
@@ -19,16 +19,16 @@ $oop.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
      * Supports disabling and click events.
      * @class
      * @extends $widget.Widget
-     * @extends giant.BinaryStateful
-     * @extends giant.Disableable
+     * @extends $commonWidgets.BinaryStateful
+     * @extends $commonWidgets.Disableable
      */
-    giant.Button = self
-        .addMethods(/** @lends giant.Button# */{
+    $commonWidgets.Button = self
+        .addMethods(/** @lends $commonWidgets.Button# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
-                giant.BinaryStateful.init.call(this);
-                giant.Disableable.init.call(this);
+                $commonWidgets.BinaryStateful.init.call(this);
+                $commonWidgets.Disableable.init.call(this);
 
                 this.elevateMethod('onClick');
             },
@@ -36,7 +36,7 @@ $oop.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                giant.BinaryStateful.afterAdd.call(this);
+                $commonWidgets.BinaryStateful.afterAdd.call(this);
             },
 
             /** @ignore */
@@ -49,16 +49,16 @@ $oop.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                giant.BinaryStateful.afterRemove.call(this);
+                $commonWidgets.BinaryStateful.afterRemove.call(this);
             },
 
             /**
              * Clicks the button.
-             * @returns {giant.Button}
+             * @returns {$commonWidgets.Button}
              */
             clickButton: function () {
                 if (!this.isDisabled()) {
-                    this.triggerSync(giant.EVENT_BUTTON_CLICK);
+                    this.triggerSync($commonWidgets.EVENT_BUTTON_CLICK);
                 }
                 return this;
             },
@@ -77,7 +77,7 @@ $oop.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    $oop.addGlobalConstants.call(giant, /** @lends giant */{
+    $oop.addGlobalConstants.call($commonWidgets, /** @lends $commonWidgets */{
         /**
          * Signals that a Button was clicked.
          * @constants

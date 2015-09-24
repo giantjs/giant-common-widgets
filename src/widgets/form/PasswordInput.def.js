@@ -1,16 +1,16 @@
-/*global giant */
-$oop.postpone(giant, 'PasswordInput', function (ns, className) {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'PasswordInput', function (ns, className) {
     "use strict";
 
-    var base = giant.TextInput,
+    var base = $commonWidgets.TextInput,
         self = base.extend(className);
 
     /**
      * Creates a PasswordInput instance.
-     * PasswordInput instance may also be created by instantiating `giant.Input` with the type 'password'.
-     * @name giant.PasswordInput.create
+     * PasswordInput instance may also be created by instantiating `$commonWidgets.Input` with the type 'password'.
+     * @name $commonWidgets.PasswordInput.create
      * @function
-     * @returns {giant.PasswordInput}
+     * @returns {$commonWidgets.PasswordInput}
      */
 
     /**
@@ -18,10 +18,10 @@ $oop.postpone(giant, 'PasswordInput', function (ns, className) {
      * Supports revealing and obscuring the entered password.
      * Also delegates surrogate to Input: instantiating an Input with 'type'='password' will yield a PasswordInput instance.
      * @class
-     * @extends giant.TextInput
+     * @extends $commonWidgets.TextInput
      */
-    giant.PasswordInput = self
-        .addMethods(/** @lends giant.PasswordInput# */{
+    $commonWidgets.PasswordInput = self
+        .addMethods(/** @lends $commonWidgets.PasswordInput# */{
             /** @ignore */
             init: function () {
                 base.init.call(this, 'password');
@@ -29,7 +29,7 @@ $oop.postpone(giant, 'PasswordInput', function (ns, className) {
 
             /**
              * Reveals password by changing the input type to 'text', and re-rendering the widget.
-             * @returns {giant.PasswordInput}
+             * @returns {$commonWidgets.PasswordInput}
              */
             revealPassword: function () {
                 if (this.htmlAttributes.getItem('type') === 'password') {
@@ -44,7 +44,7 @@ $oop.postpone(giant, 'PasswordInput', function (ns, className) {
 
             /**
              * Obscures password by changing the input type to 'password', and re-rendering the widget.
-             * @returns {giant.PasswordInput}
+             * @returns {$commonWidgets.PasswordInput}
              */
             obscurePassword: function () {
                 if (this.htmlAttributes.getItem('type') !== 'password') {
@@ -67,11 +67,11 @@ $oop.postpone(giant, 'PasswordInput', function (ns, className) {
         });
 });
 
-$oop.amendPostponed(giant, 'Input', function () {
+$oop.amendPostponed($commonWidgets, 'Input', function () {
     "use strict";
 
-    giant.Input
-        .addSurrogate(giant, 'PasswordInput', function (inputType) {
+    $commonWidgets.Input
+        .addSurrogate($commonWidgets, 'PasswordInput', function (inputType) {
             return inputType === 'password';
         });
 });

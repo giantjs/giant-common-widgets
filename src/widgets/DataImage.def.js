@@ -1,32 +1,32 @@
-/*global giant */
-$oop.postpone(giant, 'DataImage', function (ns, className) {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'DataImage', function (ns, className) {
     "use strict";
 
-    var base = giant.Image,
+    var base = $commonWidgets.Image,
         self = base.extend(className)
             .addTrait($entity.EntityBound)
-            .addTrait(giant.EntityWidget)
-            .addTraitAndExtend(giant.FieldBound);
+            .addTrait($commonWidgets.EntityWidget)
+            .addTraitAndExtend($commonWidgets.FieldBound);
 
     /**
      * Creates a DataImage instance.
-     * @name giant.DataImage.create
+     * @name $commonWidgets.DataImage.create
      * @function
      * @param {$entity.FieldKey} urlFieldKey Field holding image URL.
-     * @returns {giant.DataImage}
+     * @returns {$commonWidgets.DataImage}
      */
 
     /**
      * The DataImage displays an image based on the URL stored in a field in the cache.
      * Keeps the image in sync with the changes of the corresponding field.
      * @class
-     * @extends giant.Image
+     * @extends $commonWidgets.Image
      * @extends $entity.EntityBound
-     * @extends giant.EntityWidget
-     * @extends giant.FieldBound
+     * @extends $commonWidgets.EntityWidget
+     * @extends $commonWidgets.FieldBound
      */
-    giant.DataImage = self
-        .addMethods(/** @lends giant.DataImage# */{
+    $commonWidgets.DataImage = self
+        .addMethods(/** @lends $commonWidgets.DataImage# */{
             /**
              * @param {$entity.FieldKey} urlFieldKey
              * @ignore
@@ -36,24 +36,24 @@ $oop.postpone(giant, 'DataImage', function (ns, className) {
 
                 base.init.call(this);
                 $entity.EntityBound.init.call(this);
-                giant.EntityWidget.init.call(this, urlFieldKey);
+                $commonWidgets.EntityWidget.init.call(this, urlFieldKey);
             },
 
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                giant.FieldBound.afterAdd.call(this);
+                $commonWidgets.FieldBound.afterAdd.call(this);
             },
 
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                giant.FieldBound.afterRemove.call(this);
+                $commonWidgets.FieldBound.afterRemove.call(this);
             },
 
             /**
              * @param {string} fieldValue
-             * @returns {giant.DataImage}
+             * @returns {$commonWidgets.DataImage}
              * @ignore
              */
             setFieldValue: function (fieldValue) {

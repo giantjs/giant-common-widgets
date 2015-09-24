@@ -1,28 +1,28 @@
-/*global giant */
-$oop.postpone(giant, 'DataDropdownButton', function (ns, className) {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'DataDropdownButton', function (ns, className) {
     "use strict";
 
-    var base = giant.DropdownButton,
+    var base = $commonWidgets.DropdownButton,
         self = base.extend(className)
             .addTrait($entity.EntityBound)
-            .addTrait(giant.EntityWidget);
+            .addTrait($commonWidgets.EntityWidget);
 
     /**
-     * @name giant.DataDropdownButton.create
+     * @name $commonWidgets.DataDropdownButton.create
      * @function
      * @param {$entity.FieldKey} labelKey
      * @param {$entity.FieldKey} optionsKey
-     * @returns {giant.DataDropdownButton}
+     * @returns {$commonWidgets.DataDropdownButton}
      */
 
     /**
      * TODO: Add documentation
      * @class
-     * @extends giant.DropdownButton
-     * @extends giant.EntityWidget
+     * @extends $commonWidgets.DropdownButton
+     * @extends $commonWidgets.EntityWidget
      */
-    giant.DataDropdownButton = self
-        .addPrivateMethods(/** @lends giant.DataDropdownButton# */{
+    $commonWidgets.DataDropdownButton = self
+        .addPrivateMethods(/** @lends $commonWidgets.DataDropdownButton# */{
             /** @private */
             _updateSelectedOption: function () {
                 var optionValue = this.entityKey.toField().getValue(),
@@ -35,7 +35,7 @@ $oop.postpone(giant, 'DataDropdownButton', function (ns, className) {
                 }
             }
         })
-        .addMethods(/** @lends giant.DataDropdownButton# */{
+        .addMethods(/** @lends $commonWidgets.DataDropdownButton# */{
             /**
              * @param {$entity.FieldKey} selectedKey
              * @param {$entity.FieldKey} optionsKey
@@ -52,7 +52,7 @@ $oop.postpone(giant, 'DataDropdownButton', function (ns, className) {
                  */
                 this.optionsKey = optionsKey;
 
-                giant.EntityWidget.init.call(this, selectedKey);
+                $commonWidgets.EntityWidget.init.call(this, selectedKey);
                 base.init.call(this);
                 $entity.EntityBound.init.call(this);
 
@@ -69,8 +69,8 @@ $oop.postpone(giant, 'DataDropdownButton', function (ns, className) {
 
                 this
                     .bindToEntityChange(this.entityKey, 'onSelectedChange')
-                    .subscribeTo(giant.EVENT_LIST_ITEMS_CHANGE, this.onListItemsChange)
-                    .subscribeTo(giant.EVENT_OPTION_SELECT, this.onOptionSelect);
+                    .subscribeTo($commonWidgets.EVENT_LIST_ITEMS_CHANGE, this.onListItemsChange)
+                    .subscribeTo($commonWidgets.EVENT_OPTION_SELECT, this.onOptionSelect);
             },
 
             /** @ignore */
@@ -79,14 +79,14 @@ $oop.postpone(giant, 'DataDropdownButton', function (ns, className) {
                 this.unbindAll();
             },
 
-            /** @returns {giant.DataLabel} */
+            /** @returns {$commonWidgets.DataLabel} */
             spawnLabelWidget: function () {
-                return giant.DataLabel.create(this.entityKey);
+                return $commonWidgets.DataLabel.create(this.entityKey);
             },
 
-            /** @returns {giant.DataDropdown} */
+            /** @returns {$commonWidgets.DataDropdown} */
             spawnDropdownWidget: function () {
-                return giant.DataDropdown.create(this.optionsKey);
+                return $commonWidgets.DataDropdown.create(this.optionsKey);
             },
 
             /**

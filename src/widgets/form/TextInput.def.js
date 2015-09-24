@@ -1,18 +1,18 @@
-/*global giant, jQuery */
-$oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
+/*global $commonWidgets, jQuery */
+$oop.postpone($commonWidgets, 'TextInput', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = giant.Input,
+    var base = $commonWidgets.Input,
         self = base.extend(className)
             .addTrait($widget.JqueryWidget);
 
     /**
      * Creates a TextInput instance.
-     * PasswordInput instance may also be created by instantiating `giant.Input` with the type 'text'.
-     * @name giant.TextInput.create
+     * PasswordInput instance may also be created by instantiating `$commonWidgets.Input` with the type 'text'.
+     * @name $commonWidgets.TextInput.create
      * @function
      * @param {string} [textInputType]
-     * @returns {giant.TextInput}
+     * @returns {$commonWidgets.TextInput}
      */
 
     /**
@@ -20,11 +20,11 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
      * Implements mostly UI event handlers, and channels them into widget events.
      * Also delegates surrogate to Input: instantiating an Input with 'type'='text' will yield a TextInput instance.
      * @class
-     * @extends giant.Input
+     * @extends $commonWidgets.Input
      * @extends $widget.JqueryWidget
      */
-    giant.TextInput = self
-        .addConstants(/** @lends giant.Input */{
+    $commonWidgets.TextInput = self
+        .addConstants(/** @lends $commonWidgets.Input */{
             /**
              * @type {object}
              * @constant
@@ -51,7 +51,7 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
                 url     : 'url'
             }
         })
-        .addPrivateMethods(/** @lends giant.TextInput# */{
+        .addPrivateMethods(/** @lends $commonWidgets.TextInput# */{
             /** @private */
             _startChangePolling: function () {
                 var that = this;
@@ -72,7 +72,7 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
                 }
             }
         })
-        .addMethods(/** @lends giant.TextInput# */{
+        .addMethods(/** @lends $commonWidgets.TextInput# */{
             /**
              * @param {string} textInputType
              * @ignore
@@ -101,7 +101,7 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
             afterRemove: function () {
                 base.afterRemove.call(this);
 
-                if (giant.pollInputValues) {
+                if ($commonWidgets.pollInputValues) {
                     this._stopChangePolling();
                 }
             },
@@ -119,7 +119,7 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
                         .on('focusout', this.onFocusOut);
                 }
 
-                if (giant.pollInputValues) {
+                if ($commonWidgets.pollInputValues) {
                     this._stopChangePolling();
                     this._startChangePolling();
                 }
@@ -136,12 +136,12 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
                 case 13:
                     if (this.canSubmit) {
                         // signaling that the input is attempting to submit the form
-                        this.triggerSync(giant.EVENT_INPUT_SUBMIT);
+                        this.triggerSync($commonWidgets.EVENT_INPUT_SUBMIT);
                     }
                     break;
 
                 case 9:
-                    this.triggerSync(giant.EVENT_INPUT_TAB);
+                    this.triggerSync($commonWidgets.EVENT_INPUT_TAB);
                     break;
                 }
 
@@ -173,7 +173,7 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
              */
             onFocusIn: function (event) {
                 var link = $event.pushOriginalEvent(event);
-                this.triggerSync(giant.EVENT_INPUT_FOCUS);
+                this.triggerSync($commonWidgets.EVENT_INPUT_FOCUS);
                 link.unlink();
             },
 
@@ -183,7 +183,7 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
              */
             onFocusOut: function (event) {
                 var link = $event.pushOriginalEvent(event);
-                this.triggerSync(giant.EVENT_INPUT_BLUR);
+                this.triggerSync($commonWidgets.EVENT_INPUT_BLUR);
                 link.unlink();
             }
         });
@@ -193,12 +193,12 @@ $oop.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
         .on('keyup input change', '', 'onChange');
 }, jQuery);
 
-$oop.amendPostponed(giant, 'Input', function () {
+$oop.amendPostponed($commonWidgets, 'Input', function () {
     "use strict";
 
-    giant.Input
-        .addSurrogate(giant, 'TextInput', function (inputType) {
-            var TextInput = giant.TextInput;
+    $commonWidgets.Input
+        .addSurrogate($commonWidgets, 'TextInput', function (inputType) {
+            var TextInput = $commonWidgets.TextInput;
             return TextInput.inputTagNames[inputType] === inputType ||
                    TextInput.inputTypes[inputType] === inputType;
         });
@@ -207,10 +207,10 @@ $oop.amendPostponed(giant, 'Input', function () {
 (function () {
     "use strict";
 
-    $assertion.addTypes(/** @lends giant */{
+    $assertion.addTypes(/** @lends $commonWidgets */{
         /** @param {string} expr */
         isTextInputType: function (expr) {
-            var TextInput = giant.TextInput;
+            var TextInput = $commonWidgets.TextInput;
             return expr &&
                    (TextInput.inputTagNames[expr] === expr ||
                     TextInput.inputTypes[expr] === expr);
@@ -218,7 +218,7 @@ $oop.amendPostponed(giant, 'Input', function () {
 
         /** @param {string} expr */
         isTextInputTypeOptional: function (expr) {
-            var TextInput = giant.TextInput;
+            var TextInput = $commonWidgets.TextInput;
             return TextInput.inputTypes[expr] === expr ||
                    TextInput.inputTagNames[expr] === expr;
         }

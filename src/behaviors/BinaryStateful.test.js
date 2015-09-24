@@ -1,4 +1,4 @@
-/*global giant */
+/*global $commonWidgets */
 (function () {
     "use strict";
 
@@ -6,21 +6,21 @@
 
     var base = $widget.Widget,
         BinaryStateful = base.extend('BinaryStateful')
-            .addTraitAndExtend(giant.BinaryStateful)
+            .addTraitAndExtend($commonWidgets.BinaryStateful)
             .addMethods({
                 init: function () {
                     base.init.call(this);
-                    giant.BinaryStateful.init.call(this);
+                    $commonWidgets.BinaryStateful.init.call(this);
                 },
 
                 afterAdd: function () {
                     base.afterAdd.call(this);
-                    giant.BinaryStateful.afterAdd.call(this);
+                    $commonWidgets.BinaryStateful.afterAdd.call(this);
                 },
 
                 afterRemove: function () {
                     base.afterRemove.call(this);
-                    giant.BinaryStateful.afterRemove.call(this);
+                    $commonWidgets.BinaryStateful.afterRemove.call(this);
                 },
 
                 afterStateOn: function () {
@@ -99,7 +99,7 @@
 
         var state = binaryStateful.binaryStates.getItem('foo');
 
-        ok(state.isA(giant.BinaryState),
+        ok(state.isA($commonWidgets.BinaryState),
             "should add BinaryState instance to binaryStates by specified name");
 
         binaryStateful.addBinaryState('foo');
@@ -150,7 +150,7 @@
         });
 
         var i = 0;
-        giant.BinaryState.addMocks({
+        $commonWidgets.BinaryState.addMocks({
             addSource: function (sourceId) {
                 equal(this.stateName, 'foo', "should add source to selected state");
                 equal(sourceId, 'hello', "should add specified source to state");
@@ -171,7 +171,7 @@
         strictEqual(parent.addBinaryStateSource('foo', 'hello'), parent,
             "should be chainable");
 
-        giant.BinaryState.removeMocks();
+        $commonWidgets.BinaryState.removeMocks();
         BinaryStateful.removeMocks();
     });
 
@@ -188,7 +188,7 @@
         });
 
         var i = 0;
-        giant.BinaryState.addMocks({
+        $commonWidgets.BinaryState.addMocks({
             addSource: function (sourceId) {
                 equal(this.stateName, 'foo', "should add source to selected state");
                 equal(sourceId, 'imposed', "should add imposed source to state");
@@ -202,7 +202,7 @@
         strictEqual(child.addImposedStateSource('foo'), child,
             "should be chainable");
 
-        giant.BinaryState.removeMocks();
+        $commonWidgets.BinaryState.removeMocks();
     });
 
     test("Applying imposed source", function () {
@@ -243,7 +243,7 @@
         parent.addBinaryStateSource('foo', 'hello');
 
         var i = 1;
-        giant.BinaryState.addMocks({
+        $commonWidgets.BinaryState.addMocks({
             removeSource: function (sourceId) {
                 equal(this.stateName, 'foo', "should remove source to selected state");
                 equal(sourceId, 'world', "should remove specified source to state");
@@ -264,7 +264,7 @@
         strictEqual(parent.removeBinaryStateSource('foo', 'world'), parent,
             "should be chainable");
 
-        giant.BinaryState.removeMocks();
+        $commonWidgets.BinaryState.removeMocks();
         BinaryStateful.removeMocks();
     });
 
@@ -281,7 +281,7 @@
         });
 
         var i = 1;
-        giant.BinaryState.addMocks({
+        $commonWidgets.BinaryState.addMocks({
             removeSource: function (sourceId) {
                 equal(this.stateName, 'foo', "should remove source from selected state");
                 equal(sourceId, 'imposed', "should remove imposed source from state");
@@ -295,7 +295,7 @@
         strictEqual(child.removeImposedStateSource('foo'), child,
             "should be chainable");
 
-        giant.BinaryState.removeMocks();
+        $commonWidgets.BinaryState.removeMocks();
     });
 
     test("Cascading flag setter", function () {

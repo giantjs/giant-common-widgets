@@ -1,16 +1,16 @@
-/*global giant, jQuery */
-$oop.postpone(giant, 'Dropdown', function (ns, className, /**jQuery*/$) {
+/*global $commonWidgets, jQuery */
+$oop.postpone($commonWidgets, 'Dropdown', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = $widget.Widget,
         self = base.extend(className)
-            .addTraitAndExtend(giant.AlignedPopup, 'Popup');
+            .addTraitAndExtend($commonWidgets.AlignedPopup, 'Popup');
 
     /**
      * Creates a Dropdown instance.
-     * @name giant.Dropdown.create
+     * @name $commonWidgets.Dropdown.create
      * @function
-     * @returns {giant.Dropdown}
+     * @returns {$commonWidgets.Dropdown}
      */
 
     /**
@@ -22,14 +22,14 @@ $oop.postpone(giant, 'Dropdown', function (ns, className, /**jQuery*/$) {
      * The Dropdown controls scrolling of the internal list.
      * @class
      * @extends $widget.Widget
-     * @extends giant.AlignedPopup
+     * @extends $commonWidgets.AlignedPopup
      */
-    giant.Dropdown = self
-        .addMethods(/** @lends giant.Dropdown# */{
+    $commonWidgets.Dropdown = self
+        .addMethods(/** @lends $commonWidgets.Dropdown# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
-                giant.AlignedPopup.init.call(this);
+                $commonWidgets.AlignedPopup.init.call(this);
 
                 this
                     .elevateMethod('onOptionFocus')
@@ -44,39 +44,39 @@ $oop.postpone(giant, 'Dropdown', function (ns, className, /**jQuery*/$) {
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                giant.AlignedPopup.afterAdd.call(this);
+                $commonWidgets.AlignedPopup.afterAdd.call(this);
 
                 this
-                    .subscribeTo(giant.EVENT_OPTION_FOCUS, this.onOptionFocus)
-                    .subscribeTo(giant.EVENT_OPTION_SELECT, this.onOptionSelect)
-                    .subscribeTo(giant.EVENT_OPTIONS_ESCAPE, this.onOptionsEscape);
+                    .subscribeTo($commonWidgets.EVENT_OPTION_FOCUS, this.onOptionFocus)
+                    .subscribeTo($commonWidgets.EVENT_OPTION_SELECT, this.onOptionSelect)
+                    .subscribeTo($commonWidgets.EVENT_OPTIONS_ESCAPE, this.onOptionsEscape);
             },
 
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                giant.AlignedPopup.afterRemove.call(this);
+                $commonWidgets.AlignedPopup.afterRemove.call(this);
             },
 
             /** @ignore */
             afterRender: function () {
                 base.afterRender.call(this);
-                giant.AlignedPopup.afterRender.call(this);
+                $commonWidgets.AlignedPopup.afterRender.call(this);
             },
 
             /**
              * Creates the internal list widget.
              * Override this method to specify other List-based widgets to use.
              * Ones that have the OptionList trait, and its items have the Option trait, are the best.
-             * @returns {giant.List}
+             * @returns {$commonWidgets.List}
              */
             spawnListWidget: function () {
-                return giant.List.create();
+                return $commonWidgets.List.create();
             },
 
             /**
              * Retrieves the internal List instance.
-             * @returns {giant.List}
+             * @returns {$commonWidgets.List}
              */
             getListWidget: function () {
                 return this.getChild('options-list');

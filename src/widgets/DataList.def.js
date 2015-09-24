@@ -1,19 +1,19 @@
-/*global giant */
-$oop.postpone(giant, 'DataList', function (ns, className) {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'DataList', function (ns, className) {
     "use strict";
 
-    var base = giant.List,
+    var base = $commonWidgets.List,
         self = base.extend(className)
             .addTrait($entity.EntityBound)
-            .addTrait(giant.EntityWidget)
-            .addTraitAndExtend(giant.FieldBound);
+            .addTrait($commonWidgets.EntityWidget)
+            .addTraitAndExtend($commonWidgets.FieldBound);
 
     /**
      * Creates a DataList instance.
-     * @name giant.DataList.create
+     * @name $commonWidgets.DataList.create
      * @function
      * @param {$entity.FieldKey} fieldKey Key to an ordered reference collection.
-     * @returns {giant.DataList}
+     * @returns {$commonWidgets.DataList}
      */
 
     /**
@@ -23,18 +23,18 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
      * Expects to have items that are also EntityWidgets.
      * TODO: Add unit tests.
      * @class
-     * @extends giant.List
+     * @extends $commonWidgets.List
      * @extends $entity.EntityBound
-     * @extends giant.EntityWidget
-     * @extends giant.FieldBound
+     * @extends $commonWidgets.EntityWidget
+     * @extends $commonWidgets.FieldBound
      */
-    giant.DataList = self
-        .addPrivateMethods(/** @lends giant.DataList# */{
+    $commonWidgets.DataList = self
+        .addPrivateMethods(/** @lends $commonWidgets.DataList# */{
             /**
              * @param {string} childName
              * @param {$entity.ItemKey} itemKey
              * @private
-             * @memberOf giant.DataList
+             * @memberOf $commonWidgets.DataList
              */
             _getSetKey: function (childName, itemKey) {
                 return childName + '|' + itemKey.toString();
@@ -90,7 +90,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
                     });
             }
         })
-        .addMethods(/** @lends giant.DataList# */{
+        .addMethods(/** @lends $commonWidgets.DataList# */{
             /**
              * @param {$entity.FieldKey} fieldKey
              * @ignore
@@ -100,7 +100,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
 
                 base.init.call(this);
                 $entity.EntityBound.init.call(this);
-                giant.EntityWidget.init.call(this, fieldKey);
+                $commonWidgets.EntityWidget.init.call(this, fieldKey);
 
                 this
                     .elevateMethod('onItemAdd')
@@ -116,20 +116,20 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                giant.FieldBound.afterAdd.call(this);
+                $commonWidgets.FieldBound.afterAdd.call(this);
 
                 this._initChildLookup();
 
                 this
-                    .subscribeTo(giant.EVENT_DATA_LIST_ITEM_ADD, this.onItemAdd)
-                    .subscribeTo(giant.EVENT_DATA_LIST_ITEM_REMOVE, this.onItemRemove)
+                    .subscribeTo($commonWidgets.EVENT_DATA_LIST_ITEM_ADD, this.onItemAdd)
+                    .subscribeTo($commonWidgets.EVENT_DATA_LIST_ITEM_REMOVE, this.onItemRemove)
                     .bindToEntityContentChange(this.entityKey, 'onItemChange');
             },
 
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                giant.FieldBound.afterRemove.call(this);
+                $commonWidgets.FieldBound.afterRemove.call(this);
             },
 
             /**
@@ -140,7 +140,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
              * @returns {$widget.Widget}
              */
             spawnItemWidget: function (itemKey) {
-                return giant.ItemDataLabel.create(itemKey, itemKey)
+                return $commonWidgets.ItemDataLabel.create(itemKey, itemKey)
                     .setChildName(this.spawnItemName(itemKey));
             },
 
@@ -166,7 +166,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
 
             /**
              * @param {object} fieldValue
-             * @returns {giant.DataList}
+             * @returns {$commonWidgets.DataList}
              * @ignore
              */
             setFieldValue: function (fieldValue) {
@@ -202,7 +202,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
                 itemWidgetsToAdd
                     .passEachItemTo(this.addItemWidget, this);
 
-                this.spawnEvent(giant.EVENT_LIST_ITEMS_CHANGE)
+                this.spawnEvent($commonWidgets.EVENT_LIST_ITEMS_CHANGE)
                     .setPayloadItems({
                         itemsRemoved: itemWidgetsToRemove,
                         itemsAdded  : itemWidgetsToAdd

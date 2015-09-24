@@ -1,5 +1,5 @@
-/*global giant */
-$oop.postpone(giant, 'EntityWidget', function () {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'EntityWidget', function () {
     "use strict";
 
     var base = $oop.Base,
@@ -11,12 +11,12 @@ $oop.postpone(giant, 'EntityWidget', function () {
      * @extends $oop.Base
      * @extends $widget.Widget
      */
-    giant.EntityWidget = self
-        .addConstants(/** @lends giant.EntityWidget */{
+    $commonWidgets.EntityWidget = self
+        .addConstants(/** @lends $commonWidgets.EntityWidget */{
             /** @constant */
             ATTRIBUTE_NAME_ENTITY_KEY: 'data-entity-key'
         })
-        .addMethods(/** @lends giant.EntityWidget# */{
+        .addMethods(/** @lends $commonWidgets.EntityWidget# */{
             /**
              * @param {$entity.EntityKey} entityKey
              */
@@ -26,7 +26,7 @@ $oop.postpone(giant, 'EntityWidget', function () {
             },
 
             /**
-             * @returns {giant.EntityWidget}
+             * @returns {$commonWidgets.EntityWidget}
              */
             revealKey: function () {
                 this.addAttribute(self.ATTRIBUTE_NAME_ENTITY_KEY, this.entityKey.toString());
@@ -34,7 +34,7 @@ $oop.postpone(giant, 'EntityWidget', function () {
             },
 
             /**
-             * @returns {giant.EntityWidget}
+             * @returns {$commonWidgets.EntityWidget}
              */
             hideKey: function () {
                 this.removeAttribute(self.ATTRIBUTE_NAME_ENTITY_KEY);
@@ -43,7 +43,7 @@ $oop.postpone(giant, 'EntityWidget', function () {
         });
 });
 
-$oop.postpone(giant, 'revealKeys', function () {
+$oop.postpone($commonWidgets, 'revealKeys', function () {
     "use strict";
 
     /**
@@ -51,20 +51,20 @@ $oop.postpone(giant, 'revealKeys', function () {
      * Entity key strings will be added to widget elements as 'data-entity-key' attribute.
      * @type {function}
      */
-    giant.revealKeys = function () {
+    $commonWidgets.revealKeys = function () {
         $widget.Widget.rootWidget.getAllDescendants()
             .callOnEachItem('revealKey');
     };
 });
 
-$oop.postpone(giant, 'hideKeys', function () {
+$oop.postpone($commonWidgets, 'hideKeys', function () {
     "use strict";
 
     /**
      * Removes 'data-entity-key' attribute from the DOM of all widgets that have the EntityWidget trait.
      * @type {function}
      */
-    giant.hideKeys = function () {
+    $commonWidgets.hideKeys = function () {
         $widget.Widget.rootWidget.getAllDescendants()
             .callOnEachItem('hideKey');
     };

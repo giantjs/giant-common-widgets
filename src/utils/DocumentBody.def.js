@@ -1,5 +1,5 @@
-/*global giant */
-$oop.postpone(giant, 'DocumentBody', function () {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'DocumentBody', function () {
     "use strict";
 
     var base = $oop.Base,
@@ -7,9 +7,9 @@ $oop.postpone(giant, 'DocumentBody', function () {
             .addTraitAndExtend($widget.Renderable);
 
     /**
-     * @name giant.DocumentBody.create
+     * @name $commonWidgets.DocumentBody.create
      * @function
-     * @returns {giant.DocumentBody}
+     * @returns {$commonWidgets.DocumentBody}
      */
 
     /**
@@ -17,11 +17,11 @@ $oop.postpone(giant, 'DocumentBody', function () {
      * @extends $oop.Base
      * @extends $widget.Renderable
      */
-    giant.DocumentBody = self
+    $commonWidgets.DocumentBody = self
         .setInstanceMapper(function () {
             return 'singleton';
         })
-        .addPrivateMethods(/** @lends giant.DocumentBody# */{
+        .addPrivateMethods(/** @lends $commonWidgets.DocumentBody# */{
             /**
              * @returns {HTMLElement}
              * @private
@@ -30,7 +30,7 @@ $oop.postpone(giant, 'DocumentBody', function () {
                 return document && document.body;
             }
         })
-        .addMethods(/** @lends giant.DocumentBody# */{
+        .addMethods(/** @lends $commonWidgets.DocumentBody# */{
             /** @ignore */
             init: function () {
                 $widget.Renderable.init.call(this);
@@ -45,7 +45,7 @@ $oop.postpone(giant, 'DocumentBody', function () {
 
             /**
              * @param {string} contentMarkup
-             * @returns {giant.DocumentBody}
+             * @returns {$commonWidgets.DocumentBody}
              */
             setContentMarkup: function (contentMarkup) {
                 this._contentMarkup = contentMarkup;

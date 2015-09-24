@@ -1,5 +1,5 @@
-/*global giant */
-$oop.postpone(giant, 'Image', function (ns, className) {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'Image', function (ns, className) {
     "use strict";
 
     var base = $widget.Widget,
@@ -7,9 +7,9 @@ $oop.postpone(giant, 'Image', function (ns, className) {
 
     /**
      * Creates an Image instance.
-     * @name giant.Image.create
+     * @name $commonWidgets.Image.create
      * @function
-     * @returns {giant.Image}
+     * @returns {$commonWidgets.Image}
      */
 
     /**
@@ -17,8 +17,8 @@ $oop.postpone(giant, 'Image', function (ns, className) {
      * @class
      * @extends $widget.Widget
      */
-    giant.Image = self
-        .addMethods(/** @lends giant.Image# */{
+    $commonWidgets.Image = self
+        .addMethods(/** @lends $commonWidgets.Image# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -33,7 +33,7 @@ $oop.postpone(giant, 'Image', function (ns, className) {
              * @param {$transport.ImageUrl} imageUrl ImageUrl instance.
              * @example
              * image.setImageUrl('http://httpcats.herokuapp.com/418'.toImageUrl())
-             * @returns {giant.Image}
+             * @returns {$commonWidgets.Image}
              */
             setImageUrl: function (imageUrl) {
                 $assertion.isLocation(imageUrl, "Invalid image URL");

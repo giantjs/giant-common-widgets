@@ -1,5 +1,5 @@
-/*global giant */
-$oop.postpone(giant, 'Expandable', function () {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'Expandable', function () {
     "use strict";
 
     var base = $oop.Base,
@@ -8,15 +8,15 @@ $oop.postpone(giant, 'Expandable', function () {
     /**
      * @class
      * @extends $oop.Base
-     * @extends giant.BinaryStateful
+     * @extends $commonWidgets.BinaryStateful
      * @extends $widget.Widget
      */
-    giant.Expandable = self
-        .addConstants(/** @lends giant.Expandable */{
+    $commonWidgets.Expandable = self
+        .addConstants(/** @lends $commonWidgets.Expandable */{
             /** @constant */
             STATE_NAME_EXPANDABLE: 'state-expandable'
         })
-        .addPrivateMethods(/** @lends giant.Expandable# */{
+        .addPrivateMethods(/** @lends $commonWidgets.Expandable# */{
             /** @private */
             _updateExpandedState: function () {
                 if (this.isStateOn(self.STATE_NAME_EXPANDABLE)) {
@@ -30,7 +30,7 @@ $oop.postpone(giant, 'Expandable', function () {
                 }
             }
         })
-        .addMethods(/** @lends giant.Expandable# */{
+        .addMethods(/** @lends $commonWidgets.Expandable# */{
             /** Call from host's init. */
             init: function () {
                 // expansion is not cascading (by default)
@@ -41,7 +41,7 @@ $oop.postpone(giant, 'Expandable', function () {
             afterStateOn: function (stateName) {
                 if (stateName === self.STATE_NAME_EXPANDABLE) {
                     this._updateExpandedState();
-                    this.triggerSync(giant.EVENT_EXPANDABLE_EXPAND);
+                    this.triggerSync($commonWidgets.EVENT_EXPANDABLE_EXPAND);
                 }
             },
 
@@ -49,17 +49,17 @@ $oop.postpone(giant, 'Expandable', function () {
             afterStateOff: function (stateName) {
                 if (stateName === self.STATE_NAME_EXPANDABLE) {
                     this._updateExpandedState();
-                    this.triggerSync(giant.EVENT_EXPANDABLE_RETRACT);
+                    this.triggerSync($commonWidgets.EVENT_EXPANDABLE_RETRACT);
                 }
             },
 
-            /** @returns {giant.Expandable} */
+            /** @returns {$commonWidgets.Expandable} */
             expandWidget: function () {
                 this.addBinaryStateSource(self.STATE_NAME_EXPANDABLE, 'default');
                 return this;
             },
 
-            /** @returns {giant.Expandable} */
+            /** @returns {$commonWidgets.Expandable} */
             contractWidget: function () {
                 this.removeBinaryStateSource(self.STATE_NAME_EXPANDABLE, 'default');
                 return this;
@@ -75,7 +75,7 @@ $oop.postpone(giant, 'Expandable', function () {
 (function () {
     "use strict";
 
-    $oop.addGlobalConstants.call(giant, /** @lends giant */{
+    $oop.addGlobalConstants.call($commonWidgets, /** @lends $commonWidgets */{
         /**
          * Signals that an Expandable has expanded.
          * @constants

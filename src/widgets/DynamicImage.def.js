@@ -1,15 +1,15 @@
-/*global giant, jQuery */
-$oop.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
+/*global $commonWidgets, jQuery */
+$oop.postpone($commonWidgets, 'DynamicImage', function (ns, className, /**jQuery*/$) {
     "use strict";
 
-    var base = giant.Image,
+    var base = $commonWidgets.Image,
         self = base.extend(className);
 
     /**
      * Creates a DynamicImage instance.
-     * @name giant.DynamicImage.create
+     * @name $commonWidgets.DynamicImage.create
      * @function
-     * @returns {giant.DynamicImage}
+     * @returns {$commonWidgets.DynamicImage}
      */
 
     /**
@@ -18,10 +18,10 @@ $oop.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
      * an image tag that may or may not be present, depending on loading success. The image will not load sooner than
      * the widget is rendered.
      * @class
-     * @extends giant.Image
+     * @extends $commonWidgets.Image
      */
-    giant.DynamicImage = self
-        .addPrivateMethods(/** @lends giant.DynamicImage# */{
+    $commonWidgets.DynamicImage = self
+        .addPrivateMethods(/** @lends $commonWidgets.DynamicImage# */{
             /** @private */
             _updateImageElement: function () {
                 var element = this.getElement(),
@@ -49,7 +49,7 @@ $oop.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
                 this._updateImageElement();
             }
         })
-        .addMethods(/** @lends giant.DynamicImage# */{
+        .addMethods(/** @lends $commonWidgets.DynamicImage# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -68,7 +68,7 @@ $oop.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
 
                 /**
                  * Transport-level Image instance associated with Image widget.
-                 * @type {giant.Image}
+                 * @type {$commonWidgets.Image}
                  */
                 this.image = undefined;
             },
@@ -83,7 +83,7 @@ $oop.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
              * Sets image URL. Initiates loading of image when necessary, and subscribes widget
              * to image loading events on the specified URL.
              * @param {$transport.ImageUrl} imageUrl ImageUrl instance.
-             * @returns {giant.DynamicImage}
+             * @returns {$commonWidgets.DynamicImage}
              */
             setImageUrl: function (imageUrl) {
                 $assertion.isLocation(imageUrl, "Invalid image URL");
@@ -139,7 +139,7 @@ $oop.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    $oop.addGlobalConstants.call(giant, /** @lends giant */{
+    $oop.addGlobalConstants.call($commonWidgets, /** @lends $commonWidgets */{
         /**
          * Signals that an Image started to load.
          * @constant

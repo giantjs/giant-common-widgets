@@ -1,15 +1,15 @@
-/*global giant */
-$oop.postpone(giant, 'DropdownButton', function (ns, className) {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'DropdownButton', function (ns, className) {
     "use strict";
 
-    var base = giant.TextButton,
+    var base = $commonWidgets.TextButton,
         self = base.extend(className);
 
     /**
      * Creates a DropdownButton instance.
-     * @name giant.DropdownButton.create
+     * @name $commonWidgets.DropdownButton.create
      * @function
-     * @returns {giant.DropdownButton}
+     * @returns {$commonWidgets.DropdownButton}
      */
 
     /**
@@ -17,10 +17,10 @@ $oop.postpone(giant, 'DropdownButton', function (ns, className) {
      * and the selected option will be set as the dropdown button's current caption.
      * The DropdownButton changes its state as the dropdown opens and closes.
      * @class
-     * @extends giant.TextButton
+     * @extends $commonWidgets.TextButton
      */
-    giant.DropdownButton = self
-        .addPrivateMethods(/** @lends giant.DropdownButton# */{
+    $commonWidgets.DropdownButton = self
+        .addPrivateMethods(/** @lends $commonWidgets.DropdownButton# */{
             /** @private */
             _updateOpenStyle: function () {
                 var dropdown = this.dropdown;
@@ -35,7 +35,7 @@ $oop.postpone(giant, 'DropdownButton', function (ns, className) {
                 }
             }
         })
-        .addMethods(/** @lends giant.DropdownButton# */{
+        .addMethods(/** @lends $commonWidgets.DropdownButton# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -48,7 +48,7 @@ $oop.postpone(giant, 'DropdownButton', function (ns, className) {
                  * Dropdown widget for showing the options.
                  * Must have instance-level reference to it since this widget will be removed and re-added
                  * to the widget hierarchy.
-                 * @type {giant.Dropdown}
+                 * @type {$commonWidgets.Dropdown}
                  */
                 this.dropdown = this.spawnDropdownWidget()
                     .setChildName('dropdown-popup');
@@ -61,22 +61,22 @@ $oop.postpone(giant, 'DropdownButton', function (ns, className) {
                 this._updateOpenStyle();
 
                 this
-                    .subscribeTo(giant.EVENT_POPUP_OPEN, this.onDropdownOpen)
-                    .subscribeTo(giant.EVENT_POPUP_CLOSE, this.onDropdownClose);
+                    .subscribeTo($commonWidgets.EVENT_POPUP_OPEN, this.onDropdownOpen)
+                    .subscribeTo($commonWidgets.EVENT_POPUP_CLOSE, this.onDropdownClose);
             },
 
             /**
              * Creates dropdown widget.
              * Override to specify custom dropdown.
-             * @returns {giant.Dropdown}
+             * @returns {$commonWidgets.Dropdown}
              */
             spawnDropdownWidget: function () {
-                return giant.Dropdown.create();
+                return $commonWidgets.Dropdown.create();
             },
 
             /**
              * Retrieves Dropdown instance associated with DropdownButton.
-             * @returns {giant.Dropdown}
+             * @returns {$commonWidgets.Dropdown}
              */
             getDropdownWidget: function () {
                 return this.getChild('dropdown-popup');

@@ -1,5 +1,5 @@
-/*global giant, jQuery */
-$oop.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
+/*global $commonWidgets, jQuery */
+$oop.postpone($commonWidgets, 'Option', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = $oop.Base,
@@ -12,18 +12,18 @@ $oop.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
      * @class
      * @extends $oop.Base
      * @extends $widget.Widget
-     * @extends giant.BinaryStateful
-     * @extends giant.Highlightable
+     * @extends $commonWidgets.BinaryStateful
+     * @extends $commonWidgets.Highlightable
      */
-    giant.Option = self
-        .addConstants(/** @lends giant.Option */{
+    $commonWidgets.Option = self
+        .addConstants(/** @lends $commonWidgets.Option */{
             /** @constant */
             HIGHLIGHTED_FOCUS: 'highlighted-focus',
 
             /** @constant */
             HIGHLIGHTED_ACTIVE: 'highlighted-active'
         })
-        .addMethods(/** @lends giant.Option# */{
+        .addMethods(/** @lends $commonWidgets.Option# */{
             /**
              * Call from host's init.
              * @param {*} [optionValue]
@@ -55,7 +55,7 @@ $oop.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
             /**
              * Sets option value.
              * @param {*} optionValue
-             * @returns {giant.Option}
+             * @returns {$commonWidgets.Option}
              */
             setOptionValue: function (optionValue) {
                 this.optionValue = optionValue;
@@ -64,12 +64,12 @@ $oop.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
 
             /**
              * Marks current option as focused.
-             * @returns {giant.Option}
+             * @returns {$commonWidgets.Option}
              */
             markAsFocused: function () {
                 if (!this.isFocused()) {
                     this.highlightOn(self.HIGHLIGHTED_FOCUS)
-                        .spawnEvent(giant.EVENT_OPTION_FOCUS)
+                        .spawnEvent($commonWidgets.EVENT_OPTION_FOCUS)
                         .setPayloadItems({
                             optionName : this.childName,
                             optionValue: this.optionValue
@@ -81,12 +81,12 @@ $oop.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
 
             /**
              * Marks current option as no longer focused.
-             * @returns {giant.Option}
+             * @returns {$commonWidgets.Option}
              */
             markAsBlurred: function () {
                 if (this.isFocused()) {
                     this.highlightOff(self.HIGHLIGHTED_FOCUS)
-                        .spawnEvent(giant.EVENT_OPTION_BLUR)
+                        .spawnEvent($commonWidgets.EVENT_OPTION_BLUR)
                         .setPayloadItems({
                             optionName : this.childName,
                             optionValue: this.optionValue
@@ -106,12 +106,12 @@ $oop.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
 
             /**
              * Marks current option as active.
-             * @returns {giant.Option}
+             * @returns {$commonWidgets.Option}
              */
             markAsActive: function () {
                 if (!this.isActive()) {
                     this.highlightOn(self.HIGHLIGHTED_ACTIVE)
-                        .spawnEvent(giant.EVENT_OPTION_ACTIVE)
+                        .spawnEvent($commonWidgets.EVENT_OPTION_ACTIVE)
                         .setPayloadItems({
                             optionName : this.childName,
                             optionValue: this.optionValue
@@ -123,12 +123,12 @@ $oop.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
 
             /**
              * Marks current option as inactive.
-             * @returns {giant.Option}
+             * @returns {$commonWidgets.Option}
              */
             markAsInactive: function () {
                 if (this.isActive()) {
                     this.highlightOff(self.HIGHLIGHTED_ACTIVE)
-                        .spawnEvent(giant.EVENT_OPTION_INACTIVE)
+                        .spawnEvent($commonWidgets.EVENT_OPTION_INACTIVE)
                         .setPayloadItems({
                             optionName : this.childName,
                             optionValue: this.optionValue
@@ -171,7 +171,7 @@ $oop.postpone(giant, 'Option', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    $oop.addGlobalConstants.call(giant, /** @lends giant */{
+    $oop.addGlobalConstants.call($commonWidgets, /** @lends $commonWidgets */{
         /**
          * Signals that an Option has gained focus.
          * @constant

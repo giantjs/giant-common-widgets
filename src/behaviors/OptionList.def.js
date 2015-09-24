@@ -1,5 +1,5 @@
-/*global giant */
-$oop.postpone(giant, 'OptionList', function () {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'OptionList', function () {
     "use strict";
 
     var base = $oop.Base,
@@ -12,17 +12,17 @@ $oop.postpone(giant, 'OptionList', function () {
      * The OptionList returns to its neutral state after being removed from the hierarchy.
      * @class
      * @extends $oop.Base
-     * @extends giant.List
+     * @extends $commonWidgets.List
      */
-    giant.OptionList = self
-        .addPrivateMethods(/** @lends giant.OptionList# */{
+    $commonWidgets.OptionList = self
+        .addPrivateMethods(/** @lends $commonWidgets.OptionList# */{
             /**
              * @param {string} optionName
              * @param {*} optionValue
              * @private
              */
             _triggerSelectEvent: function (optionName, optionValue) {
-                this.spawnEvent(giant.EVENT_OPTION_SELECT)
+                this.spawnEvent($commonWidgets.EVENT_OPTION_SELECT)
                     .setPayloadItems({
                         optionName : optionName,
                         optionValue: optionValue
@@ -101,7 +101,7 @@ $oop.postpone(giant, 'OptionList', function () {
                 }
             }
         })
-        .addMethods(/** @lends giant.OptionList# */{
+        .addMethods(/** @lends $commonWidgets.OptionList# */{
             /** Call from host's init. */
             init: function () {
                 this
@@ -129,11 +129,11 @@ $oop.postpone(giant, 'OptionList', function () {
             /** Call from host's afterAdd. */
             afterAdd: function () {
                 this
-                    .subscribeTo(giant.EVENT_LIST_ITEMS_CHANGE, this.onItemsChange)
-                    .subscribeTo(giant.EVENT_HOT_KEY_DOWN, this.onHotKeyPress)
-                    .subscribeTo(giant.EVENT_OPTION_FOCUS, this.onOptionFocus)
-                    .subscribeTo(giant.EVENT_OPTION_ACTIVE, this.onOptionActive)
-                    .subscribeTo(giant.EVENT_OPTION_SELECT, this.onOptionSelect);
+                    .subscribeTo($commonWidgets.EVENT_LIST_ITEMS_CHANGE, this.onItemsChange)
+                    .subscribeTo($commonWidgets.EVENT_HOT_KEY_DOWN, this.onHotKeyPress)
+                    .subscribeTo($commonWidgets.EVENT_OPTION_FOCUS, this.onOptionFocus)
+                    .subscribeTo($commonWidgets.EVENT_OPTION_ACTIVE, this.onOptionActive)
+                    .subscribeTo($commonWidgets.EVENT_OPTION_SELECT, this.onOptionSelect);
 
                 this._focusOnOption();
                 this._updateFocusedOptionName();
@@ -161,7 +161,7 @@ $oop.postpone(giant, 'OptionList', function () {
              * Fetches option widget based on its option value.
              * TODO: maintain an lookup of option values -> option widgets.
              * @param {*} optionValue
-             * @returns {giant.Option}
+             * @returns {$commonWidgets.Option}
              */
             getOptionByValue: function (optionValue) {
                 return this.children
@@ -173,7 +173,7 @@ $oop.postpone(giant, 'OptionList', function () {
 
             /**
              * Fetches currently focused option, or an arbitrary option if none focused.
-             * @returns {giant.Option}
+             * @returns {$commonWidgets.Option}
              */
             getFocusedOption: function () {
                 return this.children.filterBySelector(
@@ -185,7 +185,7 @@ $oop.postpone(giant, 'OptionList', function () {
 
             /**
              * Fetches option that is currently selected, or undefined.
-             * @returns {giant.Option}
+             * @returns {$commonWidgets.Option}
              */
             getSelectedOption: function () {
                 return this.children.filterBySelector(
@@ -198,7 +198,7 @@ $oop.postpone(giant, 'OptionList', function () {
             /**
              * Selects an option on the list.
              * @param {string} optionName
-             * @returns {giant.OptionList}
+             * @returns {$commonWidgets.OptionList}
              */
             selectOption: function (optionName) {
                 var option = this.getChild(optionName);
@@ -244,7 +244,7 @@ $oop.postpone(giant, 'OptionList', function () {
                     break;
 
                 case 27: // esc
-                    this.triggerSync(giant.EVENT_OPTIONS_ESCAPE);
+                    this.triggerSync($commonWidgets.EVENT_OPTIONS_ESCAPE);
                     break;
 
                 case 13: // enter
@@ -286,7 +286,7 @@ $oop.postpone(giant, 'OptionList', function () {
 (function () {
     "use strict";
 
-    $oop.addGlobalConstants.call(giant, /** @lends giant */{
+    $oop.addGlobalConstants.call($commonWidgets, /** @lends $commonWidgets */{
         /**
          * Signals that an Option was selected.
          * @constant

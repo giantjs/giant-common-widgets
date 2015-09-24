@@ -1,5 +1,5 @@
-/*global giant, Event, jQuery */
-$oop.postpone(giant, 'HotKeyWatcher', function () {
+/*global $commonWidgets, Event, jQuery */
+$oop.postpone($commonWidgets, 'HotKeyWatcher', function () {
     "use strict";
 
     var base = $oop.Base,
@@ -7,15 +7,15 @@ $oop.postpone(giant, 'HotKeyWatcher', function () {
 
     /**
      * Static class that watches key events globally and broadcasts widget events in response.
-     * Listen to giant.EVENT_HOT_KEY_DOWN in any widget to get notified of
+     * Listen to $commonWidgets.EVENT_HOT_KEY_DOWN in any widget to get notified of
      * global key events. (Eg. for navigating within a custom control.)
      * In case you want to suppress hotkey events originating from eg. Input widgets,
      * query the original events and look at the target that received the keydown.
      * @class
      * @extends $oop.Base
      */
-    giant.HotKeyWatcher = self
-        .addMethods(/** @lends giant.HotKeyWatcher# */{
+    $commonWidgets.HotKeyWatcher = self
+        .addMethods(/** @lends $commonWidgets.HotKeyWatcher# */{
             /**
              * @param {jQuery.Event} event
              * @ignore
@@ -29,7 +29,7 @@ $oop.postpone(giant, 'HotKeyWatcher', function () {
                         rootWidget;
 
                 rootWidget
-                    .spawnEvent(giant.EVENT_HOT_KEY_DOWN)
+                    .spawnEvent($commonWidgets.EVENT_HOT_KEY_DOWN)
                     .setPayloadItems({
                         charCode    : event.which,
                         originWidget: originWidget
@@ -44,7 +44,7 @@ $oop.postpone(giant, 'HotKeyWatcher', function () {
 (function () {
     "use strict";
 
-    $oop.addGlobalConstants.call(giant, /** @lends giant */{
+    $oop.addGlobalConstants.call($commonWidgets, /** @lends $commonWidgets */{
         /**
          * Signals that a hot key was pressed.
          * @constant
@@ -58,7 +58,7 @@ $oop.postpone(giant, 'HotKeyWatcher', function () {
 
     if (document) {
         $(document).on('keydown', function (event) {
-            giant.HotKeyWatcher.onKeyDown(event);
+            $commonWidgets.HotKeyWatcher.onKeyDown(event);
         });
     }
 }(jQuery));

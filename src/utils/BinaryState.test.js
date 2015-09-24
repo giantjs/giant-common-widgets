@@ -1,4 +1,4 @@
-/*global giant */
+/*global $commonWidgets */
 (function () {
     "use strict";
 
@@ -6,10 +6,10 @@
 
     test("Instantiation", function () {
         throws(function () {
-            giant.BinaryState.create();
+            $commonWidgets.BinaryState.create();
         }, "should raise exception on missing arguments");
 
-        var binaryState = giant.BinaryState.create('foo');
+        var binaryState = $commonWidgets.BinaryState.create('foo');
 
         equal(binaryState.stateName, 'foo', "should set state name");
         ok(binaryState.stateSources.isA($data.Collection), "should add source collection");
@@ -20,7 +20,7 @@
     test("Conversion from string", function () {
         var binaryState = 'foo'.toBinaryState();
 
-        ok(binaryState.isA(giant.BinaryState), "should return BinaryState instance");
+        ok(binaryState.isA($commonWidgets.BinaryState), "should return BinaryState instance");
         equal(binaryState.stateName, 'foo', "should set state name");
     });
 

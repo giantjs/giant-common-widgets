@@ -1,19 +1,19 @@
-/*global giant */
-$oop.postpone(giant, 'DataDynamicImage', function (ns, className) {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'DataDynamicImage', function (ns, className) {
     "use strict";
 
-    var base = giant.DynamicImage,
+    var base = $commonWidgets.DynamicImage,
         self = base.extend(className)
             .addTrait($entity.EntityBound)
-            .addTrait(giant.EntityWidget)
-            .addTraitAndExtend(giant.FieldBound);
+            .addTrait($commonWidgets.EntityWidget)
+            .addTraitAndExtend($commonWidgets.FieldBound);
 
     /**
      * Creates a DataDynamicImage instance.
-     * @name giant.DataDynamicImage.create
+     * @name $commonWidgets.DataDynamicImage.create
      * @function
      * @param {$entity.FieldKey} urlFieldKey Field holding image URL.
-     * @returns {giant.DataDynamicImage}
+     * @returns {$commonWidgets.DataDynamicImage}
      */
 
     /**
@@ -21,13 +21,13 @@ $oop.postpone(giant, 'DataDynamicImage', function (ns, className) {
      * Displays an image image based on the URL stored in a field in the cache.
      * Keeps the image in sync with the changes of the corresponding field.
      * @class
-     * @extends giant.DynamicImage
+     * @extends $commonWidgets.DynamicImage
      * @extends $entity.EntityBound
-     * @extends giant.EntityWidget
-     * @extends giant.FieldBound
+     * @extends $commonWidgets.EntityWidget
+     * @extends $commonWidgets.FieldBound
      */
-    giant.DataDynamicImage = self
-        .addMethods(/** @lends giant.DataDynamicImage# */{
+    $commonWidgets.DataDynamicImage = self
+        .addMethods(/** @lends $commonWidgets.DataDynamicImage# */{
             /**
              * @param {$entity.FieldKey} urlFieldKey
              * @ignore
@@ -37,24 +37,24 @@ $oop.postpone(giant, 'DataDynamicImage', function (ns, className) {
 
                 base.init.call(this);
                 $entity.EntityBound.init.call(this);
-                giant.EntityWidget.init.call(this, urlFieldKey);
+                $commonWidgets.EntityWidget.init.call(this, urlFieldKey);
             },
 
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                giant.FieldBound.afterAdd.call(this);
+                $commonWidgets.FieldBound.afterAdd.call(this);
             },
 
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                giant.FieldBound.afterRemove.call(this);
+                $commonWidgets.FieldBound.afterRemove.call(this);
             },
 
             /**
              * @param {string} fieldValue
-             * @returns {giant.DataDynamicImage}
+             * @returns {$commonWidgets.DataDynamicImage}
              * @ignore
              */
             setFieldValue: function (fieldValue) {

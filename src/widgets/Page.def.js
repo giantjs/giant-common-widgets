@@ -1,17 +1,17 @@
-/*global giant, jQuery */
-$oop.postpone(giant, 'Page', function (ns, className, /**jQuery*/$) {
+/*global $commonWidgets, jQuery */
+$oop.postpone($commonWidgets, 'Page', function (ns, className, /**jQuery*/$) {
     "use strict";
 
     var base = $widget.Widget,
         self = base.extend(className)
-            .addTraitAndExtend(giant.BinaryStateful)
-            .addTrait(giant.Disableable);
+            .addTraitAndExtend($commonWidgets.BinaryStateful)
+            .addTrait($commonWidgets.Disableable);
 
     /**
      * Creates a Page instance.
-     * @name giant.Page.create
+     * @name $commonWidgets.Page.create
      * @function
-     * @returns {giant.Page}
+     * @returns {$commonWidgets.Page}
      */
 
     /**
@@ -22,11 +22,11 @@ $oop.postpone(giant, 'Page', function (ns, className, /**jQuery*/$) {
      * MyPage.create().setRootWidget();
      * @class
      * @extends $widget.Widget
-     * @extends giant.BinaryStateful
-     * @extends giant.Disableable
+     * @extends $commonWidgets.BinaryStateful
+     * @extends $commonWidgets.Disableable
      */
-    giant.Page = self
-        .addPrivateMethods(/** @lends giant.Page# */{
+    $commonWidgets.Page = self
+        .addPrivateMethods(/** @lends $commonWidgets.Page# */{
             /**
              * @returns {$data.Collection}
              * @private
@@ -38,20 +38,20 @@ $oop.postpone(giant, 'Page', function (ns, className, /**jQuery*/$) {
                     });
             }
         })
-        .addMethods(/** @lends giant.Page# */{
+        .addMethods(/** @lends $commonWidgets.Page# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
-                giant.BinaryStateful.init.call(this);
-                giant.Disableable.init.call(this);
+                $commonWidgets.BinaryStateful.init.call(this);
+                $commonWidgets.Disableable.init.call(this);
             },
 
             /** @ignore */
             afterAdd: function () {
                 base.afterAdd.call(this);
-                giant.BinaryStateful.afterAdd.call(this);
+                $commonWidgets.BinaryStateful.afterAdd.call(this);
 
-                var documentBody = giant.DocumentBody.create();
+                var documentBody = $commonWidgets.DocumentBody.create();
 
                 this._getPageCssClasses()
                     .passEachItemTo(documentBody.addCssClass, documentBody);
@@ -60,9 +60,9 @@ $oop.postpone(giant, 'Page', function (ns, className, /**jQuery*/$) {
             /** @ignore */
             afterRemove: function () {
                 base.afterRemove.call(this);
-                giant.BinaryStateful.afterRemove.call(this);
+                $commonWidgets.BinaryStateful.afterRemove.call(this);
 
-                var documentBody = giant.DocumentBody.create();
+                var documentBody = $commonWidgets.DocumentBody.create();
 
                 this._getPageCssClasses()
                     .passEachItemTo(documentBody.decreaseCssClassRefCount, documentBody);

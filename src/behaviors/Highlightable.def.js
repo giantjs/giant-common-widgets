@@ -1,5 +1,5 @@
-/*global giant */
-$oop.postpone(giant, 'Highlightable', function () {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'Highlightable', function () {
     "use strict";
 
     var base = $oop.Base,
@@ -13,15 +13,15 @@ $oop.postpone(giant, 'Highlightable', function () {
      * prototype level (using addTraitAndExtend()).
      * @class
      * @extends $oop.Base
-     * @extends giant.BinaryStateful
+     * @extends $commonWidgets.BinaryStateful
      * @extends $widget.Widget
      */
-    giant.Highlightable = self
-        .addConstants(/** @lends giant.Highlightable */{
+    $commonWidgets.Highlightable = self
+        .addConstants(/** @lends $commonWidgets.Highlightable */{
             /** @constant */
             STATE_NAME_HIGHLIGHTABLE: 'state-highlightable'
         })
-        .addPrivateMethods(/** @lends giant.Highlightable# */{
+        .addPrivateMethods(/** @lends $commonWidgets.Highlightable# */{
             /**
              * TODO: Refactor to use Set.
              * @private
@@ -41,7 +41,7 @@ $oop.postpone(giant, 'Highlightable', function () {
                 this.highlightIds = highlightIds;
             }
         })
-        .addMethods(/** @lends giant.Highlightable# */{
+        .addMethods(/** @lends $commonWidgets.Highlightable# */{
             /** Call from host's init. */
             init: function () {
                 // highlightable state does not cascade
@@ -57,10 +57,10 @@ $oop.postpone(giant, 'Highlightable', function () {
             /**
              * @param {string} stateName
              * @param {string} sourceId
-             * @returns {giant.Highlightable}
+             * @returns {$commonWidgets.Highlightable}
              */
             addBinaryStateSource: function (stateName, sourceId) {
-                giant.BinaryStateful.addBinaryStateSource.call(this, stateName, sourceId);
+                $commonWidgets.BinaryStateful.addBinaryStateSource.call(this, stateName, sourceId);
                 if (stateName === self.STATE_NAME_HIGHLIGHTABLE) {
                     this._updateHighlightedState();
                 }
@@ -69,10 +69,10 @@ $oop.postpone(giant, 'Highlightable', function () {
 
             /**
              * @param {string} stateName
-             * @returns {giant.Highlightable}
+             * @returns {$commonWidgets.Highlightable}
              */
             addImposedStateSource: function (stateName) {
-                giant.BinaryStateful.addImposedStateSource.call(this, stateName);
+                $commonWidgets.BinaryStateful.addImposedStateSource.call(this, stateName);
                 if (stateName === self.STATE_NAME_HIGHLIGHTABLE) {
                     this._updateHighlightedState();
                 }
@@ -82,10 +82,10 @@ $oop.postpone(giant, 'Highlightable', function () {
             /**
              * @param {string} stateName
              * @param {string} sourceId
-             * @returns {giant.Highlightable}
+             * @returns {$commonWidgets.Highlightable}
              */
             removeBinaryStateSource: function (stateName, sourceId) {
-                giant.BinaryStateful.removeBinaryStateSource.call(this, stateName, sourceId);
+                $commonWidgets.BinaryStateful.removeBinaryStateSource.call(this, stateName, sourceId);
                 if (stateName === self.STATE_NAME_HIGHLIGHTABLE) {
                     this._updateHighlightedState();
                 }
@@ -94,10 +94,10 @@ $oop.postpone(giant, 'Highlightable', function () {
 
             /**
              * @param {string} stateName
-             * @returns {giant.Highlightable}
+             * @returns {$commonWidgets.Highlightable}
              */
             removeImposedStateSource: function (stateName) {
-                giant.BinaryStateful.removeImposedStateSource.call(this, stateName);
+                $commonWidgets.BinaryStateful.removeImposedStateSource.call(this, stateName);
                 if (stateName === self.STATE_NAME_HIGHLIGHTABLE) {
                     this._updateHighlightedState();
                 }
@@ -121,7 +121,7 @@ $oop.postpone(giant, 'Highlightable', function () {
             /**
              * Marks widget as highlighted.
              * @param {string} [highlightId]
-             * @returns {giant.Highlightable}
+             * @returns {$commonWidgets.Highlightable}
              */
             highlightOn: function (highlightId) {
                 $assertion.isStringOptional(highlightId, "Invalid highlight ID");
@@ -134,7 +134,7 @@ $oop.postpone(giant, 'Highlightable', function () {
             /**
              * Marks widget as non-highlighted.
              * @param {string} [highlightId]
-             * @returns {giant.Highlightable}
+             * @returns {$commonWidgets.Highlightable}
              */
             highlightOff: function (highlightId) {
                 $assertion.isStringOptional(highlightId, "Invalid highlight ID");

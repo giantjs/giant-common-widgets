@@ -1,5 +1,5 @@
-/*global giant */
-$oop.postpone(giant, 'List', function (ns, className) {
+/*global $commonWidgets */
+$oop.postpone($commonWidgets, 'List', function (ns, className) {
     "use strict";
 
     var base = $widget.Widget,
@@ -7,9 +7,9 @@ $oop.postpone(giant, 'List', function (ns, className) {
 
     /**
      * Creates a List instance.
-     * @name giant.List.create
+     * @name $commonWidgets.List.create
      * @function
-     * @returns {giant.List}
+     * @returns {$commonWidgets.List}
      */
 
     /**
@@ -19,8 +19,8 @@ $oop.postpone(giant, 'List', function (ns, className) {
      * @class
      * @extends $widget.Widget
      */
-    giant.List = self
-        .addMethods(/** @lends giant.List# */{
+    $commonWidgets.List = self
+        .addMethods(/** @lends $commonWidgets.List# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -31,7 +31,7 @@ $oop.postpone(giant, 'List', function (ns, className) {
              * Adds a widget to the list as its item.
              * Changes the specified widget's tag name to 'li'.
              * @param itemWidget
-             * @returns {giant.List}
+             * @returns {$commonWidgets.List}
              */
             addItemWidget: function (itemWidget) {
                 itemWidget
@@ -46,7 +46,7 @@ $oop.postpone(giant, 'List', function (ns, className) {
 (function () {
     "use strict";
 
-    $oop.addGlobalConstants.call(giant, /** @lends giant */{
+    $oop.addGlobalConstants.call($commonWidgets, /** @lends $commonWidgets */{
         /**
          * Signals that the items in a List have changed.
          * @constant

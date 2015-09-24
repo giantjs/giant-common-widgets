@@ -1,24 +1,24 @@
-/*global giant, jQuery */
-$oop.postpone(giant, 'TextButton', function (ns, className) {
+/*global $commonWidgets, jQuery */
+$oop.postpone($commonWidgets, 'TextButton', function (ns, className) {
     "use strict";
 
-    var base = giant.Button,
+    var base = $commonWidgets.Button,
         self = base.extend(className);
 
     /**
      * Creates a TextButton instance.
-     * @name giant.TextButton.create
+     * @name $commonWidgets.TextButton.create
      * @function
-     * @returns {giant.TextButton}
+     * @returns {$commonWidgets.TextButton}
      */
 
     /**
      * The TextButton extends the Button with a Label that stores text, so the button might have text on it.
      * @class
-     * @extends giant.Button
+     * @extends $commonWidgets.Button
      */
-    giant.TextButton = self
-        .addMethods(/** @lends giant.TextButton# */{
+    $commonWidgets.TextButton = self
+        .addMethods(/** @lends $commonWidgets.TextButton# */{
             /** @ignore */
             init: function () {
                 base.init.call(this);
@@ -31,15 +31,15 @@ $oop.postpone(giant, 'TextButton', function (ns, className) {
             /**
              * Creates Label widget to be used inside the button.
              * Override to specify custom widget.
-             * @returns {giant.Label}
+             * @returns {$commonWidgets.Label}
              */
             spawnLabelWidget: function () {
-                return giant.Label.create();
+                return $commonWidgets.Label.create();
             },
 
             /**
              * Retrieves the label widget contained within the button.
-             * @returns {giant.Label}
+             * @returns {$commonWidgets.Label}
              */
             getLabelWidget: function () {
                 return this.getChild('button-label');
@@ -50,7 +50,7 @@ $oop.postpone(giant, 'TextButton', function (ns, className) {
              * Expects the caption widget to be a Label.
              * Override when caption widget is something other than Label.
              * @param {string} caption
-             * @returns {giant.TextButton}
+             * @returns {$commonWidgets.TextButton}
              */
             setCaption: function (caption) {
                 this.getChild('button-label')

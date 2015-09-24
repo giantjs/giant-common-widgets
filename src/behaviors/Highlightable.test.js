@@ -1,4 +1,4 @@
-/*global giant */
+/*global $commonWidgets */
 (function () {
     "use strict";
 
@@ -6,30 +6,30 @@
 
     var base = $widget.Widget,
         Highlightable = base.extend('Highlightable')
-            .addTraitAndExtend(giant.BinaryStateful)
-            .addTraitAndExtend(giant.Highlightable)
+            .addTraitAndExtend($commonWidgets.BinaryStateful)
+            .addTraitAndExtend($commonWidgets.Highlightable)
             .addMethods({
                 init: function () {
                     base.init.call(this);
-                    giant.BinaryStateful.init.call(this);
-                    giant.Highlightable.init.call(this);
+                    $commonWidgets.BinaryStateful.init.call(this);
+                    $commonWidgets.Highlightable.init.call(this);
                 },
 
                 afterAdd: function () {
                     base.afterAdd.call(this);
-                    giant.BinaryStateful.afterAdd.call(this);
+                    $commonWidgets.BinaryStateful.afterAdd.call(this);
                 },
 
                 afterRemove: function () {
                     base.afterRemove.call(this);
-                    giant.BinaryStateful.afterRemove.call(this);
+                    $commonWidgets.BinaryStateful.afterRemove.call(this);
                 }
             });
 
     test("Instantiation", function () {
         Highlightable.addMocks({
             addBinaryState: function (stateName) {
-                equal(stateName, giant.Highlightable.STATE_NAME_HIGHLIGHTABLE,
+                equal(stateName, $commonWidgets.Highlightable.STATE_NAME_HIGHLIGHTABLE,
                     "should add highlightable state to instance");
             }
         });
@@ -48,7 +48,7 @@
 
         var highlightable = Highlightable.create();
 
-        giant.BinaryStateful.addMocks({
+        $commonWidgets.BinaryStateful.addMocks({
             addBinaryStateSource: function (stateName, sourceId) {
                 equal(stateName, 'foo', "should pass state name to super");
                 equal(sourceId, 'bar', "should pass source ID to super");
@@ -64,9 +64,9 @@
         strictEqual(highlightable.addBinaryStateSource('foo', 'bar'), highlightable,
             "should be chainable");
 
-        giant.BinaryStateful.removeMocks();
+        $commonWidgets.BinaryStateful.removeMocks();
 
-        highlightable.addBinaryStateSource(giant.Highlightable.STATE_NAME_HIGHLIGHTABLE, 'bar');
+        highlightable.addBinaryStateSource($commonWidgets.Highlightable.STATE_NAME_HIGHLIGHTABLE, 'bar');
     });
 
     test("Imposed state addition", function () {
@@ -74,7 +74,7 @@
 
         var highlightable = Highlightable.create();
 
-        giant.BinaryStateful.addMocks({
+        $commonWidgets.BinaryStateful.addMocks({
             addImposedStateSource: function (stateName) {
                 equal(stateName, 'foo', "should pass state name to super");
             }
@@ -89,9 +89,9 @@
         strictEqual(highlightable.addImposedStateSource('foo'), highlightable,
             "should be chainable");
 
-        giant.BinaryStateful.removeMocks();
+        $commonWidgets.BinaryStateful.removeMocks();
 
-        highlightable.addImposedStateSource(giant.Highlightable.STATE_NAME_HIGHLIGHTABLE);
+        highlightable.addImposedStateSource($commonWidgets.Highlightable.STATE_NAME_HIGHLIGHTABLE);
     });
 
     test("Binary state removal", function () {
@@ -99,7 +99,7 @@
 
         var highlightable = Highlightable.create();
 
-        giant.BinaryStateful.addMocks({
+        $commonWidgets.BinaryStateful.addMocks({
             removeBinaryStateSource: function (stateName, sourceId) {
                 equal(stateName, 'foo', "should pass state name to super");
                 equal(sourceId, 'bar', "should pass source ID to super");
@@ -115,9 +115,9 @@
         strictEqual(highlightable.removeBinaryStateSource('foo', 'bar'), highlightable,
             "should be chainable");
 
-        giant.BinaryStateful.removeMocks();
+        $commonWidgets.BinaryStateful.removeMocks();
 
-        highlightable.removeBinaryStateSource(giant.Highlightable.STATE_NAME_HIGHLIGHTABLE, 'bar');
+        highlightable.removeBinaryStateSource($commonWidgets.Highlightable.STATE_NAME_HIGHLIGHTABLE, 'bar');
     });
 
     test("Imposed state removal", function () {
@@ -125,7 +125,7 @@
 
         var highlightable = Highlightable.create();
 
-        giant.BinaryStateful.addMocks({
+        $commonWidgets.BinaryStateful.addMocks({
             removeImposedStateSource: function (stateName) {
                 equal(stateName, 'foo', "should pass state name to super");
             }
@@ -140,9 +140,9 @@
         strictEqual(highlightable.removeImposedStateSource('foo'), highlightable,
             "should be chainable");
 
-        giant.BinaryStateful.removeMocks();
+        $commonWidgets.BinaryStateful.removeMocks();
 
-        highlightable.removeImposedStateSource(giant.Highlightable.STATE_NAME_HIGHLIGHTABLE);
+        highlightable.removeImposedStateSource($commonWidgets.Highlightable.STATE_NAME_HIGHLIGHTABLE);
     });
 
     test("Highlight on", function () {
