@@ -52,7 +52,7 @@ giant.postpone(giant, 'Hyperlink', function (ns, className, /**jQuery*/$) {
              * @returns {giant.Hyperlink}
              */
             setTargetUrl: function (targetUrl) {
-                giant.isString(targetUrl, "Invalid target URL");
+                $assertion.isString(targetUrl, "Invalid target URL");
 
                 var element = this.getElement();
                 if (element) {

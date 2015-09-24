@@ -106,7 +106,7 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             init: function (inputType) {
-                giant.isInputType(inputType, "Invalid input type");
+                $assertion.isInputType(inputType, "Invalid input type");
 
                 base.init.call(this);
 
@@ -213,7 +213,7 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
              * @see giant.Input#validatorFunction
              */
             setValidatorFunction: function (validatorFunction) {
-                giant.isFunction(validatorFunction, "Invalid validatorFunction function");
+                $assertion.isFunction(validatorFunction, "Invalid validatorFunction function");
                 this.validatorFunction = validatorFunction;
                 return this;
             },
@@ -383,7 +383,7 @@ giant.postpone(giant, 'Input', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    giant.addTypes(/** @lends giant */{
+    $assertion.addTypes(/** @lends giant */{
         /** @param {string} expr */
         isInputType: function (expr) {
             return expr &&

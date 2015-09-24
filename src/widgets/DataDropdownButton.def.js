@@ -42,7 +42,7 @@ giant.postpone(giant, 'DataDropdownButton', function (ns, className) {
              * @ignore
              */
             init: function (selectedKey, optionsKey) {
-                giant
+                $assertion
                     .isFieldKey(selectedKey, "Invalid 'selected' field key")
                     .isFieldKey(optionsKey, "Invalid options field key");
 

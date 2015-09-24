@@ -36,7 +36,7 @@ giant.postpone(giant, 'Image', function (ns, className) {
              * @returns {giant.Image}
              */
             setImageUrl: function (imageUrl) {
-                giant.isLocation(imageUrl, "Invalid image URL");
+                $assertion.isLocation(imageUrl, "Invalid image URL");
                 this.addAttribute('src', imageUrl.toString());
                 this.imageUrl = imageUrl;
                 return this;

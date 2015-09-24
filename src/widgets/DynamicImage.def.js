@@ -86,7 +86,7 @@ giant.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
              * @returns {giant.DynamicImage}
              */
             setImageUrl: function (imageUrl) {
-                giant.isLocation(imageUrl, "Invalid image URL");
+                $assertion.isLocation(imageUrl, "Invalid image URL");
 
                 var oldImageUrl = this.imageUrl;
 

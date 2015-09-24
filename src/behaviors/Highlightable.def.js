@@ -124,7 +124,7 @@ giant.postpone(giant, 'Highlightable', function () {
              * @returns {giant.Highlightable}
              */
             highlightOn: function (highlightId) {
-                giant.isStringOptional(highlightId, "Invalid highlight ID");
+                $assertion.isStringOptional(highlightId, "Invalid highlight ID");
                 this.addBinaryStateSource(
                     self.STATE_NAME_HIGHLIGHTABLE,
                     highlightId || 'highlighted');
@@ -137,7 +137,7 @@ giant.postpone(giant, 'Highlightable', function () {
              * @returns {giant.Highlightable}
              */
             highlightOff: function (highlightId) {
-                giant.isStringOptional(highlightId, "Invalid highlight ID");
+                $assertion.isStringOptional(highlightId, "Invalid highlight ID");
                 this.removeBinaryStateSource(
                     self.STATE_NAME_HIGHLIGHTABLE,
                     highlightId || 'highlighted');
@@ -150,7 +150,7 @@ giant.postpone(giant, 'Highlightable', function () {
              * @returns {boolean}
              */
             isHighlighted: function (highlightId) {
-                giant.isStringOptional(highlightId, "Invalid highlight ID");
+                $assertion.isStringOptional(highlightId, "Invalid highlight ID");
                 return highlightId ?
                        this.getBinaryState(self.STATE_NAME_HIGHLIGHTABLE)
                            .hasSource(highlightId) :

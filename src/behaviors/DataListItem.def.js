@@ -29,7 +29,7 @@ giant.postpone(giant, 'DataListItem', function () {
              * @returns {giant.DataListItem}
              */
             setItemKey: function (itemKey) {
-                giant.isItemKey(itemKey, "Invalid item key");
+                $assertion.isItemKey(itemKey, "Invalid item key");
                 this.itemKey = itemKey;
                 return this;
             },

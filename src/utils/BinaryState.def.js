@@ -29,7 +29,7 @@ giant.postpone(giant, 'BinaryState', function () {
              * @ignore
              */
             init: function (stateName) {
-                giant.isString(stateName, "Invalid state name");
+                $assertion.isString(stateName, "Invalid state name");
 
                 /**
                  * Name of the state. Eg. "expandable".
@@ -126,7 +126,7 @@ giant.postpone(giant, 'BinaryState', function () {
              * @returns {giant.BinaryState}
              */
             addStateAsSource: function (binaryState, sourceId) {
-                giant.isBinaryState(binaryState, "Invalid binary state");
+                $assertion.isBinaryState(binaryState, "Invalid binary state");
                 if (this.isCascading && binaryState.isStateOn()) {
                     this.addSource(sourceId);
                 }
@@ -138,7 +138,7 @@ giant.postpone(giant, 'BinaryState', function () {
 (function () {
     "use strict";
 
-    giant.addTypes(/** @lends giant */{
+    $assertion.addTypes(/** @lends giant */{
         /** @param {giant.BinaryState} expr */
         isBinaryState: function (expr) {
             return giant.BinaryState.isBaseOf(expr);

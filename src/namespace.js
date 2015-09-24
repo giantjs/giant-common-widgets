@@ -3,6 +3,9 @@
 /** @namespace */
 var giant = giant || require('giant-namespace');
 
+/** @namespace */
+var $assertion = $assertion || require('giant-assertion');
+
 /**
  * Whether to poll input values at a regular interval.
  * Set to true when change/input events do not get fired on form autofill, etc.
@@ -11,7 +14,6 @@ var giant = giant || require('giant-namespace');
 giant.pollInputValues = false;
 
 if (typeof require === 'function') {
-    require('giant-assertion');
     require('giant-oop');
     require('giant-data');
     require('giant-event');

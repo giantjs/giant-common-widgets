@@ -28,7 +28,7 @@ giant.postpone(giant, 'FormField', function (ns, className) {
              * @ignore
              */
             init: function (inputType) {
-                giant.isInputTypeOptional(inputType, "Invalid input type");
+                $assertion.isInputTypeOptional(inputType, "Invalid input type");
 
                 base.init.call(this);
 
@@ -289,7 +289,7 @@ giant.postpone(giant, 'FormField', function (ns, className) {
 (function () {
     "use strict";
 
-    giant.addTypes(/** @lends giant */{
+    $assertion.addTypes(/** @lends giant */{
         /** @param {giant.FormField} expr */
         isFormField: function (expr) {
             return giant.FormField.isBaseOf(expr);

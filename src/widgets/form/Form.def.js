@@ -135,7 +135,7 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
              * @returns {giant.Form}
              */
             addFormField: function (formField) {
-                giant
+                $assertion
                     .isFormField(formField, "Invalid form field")
                     .assert(!this.getChild(formField.childName), "Specified field already exists");
 
@@ -301,7 +301,7 @@ giant.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
 (function () {
     "use strict";
 
-    giant.addTypes(/** @lends giant */{
+    $assertion.addTypes(/** @lends giant */{
         /** @param {giant.Form} expr */
         isForm: function (expr) {
             return giant.Form.isBaseOf(expr);

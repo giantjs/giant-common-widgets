@@ -69,7 +69,7 @@ giant.postpone(giant, 'Flow', function (ns, className) {
                     currentStage = stages.getItem(this.currentStageName),
                     stageWidget = stages.getItem(stageName);
 
-                giant.assert(!!stageWidget, "Invalid stage name");
+                $assertion.assert(!!stageWidget, "Invalid stage name");
 
                 // applying new stage
                 if (currentStage) {

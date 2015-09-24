@@ -32,7 +32,7 @@ giant.postpone(giant, 'DataImage', function (ns, className) {
              * @ignore
              */
             init: function (urlFieldKey) {
-                giant.isFieldKey(urlFieldKey, "Invalid field key");
+                $assertion.isFieldKey(urlFieldKey, "Invalid field key");
 
                 base.init.call(this);
                 giant.EntityBound.init.call(this);

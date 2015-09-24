@@ -96,7 +96,7 @@ giant.postpone(giant, 'DataList', function (ns, className) {
              * @ignore
              */
             init: function (fieldKey) {
-                giant.isFieldKey(fieldKey, "Invalid field key");
+                $assertion.isFieldKey(fieldKey, "Invalid field key");
 
                 base.init.call(this);
                 giant.EntityBound.init.call(this);

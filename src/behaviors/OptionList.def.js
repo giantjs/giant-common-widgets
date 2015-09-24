@@ -202,7 +202,7 @@ giant.postpone(giant, 'OptionList', function () {
              */
             selectOption: function (optionName) {
                 var option = this.getChild(optionName);
-                giant.assert(!!option, "Invalid option name");
+                $assertion.assert(!!option, "Invalid option name");
                 option.markAsActive();
 
                 return this;

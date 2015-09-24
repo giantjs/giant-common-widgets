@@ -37,7 +37,7 @@ giant.postpone(giant, 'DataHyperlink', function (ns, className) {
              * @ignore
              */
             init: function (urlKey, textKey) {
-                giant
+                $assertion
                     .isFieldKey(urlKey, "Invalid URL field key")
                     .isFieldKey(textKey, "Invalid text field key");
 

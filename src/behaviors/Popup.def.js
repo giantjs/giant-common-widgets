@@ -160,7 +160,7 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
              * @returns {giant.Popup}
              */
             openPopup: function () {
-                giant.assert(this.parent, "Popup has no parent");
+                $assertion.assert(this.parent, "Popup has no parent");
 
                 if (!this.isOpen) {
                     this.openUiEvent = this._getLastUiEvent();

@@ -78,7 +78,7 @@ giant.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             init: function (textInputType) {
-                giant.isTextInputTypeOptional(textInputType, "Invalid text input type");
+                $assertion.isTextInputTypeOptional(textInputType, "Invalid text input type");
 
                 base.init.call(this, textInputType || 'text');
 
@@ -207,7 +207,7 @@ giant.amendPostponed(giant, 'Input', function () {
 (function () {
     "use strict";
 
-    giant.addTypes(/** @lends giant */{
+    $assertion.addTypes(/** @lends giant */{
         /** @param {string} expr */
         isTextInputType: function (expr) {
             var TextInput = giant.TextInput;
