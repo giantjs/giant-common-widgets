@@ -21,7 +21,8 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
              * @ignore
              */
             onKeyDown: function (event) {
-                var rootWidget = giant.Widget.rootWidget,
+                var link = giant.originalEventStack.pushEvent(event),
+                    rootWidget = giant.Widget.rootWidget,
                     keyboardEvent = event.originalEvent,
                     originWidget = keyboardEvent instanceof Event &&
                         keyboardEvent.toWidget() ||
@@ -34,6 +35,8 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
                         originWidget: originWidget
                     })
                     .broadcastSync();
+
+                link.unlink();
             }
         });
 });

@@ -64,10 +64,12 @@ giant.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
             },
 
             /**
-             * @ignore
-             */
-            onClick: function () {
+             * @param {jQuery.Event} event
+             * @ignore */
+            onClick: function (event) {
+                var link = giant.originalEventStack.pushEvent(event);
                 this.clickButton();
+                link.unlink();
             }
         });
 }, jQuery);

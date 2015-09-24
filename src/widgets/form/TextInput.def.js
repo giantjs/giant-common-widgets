@@ -130,6 +130,8 @@ giant.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onKeyDown: function (event) {
+                var link = giant.originalEventStack.pushEvent(event);
+
                 switch (event.which) {
                 case 13:
                     if (this.canSubmit) {
@@ -142,35 +144,47 @@ giant.postpone(giant, 'TextInput', function (ns, className, /**jQuery*/$) {
                     this.triggerSync(giant.EVENT_INPUT_TAB);
                     break;
                 }
+
+                link.unlink();
             },
 
             /**
              * Triggered on onkeyup, oninput, and onchange.
              * However, does not trigger Input event unless the value actually changed.
+             * @param {jQuery.Event} event
              * @ignore
              */
-            onChange: function () {
-                var element = this.getElement(),
+            onChange: function (event) {
+                var link = giant.originalEventStack.pushEvent(event),
+                    element = this.getElement(),
                     newInputValue;
 
                 if (element) {
                     newInputValue = $(element).val();
                     this.setInputValue(newInputValue);
                 }
+
+                link.unlink();
             },
 
             /**
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
-            onFocusIn: function () {
+            onFocusIn: function (event) {
+                var link = giant.originalEventStack.pushEvent(event);
                 this.triggerSync(giant.EVENT_INPUT_FOCUS);
+                link.unlink();
             },
 
             /**
+             * @param {giant.WidgetEvent} event
              * @ignore
              */
-            onFocusOut: function () {
+            onFocusOut: function (event) {
+                var link = giant.originalEventStack.pushEvent(event);
                 this.triggerSync(giant.EVENT_INPUT_BLUR);
+                link.unlink();
             }
         });
 

@@ -241,9 +241,11 @@ giant.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onBodyClick: function (event) {
+                var link = giant.originalEventStack.pushEvent(event);
                 if (this._isOutside($(event.target))) {
                     this.triggerSync(giant.EVENT_POPUP_OUTSIDE_CLICK);
                 }
+                link.unlink();
             }
         });
 }, jQuery);
