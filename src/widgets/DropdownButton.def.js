@@ -110,7 +110,7 @@ giant.postpone(giant, 'DropdownButton', function (ns, className) {
                 base.onClick.call(this);
 
                 var dropdown = this.dropdown,
-                    link = giant.originalEventStack.pushEvent(event);
+                    link = giant.pushOriginalEvent(event);
 
                 if (dropdown.isOpen) {
                     dropdown

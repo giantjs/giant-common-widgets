@@ -67,7 +67,7 @@ giant.postpone(giant, 'Button', function (ns, className, /**jQuery*/$) {
              * @param {jQuery.Event} event
              * @ignore */
             onClick: function (event) {
-                var link = giant.originalEventStack.pushEvent(event);
+                var link = giant.pushOriginalEvent(event);
                 this.clickButton();
                 link.unlink();
             }

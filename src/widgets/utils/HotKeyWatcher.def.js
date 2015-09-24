@@ -21,7 +21,7 @@ giant.postpone(giant, 'HotKeyWatcher', function () {
              * @ignore
              */
             onKeyDown: function (event) {
-                var link = giant.originalEventStack.pushEvent(event),
+                var link = giant.pushOriginalEvent(event),
                     rootWidget = giant.Widget.rootWidget,
                     keyboardEvent = event.originalEvent,
                     originWidget = keyboardEvent instanceof Event &&
