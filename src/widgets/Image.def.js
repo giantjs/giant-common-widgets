@@ -24,13 +24,13 @@ $oop.postpone(giant, 'Image', function (ns, className) {
                 base.init.call(this);
                 this.setTagName('img');
 
-                /** @type {giant.ImageUrl} */
+                /** @type {$transport.ImageUrl} */
                 this.imageUrl = undefined;
             },
 
             /**
              * Sets absolute image URL.
-             * @param {giant.ImageUrl} imageUrl ImageUrl instance.
+             * @param {$transport.ImageUrl} imageUrl ImageUrl instance.
              * @example
              * image.setImageUrl('http://httpcats.herokuapp.com/418'.toImageUrl())
              * @returns {giant.Image}

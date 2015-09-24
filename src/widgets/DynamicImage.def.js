@@ -82,7 +82,7 @@ $oop.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
             /**
              * Sets image URL. Initiates loading of image when necessary, and subscribes widget
              * to image loading events on the specified URL.
-             * @param {giant.ImageUrl} imageUrl ImageUrl instance.
+             * @param {$transport.ImageUrl} imageUrl ImageUrl instance.
              * @returns {giant.DynamicImage}
              */
             setImageUrl: function (imageUrl) {
@@ -93,15 +93,15 @@ $oop.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
                 if (!imageUrl.equals(oldImageUrl)) {
                     if (oldImageUrl) {
                         oldImageUrl
-                            .unsubscribeFrom(giant.EVENT_IMAGE_LOAD_START, this.onImageLoadStart)
-                            .unsubscribeFrom(giant.EVENT_IMAGE_LOAD_SUCCESS, this.onImageLoadSuccess)
-                            .unsubscribeFrom(giant.EVENT_IMAGE_LOAD_FAILURE, this.onImageLoadFailure);
+                            .unsubscribeFrom($transport.EVENT_IMAGE_LOAD_START, this.onImageLoadStart)
+                            .unsubscribeFrom($transport.EVENT_IMAGE_LOAD_SUCCESS, this.onImageLoadSuccess)
+                            .unsubscribeFrom($transport.EVENT_IMAGE_LOAD_FAILURE, this.onImageLoadFailure);
                     }
 
                     imageUrl
-                        .subscribeTo(giant.EVENT_IMAGE_LOAD_START, this.onImageLoadStart)
-                        .subscribeTo(giant.EVENT_IMAGE_LOAD_SUCCESS, this.onImageLoadSuccess)
-                        .subscribeTo(giant.EVENT_IMAGE_LOAD_FAILURE, this.onImageLoadFailure);
+                        .subscribeTo($transport.EVENT_IMAGE_LOAD_START, this.onImageLoadStart)
+                        .subscribeTo($transport.EVENT_IMAGE_LOAD_SUCCESS, this.onImageLoadSuccess)
+                        .subscribeTo($transport.EVENT_IMAGE_LOAD_FAILURE, this.onImageLoadFailure);
 
                     this.imageUrl = imageUrl;
 
@@ -116,7 +116,7 @@ $oop.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
              * @ignore
              */
             onImageLoadStart: function () {
-                this.triggerSync(giant.EVENT_IMAGE_LOAD_START);
+                this.triggerSync($transport.EVENT_IMAGE_LOAD_START);
             },
 
             /**
@@ -124,14 +124,14 @@ $oop.postpone(giant, 'DynamicImage', function (ns, className, /**jQuery*/$) {
              */
             onImageLoadSuccess: function () {
                 this._setImageElement(event.imageElement);
-                this.triggerSync(giant.EVENT_IMAGE_LOAD_SUCCESS);
+                this.triggerSync($transport.EVENT_IMAGE_LOAD_SUCCESS);
             },
 
             /**
              * @ignore
              */
             onImageLoadFailure: function () {
-                this.triggerSync(giant.EVENT_IMAGE_LOAD_FAILURE);
+                this.triggerSync($transport.EVENT_IMAGE_LOAD_FAILURE);
             }
         });
 }, jQuery);
