@@ -28,7 +28,7 @@ $oop.postpone(giant, 'Page', function (ns, className, /**jQuery*/$) {
     giant.Page = self
         .addPrivateMethods(/** @lends giant.Page# */{
             /**
-             * @returns {giant.Collection}
+             * @returns {$data.Collection}
              * @private
              */
             _getPageCssClasses: function () {

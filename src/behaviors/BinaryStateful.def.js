@@ -27,9 +27,9 @@ $oop.postpone(giant, 'BinaryStateful', function () {
             init: function () {
                 /**
                  * Holds a collection of BinaryState instances for each binary state.
-                 * @type {giant.Collection}
+                 * @type {$data.Collection}
                  */
-                this.binaryStates = giant.Collection.create();
+                this.binaryStates = $data.Collection.create();
             },
 
             /**

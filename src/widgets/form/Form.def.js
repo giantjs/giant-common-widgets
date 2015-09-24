@@ -173,7 +173,7 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
 
             /**
              * Fetches input widgets from all form fields.
-             * @returns {giant.Collection}
+             * @returns {$data.Collection}
              */
             getInputWidgets: function () {
                 return this.getFormFields()
@@ -182,7 +182,7 @@ $oop.postpone(giant, 'Form', function (ns, className, /**jQuery*/$) {
 
             /**
              * Fetches input values from all form fields indexed by form field names.
-             * @returns {giant.Collection}
+             * @returns {$data.Collection}
              */
             getInputValues: function () {
                 return this.getFormFields()

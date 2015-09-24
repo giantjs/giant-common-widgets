@@ -49,9 +49,9 @@ $oop.postpone(giant, 'Highlightable', function () {
 
                 /**
                  * Lookup of highlight identifiers currently assigned to the instance.
-                 * @type {giant.Collection}
+                 * @type {$data.Collection}
                  */
-                this.highlightIds = giant.Collection.create();
+                this.highlightIds = $data.Collection.create();
             },
 
             /**

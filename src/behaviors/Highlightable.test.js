@@ -38,7 +38,7 @@
 
         Highlightable.removeMocks();
 
-        ok(highlightable.highlightIds.isA(giant.Collection), "should add highlightIds property");
+        ok(highlightable.highlightIds.isA($data.Collection), "should add highlightIds property");
         equal(highlightable.highlightIds.getKeyCount(), 0,
             "should initialize highlightIds to empty collection");
     });

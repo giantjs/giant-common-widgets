@@ -97,11 +97,11 @@ $oop.postpone(giant, 'Popup', function (ns, className, /**jQuery*/$) {
                 /** @type {boolean} */
                 this.isOpen = false;
 
-                /** @type {giant.Collection} */
-                this.outsideSelectors = giant.Collection.create();
+                /** @type {$data.Collection} */
+                this.outsideSelectors = $data.Collection.create();
 
-                /** @type {giant.Collection} */
-                this.insideSelectors = giant.Collection.create();
+                /** @type {$data.Collection} */
+                this.insideSelectors = $data.Collection.create();
 
                 /**
                  * DOM Event that led to opening the popup.

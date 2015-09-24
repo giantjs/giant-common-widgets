@@ -12,7 +12,7 @@
         var binaryState = giant.BinaryState.create('foo');
 
         equal(binaryState.stateName, 'foo', "should set state name");
-        ok(binaryState.stateSources.isA(giant.Collection), "should add source collection");
+        ok(binaryState.stateSources.isA($data.Collection), "should add source collection");
         equal(binaryState.stateSources.getKeyCount(), 0, "should initialize source collection as empty");
         equal(binaryState.isCascading, false, "should set cascading flag to false");
     });

@@ -39,9 +39,9 @@ $oop.postpone(giant, 'BinaryState', function () {
 
                 /**
                  * Lookup of source identifiers contributing the state.
-                 * @type {giant.Collection}
+                 * @type {$data.Collection}
                  */
-                this.stateSources = giant.Collection.create();
+                this.stateSources = $data.Collection.create();
 
                 /**
                  * Whether state can cascade, ie. be influenced by other states.

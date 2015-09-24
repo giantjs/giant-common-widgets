@@ -108,9 +108,9 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
 
                 /**
                  * Lookup associating item keys with widget (child) names.
-                 * @type {giant.Collection}
+                 * @type {$data.Collection}
                  */
-                this.childNamesByItemKey = giant.Collection.create();
+                this.childNamesByItemKey = $data.Collection.create();
             },
 
             /** @ignore */
@@ -177,7 +177,7 @@ $oop.postpone(giant, 'DataList', function (ns, className) {
                             return that._getSetKey(childName, itemWidget.itemKey);
                         })
                         .toSet(),
-                    itemsKeysAfter = giant.Collection.create(fieldValue)
+                    itemsKeysAfter = $data.Collection.create(fieldValue)
                         .mapValues(function (itemValue, itemId) {
                             return fieldKey.getItemKey(itemId);
                         })

@@ -35,7 +35,7 @@
     test("Instantiation", function () {
         var binaryStateful = BinaryStateful.create();
 
-        ok(binaryStateful.binaryStates.isA(giant.Collection), "should add binaryStates property");
+        ok(binaryStateful.binaryStates.isA($data.Collection), "should add binaryStates property");
         equal(binaryStateful.binaryStates.getKeyCount(), 0,
             "should initialize states collection as empty");
     });

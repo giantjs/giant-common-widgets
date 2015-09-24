@@ -12,6 +12,9 @@ var $oop = $oop || require('giant-oop');
 /** @namespace */
 var $utils = $utils || require('giant-utils');
 
+/** @namespace */
+var $data = $data || require('giant-data');
+
 /**
  * Whether to poll input values at a regular interval.
  * Set to true when change/input events do not get fired on form autofill, etc.
@@ -19,7 +22,6 @@ var $utils = $utils || require('giant-utils');
  */
 giant.pollInputValues = false;
 if (typeof require === 'function') {
-    require('giant-data');
     require('giant-event');
     require('giant-templating');
     require('giant-entity');
@@ -67,6 +69,6 @@ if (typeof document === 'undefined') {
  */
 
 /**
- * @name giant.Hash
+ * @name $data.Hash
  * @class
  */

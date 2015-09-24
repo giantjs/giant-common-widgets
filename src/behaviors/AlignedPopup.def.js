@@ -40,9 +40,9 @@ $oop.postpone(giant, 'AlignedPopup', function (ns, className, /**jQuery*/$) {
 
                 /**
                  * Options for positioning the select list popup around its parent.
-                 * @type {giant.Collection}
+                 * @type {$data.Collection}
                  */
-                this.positionOptions = giant.Collection.create({
+                this.positionOptions = $data.Collection.create({
                     my: 'left top',
                     at: 'left bottom'
                 });
