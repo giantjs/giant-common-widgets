@@ -1,4 +1,3 @@
-/*global $commonWidgets, jQuery, UIEvent */
 $oop.postpone($commonWidgets, 'Popup', function (ns, className, /**jQuery*/$) {
     "use strict";
 

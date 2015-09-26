@@ -1,4 +1,3 @@
-/*global $commonWidgets */
 $oop.postpone($commonWidgets, 'DataDropdown', function (ns, className) {
     "use strict";
 

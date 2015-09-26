@@ -1,4 +1,3 @@
-/*global $commonWidgets, Event, jQuery */
 $oop.postpone($commonWidgets, 'HotKeyWatcher', function () {
     "use strict";
 

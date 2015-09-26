@@ -1,4 +1,3 @@
-/*global $commonWidgets */
 $oop.postpone($commonWidgets, 'EntityWidget', function () {
     "use strict";
 

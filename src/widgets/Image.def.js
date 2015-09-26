@@ -1,4 +1,3 @@
-/*global $commonWidgets */
 $oop.postpone($commonWidgets, 'Image', function (ns, className) {
     "use strict";
 

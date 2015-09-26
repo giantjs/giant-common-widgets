@@ -1,4 +1,3 @@
-/*global $commonWidgets */
 $oop.postpone($commonWidgets, 'DataDynamicImage', function (ns, className) {
     "use strict";
 

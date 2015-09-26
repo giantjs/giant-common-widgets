@@ -1,4 +1,3 @@
-/*global $commonWidgets */
 $oop.postpone($commonWidgets, 'PasswordInput', function (ns, className) {
     "use strict";
 

@@ -1,4 +1,3 @@
-/*global $commonWidgets, jQuery */
 $oop.postpone($commonWidgets, 'Dropdown', function (ns, className, /**jQuery*/$) {
     "use strict";
 

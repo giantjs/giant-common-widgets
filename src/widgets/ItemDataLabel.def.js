@@ -1,4 +1,3 @@
-/*global $commonWidgets */
 $oop.postpone($commonWidgets, 'ItemDataLabel', function (ns, className) {
     "use strict";
 

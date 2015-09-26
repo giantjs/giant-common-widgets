@@ -1,4 +1,3 @@
-/*global $commonWidgets, jQuery */
 $oop.postpone($commonWidgets, 'FormField', function (ns, className) {
     "use strict";
 

@@ -1,4 +1,3 @@
-/*global $commonWidgets */
 $oop.postpone($commonWidgets, 'DataList', function (ns, className) {
     "use strict";
 

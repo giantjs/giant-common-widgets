@@ -1,4 +1,3 @@
-/*global $commonWidgets, jQuery */
 $oop.postpone($commonWidgets, 'AlignedPopup', function (ns, className, /**jQuery*/$) {
     "use strict";
 

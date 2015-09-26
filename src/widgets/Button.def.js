@@ -1,4 +1,3 @@
-/*global $commonWidgets, jQuery */
 $oop.postpone($commonWidgets, 'Button', function (ns, className, /**jQuery*/$) {
     "use strict";
 

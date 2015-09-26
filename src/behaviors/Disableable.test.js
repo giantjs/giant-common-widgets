@@ -1,4 +1,3 @@
-/*global $commonWidgets */
 (function () {
     "use strict";
 

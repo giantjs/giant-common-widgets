@@ -1,4 +1,3 @@
-/*global $commonWidgets */
 $oop.postpone($commonWidgets, 'DropdownButton', function (ns, className) {
     "use strict";
 

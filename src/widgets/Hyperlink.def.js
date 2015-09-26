@@ -1,4 +1,3 @@
-/*global $commonWidgets, jQuery */
 $oop.postpone($commonWidgets, 'Hyperlink', function (ns, className, /**jQuery*/$) {
     "use strict";
 

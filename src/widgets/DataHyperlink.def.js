@@ -1,4 +1,3 @@
-/*global $commonWidgets */
 $oop.postpone($commonWidgets, 'DataHyperlink', function (ns, className) {
     "use strict";
 

@@ -1,4 +1,3 @@
-/*global $commonWidgets, jQuery */
 $oop.postpone($commonWidgets, 'ResizeWatcher', function (ns, className, /**jQuery*/$) {
     "use strict";
 

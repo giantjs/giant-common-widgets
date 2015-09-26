@@ -1,4 +1,3 @@
-/*global $commonWidgets */
 $oop.postpone($commonWidgets, 'DataTextInput', function (ns, className) {
     "use strict";
 
