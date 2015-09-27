@@ -119,9 +119,10 @@ $oop.postpone($commonWidgets, 'DynamicImage', function (ns, className, /**jQuery
             },
 
             /**
+             * @param {$transport.ImageEvent} event
              * @ignore
              */
-            onImageLoadSuccess: function () {
+            onImageLoadSuccess: function (event) {
                 this._setImageElement(event.imageElement);
                 this.triggerSync($transport.EVENT_IMAGE_LOAD_SUCCESS);
             },
