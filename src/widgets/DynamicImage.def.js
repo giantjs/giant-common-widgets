@@ -115,7 +115,7 @@ $oop.postpone($commonWidgets, 'DynamicImage', function (ns, className, /**jQuery
              * @ignore
              */
             onImageLoadStart: function () {
-                this.triggerSync($transport.EVENT_IMAGE_LOAD_START);
+                this.triggerSync($commonWidgets.EVENT_DYNAMIC_IMAGE_LOAD_START);
             },
 
             /**
@@ -124,14 +124,14 @@ $oop.postpone($commonWidgets, 'DynamicImage', function (ns, className, /**jQuery
              */
             onImageLoadSuccess: function (event) {
                 this._setImageElement(event.imageElement);
-                this.triggerSync($transport.EVENT_IMAGE_LOAD_SUCCESS);
+                this.triggerSync($commonWidgets.EVENT_DYNAMIC_IMAGE_LOAD_SUCCESS);
             },
 
             /**
              * @ignore
              */
             onImageLoadFailure: function () {
-                this.triggerSync($transport.EVENT_IMAGE_LOAD_FAILURE);
+                this.triggerSync($commonWidgets.EVENT_DYNAMIC_IMAGE_LOAD_FAILURE);
             }
         });
 }, jQuery);
