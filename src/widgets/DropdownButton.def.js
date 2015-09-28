@@ -50,6 +50,7 @@ $oop.postpone($commonWidgets, 'DropdownButton', function (ns, className) {
                  * @type {$commonWidgets.Dropdown}
                  */
                 this.dropdown = this.spawnDropdownWidget()
+                    .treatAsInside('#' + this.htmlAttributes.idAttribute)
                     .setChildName('dropdown-popup');
             },
 
