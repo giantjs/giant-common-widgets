@@ -17,7 +17,10 @@
     "type": "git",
     "url": "git@github.com:giantjs/giant-common-widgets.git"
   },
-  "peerDependencies": {
+  "engines" : {
+    "npm" : "^3.0.0"
+  },
+  "dependencies": {
     "giant-assertion": "0.2.0",
     "giant-data": "0.2.0",
     "giant-entity": "0.2.0",
@@ -26,9 +29,7 @@
     "giant-templating": "0.2.0",
     "giant-transport": "0.2.0",
     "giant-utils": "0.2.0",
-    "giant-widget": "0.2.0"
-  },
-  "dependencies": {
+    "giant-widget": "0.2.0",
     "jquery": "~2.1.0",
     "q": "^1.4.0"
   },
