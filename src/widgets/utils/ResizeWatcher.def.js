@@ -88,7 +88,7 @@ $oop.postpone($commonWidgets, 'ResizeWatcher', function (ns, className, /**jQuer
              */
             onWindowResize: function (event) {
                 var link = $event.pushOriginalEvent(event);
-                this.windowResizeDebouncer.schedule(event);
+                this.windowResizeDebouncer.schedule(this.RESIZE_DEBOUNCE_DELAY, event);
                 link.unlink();
             },
 
