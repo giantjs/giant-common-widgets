@@ -27,13 +27,15 @@ $oop.postpone($commonWidgets, 'HotKeyWatcher', function () {
                         keyboardEvent.toWidget() ||
                         rootWidget;
 
-                rootWidget
-                    .spawnEvent($commonWidgets.EVENT_HOT_KEY_DOWN)
-                    .setPayloadItems({
-                        charCode    : event.which,
-                        originWidget: originWidget
-                    })
-                    .broadcastSync();
+                if (rootWidget) {
+                    rootWidget
+                        .spawnEvent($commonWidgets.EVENT_HOT_KEY_DOWN)
+                        .setPayloadItems({
+                            charCode: event.which,
+                            originWidget: originWidget
+                        })
+                        .broadcastSync();
+                }
 
                 link.unlink();
             }
