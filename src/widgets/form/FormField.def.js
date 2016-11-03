@@ -203,7 +203,7 @@ $oop.postpone($commonWidgets, 'FormField', function (ns, className) {
 
             /**
              * Sets comment string.
-             * @param {string} comment
+             * @param {string|$utils.Stringifiable} comment
              * @returns {$commonWidgets.FormField}
              */
             setComment: function (comment) {
