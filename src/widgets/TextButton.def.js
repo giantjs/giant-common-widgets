@@ -48,7 +48,7 @@ $oop.postpone($commonWidgets, 'TextButton', function (ns, className) {
              * Sets button caption.
              * Expects the caption widget to be a Label.
              * Override when caption widget is something other than Label.
-             * @param {string} caption
+             * @param {string|$utils.Stringifiable} caption
              * @returns {$commonWidgets.TextButton}
              */
             setCaption: function (caption) {
