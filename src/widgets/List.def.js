@@ -29,7 +29,7 @@ $oop.postpone($commonWidgets, 'List', function (ns, className) {
             /**
              * Adds a widget to the list as its item.
              * Changes the specified widget's tag name to 'li'.
-             * @param itemWidget
+             * @param {$widget.Widget} itemWidget
              * @returns {$commonWidgets.List}
              */
             addItemWidget: function (itemWidget) {
